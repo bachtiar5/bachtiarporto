@@ -1,0 +1,2414 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PortoBachtiar</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Roboto+Mono:wght@400;700&family=Inter:wght@400;600;700&display=swap"
+        rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Roboto+Mono:wght@400;700&family=Inter:wght@400;600;700&display=swap"
+            rel="stylesheet">
+    </noscript>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    </noscript>
+
+    <style>
+        :root {
+            --bg-color: #050505;
+            --bg-grid: #111;
+            --primary: #ff003c;
+            --primary-dark: #990024;
+            --silver: #e0e0e0;
+            --silver-dim: #888888;
+
+            --font-head: 'Archivo Black', sans-serif;
+            --font-code: 'Roboto Mono', monospace;
+            --font-roblox: 'Inter', sans-serif;
+
+            --ease-smooth: cubic-bezier(0.23, 1, 0.32, 1);
+            --ease-elastic: cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        /* --- TEMA TERANG (LIGHT MODE) --- */
+        body.light-mode {
+            --bg-color: #f5f5f7;
+            --bg-grid: #e0e0e0;
+            --primary: #0066cc;
+            --primary-dark: #004c99;
+            --silver: #111111;
+            --silver-dim: #555555;
+            background-image:
+                linear-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+        }
+
+        body.light-mode::before {
+            border-color: rgba(0, 102, 204, 0.2);
+        }
+
+        body.light-mode .hero h1,
+        body.light-mode .section-title,
+        body.light-mode .about-text h3,
+        body.light-mode .about-text .about-subtitle {
+            color: #111;
+        }
+
+        body.light-mode .about-text p {
+            color: #444;
+        }
+
+        body.light-mode .hero h1 span.outline {
+            -webkit-text-stroke: 2px #111;
+        }
+
+        body.light-mode nav {
+            background: rgba(245, 245, 247, 0.85);
+            border-bottom: 1px solid #ddd;
+        }
+
+        body.light-mode .logo {
+            color: #111;
+        }
+
+        body.light-mode .section-header {
+            border-bottom: 2px solid #ddd;
+        }
+
+        body.light-mode .archive-item {
+            background: rgba(255, 255, 255, 0.9);
+            border-color: #ccc;
+            color: #111;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        body.light-mode .archive-item h4 {
+            color: #111;
+        }
+
+        body.light-mode .archive-item:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        body.light-mode .archive-item:hover i {
+            color: white;
+        }
+
+        body.light-mode .modal-content {
+            background: #fff;
+            border-color: #ccc;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        body.light-mode .modal-header,
+        body.light-mode .modal-footer {
+            background: #f0f0f0;
+            border-color: #ddd;
+            color: #333;
+        }
+
+        body.light-mode .modal-title {
+            color: #111;
+        }
+
+        body.light-mode .social-card {
+            background: #fff;
+            border-color: #ddd;
+            color: #111;
+        }
+
+        body.light-mode .social-card:hover {
+            border-color: var(--primary);
+            background: rgba(0, 102, 204, 0.05);
+        }
+
+        body.light-mode .discord-card {
+            color: white;
+        }
+
+        body.light-mode .gallery-viewport {
+            background: #e0e0e0;
+        }
+
+        body.light-mode .gradient-text {
+            background: linear-gradient(90deg, #111, #555);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        @media (max-width: 768px) {
+            * {
+                will-change: auto !important;
+            }
+
+            #matrix-canvas {
+                display: none !important;
+            }
+
+            .crt-overlay {
+                display: none !important;
+            }
+
+            body::before {
+                display: none !important;
+            }
+
+            body {
+                background-image: none !important;
+                background-color: var(--bg-color);
+            }
+
+            .tape-text,
+            .tape-text-reverse {
+                animation-duration: 30s;
+            }
+
+            .btn-shine::after {
+                animation: none !important;
+            }
+
+            .archive-container.active .archive-item {
+                animation: none !important;
+            }
+
+            .border-glow-card::before,
+            .border-glow-card::after,
+            .border-glow-card>.edge-light {
+                display: none !important;
+            }
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--silver);
+            font-family: var(--font-code);
+            overflow-x: hidden;
+            background-image:
+                linear-gradient(rgba(20, 20, 20, 0.4) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(20, 20, 20, 0.4) 1px, transparent 1px);
+            background-size: 50px 50px;
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            border: 1px solid rgba(255, 0, 60, 0.1);
+            pointer-events: none;
+            z-index: 90;
+            transition: border-color 0.5s ease;
+        }
+
+        #matrix-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.15;
+            pointer-events: none;
+        }
+
+        .crt-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%),
+                linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+            z-index: 999;
+        }
+
+        .hacker-text {
+            display: inline-block;
+        }
+
+        .text-primary {
+            color: var(--primary);
+            transition: color 0.5s ease;
+        }
+
+        .btn-shine {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white !important;
+            border: 1px solid transparent;
+            transition: background 0.5s ease;
+        }
+
+        .btn-shine::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+            transform: skewX(-25deg);
+            animation: shineSweep 4s infinite;
+        }
+
+        @keyframes shineSweep {
+            0% {
+                left: -100%;
+            }
+
+            20% {
+                left: 200%;
+            }
+
+            100% {
+                left: 200%;
+            }
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+            * {
+                cursor: none;
+            }
+
+            .cursor-dot {
+                width: 6px;
+                height: 6px;
+                background: var(--primary);
+                position: fixed;
+                transform: translate(-50%, -50%);
+                border-radius: 50%;
+                pointer-events: none;
+                z-index: 20000;
+                transition: background 0.5s ease;
+            }
+
+            .cursor-outline {
+                width: 40px;
+                height: 40px;
+                border: 1px solid rgba(255, 255, 255, 0.5);
+                position: fixed;
+                transform: translate(-50%, -50%);
+                border-radius: 50%;
+                pointer-events: none;
+                z-index: 20000;
+                transition: width 0.2s, height 0.2s, background 0.2s, border-color 0.5s ease;
+            }
+
+            body.hovering .cursor-outline {
+                width: 60px;
+                height: 60px;
+                border-color: var(--primary);
+                background: rgba(255, 0, 60, 0.1);
+                mix-blend-mode: difference;
+            }
+
+            body.light-mode.hovering .cursor-outline {
+                background: rgba(0, 102, 204, 0.2);
+            }
+        }
+
+        @media (hover: none) {
+
+            .cursor-dot,
+            .cursor-outline {
+                display: none;
+            }
+        }
+
+        nav {
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            background: rgba(5, 5, 5, 0.85);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #222;
+            transition: background 0.5s ease, border-color 0.5s ease;
+        }
+
+        .logo {
+            font-family: var(--font-head);
+            font-size: 1.5rem;
+            text-decoration: none;
+            color: white;
+            letter-spacing: -1px;
+            transition: color 0.5s ease;
+        }
+
+        .menu-toggle {
+            display: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 101;
+            transition: color 0.5s ease;
+            background: none;
+            border: none;
+            padding: 0;
+            line-height: 1;
+        }
+
+        body.light-mode .menu-toggle {
+            color: #111;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-item {
+            color: var(--silver-dim);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .nav-item:hover {
+            color: var(--primary);
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 10%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 5;
+            margin-top: -15vh;
+        }
+
+        .hero h1 {
+            font-family: var(--font-head);
+            font-size: clamp(3rem, 8vw, 7rem);
+            line-height: 0.9;
+            margin-bottom: 1.5rem;
+            color: white;
+            transition: color 0.5s ease;
+        }
+
+        .hero h1 span.outline {
+            color: transparent;
+            -webkit-text-stroke: 2px var(--silver);
+            transition: -webkit-text-stroke 0.5s ease;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #ffffff, #888888);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .police-tape-container {
+            position: absolute;
+            bottom: 8%;
+            left: -10vw;
+            width: 120vw;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .tape {
+            font-family: var(--font-head);
+            font-size: 2.2rem;
+            padding: 10px 0;
+            display: flex;
+            white-space: nowrap;
+        }
+
+        .tape-1 {
+            background: var(--primary);
+            color: white;
+            transform: rotate(-3deg);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            transition: background 0.5s ease;
+        }
+
+        .tape-2 {
+            background: #000;
+            color: var(--primary);
+            border-top: 3px solid var(--primary);
+            border-bottom: 3px solid var(--primary);
+            transform: rotate(2deg);
+            transition: color 0.5s ease, border-color 0.5s ease;
+        }
+
+        .tape-text {
+            display: inline-block;
+            animation: marquee 20s linear infinite;
+        }
+
+        .tape-text-reverse {
+            display: inline-block;
+            animation: marquee-reverse 20s linear infinite;
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        @keyframes marquee-reverse {
+            0% {
+                transform: translateX(-50%);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        .section-padding {
+            padding: 80px 10%;
+            position: relative;
+            z-index: 10;
+            background: var(--bg-color);
+            transition: background 0.5s ease;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 50px;
+            border-bottom: 2px solid #222;
+            padding-bottom: 15px;
+        }
+
+        .section-num {
+            font-family: var(--font-head);
+            font-size: 2rem;
+            color: var(--primary);
+            transition: color 0.5s ease;
+        }
+
+        .section-title {
+            font-family: var(--font-head);
+            font-size: 2rem;
+            color: white;
+            letter-spacing: 1px;
+            transition: color 0.5s ease;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-text h3,
+        .about-text .about-subtitle {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: white;
+            line-height: 1.4;
+            font-family: var(--font-head);
+            transition: color 0.5s ease;
+        }
+
+        .about-text p.about-desc {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #aaa;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .about-text p.about-desc.spotlight-active {
+            background-image: radial-gradient(circle 80px at var(--mouse-x) var(--mouse-y),
+                    var(--primary) 0%,
+                    #aaa 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+        }
+
+        /* --- FOUNDER SECTION --- */
+        .founder-section {
+            margin-top: 30px;
+            margin-bottom: 40px;
+        }
+
+        .founder-title {
+            font-family: var(--font-head);
+            font-size: 1.1rem;
+            color: white;
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px rgba(255, 0, 60, 0.4);
+        }
+
+        .founder-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .founder-card {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: rgba(15, 15, 15, 0.6);
+            border: 1px solid #333;
+            padding: 15px 20px;
+            border-radius: 12px;
+            transition: transform 0.3s var(--ease-elastic), box-shadow 0.3s ease, border-color 0.3s ease;
+            cursor: pointer;
+        }
+
+        body.light-mode .founder-card {
+            background: rgba(255, 255, 255, 0.6);
+            border-color: #ddd;
+        }
+
+        .founder-card:hover {
+            transform: scale(1.02) translateX(10px);
+            box-shadow: 0 10px 20px rgba(255, 0, 60, 0.2);
+            border-color: var(--primary);
+        }
+
+        body.light-mode .founder-card:hover {
+            box-shadow: 0 10px 20px rgba(0, 102, 204, 0.2);
+            border-color: #0066cc;
+        }
+
+        .founder-card img {
+            width: 70px;
+            height: 70px;
+            object-fit: contain;
+            filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.2));
+            transition: transform 0.3s ease;
+        }
+
+        .founder-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .founder-info h4 {
+            font-family: var(--font-head);
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        body.light-mode .founder-info h4 {
+            color: #111;
+        }
+
+        .founder-info span {
+            font-family: var(--font-code);
+            font-size: 0.8rem;
+            color: var(--silver-dim);
+        }
+
+        /* --- STATS COUNTER --- */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+
+        .stat-box {
+            background: rgba(15, 15, 15, 0.8);
+            border: 1px solid #333;
+            padding: 30px 20px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        body.light-mode .stat-box {
+            background: rgba(255, 255, 255, 0.8);
+            border-color: #ddd;
+        }
+
+        .stat-box:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .stat-number {
+            font-family: var(--font-head);
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--silver-dim);
+            letter-spacing: 1px;
+            font-family: var(--font-head);
+        }
+
+        @media (max-width: 768px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+
+            .founder-logos {
+                flex-direction: row;
+            }
+        }
+
+        /* --- SKILLS BAR --- */
+        .skills-container {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            width: 100%;
+        }
+
+        .skill-item {
+            width: 100%;
+        }
+
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 8px;
+        }
+
+        .skill-name-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .skill-name {
+            font-family: var(--font-head);
+            font-size: 1.1rem;
+            color: white;
+        }
+
+        body.light-mode .skill-name {
+            color: #111;
+        }
+
+        .skill-note {
+            font-size: 0.75rem;
+            color: #888;
+            font-style: italic;
+        }
+
+        .skill-percent {
+            font-family: var(--font-code);
+            font-size: 1rem;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .skill-bar-bg {
+            width: 100%;
+            height: 8px;
+            background: #222;
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        body.light-mode .skill-bar-bg {
+            background: #ccc;
+        }
+
+        .skill-bar-fill {
+            height: 100%;
+            background: var(--primary);
+            border-radius: 4px;
+            width: 0;
+            /* Animated later via JS */
+            transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+            position: relative;
+            box-shadow: 0 0 10px var(--primary);
+        }
+
+        .roblox-id-container {
+            perspective: 1000px;
+            width: 100%;
+            max-width: 450px;
+            margin: 0 auto;
+        }
+
+        /* --- KARTU ROBLOX DENGAN BORDER GLOW --- */
+        .rbx-card-authentic {
+            background-color: transparent;
+            /* Diatur oleh --card-bg dari border glow */
+            border-radius: 8px;
+            font-family: var(--font-roblox);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 0 1px #393b3d;
+            transform-style: preserve-3d;
+            transition: transform 0.1s;
+        }
+
+        .border-glow-card {
+            --edge-proximity: 0;
+            --cursor-angle: 45deg;
+            --edge-sensitivity: 40;
+            --color-sensitivity: calc(var(--edge-sensitivity) + 20);
+            --border-radius: 8px;
+            --glow-padding: 30px;
+            --cone-spread: 35;
+
+            /* Warna Glow Otomatis Berubah sesuai Tema */
+            --glow-color: var(--primary);
+            --glow-color-60: color-mix(in srgb, var(--primary) 60%, transparent);
+            --glow-color-50: color-mix(in srgb, var(--primary) 50%, transparent);
+            --glow-color-40: color-mix(in srgb, var(--primary) 40%, transparent);
+            --glow-color-30: color-mix(in srgb, var(--primary) 30%, transparent);
+            --glow-color-20: color-mix(in srgb, var(--primary) 20%, transparent);
+            --glow-color-10: color-mix(in srgb, var(--primary) 10%, transparent);
+
+            position: relative;
+            border-radius: var(--border-radius);
+            isolation: isolate;
+            transform: translate3d(0, 0, 0.01px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: var(--card-bg, #232527);
+        }
+
+        .border-glow-card::before,
+        .border-glow-card::after,
+        .border-glow-card>.edge-light {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            transition: opacity 0.25s ease-out;
+            z-index: -1;
+        }
+
+        .border-glow-card:not(:hover)::before,
+        .border-glow-card:not(:hover)::after,
+        .border-glow-card:not(:hover)>.edge-light {
+            opacity: 0;
+            transition: opacity 0.75s ease-in-out;
+        }
+
+        .border-glow-card::before {
+            border: 1px solid transparent;
+            background: linear-gradient(var(--card-bg) 0 100%) padding-box,
+                radial-gradient(at 80% 55%, var(--primary) 0px, transparent 50%) border-box,
+                radial-gradient(at 8% 6%, var(--primary-dark) 0px, transparent 50%) border-box;
+            opacity: calc((var(--edge-proximity) - var(--color-sensitivity)) / (100 - var(--color-sensitivity)));
+            -webkit-mask-image: conic-gradient(from var(--cursor-angle) at center, black calc(var(--cone-spread) * 1%), transparent calc((var(--cone-spread) + 15) * 1%), transparent calc((100 - var(--cone-spread) - 15) * 1%), black calc((100 - var(--cone-spread)) * 1%));
+            mask-image: conic-gradient(from var(--cursor-angle) at center, black calc(var(--cone-spread) * 1%), transparent calc((var(--cone-spread) + 15) * 1%), transparent calc((100 - var(--cone-spread) - 15) * 1%), black calc((100 - var(--cone-spread)) * 1%));
+        }
+
+        .border-glow-card>.edge-light {
+            inset: calc(var(--glow-padding) * -1);
+            pointer-events: none;
+            z-index: 1;
+            -webkit-mask-image: conic-gradient(from var(--cursor-angle) at center, black 2.5%, transparent 10%, transparent 90%, black 97.5%);
+            mask-image: conic-gradient(from var(--cursor-angle) at center, black 2.5%, transparent 10%, transparent 90%, black 97.5%);
+            opacity: calc((var(--edge-proximity) - var(--edge-sensitivity)) / (100 - var(--edge-sensitivity)));
+            mix-blend-mode: plus-lighter;
+        }
+
+        .border-glow-card>.edge-light::before {
+            content: "";
+            position: absolute;
+            inset: var(--glow-padding);
+            border-radius: inherit;
+            box-shadow:
+                inset 0 0 0 1px var(--glow-color), inset 0 0 3px 0 var(--glow-color-50), inset 0 0 15px 0 var(--glow-color-30), inset 0 0 50px 2px var(--glow-color-10),
+                0 0 3px 0 var(--glow-color-50), 0 0 15px 0 var(--glow-color-30), 0 0 50px 2px var(--glow-color-10);
+        }
+
+        /* Bagian dalam ID profil agar tidak meluber */
+        .border-glow-inner {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            background: transparent;
+            border-radius: inherit;
+            overflow: hidden;
+        }
+
+        .rbx-banner {
+            height: 120px;
+            background: #111;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .rbx-banner-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.7;
+            transition: 0.3s;
+        }
+
+        .rbx-card-authentic:hover .rbx-banner-img {
+            opacity: 1;
+        }
+
+        .rbx-avatar-section {
+            padding: 0 20px;
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-top: -50px;
+        }
+
+        .rbx-avatar-wrapper {
+            position: relative;
+            width: 100px;
+            height: 100px;
+        }
+
+        .rbx-avatar {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 4px solid #232527;
+            background: #111;
+            object-fit: cover;
+        }
+
+        .rbx-online-dot {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            width: 18px;
+            height: 18px;
+            background-color: #00b06f;
+            border-radius: 50%;
+            border: 3px solid #232527;
+        }
+
+        .rbx-actions {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .rbx-btn-circle {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: #393b3d;
+            border: none;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .rbx-btn-circle:hover {
+            background: #4f5459;
+        }
+
+        .rbx-info-section {
+            padding: 15px 20px;
+        }
+
+        .rbx-display-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .rbx-verified-icon {
+            width: 18px;
+            height: 18px;
+            fill: #ffffff;
+            opacity: 0.8;
+        }
+
+        .rbx-username {
+            font-size: 0.9rem;
+            color: #b8b8b8;
+            margin-bottom: 15px;
+        }
+
+        .rbx-bio {
+            font-size: 0.9rem;
+            color: white;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .rbx-stats {
+            display: flex;
+            gap: 20px;
+            border-top: 1px solid #393b3d;
+            padding-top: 15px;
+        }
+
+        .rbx-stat {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .rbx-stat-num {
+            font-size: 1rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .rbx-stat-text {
+            font-size: 0.75rem;
+            color: #b8b8b8;
+            font-weight: 500;
+        }
+
+        .btn-view-profile {
+            display: block;
+            width: calc(100% - 40px);
+            margin: 0 20px 20px;
+            padding: 12px;
+            text-align: center;
+            font-family: var(--font-roblox);
+            font-weight: 600;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        /* --- ARCHIVE SECTION --- */
+        .archive-container {
+            position: relative;
+            min-height: 650px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: visible;
+        }
+
+        .bomb-trigger {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: transform 0.4s var(--ease-smooth), opacity 0.4s;
+            box-shadow: 0 0 30px rgba(255, 0, 60, 0.4);
+            font-family: var(--font-head);
+        }
+
+        .bomb-trigger:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 50px rgba(255, 0, 60, 0.8);
+        }
+
+        body.light-mode .bomb-trigger {
+            box-shadow: 0 0 30px rgba(0, 102, 204, 0.4);
+        }
+
+        body.light-mode .bomb-trigger:hover {
+            box-shadow: 0 0 50px rgba(0, 102, 204, 0.8);
+        }
+
+        .bomb-trigger i {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .archive-item {
+            position: absolute;
+            width: 130px;
+            height: 130px;
+            background: rgba(15, 15, 15, 0.9);
+            border: 1px solid var(--primary);
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 15px;
+            color: white;
+            --tx: 0px;
+            --ty: 0px;
+            opacity: 0;
+            transform: translate(var(--tx), var(--ty)) scale(0) rotate(-180deg);
+            pointer-events: none;
+            z-index: 5;
+            transition: transform 0.8s var(--ease-elastic), opacity 0.6s ease, background 0.3s, box-shadow 0.3s, border-color 0.5s ease;
+            box-shadow: inset 0 0 15px rgba(255, 0, 60, 0.1);
+        }
+
+        .archive-item:hover {
+            background: var(--primary);
+            color: black;
+            z-index: 20;
+            cursor: pointer;
+            box-shadow: 0 10px 40px rgba(255, 0, 60, 0.6);
+        }
+
+        .archive-item i {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+            transition: 0.3s;
+        }
+
+        .archive-item:hover i {
+            color: black;
+        }
+
+        .archive-item h4 {
+            font-family: var(--font-head);
+            font-size: 0.85rem;
+            line-height: 1.2;
+        }
+
+        .archive-container.active .bomb-trigger {
+            transform: scale(0);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .archive-container.active .archive-item {
+            opacity: 1;
+            pointer-events: all;
+            transform: translate(var(--tx), var(--ty)) scale(1) rotate(0deg);
+            animation: floatItem 4s ease-in-out infinite alternate;
+        }
+
+        .archive-container.active .archive-item:hover {
+            transform: translate(var(--tx), var(--ty)) scale(1.1) rotate(0deg);
+        }
+
+        @keyframes floatItem {
+            0% {
+                margin-top: 0px;
+            }
+
+            100% {
+                margin-top: -15px;
+            }
+        }
+
+        .reset-bomb {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%) translateY(30px);
+            background: transparent;
+            border: 1px solid var(--silver-dim);
+            color: var(--silver);
+            padding: 10px 30px;
+            font-family: var(--font-head);
+            cursor: pointer;
+            opacity: 0;
+            pointer-events: none;
+            transition: 0.5s var(--ease-smooth);
+            z-index: 10;
+        }
+
+        .archive-container.active .reset-bomb {
+            opacity: 1;
+            pointer-events: all;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .reset-bomb:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(8px);
+            z-index: 10000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: 0.4s;
+        }
+
+        .modal-overlay.open {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .modal-content {
+            width: 90%;
+            max-width: 1000px;
+            height: 80vh;
+            background: #0a0a0a;
+            border: 1px solid var(--primary);
+            display: grid;
+            grid-template-rows: 60px 1fr 80px;
+            opacity: 0;
+            transform: scale(0.8) translateY(50px);
+            filter: blur(10px);
+            box-shadow: 0 0 50px rgba(255, 0, 60, 0.1);
+            transition: background 0.5s ease;
+        }
+
+        .modal-overlay.open .modal-content {
+            animation: cyberPop 0.6s var(--ease-elastic) forwards;
+        }
+
+        @keyframes cyberPop {
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+                filter: blur(0);
+            }
+        }
+
+        .modal-header,
+        .modal-footer {
+            background: #000;
+            padding: 0 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #222;
+        }
+
+        .modal-footer {
+            border-top: 1px solid #222;
+            border-bottom: none;
+            color: #888;
+        }
+
+        .modal-title {
+            font-family: var(--font-head);
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .modal-close {
+            color: #666;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .modal-close:hover {
+            color: var(--primary);
+            transform: rotate(90deg);
+        }
+
+        .gallery-viewport {
+            position: relative;
+            overflow: hidden;
+            background: #111;
+            height: 100%;
+            transition: background 0.5s ease;
+        }
+
+        .gallery-track {
+            display: flex;
+            height: 100%;
+            transition: transform 0.5s var(--ease-smooth);
+        }
+
+        .gallery-slide {
+            min-width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .gallery-img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border: 1px solid #333;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+        }
+
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            border: 1px solid #333;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .slider-btn:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 0 20px rgba(255, 0, 60, 0.5);
+        }
+
+        .prev-btn {
+            left: 20px;
+        }
+
+        .next-btn {
+            right: 20px;
+        }
+
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .social-card {
+            background: #111;
+            border: 1px solid #222;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            color: white;
+            text-decoration: none;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .social-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            background: rgba(255, 0, 60, 0.05);
+        }
+
+        .social-card i {
+            font-size: 2.5rem;
+        }
+
+        .social-card span {
+            font-family: var(--font-head);
+        }
+
+        .discord-card {
+            background: #5865F2;
+            border: none;
+            grid-column: span 3;
+            flex-direction: row;
+            justify-content: space-between;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .discord-card:hover {
+            background: #4752C4;
+            border-color: transparent;
+        }
+
+        .discord-card i {
+            font-size: 4rem;
+        }
+
+        .copy-feedback {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #fff;
+            color: #5865F2;
+            padding: 5px 10px;
+            font-size: 0.8rem;
+            font-family: var(--font-head);
+            border-radius: 4px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid #222;
+            color: #555;
+            padding-bottom: 120px;
+        }
+
+        /* --- STYLES UNTUK MAC OS DOCK --- */
+        .dock-container {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+        }
+
+        .dock-panel {
+            display: flex;
+            align-items: flex-end;
+            gap: 12px;
+            background: rgba(10, 10, 10, 0.7);
+            backdrop-filter: blur(15px);
+            border: 1px solid #333;
+            padding: 10px 15px;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transition: background 0.5s ease, border-color 0.5s ease;
+        }
+
+        body.light-mode .dock-panel {
+            background: rgba(255, 255, 255, 0.7);
+            border-color: #ddd;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .dock-item {
+            position: relative;
+            width: 50px;
+            height: 50px;
+            background: #222;
+            border: 1px solid #444;
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 1.2rem;
+            text-decoration: none;
+            cursor: pointer;
+            transform-origin: bottom;
+            transition: transform 0.2s, background 0.3s, border-color 0.3s, box-shadow 0.3s;
+        }
+
+        body.light-mode .dock-item {
+            background: #fff;
+            border-color: #ddd;
+            color: #333;
+        }
+
+        .dock-item:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-5px);
+            border-color: transparent;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        body.light-mode .dock-item:hover {
+            box-shadow: 0 10px 20px rgba(0, 102, 204, 0.4);
+        }
+
+        .dock-item::after {
+            content: attr(data-label);
+            position: absolute;
+            top: -45px;
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            background: #111;
+            color: white;
+            padding: 6px 12px;
+            font-size: 0.75rem;
+            font-family: var(--font-roblox);
+            font-weight: bold;
+            border-radius: 8px;
+            border: 1px solid #333;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+            white-space: nowrap;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        body.light-mode .dock-item::after {
+            background: #fff;
+            color: #111;
+            border-color: #ccc;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .dock-item:hover::after {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+
+            .hero-content {
+                margin-top: 0;
+            }
+
+            .police-tape-container {
+                bottom: 5%;
+                left: -20vw;
+                width: 140vw;
+            }
+
+            .tape {
+                font-size: 1.5rem;
+                padding: 8px 0;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .roblox-id-container {
+                perspective: none;
+            }
+
+            .rbx-card-authentic {
+                transform: none !important;
+            }
+
+            .archive-container {
+                min-height: auto;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+            }
+
+            .bomb-trigger {
+                margin: 0 auto 40px;
+                width: 150px;
+                height: 150px;
+            }
+
+            .archive-container.active {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 15px;
+                width: 100%;
+            }
+
+            .archive-container.active .archive-item {
+                position: relative !important;
+                width: 100% !important;
+                height: 120px !important;
+                transform: scale(1) rotate(0deg) !important;
+                opacity: 1 !important;
+                pointer-events: all;
+                animation: popMobile 0.5s var(--ease-elastic) forwards;
+            }
+
+            .archive-container.active .archive-item:hover {
+                transform: scale(1.05) rotate(0deg) !important;
+            }
+
+            .archive-container.active .bomb-trigger {
+                display: none;
+            }
+
+            .reset-bomb {
+                position: relative !important;
+                left: auto !important;
+                bottom: auto !important;
+                transform: none !important;
+                width: 100% !important;
+                grid-column: span 2;
+                margin-top: 15px !important;
+            }
+
+            @keyframes popMobile {
+                0% {
+                    opacity: 0;
+                    transform: scale(0.5);
+                }
+
+                100% {
+                    opacity: 1;
+                    transform: scale(1);
+                }
+            }
+
+            .social-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .discord-card {
+                grid-column: span 1;
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            nav {
+                padding: 15px 5%;
+                justify-content: space-between;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(5, 5, 5, 0.95);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+                padding: 30px 0;
+                border-bottom: 1px solid #222;
+                transform: translateY(-200%);
+                opacity: 0;
+                pointer-events: none;
+                transition: transform 0.4s ease, opacity 0.4s ease, background 0.5s ease;
+            }
+
+            body.light-mode .nav-links {
+                background: rgba(245, 245, 247, 0.95);
+                border-bottom: 1px solid #ddd;
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: auto;
+            }
+
+            .section-padding {
+                padding: 40px 5%;
+            }
+
+            .dock-panel {
+                padding: 8px 10px;
+                gap: 8px;
+            }
+
+            .dock-item {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body class="custom-cursor-area">
+
+    <canvas id="matrix-canvas"></canvas>
+
+    <div class="crt-overlay"></div>
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <nav aria-label="Navigasi utama">
+        <a href="#home" class="logo" data-hover aria-label="Bachtiaraditya - ke halaman utama">Bachtiaraditya<span
+                class="text-primary" aria-hidden="true">_</span></a>
+
+        <button class="menu-toggle" id="mobile-menu-toggle" data-hover aria-label="Buka menu navigasi"
+            aria-expanded="false" aria-controls="nav-links">
+            <i class="fas fa-bars" aria-hidden="true"></i>
+        </button>
+
+        <div class="nav-links" id="nav-links" role="menu">
+            <a href="#about" class="nav-item mobile-nav-link" data-hover role="menuitem">Identity</a>
+            <a href="#projects" class="nav-item mobile-nav-link" data-hover role="menuitem">Archives</a>
+            <a href="#uplink" class="nav-item mobile-nav-link" data-hover role="menuitem">Uplink</a>
+        </div>
+    </nav>
+
+    <main id="main-content">
+
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <p class="hacker-text text-primary"
+                    style="margin-bottom: 10px; font-size: 0.9rem; letter-spacing: 2px;">
+                    This site only show me and</p>
+                <h1>
+                    <span class="gradient-text">ROBLOX</span> <br>
+                    <span class="outline">Developer</span>
+                </h1>
+                <div style="max-width: 500px; color: #888; line-height: 1.6; margin-bottom: 30px;">
+                    Selamat Datang di Portofolio saya, <span class="text-primary" style="font-weight:bold">Nama Saya
+                        Bachtiar / Adit, </span>dan sering di panggil <span class="text-primary"
+                        style="font-weight:bold">Tahu bulat</span>
+                </div>
+            </div>
+
+            <div class="police-tape-container">
+                <div class="tape tape-1">
+                    <div class="tape-text">
+                        <span>/// LUA SCRIPTING /// UI/UX DESIGN /// HUSTLER /// ROBLOX STUDIO /// GAME MECHANICS ///
+                            LUA
+                            SCRIPTING /// UI/UX DESIGN /// HUSTLER /// ROBLOX STUDIO /// GAME MECHANICS </span>
+                    </div>
+                </div>
+                <div class="tape tape-2">
+                    <div class="tape-text-reverse">
+                        <span>/// BUILDING TERRAIN /// PROBLEM SOLVING /// BUILDING PART /// OPTIMIZATION /// BUILDING
+                            TERRAIN /// PROBLEM SOLVING /// BUILDING PART /// OPTIMIZATION </span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="section-padding">
+            <div class="section-header">
+                <span class="section-num">01</span>
+                <h2 class="section-title hacker-text" data-value="IDENTITY">IDENTITY</h2>
+            </div>
+
+            <div class="about-grid">
+                <div class="about-text">
+                    <p class="about-subtitle">Dari refrensi jadilah ide gila.</p>
+                    <p class="about-desc">Sejak saya umur 13 tahun, saya sudah tertarik dengan dunia game, dan saya
+                        selalu berusaha yang
+                        terbaik untuk di setiap game, tetapi cara yang saya pakai berbeda, Saya bisa di sebut seorang
+                        Cheater/Exploiter, semua game yang saya mainkan pernah saya cheat semua, saya juga pernah
+                        menjadi
+                        reseller cheat dan creator cheat, tapi semua itu sudah berlalu karena saya sudah tidak mengejar
+                        kemenangan lagi. <br><br> kita lanjut di roblox, saya sudah bermain roblox studio kurang lebih
+                        2/3
+                        tahun lebih, sejak 2021 sempat pensi dan comeback tahun 2024 akhir tahun, bisa di bilang saya
+                        cukup
+                        mahir dalam membuat map kalau ada refrensi yang tepat di otak saya.</p>
+
+                    <div class="founder-section">
+                        <p class="founder-title">FOUNDER OF</p>
+                        <div class="founder-cards">
+                            <div class="founder-card" data-hover>
+                                <img src="image/aihstudio.png" alt="AIH Studio">
+                                <div class="founder-info">
+                                    <h4>AIH STUDIO</h4>
+                                    <span>Est. 2023 • 350.000+ Members</span>
+                                </div>
+                            </div>
+                            <div class="founder-card" data-hover>
+                                <img src="image/aihgank.png" alt="AIH Gank">
+                                <div class="founder-info">
+                                    <h4>AIH GANK</h4>
+                                    <span>Est. 2025</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#projects" class="btn-shine"
+                        style="display:inline-block; padding: 12px 30px; text-decoration: none; font-family: var(--font-head); font-size: 0.9rem; margin-top: 20px;"
+                        data-hover>VIEW PROJECT</a>
+                </div>
+
+                <div class="roblox-id-container">
+                    <div class="rbx-card-authentic border-glow-card" id="tilt-card" style="--card-bg: #232527;">
+                        <span class="edge-light"></span>
+
+                        <div class="border-glow-inner">
+                            <div class="rbx-banner">
+                                <img src="https://tr.rbxcdn.com/180DAY-31fd945893bed23773b60d3ea8c2e5fe/1440/456/Image/Png/noFilter"
+                                    alt="Banner" class="rbx-banner-img" loading="lazy">
+                            </div>
+
+                            <div class="rbx-avatar-section">
+                                <div class="rbx-avatar-wrapper">
+                                    <img src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-A9C907725D4796C61A65CFC47D4149DB-Png/150/150/AvatarHeadshot/Webp/noFilter"
+                                        alt="Avatar" class="rbx-avatar" loading="lazy">
+                                    <div class="rbx-online-dot"></div>
+                                </div>
+                                <div class="rbx-actions">
+                                    <button class="rbx-btn-circle" title="Message" aria-label="Kirim pesan"
+                                        data-hover><i class="fa-regular fa-message" aria-hidden="true"></i></button>
+                                    <button class="rbx-btn-circle" title="More" aria-label="Lebih banyak opsi"
+                                        data-hover><i class="fa-solid fa-ellipsis" aria-hidden="true"></i></button>
+                                </div>
+                            </div>
+
+                            <div class="rbx-info-section">
+                                <div class="rbx-display-name">
+                                    TahuBulat
+                                    <svg class="rbx-verified-icon" viewBox="0 0 24 24">
+                                        <path
+                                            d="M11.233 1.841a1.5 1.5 0 0 1 1.534 0l1.696 1a1.5 1.5 0 0 0 1.058.196l1.93-.418a1.5 1.5 0 0 1 1.764 1.107l.542 1.898a1.5 1.5 0 0 0 .807.973l1.785.836a1.5 1.5 0 0 1 .808 1.921l-.736 1.832a1.5 1.5 0 0 0 0 1.074l.736 1.832a1.5 1.5 0 0 1-.808 1.921l-1.785.836a1.5 1.5 0 0 0-.807.973l-.542 1.898a1.5 1.5 0 0 1-1.764 1.107l-1.93-.418a1.5 1.5 0 0 0-1.058.196l-1.696 1a1.5 1.5 0 0 1-1.534 0l-1.696-1a1.5 1.5 0 0 0-1.058-.196l-1.93.418a1.5 1.5 0 0 1-1.764-1.107l-.542-1.898a1.5 1.5 0 0 0-.807-.973l-1.785-.836a1.5 1.5 0 0 1-.808-1.921l.736-1.832a1.5 1.5 0 0 0 0-1.074l-.736-1.832a1.5 1.5 0 0 1 .808-1.921l1.785-.836a1.5 1.5 0 0 0 .807-.973l.542-1.898a1.5 1.5 0 0 1 1.764-1.107l1.93.418a1.5 1.5 0 0 0 1.058-.196l1.696-1Zm-1.127 12.33 5.484-5.485a.75.75 0 1 0-1.06-1.061l-4.954 4.954-2.454-2.454a.75.75 0 1 0-1.06 1.06l2.984 2.985a.75.75 0 0 0 1.06 0Z">
+                                        </path>
+                                    </svg>
+                                </div>
+                                <div class="rbx-username">@Synxsixz</div>
+                                <div class="rbx-bio">Solo dev | 2021 - 2026 | Total Visit : 5m+ |
+                                    Founder Aih Gank / Aih Studio
+                                </div>
+
+                                <div class="rbx-stats">
+                                    <div class="rbx-stat"><span class="rbx-stat-num">145</span><span
+                                            class="rbx-stat-text">Friends</span></div>
+                                    <div class="rbx-stat"><span class="rbx-stat-num">211</span><span
+                                            class="rbx-stat-text">Followers</span></div>
+                                    <div class="rbx-stat"><span class="rbx-stat-num">2</span><span
+                                            class="rbx-stat-text">Following</span></div>
+                                </div>
+                            </div>
+
+                            <a href="https://www.roblox.com/id/users/2052284827/profile" target="_blank"
+                                class="btn-shine btn-view-profile" data-hover>View Full Profile</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="stats-skills" class="section-padding">
+            <div class="stats-grid">
+                <div class="stat-box" data-hover>
+                    <div class="stat-number" data-target="5" data-suffix="m+">0</div>
+                    <div class="stat-label">TOTAL VISIT</div>
+                </div>
+                <div class="stat-box" data-hover>
+                    <div class="stat-number" data-target="6" data-suffix="+">0</div>
+                    <div class="stat-label">TOTAL PROJECT</div>
+                </div>
+                <div class="stat-box" data-hover>
+                    <div class="stat-number" data-target="10" data-suffix="+">0</div>
+                    <div class="stat-label">PROJECT SOLD</div>
+                </div>
+                <div class="stat-box" data-hover>
+                    <div class="stat-number" data-target="2" data-suffix="+">0</div>
+                    <div class="stat-label">EXPERIENCE IN ROBLOX STUDIO</div>
+                </div>
+            </div>
+
+            <div class="section-header">
+                <span class="section-num">#</span>
+                <h2 class="section-title hacker-text" data-value="MY_SKILL">MY_SKILLS</h2>
+            </div>
+
+            <div class="skills-container">
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <div class="skill-name-group">
+                            <span class="skill-name">Lua</span>
+                            <span class="skill-note">(now i am a vibecoder with 1 years experience)</span>
+                        </div>
+                        <span class="skill-percent">70%</span>
+                    </div>
+                    <div class="skill-bar-bg">
+                        <div class="skill-bar-fill" data-width="70%"></div>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <div class="skill-name-group">
+                            <span class="skill-name">Roblox Studio</span>
+                        </div>
+                        <span class="skill-percent">89%</span>
+                    </div>
+                    <div class="skill-bar-bg">
+                        <div class="skill-bar-fill" data-width="89%"></div>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <div class="skill-name-group">
+                            <span class="skill-name">UI / UX</span>
+                            <span class="skill-note">(still learning)</span>
+                        </div>
+                        <span class="skill-percent">40%</span>
+                    </div>
+                    <div class="skill-bar-bg">
+                        <div class="skill-bar-fill" data-width="40%"></div>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <div class="skill-name-group">
+                            <span class="skill-name">Terrain Building</span>
+                            <span class="skill-note">(1,5 year experience)</span>
+                        </div>
+                        <span class="skill-percent">80%</span>
+                    </div>
+                    <div class="skill-bar-bg">
+                        <div class="skill-bar-fill" data-width="80%"></div>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <div class="skill-name-group">
+                            <span class="skill-name">Game Mechanics</span>
+                        </div>
+                        <span class="skill-percent">67%</span>
+                    </div>
+                    <div class="skill-bar-bg">
+                        <div class="skill-bar-fill" data-width="67%"></div>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <div class="skill-name-group">
+                            <span class="skill-name">Debugging</span>
+                            <span class="skill-note">(tergantung error logic)</span>
+                        </div>
+                        <span class="skill-percent">~%</span>
+                    </div>
+                    <div class="skill-bar-bg">
+                        <div class="skill-bar-fill" data-width="100%"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="section-padding">
+            <div class="section-header">
+                <span class="section-num">02</span>
+                <h2 class="section-title hacker-text" data-value="COOL_RIGHT?">MY_PROJECT</h2>
+            </div>
+
+            <div class="archive-container" id="archive-zone">
+
+                <div class="bomb-trigger btn-shine" id="bomb-btn" data-hover>
+                    <i class="fa-solid fa-fingerprint"></i>
+                    <span style="letter-spacing: 2px;">DECRYPT</span>
+                </div>
+
+                <div class="archive-item" data-hover data-title="FIRST_COLLAB"
+                    data-desc="Design Collab pertama saya yang saya buat dan langsung di setujui"
+                    data-images='["https://i.ibb.co.com/Txp4g25G/Screenshot-2026-03-20-124802.png", "https://i.ibb.co.com/bR1TYywN/Screenshot-2026-03-24-192447.png"]'>
+                    <i class="fa-solid fa-map-location-dot"></i>
+                    <h4>FIRST_COLLAB</h4>
+                </div>
+
+                <div class="archive-item" data-hover data-title="GUI / UI UX"
+                    data-desc="Saya tidak jago di gui, dan saya masih belajar sampai sekarang"
+                    data-images='["https://i.ibb.co.com/20sVHxDv/Screenshot-2026-03-30-151603.png", "https://i.ibb.co.com/C3Qp0YVd/Screenshot-2026-03-30-151858.png", "https://i.ibb.co.com/27VMmnk3/Screenshot-2026-03-30-152407.png", "https://i.ibb.co.com/HTNgm1MG/Screenshot-2026-03-30-151923.png"]'>
+                    <i class="fa-solid fa-layer-group"></i>
+                    <h4>GUI / UI UX</h4>
+                </div>
+
+                <div class="archive-item" data-hover data-title="BUILD"
+                    data-desc="ini adalah build saya yang ada di map mie ayam sidoarjo ( fun fact, build itu terdiri dari 82% free model yang masing2 model terpisah )"
+                    data-images='["https://i.ibb.co.com/WptDggSF/Screenshot-2026-03-30-151036.png", "https://i.ibb.co.com/XfJ5pG1p/Screenshot-2026-03-30-151049.png"]'>
+                    <i class="fa-solid fa-cube"></i>
+                    <h4>BUILD</h4>
+                </div>
+
+                <div class="archive-item" data-hover data-title="MY WORK"
+                    data-desc="Beberapa Map dari 2021-2026 ( ada yang sudah terjual )"
+                    data-images='["https://i.ibb.co.com/twpByKDb/Screenshot-2026-03-30-155356.png", "https://i.ibb.co.com/WpVxXBQ8/Screenshot-2026-03-30-155229.png", "https://i.ibb.co.com/LX1v9SFg/Screenshot-2026-03-30-155257.png", "https://i.ibb.co.com/B5GW20JS/Screenshot-2026-03-30-155213.png", "https://i.ibb.co.com/8p5BH7Q/Screenshot-2026-03-30-155149.png"]'>
+                    <i class="fa-solid fa-gamepad"></i>
+                    <h4>MY WORK</h4>
+                </div>
+
+                <div class="archive-item" data-hover data-title="GALLERY"
+                    data-desc="Random Gallery dari karya karya saya"
+                    data-images='["https://i.ibb.co.com/GQBzFtbB/Screenshot-2026-03-30-161750.png", "https://i.ibb.co.com/PZd7HV7C/Screenshot-2026-03-30-161640.png", "https://i.ibb.co.com/cKmz5fzD/Screenshot-2026-02-13-174825.png", "https://i.ibb.co.com/KpJwf1yJ/Screenshot-2026-02-15-070445.png", "https://i.ibb.co.com/HvBfvsF/Screenshot-2026-02-14-205657.png", "https://i.ibb.co.com/0VrKsg8q/Screenshot-2026-02-14-115745.png", "https://i.ibb.co.com/4ZZ0Bh3f/Screenshot-2026-02-14-115756.png", "https://i.ibb.co.com/4w3PRpjc/Screenshot-2026-02-14-115826.png", "https://i.ibb.co.com/5h7SVxgJ/Screenshot-2026-02-13-172440.png", "https://i.ibb.co.com/nswFPQDr/Screenshot-2026-02-13-171549.png", "https://i.ibb.co.com/YBMcrSgQ/Screenshot-2026-02-16-063438.png", "https://i.ibb.co.com/rGm9Rrcy/Screenshot-2026-03-08-123308.png", "https://i.ibb.co.com/9k4WzR3H/Screenshot-2026-01-12-172237.png", "https://i.ibb.co.com/HDr35CDX/Screenshot-2025-12-28-180527.png", "https://i.ibb.co.com/Y79P08vt/Screenshot-2026-01-30-175806.png"]'>
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    <h4>GALLERY</h4>
+                </div>
+
+                <div class="archive-item" data-hover data-title="NPCMANAGER"
+                    data-desc="Saya memiliki kebiasaan unik dalam pengembangan Debugging. Saya selalu mengintegrasikan sistem print-tracking dan error-code logging yang detail di setiap modul penting. "
+                    data-images='["https://i.ibb.co.com/8gv3gHKs/Screenshot-2026-03-30-153254.png",  "https://i.ibb.co.com/chY2ryJ9/Screenshot-2026-03-30-153830.png"]'>
+                    <i class="fa-solid fa-code"></i>
+                    <h4>NPC_MANAGER</h4>
+                </div>
+
+                <div class="reset-bomb" id="reset-btn" data-hover>
+                    <i class="fa-solid fa-lock"></i> LOCK ARCHIVES
+                </div>
+            </div>
+        </section>
+
+        <div class="modal-overlay" id="project-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="modal-title hacker-text" id="modal-title" data-value="TITLE">TITLE</div>
+                    <div class="modal-close" id="modal-close"><i class="fa-solid fa-xmark"></i></div>
+                </div>
+                <div class="gallery-viewport">
+                    <div class="gallery-track" id="gallery-track"></div>
+                    <div class="slider-btn prev-btn" id="prev-slide"><i class="fa-solid fa-chevron-left"></i></div>
+                    <div class="slider-btn next-btn" id="next-slide"><i class="fa-solid fa-chevron-right"></i></div>
+                </div>
+                <div class="modal-footer">
+                    <div id="modal-desc">Description goes here...</div>
+                </div>
+            </div>
+        </div>
+
+        <section id="uplink" class="section-padding">
+            <div class="section-header">
+                <span class="section-num">03</span>
+                <h2 class="section-title hacker-text" data-value="UPLINK">UPLINK</h2>
+            </div>
+
+            <div class="social-grid">
+                <div class="social-card discord-card" id="discord-btn" data-discord="bachadit" data-hover>
+                    <div>
+                        <h3 style="font-family: var(--font-head); font-size: 2rem;">DISCORD : bachadit</h3>
+                        <p style="opacity: 0.8; font-family: var(--font-code); font-size: 0.8rem;">Click to copy ID</p>
+                        <div class="copy-feedback" id="copy-msg">COPIED TO CLIPBOARD!</div>
+                    </div>
+                    <i class="fa-brands fa-discord"></i>
+                </div>
+
+                <a href="https://www.youtube.com/@bachtiaradit" target="_blank" rel="noopener noreferrer"
+                    class="social-card" aria-label="Kunjungi channel YouTube saya" data-hover>
+                    <i class="fa-brands fa-youtube" aria-hidden="true"></i> <span>YOUTUBE</span>
+                </a>
+
+                <a href="https://www.instagram.com/bachtiaraditya_?igsh=NmgzNTlqZWNxczFo" target="_blank"
+                    rel="noopener noreferrer" class="social-card" aria-label="Kunjungi Instagram saya" data-hover>
+                    <i class="fa-brands fa-instagram" aria-hidden="true"></i> <span>INSTAGRAM</span>
+                </a>
+
+                <a href="https://www.tiktok.com/@bachtiaradit_" target="_blank" rel="noopener noreferrer"
+                    class="social-card" aria-label="Kunjungi TikTok saya" data-hover>
+                    <i class="fa-brands fa-tiktok" aria-hidden="true"></i> <span>TIKTOK</span>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>2024 by bachtiar</p>
+    </footer>
+
+    <div class="dock-container">
+        <div class="dock-panel" id="mac-dock">
+            <a href="#home" class="dock-item" data-label="Home" aria-label="Ke bagian Beranda" data-hover>
+                <i class="fa-solid fa-house" aria-hidden="true"></i>
+            </a>
+            <a href="#about" class="dock-item" data-label="Identity" aria-label="Ke bagian Identity" data-hover>
+                <i class="fa-solid fa-user" aria-hidden="true"></i>
+            </a>
+            <a href="#projects" class="dock-item" data-label="Archives" aria-label="Ke bagian Archives" data-hover>
+                <i class="fa-solid fa-box-archive" aria-hidden="true"></i>
+            </a>
+            <div class="dock-item" id="theme-toggle" data-label="Light Mode" aria-label="Ganti tema" role="button"
+                tabindex="0" data-hover>
+                <i class="fa-solid fa-sun" id="theme-icon" aria-hidden="true"></i>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- MATRIX CANVAS (desktop only) ---
+        const isMobile = window.innerWidth < 768;
+        const canvas = document.getElementById('matrix-canvas');
+
+        if (!isMobile) {
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+            const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*<>[]{}';
+            const fontSize = 16; const columns = canvas.width / fontSize;
+            const rainDrops = []; for (let x = 0; x < columns; x++) rainDrops[x] = 1;
+
+            const drawMatrix = () => {
+                const isLight = document.body.classList.contains('light-mode');
+                ctx.fillStyle = isLight ? 'rgba(240, 240, 240, 0.05)' : 'rgba(5, 5, 5, 0.05)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = isLight ? '#0066cc' : '#ff003c';
+                ctx.font = fontSize + 'px monospace';
+                for (let i = 0; i < rainDrops.length; i++) {
+                    const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+                    ctx.globalAlpha = Math.random() * 0.5 + 0.5;
+                    ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
+                    ctx.globalAlpha = 1.0;
+                    if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975) rainDrops[i] = 0;
+                    rainDrops[i]++;
+                }
+            };
+            setInterval(drawMatrix, 35);
+            window.addEventListener('resize', () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; });
+        }
+
+        // --- MOBILE MENU TOGGLE ---
+        const menuToggle = document.getElementById('mobile-menu-toggle');
+        const navLinks = document.getElementById('nav-links');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+        if (menuToggle) {
+            menuToggle.addEventListener('click', () => {
+                const isOpen = navLinks.classList.toggle('active');
+                menuToggle.setAttribute('aria-expanded', isOpen);
+                menuToggle.setAttribute('aria-label', isOpen ? 'Tutup menu navigasi' : 'Buka menu navigasi');
+            });
+        }
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                    menuToggle.setAttribute('aria-label', 'Buka menu navigasi');
+                }
+            });
+        });
+
+        // --- HACKER TEXT EFFECT ---
+        const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+        document.querySelectorAll('.hacker-text').forEach(item => {
+            item.addEventListener('mouseover', event => {
+                let iterations = 0;
+                const originalText = event.target.dataset.value || event.target.innerText;
+                const interval = setInterval(() => {
+                    event.target.innerText = originalText.split("").map((l, i) => {
+                        if (i < iterations) return originalText[i];
+                        return letters[Math.floor(Math.random() * letters.length)];
+                    }).join("");
+                    if (iterations >= originalText.length) clearInterval(interval);
+                    iterations += 1 / 2;
+                }, 30);
+            });
+        });
+
+        // --- CUSTOM CURSOR & 3D TILT CARD ---
+        const cursorDot = document.querySelector('.cursor-dot');
+        const cursorOutline = document.querySelector('.cursor-outline');
+        const tiltCard = document.getElementById('tilt-card');
+        const tiltContainer = document.querySelector('.roblox-id-container');
+
+        if (window.matchMedia("(pointer: fine)").matches) {
+            window.addEventListener('mousemove', (e) => {
+                const posX = e.clientX; const posY = e.clientY;
+                cursorDot.style.left = `${posX}px`; cursorDot.style.top = `${posY}px`;
+                cursorOutline.animate({ left: `${posX}px`, top: `${posY}px` }, { duration: 400, fill: "forwards" });
+            });
+
+            if (tiltContainer && tiltCard) {
+                tiltContainer.addEventListener('mousemove', (e) => {
+                    const rect = tiltContainer.getBoundingClientRect();
+                    const x = e.clientX - rect.left; const y = e.clientY - rect.top;
+                    const centerX = rect.width / 2; const centerY = rect.height / 2;
+                    const rotateX = ((y - centerY) / centerY) * -12;
+                    const rotateY = ((x - centerX) / centerX) * 12;
+                    tiltCard.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+                });
+                tiltContainer.addEventListener('mouseleave', () => {
+                    tiltCard.style.transform = `rotateX(0) rotateY(0)`;
+                });
+            }
+        }
+
+        document.querySelectorAll('[data-hover]').forEach(el => {
+            el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
+            el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
+        });
+
+        // --- DISCORD COPY BUTTON ---
+        const discordBtn = document.getElementById('discord-btn');
+        const copyMsg = document.getElementById('copy-msg');
+        discordBtn.addEventListener('click', () => {
+            navigator.clipboard.writeText(discordBtn.getAttribute('data-discord')).then(() => {
+                copyMsg.style.opacity = '1';
+                setTimeout(() => { copyMsg.style.opacity = '0'; }, 2000);
+            });
+        });
+
+        // --- ARCHIVE BOMB LOGIC ---
+        const bombBtn = document.getElementById('bomb-btn');
+        const archiveZone = document.getElementById('archive-zone');
+        const archiveItems = document.querySelectorAll('.archive-item');
+        const resetBtn = document.getElementById('reset-btn');
+
+        bombBtn.addEventListener('click', () => {
+            archiveZone.classList.add('active');
+            if (window.innerWidth > 768) {
+                const radius = 240;
+                const total = archiveItems.length;
+                archiveItems.forEach((item, index) => {
+                    const angle = (index / total) * Math.PI * 2;
+                    const x = Math.cos(angle) * radius;
+                    const y = Math.sin(angle) * radius;
+                    item.style.setProperty('--tx', `${x}px`);
+                    item.style.setProperty('--ty', `${y}px`);
+                    item.style.transitionDelay = `${index * 0.05}s`;
+                });
+            }
+        });
+
+        resetBtn.addEventListener('click', () => {
+            archiveZone.classList.remove('active');
+            archiveItems.forEach((item) => {
+                item.style.setProperty('--tx', `0px`);
+                item.style.setProperty('--ty', `0px`);
+                item.style.transitionDelay = '0s';
+            });
+        });
+
+        // --- MODAL GALLERY LOGIC ---
+        const modal = document.getElementById('project-modal');
+        const modalTitle = document.getElementById('modal-title');
+        const modalDesc = document.getElementById('modal-desc');
+        const galleryTrack = document.getElementById('gallery-track');
+        const openButtons = document.querySelectorAll('.archive-item');
+        const closeBtn = document.getElementById('modal-close');
+        const nextBtn = document.getElementById('next-slide');
+        const prevBtn = document.getElementById('prev-slide');
+
+        let currentSlide = 0; let totalSlides = 0;
+
+        openButtons.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const title = btn.getAttribute('data-title');
+                const images = JSON.parse(btn.getAttribute('data-images'));
+
+                modalTitle.textContent = title;
+                modalTitle.setAttribute('data-value', title);
+                modalDesc.textContent = btn.getAttribute('data-desc');
+
+                galleryTrack.innerHTML = '';
+                currentSlide = 0; totalSlides = images.length;
+                images.forEach(src => {
+                    const slide = document.createElement('div');
+                    slide.className = 'gallery-slide';
+                    slide.innerHTML = `<img src="${src}" class="gallery-img">`;
+                    galleryTrack.appendChild(slide);
+                });
+                updateGallery();
+                modal.classList.add('open');
+            });
+        });
+
+        closeBtn.addEventListener('click', () => modal.classList.remove('open'));
+        nextBtn.addEventListener('click', () => { currentSlide = (currentSlide + 1) % totalSlides; updateGallery(); });
+        prevBtn.addEventListener('click', () => { currentSlide = (currentSlide - 1 + totalSlides) % totalSlides; updateGallery(); });
+        function updateGallery() { galleryTrack.style.transform = `translateX(-${currentSlide * 100}%)`; }
+
+        // --- EFEK MAGNIFICATION MAC OS DOCK (SMOOTH 60FPS) ---
+        const dockItemsObj = document.querySelectorAll('.dock-item');
+        const dockPanel = document.getElementById('mac-dock');
+        const maxScale = 1.5;
+        const maxDist = 120;
+
+        if (window.innerWidth > 768) {
+            dockPanel.addEventListener('mousemove', (e) => {
+                requestAnimationFrame(() => {
+                    dockItemsObj.forEach(item => {
+                        item.style.transition = '';
+
+                        const rect = item.getBoundingClientRect();
+                        const centerX = rect.left + rect.width / 2;
+                        const dist = Math.abs(e.clientX - centerX);
+
+                        if (dist < maxDist) {
+                            const scale = 1 + (maxScale - 1) * (1 - dist / maxDist);
+                            item.style.width = `${50 * scale}px`;
+                            item.style.height = `${50 * scale}px`;
+                            item.style.margin = `0 ${5 * scale}px`;
+                            item.style.fontSize = `${1.2 * (scale - 0.2)}rem`;
+                        } else {
+                            resetDockItem(item);
+                        }
+                    });
+                });
+            });
+
+            dockPanel.addEventListener('mouseleave', () => {
+                requestAnimationFrame(() => {
+                    dockItemsObj.forEach(item => {
+                        item.style.transition = 'width 0.25s ease-out, height 0.25s ease-out, margin 0.25s ease-out, font-size 0.25s ease-out';
+                        resetDockItem(item);
+                    });
+                });
+            });
+
+            function resetDockItem(item) {
+                item.style.width = '50px';
+                item.style.height = '50px';
+                item.style.margin = '0px';
+                item.style.fontSize = '1.2rem';
+            }
+        }
+
+        // --- FITUR LIGHT / DARK MODE TOGGLE ---
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('light-mode');
+
+            if (document.body.classList.contains('light-mode')) {
+                themeIcon.classList.replace('fa-sun', 'fa-moon');
+                themeToggle.setAttribute('data-label', 'Dark Mode');
+            } else {
+                themeIcon.classList.replace('fa-moon', 'fa-sun');
+                themeToggle.setAttribute('data-label', 'Light Mode');
+            }
+        });
+
+        // --- LOGIKA MOUSE TRACKING UNTUK BORDER GLOW ---
+        const glowCards = document.querySelectorAll('.border-glow-card');
+
+        glowCards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                requestAnimationFrame(() => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+
+                    const cx = rect.width / 2;
+                    const cy = rect.height / 2;
+
+                    const dx = x - cx;
+                    const dy = y - cy;
+
+                    let kx = Infinity;
+                    let ky = Infinity;
+                    if (dx !== 0) kx = cx / Math.abs(dx);
+                    if (dy !== 0) ky = cy / Math.abs(dy);
+                    const edge = Math.min(Math.max(1 / Math.min(kx, ky), 0), 1);
+
+                    let degrees = 0;
+                    if (dx !== 0 || dy !== 0) {
+                        const radians = Math.atan2(dy, dx);
+                        degrees = radians * (180 / Math.PI) + 90;
+                        if (degrees < 0) degrees += 360;
+                    }
+
+                    // Update CSS Variables secara real-time
+                    card.style.setProperty('--edge-proximity', (edge * 100).toFixed(3));
+                    card.style.setProperty('--cursor-angle', `${degrees.toFixed(3)}deg`);
+                });
+            });
+
+            card.addEventListener('mouseleave', () => {
+                requestAnimationFrame(() => {
+                    card.style.setProperty('--edge-proximity', '0');
+                });
+            });
+        });
+
+        // --- SCROLL ANIMATIONS (STATS & SKILLS) ---
+        const animateStats = document.querySelectorAll('.stat-number');
+        const animateSkills = document.querySelectorAll('.skill-bar-fill');
+
+        const observerOptions = {
+            threshold: 0.5
+        };
+
+        const statsObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const el = entry.target;
+                    const target = parseFloat(el.getAttribute('data-target'));
+                    const suffix = el.getAttribute('data-suffix') || '';
+                    const duration = 2000; // 2 seconds
+                    const frameDuration = 1000 / 60; // 60fps
+                    const totalFrames = Math.round(duration / frameDuration);
+                    let frame = 0;
+
+                    const counter = setInterval(() => {
+                        frame++;
+                        const progress = frame / totalFrames;
+                        // Use an ease-out formula for slower finish
+                        const easeOut = 1 - Math.pow(1 - progress, 3);
+                        const currentVal = Math.round(target * easeOut);
+
+                        el.innerText = currentVal + suffix;
+
+                        if (frame === totalFrames) {
+                            clearInterval(counter);
+                            el.innerText = target + suffix;
+                        }
+                    }, frameDuration);
+
+                    observer.unobserve(el);
+                }
+            });
+        }, observerOptions);
+
+        animateStats.forEach(stat => statsObserver.observe(stat));
+
+        const skillsObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const el = entry.target;
+                    el.style.width = el.getAttribute('data-width');
+                    observer.unobserve(el);
+                }
+            });
+        }, observerOptions);
+
+        animateSkills.forEach(skill => skillsObserver.observe(skill));
+
+        // --- SPOTLIGHT TEXT HOVER ---
+        const aboutDesc = document.querySelector('.about-desc');
+        if (aboutDesc) {
+            aboutDesc.addEventListener('mousemove', (e) => {
+                const rect = aboutDesc.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                aboutDesc.style.setProperty('--mouse-x', `${x}px`);
+                aboutDesc.style.setProperty('--mouse-y', `${y}px`);
+            });
+            aboutDesc.addEventListener('mouseenter', () => {
+                aboutDesc.classList.add('spotlight-active');
+            });
+            aboutDesc.addEventListener('mouseleave', () => {
+                aboutDesc.classList.remove('spotlight-active');
+            });
+        }
+
+    </script>
+</body>
+
+</html>
