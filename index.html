@@ -1647,6 +1647,105 @@
                 font-size: 1rem;
             }
         }
+
+        /* --- YOUTUBER SECTION --- */
+        .youtuber-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .youtuber-card {
+            background: rgba(15, 15, 15, 0.8);
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        body.light-mode .youtuber-card {
+            background: rgba(255, 255, 255, 0.8);
+            border-color: #ddd;
+        }
+
+        .youtuber-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(255, 0, 60, 0.2);
+        }
+
+        body.light-mode .youtuber-card:hover {
+            box-shadow: 0 10px 30px rgba(0, 102, 204, 0.2);
+        }
+
+        .youtuber-img-wrapper {
+            width: 100%;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 15px;
+            border: 2px solid #222;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        body.light-mode .youtuber-img-wrapper {
+            border-color: #eee;
+        }
+
+        .youtuber-img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            transition: transform 0.5s ease;
+            filter: grayscale(30%);
+            display: block;
+        }
+
+        .youtuber-card:hover .youtuber-img {
+            transform: scale(1.1);
+            filter: grayscale(0%);
+        }
+
+        .youtuber-name {
+            font-family: var(--font-head);
+            font-size: 1.2rem;
+            color: white;
+            text-align: center;
+        }
+
+        body.light-mode .youtuber-name {
+            color: #111;
+        }
+
+        .youtuber-badge {
+            font-family: var(--font-code);
+            font-size: 0.8rem;
+            color: var(--primary);
+            margin-top: 5px;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .youtuber-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .youtuber-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 
@@ -1670,6 +1769,7 @@
         <div class="nav-links" id="nav-links" role="menu">
             <a href="#about" class="nav-item mobile-nav-link" data-hover role="menuitem">Identity</a>
             <a href="#projects" class="nav-item mobile-nav-link" data-hover role="menuitem">Archives</a>
+            <a href="#youtubers" class="nav-item mobile-nav-link" data-hover role="menuitem">Hall of Fame</a>
             <a href="#uplink" class="nav-item mobile-nav-link" data-hover role="menuitem">Uplink</a>
         </div>
     </nav>
@@ -1840,12 +1940,12 @@
                     <div class="skill-info">
                         <div class="skill-name-group">
                             <span class="skill-name">Lua</span>
-                            <span class="skill-note">(now i am a vibecoder with 1 years experience)</span>
+                            <span class="skill-note">(now i am a vibecoder with 1+ years experience)</span>
                         </div>
-                        <span class="skill-percent">70%</span>
+                        <span class="skill-percent">80%</span>
                     </div>
                     <div class="skill-bar-bg">
-                        <div class="skill-bar-fill" data-width="70%"></div>
+                        <div class="skill-bar-fill" data-width="80%"></div>
                     </div>
                 </div>
 
@@ -1992,9 +2092,73 @@
             </div>
         </div>
 
-        <section id="uplink" class="section-padding">
+        <section id="youtubers" class="section-padding">
             <div class="section-header">
                 <span class="section-num">03</span>
+                <h2 class="section-title hacker-text" data-value="HALL_OF_FAME">HALL_OF_FAME</h2>
+            </div>
+
+            <div style="color: #aaa; margin-bottom: 30px; font-family: var(--font-code);">
+                Top 6 YouTuber yang pernah memainkan map roblox buatan saya
+            </div>
+
+            <div class="youtuber-grid">
+                <div class="youtuber-card" data-hover data-title="Windah Basudara"
+                    data-desc="Terima kasih telah memainkan game saya!"
+                    data-images='["image/youtuber/Windah Basudara.png"]'>
+                    <div class="youtuber-img-wrapper">
+                        <img src="image/youtuber/Windah Basudara.png" alt="Windah Basudara" class="youtuber-img"
+                            loading="lazy">
+                    </div>
+                    <h3 class="youtuber-name">Windah Basudara</h3>
+                    <span class="youtuber-badge">HONORED PLAYER</span>
+                </div>
+                <div class="youtuber-card" data-hover data-title="MiawAug"
+                    data-desc="Terima kasih telah memainkan game saya!" data-images='["image/youtuber/MiawAug.png"]'>
+                    <div class="youtuber-img-wrapper">
+                        <img src="image/youtuber/MiawAug.png" alt="MiawAug" class="youtuber-img" loading="lazy">
+                    </div>
+                    <h3 class="youtuber-name">MiawAug</h3>
+                    <span class="youtuber-badge">HONORED PLAYER</span>
+                </div>
+                <div class="youtuber-card" data-hover data-title="Chandra Y"
+                    data-desc="Terima kasih telah memainkan game saya!" data-images='["image/youtuber/Chandra Y.png"]'>
+                    <div class="youtuber-img-wrapper">
+                        <img src="image/youtuber/Chandra Y.png" alt="Chandra Y" class="youtuber-img" loading="lazy">
+                    </div>
+                    <h3 class="youtuber-name">Chandra Y</h3>
+                    <span class="youtuber-badge">HONORED PLAYER</span>
+                </div>
+                <div class="youtuber-card" data-hover data-title="Stresman"
+                    data-desc="Terima kasih telah memainkan game saya!" data-images='["image/youtuber/Stresman.png"]'>
+                    <div class="youtuber-img-wrapper">
+                        <img src="image/youtuber/Stresman.png" alt="Stresman" class="youtuber-img" loading="lazy">
+                    </div>
+                    <h3 class="youtuber-name">Stresman</h3>
+                    <span class="youtuber-badge">HONORED PLAYER</span>
+                </div>
+                <div class="youtuber-card" data-hover data-title="Hayogo"
+                    data-desc="Terima kasih telah memainkan game saya!" data-images='["image/youtuber/Hayogo.png"]'>
+                    <div class="youtuber-img-wrapper">
+                        <img src="image/youtuber/Hayogo.png" alt="Hayogo" class="youtuber-img" loading="lazy">
+                    </div>
+                    <h3 class="youtuber-name">Hayogo</h3>
+                    <span class="youtuber-badge">HONORED PLAYER</span>
+                </div>
+                <div class="youtuber-card" data-hover data-title="Jelool"
+                    data-desc="Terima kasih telah memainkan game saya!" data-images='["image/youtuber/Jelool.png"]'>
+                    <div class="youtuber-img-wrapper">
+                        <img src="image/youtuber/Jelool.png" alt="Jelool" class="youtuber-img" loading="lazy">
+                    </div>
+                    <h3 class="youtuber-name">Jelool</h3>
+                    <span class="youtuber-badge">HONORED PLAYER</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="uplink" class="section-padding">
+            <div class="section-header">
+                <span class="section-num">04</span>
                 <h2 class="section-title hacker-text" data-value="UPLINK">UPLINK</h2>
             </div>
 
@@ -2041,6 +2205,10 @@
             </a>
             <a href="#projects" class="dock-item" data-label="Archives" aria-label="Ke bagian Archives" data-hover>
                 <i class="fa-solid fa-box-archive" aria-hidden="true"></i>
+            </a>
+            <a href="#youtubers" class="dock-item" data-label="Hall of Fame" aria-label="Ke bagian Hall of Fame"
+                data-hover>
+                <i class="fa-solid fa-star" aria-hidden="true"></i>
             </a>
             <div class="dock-item" id="theme-toggle" data-label="Light Mode" aria-label="Ganti tema" role="button"
                 tabindex="0" data-hover>
@@ -2198,7 +2366,7 @@
         const modalTitle = document.getElementById('modal-title');
         const modalDesc = document.getElementById('modal-desc');
         const galleryTrack = document.getElementById('gallery-track');
-        const openButtons = document.querySelectorAll('.archive-item');
+        const openButtons = document.querySelectorAll('.archive-item, .youtuber-card');
         const closeBtn = document.getElementById('modal-close');
         const nextBtn = document.getElementById('next-slide');
         const prevBtn = document.getElementById('prev-slide');
