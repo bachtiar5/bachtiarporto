@@ -5,6 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PortoBachtiar</title>
+    <meta name="description"
+        content="Portofolio Bachtiar Aditya (Tahu bulat) - Roblox Developer, Lua Scripting, UI/UX Design, and Game Creator.">
+    <meta name="keywords"
+        content="Bachtiar Aditya, Tahu bulat, Roblox, Roblox Developer, Developer, Lua, UI/UX, Portfolio, Portofolio, Aih Studio, Aih Gank">
+    <meta name="author" content="Bachtiar Aditya">
+    <meta property="og:title" content="PortoBachtiar - Roblox Developer">
+    <meta property="og:description"
+        content="Portofolio Bachtiar Aditya - Roblox Developer, Lua Scripting, UI/UX Design, and Game Creator.">
+    <meta property="og:type" content="website">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
@@ -1746,10 +1755,135 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        /* --- LANGUAGE MODAL OVERLAY --- */
+        .lang-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(5, 5, 5, 0.98);
+            backdrop-filter: blur(15px);
+            z-index: 19999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+
+        .lang-modal-overlay.fade-out {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .lang-modal-content {
+            background: #0a0a0a;
+            border: 1px solid var(--primary);
+            padding: 50px 40px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 0 50px rgba(255, 0, 60, 0.2);
+            position: relative;
+            max-width: 500px;
+            width: 90%;
+            transform: scale(0.9);
+            animation: langPop 0.6s var(--ease-elastic) forwards;
+        }
+
+        @keyframes langPop {
+            to {
+                transform: scale(1);
+            }
+        }
+
+        .lang-modal-title {
+            font-family: var(--font-head);
+            font-size: 1.5rem;
+            color: white;
+            margin-bottom: 40px;
+            letter-spacing: 1px;
+            text-shadow: 0 0 10px rgba(255, 0, 60, 0.4);
+        }
+
+        .lang-options {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .lang-btn {
+            background: rgba(15, 15, 15, 0.8);
+            border: 1px solid #333;
+            color: white;
+            padding: 18px 30px;
+            font-family: var(--font-head);
+            font-size: 1.1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            letter-spacing: 2px;
+        }
+
+        .lang-btn:hover {
+            background: var(--primary);
+            color: black;
+            border-color: var(--primary);
+            box-shadow: 0 0 25px rgba(255, 0, 60, 0.5);
+            transform: translateY(-3px);
+        }
+
+        body.light-mode .lang-modal-overlay {
+            background: rgba(245, 245, 247, 0.98);
+        }
+
+        body.light-mode .lang-modal-content {
+            background: white;
+            border-color: var(--primary);
+            box-shadow: 0 0 50px rgba(0, 102, 204, 0.2);
+        }
+
+        body.light-mode .lang-modal-title {
+            color: #111;
+            text-shadow: none;
+        }
+
+        body.light-mode .lang-btn {
+            background: white;
+            border-color: #ddd;
+            color: #111;
+        }
+
+        body.light-mode .lang-btn:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            box-shadow: 0 0 25px rgba(0, 102, 204, 0.5);
+        }
     </style>
 </head>
 
 <body class="custom-cursor-area">
+
+    <!-- Language Selection Overlay -->
+    <div class="lang-modal-overlay" id="lang-modal">
+        <div class="lang-modal-content">
+            <h2 class="lang-modal-title">SELECT LANGUAGE / PILIH BAHASA</h2>
+            <div class="lang-options">
+                <button class="lang-btn" data-lang="id" data-hover>
+                    🇮🇩 INDONESIA
+                </button>
+                <button class="lang-btn" data-lang="en" data-hover>
+                    🇬🇧 ENGLISH
+                </button>
+            </div>
+        </div>
+    </div>
 
     <canvas id="matrix-canvas"></canvas>
 
@@ -1767,10 +1901,14 @@
         </button>
 
         <div class="nav-links" id="nav-links" role="menu">
-            <a href="#about" class="nav-item mobile-nav-link" data-hover role="menuitem">Identity</a>
-            <a href="#projects" class="nav-item mobile-nav-link" data-hover role="menuitem">Archives</a>
-            <a href="#youtubers" class="nav-item mobile-nav-link" data-hover role="menuitem">Hall of Fame</a>
-            <a href="#uplink" class="nav-item mobile-nav-link" data-hover role="menuitem">Uplink</a>
+            <a href="#about" class="nav-item mobile-nav-link" data-translate="nav_identity" data-hover
+                role="menuitem">Identity</a>
+            <a href="#projects" class="nav-item mobile-nav-link" data-translate="nav_projects" data-hover
+                role="menuitem">Archives</a>
+            <a href="#youtubers" class="nav-item mobile-nav-link" data-translate="nav_youtubers" data-hover
+                role="menuitem">Hall of Fame</a>
+            <a href="#uplink" class="nav-item mobile-nav-link" data-translate="nav_uplink" data-hover
+                role="menuitem">Uplink</a>
         </div>
     </nav>
 
@@ -1778,14 +1916,15 @@
 
         <section class="hero" id="home">
             <div class="hero-content">
-                <p class="hacker-text text-primary"
+                <p class="hacker-text text-primary" data-translate="hero_subtitle"
                     style="margin-bottom: 10px; font-size: 0.9rem; letter-spacing: 2px;">
-                    This site only show me and</p>
+                    This site showcases my profile and projects</p>
                 <h1>
                     <span class="gradient-text">ROBLOX</span> <br>
-                    <span class="outline">Developer</span>
+                    <span class="outline" data-translate="hero_title_dev">Developer</span>
                 </h1>
-                <div style="max-width: 500px; color: #888; line-height: 1.6; margin-bottom: 30px;">
+                <div data-translate="hero_desc"
+                    style="max-width: 500px; color: #888; line-height: 1.6; margin-bottom: 30px;">
                     Selamat Datang di Portofolio saya, <span class="text-primary" style="font-weight:bold">Nama Saya
                         Bachtiar / Adit, </span>dan sering di panggil <span class="text-primary"
                         style="font-weight:bold">Tahu bulat</span>
@@ -1812,13 +1951,15 @@
         <section id="about" class="section-padding">
             <div class="section-header">
                 <span class="section-num">01</span>
-                <h2 class="section-title hacker-text" data-value="IDENTITY">IDENTITY</h2>
+                <h2 class="section-title hacker-text" data-value="IDENTITY" data-translate="about_title"
+                    data-translate-attr='{"data-value": "about_title"}'>IDENTITY</h2>
             </div>
 
             <div class="about-grid">
                 <div class="about-text">
-                    <p class="about-subtitle">Dari refrensi jadilah ide gila.</p>
-                    <p class="about-desc">Sejak saya umur 13 tahun, saya sudah tertarik dengan dunia game, dan saya
+                    <p class="about-subtitle" data-translate="about_subtitle">Dari refrensi jadilah ide gila.</p>
+                    <p class="about-desc" data-translate="about_desc">Sejak saya umur 13 tahun, saya sudah tertarik
+                        dengan dunia game, dan saya
                         selalu berusaha yang
                         terbaik untuk di setiap game, tetapi cara yang saya pakai berbeda, Saya bisa di sebut seorang
                         Cheater/Exploiter, semua game yang saya mainkan pernah saya cheat semua, saya juga pernah
@@ -1831,25 +1972,25 @@
                         mahir dalam membuat map kalau ada refrensi yang tepat di otak saya.</p>
 
                     <div class="founder-section">
-                        <p class="founder-title">FOUNDER OF</p>
+                        <p class="founder-title" data-translate="founder_title">FOUNDER OF</p>
                         <div class="founder-cards">
                             <div class="founder-card" data-hover>
                                 <img src="image/aihstudio.png" alt="AIH Studio">
                                 <div class="founder-info">
                                     <h4>AIH STUDIO</h4>
-                                    <span>Est. 2023 • 400.000+ Members</span>
+                                    <span data-translate="aih_studio_est">Est. 2023 • 400.000+ Members</span>
                                 </div>
                             </div>
                             <div class="founder-card" data-hover>
                                 <img src="image/aihgank.png" alt="AIH Gank">
                                 <div class="founder-info">
                                     <h4>AIH GANK</h4>
-                                    <span>Est. 2025</span>
+                                    <span data-translate="aih_gank_est">Est. 2025</span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <a href="#projects" class="btn-shine"
+                    <a href="#projects" class="btn-shine" data-translate="view_project"
                         style="display:inline-block; padding: 12px 30px; text-decoration: none; font-family: var(--font-head); font-size: 0.9rem; margin-top: 20px;"
                         data-hover>VIEW PROJECT</a>
                 </div>
@@ -1888,22 +2029,24 @@
                                     </svg>
                                 </div>
                                 <div class="rbx-username">@Synxsixz</div>
-                                <div class="rbx-bio">Solo dev | 2021 - 2026 | Total Visit : 8m+ |
+                                <div class="rbx-bio" data-translate="rbx_bio">Solo dev | 2021 - 2026 | Total Visit : 8m+
+                                    |
                                     Founder Aih Gank / Aih Studio
                                 </div>
 
                                 <div class="rbx-stats">
                                     <div class="rbx-stat"><span class="rbx-stat-num">46</span><span
-                                            class="rbx-stat-text">Friends</span></div>
+                                            class="rbx-stat-text" data-translate="rbx_friends">Friends</span></div>
                                     <div class="rbx-stat"><span class="rbx-stat-num">862</span><span
-                                            class="rbx-stat-text">Followers</span></div>
-                                    <div class="rbx-stat"><span class="rbx-stat-num">1</span><span
-                                            class="rbx-stat-text">Following</span></div>
+                                            class="rbx-stat-text" data-translate="rbx_followers">Followers</span></div>
+                                    <div class="rbx-stat"><span class="rbx-stat-num">1</span><span class="rbx-stat-text"
+                                            data-translate="rbx_following">Following</span></div>
                                 </div>
                             </div>
 
                             <a href="https://www.roblox.com/id/users/2052284827/profile" target="_blank"
-                                class="btn-shine btn-view-profile" data-hover>View Full Profile</a>
+                                class="btn-shine btn-view-profile" data-translate="rbx_view_profile" data-hover>View
+                                Full Profile</a>
                         </div>
                     </div>
                 </div>
@@ -1914,25 +2057,26 @@
             <div class="stats-grid">
                 <div class="stat-box" data-hover>
                     <div class="stat-number" data-target="8" data-suffix="m+">0</div>
-                    <div class="stat-label">TOTAL VISIT</div>
+                    <div class="stat-label" data-translate="stat_total_visit">TOTAL VISIT</div>
                 </div>
                 <div class="stat-box" data-hover>
                     <div class="stat-number" data-target="6" data-suffix="+">0</div>
-                    <div class="stat-label">TOTAL PROJECT</div>
+                    <div class="stat-label" data-translate="stat_total_project">TOTAL PROJECT</div>
                 </div>
                 <div class="stat-box" data-hover>
                     <div class="stat-number" data-target="10" data-suffix="+">0</div>
-                    <div class="stat-label">PROJECT SOLD</div>
+                    <div class="stat-label" data-translate="stat_project_sold">PROJECT SOLD</div>
                 </div>
                 <div class="stat-box" data-hover>
                     <div class="stat-number" data-target="2" data-suffix="+">0</div>
-                    <div class="stat-label">YEARS IN ROBLOX STUDIO</div>
+                    <div class="stat-label" data-translate="stat_years_roblox">YEARS IN ROBLOX STUDIO</div>
                 </div>
             </div>
 
             <div class="section-header">
                 <span class="section-num">#</span>
-                <h2 class="section-title hacker-text" data-value="MY_SKILL">MY_SKILLS</h2>
+                <h2 class="section-title hacker-text" data-value="MY_SKILL" data-translate="skills_title"
+                    data-translate-attr='{"data-value": "skills_title"}'>MY_SKILLS</h2>
             </div>
 
             <div class="skills-container">
@@ -1940,7 +2084,8 @@
                     <div class="skill-info">
                         <div class="skill-name-group">
                             <span class="skill-name">Lua</span>
-                            <span class="skill-note">(now i am a vibecoder with 1+ years experience)</span>
+                            <span class="skill-note" data-translate="skill_lua_note">(now i am a vibe code with 1+ years
+                                experience)</span>
                         </div>
                         <span class="skill-percent">80%</span>
                     </div>
@@ -1965,7 +2110,7 @@
                     <div class="skill-info">
                         <div class="skill-name-group">
                             <span class="skill-name">UI / UX</span>
-                            <span class="skill-note">(still learning)</span>
+                            <span class="skill-note" data-translate="skill_uiux_note">(still learning)</span>
                         </div>
                         <span class="skill-percent">40%</span>
                     </div>
@@ -1978,7 +2123,7 @@
                     <div class="skill-info">
                         <div class="skill-name-group">
                             <span class="skill-name">Terrain Building</span>
-                            <span class="skill-note">(1,5 year experience)</span>
+                            <span class="skill-note" data-translate="skill_terrain_note">(1,5 year experience)</span>
                         </div>
                         <span class="skill-percent">80%</span>
                     </div>
@@ -2003,7 +2148,8 @@
                     <div class="skill-info">
                         <div class="skill-name-group">
                             <span class="skill-name">Debugging</span>
-                            <span class="skill-note">(tergantung error logic)</span>
+                            <span class="skill-note" data-translate="skill_debugging_note">(tergantung error
+                                logic)</span>
                         </div>
                         <span class="skill-percent">~%</span>
                     </div>
@@ -2017,60 +2163,69 @@
         <section id="projects" class="section-padding">
             <div class="section-header">
                 <span class="section-num">02</span>
-                <h2 class="section-title hacker-text" data-value="COOL_RIGHT?">MY_PROJECT</h2>
+                <h2 class="section-title hacker-text" data-value="COOL_RIGHT?" data-translate="projects_title"
+                    data-translate-attr='{"data-value": "projects_title"}'>MY_PROJECT</h2>
             </div>
 
             <div class="archive-container" id="archive-zone">
 
                 <div class="bomb-trigger btn-shine" id="bomb-btn" data-hover>
                     <i class="fa-solid fa-fingerprint"></i>
-                    <span style="letter-spacing: 2px;">DECRYPT</span>
+                    <span style="letter-spacing: 2px;" data-translate="decrypt_btn">DECRYPT</span>
                 </div>
 
-                <div class="archive-item" data-hover data-title="FIRST_COLLAB"
+                <div class="archive-item" data-hover
+                    data-translate-attr='{"data-title": "proj1_title", "data-desc": "proj1_desc"}'
+                    data-title="FIRST_COLLAB"
                     data-desc="Design Collab pertama saya yang saya buat dan langsung di setujui"
-                    data-images='["https://i.ibb.co.com/Txp4g25G/Screenshot-2026-03-20-124802.png", "https://i.ibb.co.com/bR1TYywN/Screenshot-2026-03-24-192447.png"]'>
+                    data-images='["image/Archives/FristCollab/Screenshot 2026-02-16 063438.png", "image/Archives/FristCollab/Screenshot 2026-03-20 122642.png", "image/Archives/FristCollab/Screenshot 2026-03-20 124802.png", "image/Archives/FristCollab/Screenshot 2026-03-24 192447.png", "image/Archives/FristCollab/Screenshot 2026-03-25 135121.png", "image/Archives/FristCollab/Screenshot 2026-03-25 181701.png"]'>
                     <i class="fa-solid fa-map-location-dot"></i>
                     <h4>FIRST_COLLAB</h4>
                 </div>
 
-                <div class="archive-item" data-hover data-title="GUI / UI UX"
-                    data-desc="Saya tidak jago di gui, dan saya masih belajar sampai sekarang"
-                    data-images='["https://i.ibb.co.com/20sVHxDv/Screenshot-2026-03-30-151603.png", "https://i.ibb.co.com/C3Qp0YVd/Screenshot-2026-03-30-151858.png", "https://i.ibb.co.com/27VMmnk3/Screenshot-2026-03-30-152407.png", "https://i.ibb.co.com/HTNgm1MG/Screenshot-2026-03-30-151923.png"]'>
+                <div class="archive-item" data-hover
+                    data-translate-attr='{"data-title": "proj2_title", "data-desc": "proj2_desc"}'
+                    data-title="GUI / UI UX" data-desc="Saya tidak jago di gui, dan saya masih belajar sampai sekarang"
+                    data-images='["image/Archives/UiUx/Screenshot 2026-03-30 151603.png", "image/Archives/UiUx/Screenshot 2026-03-30 151850.png", "image/Archives/UiUx/Screenshot 2026-03-30 151858.png", "image/Archives/UiUx/Screenshot 2026-03-30 151923.png", "image/Archives/UiUx/Screenshot 2026-03-30 152407.png", "image/Archives/UiUx/Screenshot 2026-06-13 000835.png", "image/Archives/UiUx/Screenshot 2026-06-13 000847.png", "image/Archives/UiUx/Screenshot 2026-06-13 000854.png", "image/Archives/UiUx/Screenshot 2026-06-13 000859.png"]'>
                     <i class="fa-solid fa-layer-group"></i>
                     <h4>GUI / UI UX</h4>
                 </div>
 
-                <div class="archive-item" data-hover data-title="BUILD"
-                    data-desc="ini adalah build saya yang ada di map mie ayam sidoarjo ( fun fact, build itu terdiri dari 82% free model yang masing2 model terpisah )"
-                    data-images='["https://i.ibb.co.com/WptDggSF/Screenshot-2026-03-30-151036.png", "https://i.ibb.co.com/XfJ5pG1p/Screenshot-2026-03-30-151049.png"]'>
+                <div class="archive-item" data-hover
+                    data-translate-attr='{"data-title": "proj3_title", "data-desc": "proj3_desc"}' data-title="BUILD"
+                    data-desc="ini adalah build saya (saya suka menggunakan free model)"
+                    data-images='["image/Archives/Build/Screenshot 2025-12-18 211443.png", "image/Archives/Build/Screenshot 2025-12-18 211541.png", "image/Archives/Build/Screenshot 2025-12-18 211550.png", "image/Archives/Build/Screenshot 2025-12-18 211604.png", "image/Archives/Build/Screenshot 2026-02-13 180945.png", "image/Archives/Build/Screenshot 2026-02-13 181048.png", "image/Archives/Build/Screenshot 2026-02-14 115720.png", "image/Archives/Build/Screenshot 2026-02-14 115733.png", "image/Archives/Build/Screenshot 2026-02-14 115826.png", "image/Archives/Build/Screenshot 2026-02-14 205657.png", "image/Archives/Build/Screenshot 2026-02-15 070757.png", "image/Archives/Build/Screenshot 2026-03-30 151036.png", "image/Archives/Build/Screenshot 2026-03-30 151049.png", "image/Archives/Build/Screenshot 2026-03-30 161640.png", "image/Archives/Build/Screenshot 2026-03-30 161745.png", "image/Archives/Build/Screenshot 2026-05-19 223439.png", "image/Archives/Build/Screenshot 2026-05-19 223450.png", "image/Archives/Build/Screenshot 2026-05-19 223550.png", "image/Archives/Build/Screenshot 2026-05-19 231123.png"]'>
                     <i class="fa-solid fa-cube"></i>
                     <h4>BUILD</h4>
                 </div>
 
-                <div class="archive-item" data-hover data-title="MY WORK"
+                <div class="archive-item" data-hover
+                    data-translate-attr='{"data-title": "proj4_title", "data-desc": "proj4_desc"}' data-title="MY WORK"
                     data-desc="Beberapa Map dari 2021-2026 ( ada yang sudah terjual )"
-                    data-images='["https://i.ibb.co.com/twpByKDb/Screenshot-2026-03-30-155356.png", "https://i.ibb.co.com/WpVxXBQ8/Screenshot-2026-03-30-155229.png", "https://i.ibb.co.com/LX1v9SFg/Screenshot-2026-03-30-155257.png", "https://i.ibb.co.com/B5GW20JS/Screenshot-2026-03-30-155213.png", "https://i.ibb.co.com/8p5BH7Q/Screenshot-2026-03-30-155149.png"]'>
+                    data-images='["image/Archives/MyWork/Screenshot 2026-03-30 155149.png", "image/Archives/MyWork/Screenshot 2026-03-30 155213.png", "image/Archives/MyWork/Screenshot 2026-03-30 155229.png", "image/Archives/MyWork/Screenshot 2026-03-30 155257.png", "image/Archives/MyWork/Screenshot 2026-03-30 155356.png", "image/Archives/MyWork/Screenshot 2026-06-13 000942.png"]'>
                     <i class="fa-solid fa-gamepad"></i>
                     <h4>MY WORK</h4>
                 </div>
 
-                <div class="archive-item" data-hover data-title="GALLERY"
+                <div class="archive-item" data-hover
+                    data-translate-attr='{"data-title": "proj5_title", "data-desc": "proj5_desc"}' data-title="GALLERY"
                     data-desc="Random Gallery dari karya karya saya"
-                    data-images='["https://i.ibb.co.com/GQBzFtbB/Screenshot-2026-03-30-161750.png", "https://i.ibb.co.com/PZd7HV7C/Screenshot-2026-03-30-161640.png", "https://i.ibb.co.com/cKmz5fzD/Screenshot-2026-02-13-174825.png", "https://i.ibb.co.com/KpJwf1yJ/Screenshot-2026-02-15-070445.png", "https://i.ibb.co.com/HvBfvsF/Screenshot-2026-02-14-205657.png", "https://i.ibb.co.com/0VrKsg8q/Screenshot-2026-02-14-115745.png", "https://i.ibb.co.com/4ZZ0Bh3f/Screenshot-2026-02-14-115756.png", "https://i.ibb.co.com/4w3PRpjc/Screenshot-2026-02-14-115826.png", "https://i.ibb.co.com/5h7SVxgJ/Screenshot-2026-02-13-172440.png", "https://i.ibb.co.com/nswFPQDr/Screenshot-2026-02-13-171549.png", "https://i.ibb.co.com/YBMcrSgQ/Screenshot-2026-02-16-063438.png", "https://i.ibb.co.com/rGm9Rrcy/Screenshot-2026-03-08-123308.png", "https://i.ibb.co.com/9k4WzR3H/Screenshot-2026-01-12-172237.png", "https://i.ibb.co.com/HDr35CDX/Screenshot-2025-12-28-180527.png", "https://i.ibb.co.com/Y79P08vt/Screenshot-2026-01-30-175806.png"]'>
+                    data-images='["image/Archives/Gallery/Cuplikan layar 2025-08-30 115417.png", "image/Archives/Gallery/Cuplikan layar 2025-08-30 115529.png", "image/Archives/Gallery/Cuplikan layar 2025-09-20 130632.png", "image/Archives/Gallery/Cuplikan layar 2025-09-20 130650.png", "image/Archives/Gallery/Cuplikan layar 2025-09-25 220621.png", "image/Archives/Gallery/Cuplikan layar 2025-10-06 174451.png", "image/Archives/Gallery/Cuplikan layar 2025-10-08 072736.png", "image/Archives/Gallery/Screenshot 2025-11-18 191212.png", "image/Archives/Gallery/Screenshot 2026-01-12 172237.png", "image/Archives/Gallery/Screenshot 2026-01-30 175806.png", "image/Archives/Gallery/Screenshot 2026-02-16 063438.png"]'>
                     <i class="fa-solid fa-wand-magic-sparkles"></i>
                     <h4>GALLERY</h4>
                 </div>
 
-                <div class="archive-item" data-hover data-title="NPCMANAGER"
+                <div class="archive-item" data-hover
+                    data-translate-attr='{"data-title": "proj6_title", "data-desc": "proj6_desc"}'
+                    data-title="NPCMANAGER"
                     data-desc="Saya memiliki kebiasaan unik dalam pengembangan Debugging. Saya selalu mengintegrasikan sistem print-tracking dan error-code logging yang detail di setiap modul penting. "
-                    data-images='["https://i.ibb.co.com/8gv3gHKs/Screenshot-2026-03-30-153254.png",  "https://i.ibb.co.com/chY2ryJ9/Screenshot-2026-03-30-153830.png"]'>
+                    data-images='["image/Archives/LuaUCode/Screenshot 2026-06-13 001441.png", "image/Archives/LuaUCode/Screenshot 2026-06-13 001454.png", "image/Archives/LuaUCode/Screenshot 2026-06-13 001607.png", "image/Archives/LuaUCode/Screenshot 2026-06-13 001644.png", "image/Archives/LuaUCode/Screenshot 2026-06-13 001700.png", "image/Archives/LuaUCode/Screenshot 2026-06-13 001711.png", "image/Archives/LuaUCode/Screenshot 2026-06-13 001747.png"]'>
                     <i class="fa-solid fa-code"></i>
                     <h4>NPC_MANAGER</h4>
                 </div>
 
                 <div class="reset-bomb" id="reset-btn" data-hover>
-                    <i class="fa-solid fa-lock"></i> LOCK ARCHIVES
+                    <i class="fa-solid fa-lock"></i> <span data-translate="lock_archives">LOCK ARCHIVES</span>
                 </div>
             </div>
         </section>
@@ -2095,63 +2250,70 @@
         <section id="youtubers" class="section-padding">
             <div class="section-header">
                 <span class="section-num">03</span>
-                <h2 class="section-title hacker-text" data-value="HALL_OF_FAME">HALL_OF_FAME</h2>
+                <h2 class="section-title hacker-text" data-value="HALL_OF_FAME" data-translate="youtubers_title"
+                    data-translate-attr='{"data-value": "youtubers_title"}'>HALL_OF_FAME</h2>
             </div>
 
-            <div style="color: #aaa; margin-bottom: 30px; font-family: var(--font-code);">
+            <div data-translate="youtubers_subtitle"
+                style="color: #aaa; margin-bottom: 30px; font-family: var(--font-code);">
                 Top 6 YouTuber yang pernah memainkan map roblox buatan saya
             </div>
 
             <div class="youtuber-grid">
-                <div class="youtuber-card" data-hover data-title="Windah Basudara"
-                    data-desc="Terima kasih telah memainkan game saya!"
+                <div class="youtuber-card" data-hover data-translate-attr='{"data-desc": "youtuber_desc"}'
+                    data-title="Windah Basudara" data-desc="Terima kasih telah memainkan game saya!"
                     data-images='["image/youtuber/Windah Basudara.png"]'>
                     <div class="youtuber-img-wrapper">
                         <img src="image/youtuber/Windah Basudara.png" alt="Windah Basudara" class="youtuber-img"
                             loading="lazy">
                     </div>
                     <h3 class="youtuber-name">Windah Basudara</h3>
-                    <span class="youtuber-badge">HONORED PLAYER</span>
+                    <span class="youtuber-badge" data-translate="youtuber_badge">HONORED PLAYER</span>
                 </div>
-                <div class="youtuber-card" data-hover data-title="MiawAug"
-                    data-desc="Terima kasih telah memainkan game saya!" data-images='["image/youtuber/MiawAug.png"]'>
+                <div class="youtuber-card" data-hover data-translate-attr='{"data-desc": "youtuber_desc"}'
+                    data-title="MiawAug" data-desc="Terima kasih telah memainkan game saya!"
+                    data-images='["image/youtuber/MiawAug.png"]'>
                     <div class="youtuber-img-wrapper">
                         <img src="image/youtuber/MiawAug.png" alt="MiawAug" class="youtuber-img" loading="lazy">
                     </div>
                     <h3 class="youtuber-name">MiawAug</h3>
-                    <span class="youtuber-badge">HONORED PLAYER</span>
+                    <span class="youtuber-badge" data-translate="youtuber_badge">HONORED PLAYER</span>
                 </div>
-                <div class="youtuber-card" data-hover data-title="Chandra Y"
-                    data-desc="Terima kasih telah memainkan game saya!" data-images='["image/youtuber/Chandra Y.png"]'>
+                <div class="youtuber-card" data-hover data-translate-attr='{"data-desc": "youtuber_desc"}'
+                    data-title="Chandra Y" data-desc="Terima kasih telah memainkan game saya!"
+                    data-images='["image/youtuber/Chandra Y.png"]'>
                     <div class="youtuber-img-wrapper">
                         <img src="image/youtuber/Chandra Y.png" alt="Chandra Y" class="youtuber-img" loading="lazy">
                     </div>
                     <h3 class="youtuber-name">Chandra Y</h3>
-                    <span class="youtuber-badge">HONORED PLAYER</span>
+                    <span class="youtuber-badge" data-translate="youtuber_badge">HONORED PLAYER</span>
                 </div>
-                <div class="youtuber-card" data-hover data-title="Stresman"
-                    data-desc="Terima kasih telah memainkan game saya!" data-images='["image/youtuber/Stresman.png"]'>
+                <div class="youtuber-card" data-hover data-translate-attr='{"data-desc": "youtuber_desc"}'
+                    data-title="Stresman" data-desc="Terima kasih telah memainkan game saya!"
+                    data-images='["image/youtuber/Stresman.png"]'>
                     <div class="youtuber-img-wrapper">
                         <img src="image/youtuber/Stresman.png" alt="Stresman" class="youtuber-img" loading="lazy">
                     </div>
                     <h3 class="youtuber-name">Stresman</h3>
-                    <span class="youtuber-badge">HONORED PLAYER</span>
+                    <span class="youtuber-badge" data-translate="youtuber_badge">HONORED PLAYER</span>
                 </div>
-                <div class="youtuber-card" data-hover data-title="Hayogo"
-                    data-desc="Terima kasih telah memainkan game saya!" data-images='["image/youtuber/Hayogo.png"]'>
+                <div class="youtuber-card" data-hover data-translate-attr='{"data-desc": "youtuber_desc"}'
+                    data-title="Hayogo" data-desc="Terima kasih telah memainkan game saya!"
+                    data-images='["image/youtuber/Hayogo.png"]'>
                     <div class="youtuber-img-wrapper">
                         <img src="image/youtuber/Hayogo.png" alt="Hayogo" class="youtuber-img" loading="lazy">
                     </div>
                     <h3 class="youtuber-name">Hayogo</h3>
-                    <span class="youtuber-badge">HONORED PLAYER</span>
+                    <span class="youtuber-badge" data-translate="youtuber_badge">HONORED PLAYER</span>
                 </div>
-                <div class="youtuber-card" data-hover data-title="Jelool"
-                    data-desc="Terima kasih telah memainkan game saya!" data-images='["image/youtuber/Jelool.png"]'>
+                <div class="youtuber-card" data-hover data-translate-attr='{"data-desc": "youtuber_desc"}'
+                    data-title="Jelool" data-desc="Terima kasih telah memainkan game saya!"
+                    data-images='["image/youtuber/Jelool.png"]'>
                     <div class="youtuber-img-wrapper">
                         <img src="image/youtuber/Jelool.png" alt="Jelool" class="youtuber-img" loading="lazy">
                     </div>
                     <h3 class="youtuber-name">Jelool</h3>
-                    <span class="youtuber-badge">HONORED PLAYER</span>
+                    <span class="youtuber-badge" data-translate="youtuber_badge">HONORED PLAYER</span>
                 </div>
             </div>
         </section>
@@ -2159,15 +2321,18 @@
         <section id="uplink" class="section-padding">
             <div class="section-header">
                 <span class="section-num">04</span>
-                <h2 class="section-title hacker-text" data-value="UPLINK">UPLINK</h2>
+                <h2 class="section-title hacker-text" data-value="UPLINK" data-translate="uplink_title"
+                    data-translate-attr='{"data-value": "uplink_title"}'>UPLINK</h2>
             </div>
 
             <div class="social-grid">
                 <div class="social-card discord-card" id="discord-btn" data-discord="bachadit" data-hover>
                     <div>
                         <h3 style="font-family: var(--font-head); font-size: 2rem;">DISCORD : bachadit</h3>
-                        <p style="opacity: 0.8; font-family: var(--font-code); font-size: 0.8rem;">Click to copy ID</p>
-                        <div class="copy-feedback" id="copy-msg">COPIED TO CLIPBOARD!</div>
+                        <p data-translate="discord_copy"
+                            style="opacity: 0.8; font-family: var(--font-code); font-size: 0.8rem;">Click to copy ID</p>
+                        <div class="copy-feedback" id="copy-msg" data-translate="discord_copied">COPIED TO CLIPBOARD!
+                        </div>
                     </div>
                     <i class="fa-brands fa-discord"></i>
                 </div>
@@ -2197,19 +2362,27 @@
 
     <div class="dock-container">
         <div class="dock-panel" id="mac-dock">
-            <a href="#home" class="dock-item" data-label="Home" aria-label="Ke bagian Beranda" data-hover>
+            <a href="#home" class="dock-item" data-label="Home" aria-label="Ke bagian Beranda"
+                data-translate-attr='{"data-label": "dock_home", "aria-label": "dock_home_aria"}' data-hover>
                 <i class="fa-solid fa-house" aria-hidden="true"></i>
             </a>
-            <a href="#about" class="dock-item" data-label="Identity" aria-label="Ke bagian Identity" data-hover>
+            <a href="#about" class="dock-item" data-label="Identity" aria-label="Ke bagian Identity"
+                data-translate-attr='{"data-label": "dock_identity", "aria-label": "dock_identity_aria"}' data-hover>
                 <i class="fa-solid fa-user" aria-hidden="true"></i>
             </a>
-            <a href="#projects" class="dock-item" data-label="Archives" aria-label="Ke bagian Archives" data-hover>
+            <a href="#projects" class="dock-item" data-label="Archives" aria-label="Ke bagian Archives"
+                data-translate-attr='{"data-label": "dock_archives", "aria-label": "dock_archives_aria"}' data-hover>
                 <i class="fa-solid fa-box-archive" aria-hidden="true"></i>
             </a>
             <a href="#youtubers" class="dock-item" data-label="Hall of Fame" aria-label="Ke bagian Hall of Fame"
-                data-hover>
+                data-translate-attr='{"data-label": "dock_hof", "aria-label": "dock_hof_aria"}' data-hover>
                 <i class="fa-solid fa-star" aria-hidden="true"></i>
             </a>
+            <div class="dock-item" id="lang-toggle" data-label="Language" aria-label="Ubah Bahasa"
+                data-translate-attr='{"data-label": "dock_lang", "aria-label": "dock_lang_aria"}' role="button"
+                tabindex="0" data-hover>
+                <i class="fa-solid fa-language" aria-hidden="true"></i>
+            </div>
             <div class="dock-item" id="theme-toggle" data-label="Light Mode" aria-label="Ganti tema" role="button"
                 tabindex="0" data-hover>
                 <i class="fa-solid fa-sun" id="theme-icon" aria-hidden="true"></i>
@@ -2229,22 +2402,35 @@
             const fontSize = 16; const columns = canvas.width / fontSize;
             const rainDrops = []; for (let x = 0; x < columns; x++) rainDrops[x] = 1;
 
-            const drawMatrix = () => {
-                const isLight = document.body.classList.contains('light-mode');
-                ctx.fillStyle = isLight ? 'rgba(240, 240, 240, 0.05)' : 'rgba(5, 5, 5, 0.05)';
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
-                ctx.fillStyle = isLight ? '#0066cc' : '#ff003c';
-                ctx.font = fontSize + 'px monospace';
-                for (let i = 0; i < rainDrops.length; i++) {
-                    const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
-                    ctx.globalAlpha = Math.random() * 0.5 + 0.5;
-                    ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
-                    ctx.globalAlpha = 1.0;
-                    if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975) rainDrops[i] = 0;
-                    rainDrops[i]++;
+            let lastTime = 0;
+            const drawMatrix = (timestamp) => {
+                if (document.hidden) { // skip drawing when tab is inactive to save CPU
+                    requestAnimationFrame(drawMatrix);
+                    return;
                 }
+                const delta = timestamp - lastTime;
+                if (delta >= 35) { // throttle to ~28fps
+                    lastTime = timestamp - (delta % 35);
+                    const isLight = document.body.classList.contains('light-mode');
+                    ctx.fillStyle = isLight ? 'rgba(240, 240, 240, 0.05)' : 'rgba(5, 5, 5, 0.05)';
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                    ctx.fillStyle = isLight ? '#0066cc' : '#ff003c';
+                    ctx.font = fontSize + 'px monospace';
+                    for (let i = 0; i < rainDrops.length; i++) {
+                        const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+                        ctx.globalAlpha = Math.random() * 0.5 + 0.5;
+                        ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
+                        ctx.globalAlpha = 1.0;
+                        if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975) rainDrops[i] = 0;
+                        rainDrops[i]++;
+                    }
+                }
+                requestAnimationFrame(drawMatrix);
             };
-            setInterval(drawMatrix, 35);
+            requestAnimationFrame((timestamp) => {
+                lastTime = timestamp;
+                drawMatrix(timestamp);
+            });
             window.addEventListener('resize', () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; });
         }
 
@@ -2294,11 +2480,32 @@
         const tiltContainer = document.querySelector('.roblox-id-container');
 
         if (window.matchMedia("(pointer: fine)").matches) {
+            let mouseX = 0, mouseY = 0;
+            let outlineX = 0, outlineY = 0;
+            let initialized = false;
+
             window.addEventListener('mousemove', (e) => {
-                const posX = e.clientX; const posY = e.clientY;
-                cursorDot.style.left = `${posX}px`; cursorDot.style.top = `${posY}px`;
-                cursorOutline.animate({ left: `${posX}px`, top: `${posY}px` }, { duration: 400, fill: "forwards" });
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+                cursorDot.style.left = `${mouseX}px`;
+                cursorDot.style.top = `${mouseY}px`;
+                if (!initialized) {
+                    outlineX = mouseX;
+                    outlineY = mouseY;
+                    initialized = true;
+                }
             });
+
+            const updateCursor = () => {
+                if (initialized) { // lerp trailing calculation
+                    outlineX += (mouseX - outlineX) * 0.15;
+                    outlineY += (mouseY - outlineY) * 0.15;
+                    cursorOutline.style.left = `${outlineX}px`;
+                    cursorOutline.style.top = `${outlineY}px`;
+                }
+                requestAnimationFrame(updateCursor);
+            };
+            requestAnimationFrame(updateCursor);
 
             if (tiltContainer && tiltCard) {
                 tiltContainer.addEventListener('mousemove', (e) => {
@@ -2454,12 +2661,15 @@
         themeToggle.addEventListener('click', () => {
             document.body.classList.toggle('light-mode');
 
+            const currentLang = localStorage.getItem('preferred-language') || 'id';
             if (document.body.classList.contains('light-mode')) {
                 themeIcon.classList.replace('fa-sun', 'fa-moon');
-                themeToggle.setAttribute('data-label', 'Dark Mode');
+                const label = translations[currentLang]?.theme_dark || 'Dark Mode';
+                themeToggle.setAttribute('data-label', label);
             } else {
                 themeIcon.classList.replace('fa-moon', 'fa-sun');
-                themeToggle.setAttribute('data-label', 'Light Mode');
+                const label = translations[currentLang]?.theme_light || 'Light Mode';
+                themeToggle.setAttribute('data-label', label);
             }
         });
 
@@ -2575,6 +2785,223 @@
                 aboutDesc.classList.remove('spotlight-active');
             });
         }
+
+        // --- MULTI-LANGUAGE TRANSLATION DICTIONARY ---
+        const translations = {
+            id: {
+                nav_identity: "Identitas",
+                nav_projects: "Arsip",
+                nav_youtubers: "Hall of Fame",
+                nav_uplink: "Uplink",
+                hero_subtitle: "Situs ini menampilkan profil dan proyek saya",
+                hero_title_dev: "Developer",
+                hero_desc: "Selamat Datang di Portofolio saya, <span class=\"text-primary\" style=\"font-weight:bold\">Nama Saya Bachtiar / Adit, </span>dan sering di panggil <span class=\"text-primary\" style=\"font-weight:bold\">Tahu bulat</span>",
+                about_title: "IDENTITAS",
+                about_subtitle: "Dari referensi jadilah ide gila.",
+                about_desc: "Sejak saya umur 13 tahun, saya sudah tertarik dengan dunia game, dan saya selalu berusaha yang terbaik untuk di setiap game, tetapi cara yang saya pakai berbeda, Saya bisa di sebut seorang Cheater/Exploiter, semua game yang saya mainkan pernah saya cheat semua, saya juga pernah menjadi reseller cheat dan creator cheat, tapi semua itu sudah berlalu karena saya sudah tidak mengejar kemenangan lagi. <br><br> kita lanjut di roblox, saya sudah bermain roblox studio kurang lebih 2/3 tahun lebih, sejak 2021 sempat pensi dan comeback tahun 2024 akhir tahun, bisa di bilang saya cukup mahir dalam membuat map kalau ada referensi yang tepat di otak saya.",
+                founder_title: "PENDIRI DARI",
+                aih_studio_est: "Est. 2023 • 400.000+ Anggota",
+                aih_gank_est: "Est. 2025",
+                view_project: "LIHAT PROYEK",
+                rbx_bio: "Solo dev | 2021 - 2026 | Total Kunjungan: 8Jt+ | Pendiri Aih Gank / Aih Studio",
+                rbx_friends: "Teman",
+                rbx_followers: "Pengikut",
+                rbx_following: "Mengikuti",
+                rbx_view_profile: "Lihat Profil Lengkap",
+                stat_total_visit: "TOTAL KUNJUNGAN",
+                stat_total_project: "TOTAL PROYEK",
+                stat_project_sold: "PROYEK TERJUAL",
+                stat_years_roblox: "TAHUN DI ROBLOX STUDIO",
+                skills_title: "KEAHLIAN_SAYA",
+                skill_lua_note: "(sekarang saya seorang Vibe Code dengan pengalaman 1+ tahun)",
+                skill_uiux_note: "(masih belajar)",
+                skill_terrain_note: "(pengalaman 1,5 tahun)",
+                skill_debugging_note: "(tergantung error logika)",
+                projects_title: "PROYEK_SAYA",
+                decrypt_btn: "DEKRIPSI",
+                proj1_title: "KOLABORASI_PERTAMA",
+                proj1_desc: "Desain kolaborasi pertama saya yang saya buat dan langsung disetujui",
+                proj2_title: "GUI / UI UX",
+                proj2_desc: "Saya tidak jago di GUI, dan saya masih belajar sampai sekarang",
+                proj3_title: "BUILD",
+                proj3_desc: "ini adalah build saya (saya suka menggunakan free model)",
+                proj4_title: "MY WORK",
+                proj4_desc: "Beberapa map dari 2021-2026 (ada yang sudah terjual)",
+                proj5_title: "GALLERY",
+                proj5_desc: "Galeri acak dari karya-karya saya",
+                proj6_title: "NPC_MANAGER",
+                proj6_desc: "Saya memiliki kebiasaan unik dalam debugging. Saya selalu mengintegrasikan sistem print-tracking dan error-code logging yang detail di setiap modul penting.",
+                lock_archives: "KUNCI ARSIP",
+                youtubers_title: "HALL_OF_FAME",
+                youtubers_subtitle: "Top 6 YouTuber yang pernah memainkan map roblox buatan saya",
+                youtuber_badge: "PEMAIN KEHORMATAN",
+                youtuber_desc: "Terima kasih telah memainkan game saya!",
+                uplink_title: "UPLINK",
+                discord_copy: "Klik untuk menyalin ID",
+                discord_copied: "BERHASIL DISALIN KE CLIPBOARD!",
+                dock_home: "Beranda",
+                dock_home_aria: "Ke bagian Beranda",
+                dock_identity: "Identitas",
+                dock_identity_aria: "Ke bagian Identity",
+                dock_archives: "Arsip",
+                dock_archives_aria: "Ke bagian Archives",
+                dock_hof: "Galeri Kehormatan",
+                dock_hof_aria: "Ke bagian Hall of Fame",
+                dock_lang: "Bahasa",
+                dock_lang_aria: "Ubah Bahasa",
+                theme_light: "Mode Terang",
+                theme_dark: "Mode Gelap"
+            },
+            en: {
+                nav_identity: "Identity",
+                nav_projects: "Archives",
+                nav_youtubers: "Hall of Fame",
+                nav_uplink: "Uplink",
+                hero_subtitle: "This site showcases my profile and projects",
+                hero_title_dev: "Developer",
+                hero_desc: "Welcome to my portfolio, <span class=\"text-primary\" style=\"font-weight:bold\">my name is Bachtiar / Adit, </span>and I am often called <span class=\"text-primary\" style=\"font-weight:bold\">Tahu bulat</span>",
+                about_title: "IDENTITY",
+                about_subtitle: "From reference, a wild idea was born.",
+                about_desc: "Since I was 13 years old, I have always been interested in the world of gaming, and I always do my best in every game, but the way I do it is different. You could call me a Cheater/Exploiter, I used to cheat in all the games I played, and I was even a cheat reseller and creator. But that's all in the past because I no longer chase mere victories. Moving on to Roblox, I've been playing with Roblox Studio for about 2-3 years since 2021, took a break and came back in late 2024. You could say I'm quite skilled at map creation as long as I have a proper reference in mind.",
+                founder_title: "FOUNDER OF",
+                aih_studio_est: "Est. 2023 • 400,000+ Members",
+                aih_gank_est: "Est. 2025",
+                view_project: "VIEW PROJECTS",
+                rbx_bio: "Solo dev | 2021 - 2026 | Total Visits: 8M+ | Founder Aih Gank / Aih Studio",
+                rbx_friends: "Friends",
+                rbx_followers: "Followers",
+                rbx_following: "Following",
+                rbx_view_profile: "View Full Profile",
+                stat_total_visit: "TOTAL VISITS",
+                stat_total_project: "TOTAL PROJECTS",
+                stat_project_sold: "PROJECTS SOLD",
+                stat_years_roblox: "YEARS IN ROBLOX STUDIO",
+                skills_title: "MY_SKILLS",
+                skill_lua_note: "(now I am a vibe code with 1+ years experience)",
+                skill_uiux_note: "(still learning)",
+                skill_terrain_note: "(1.5 years experience)",
+                skill_debugging_note: "(depending on logic errors)",
+                projects_title: "MY_PROJECTS",
+                decrypt_btn: "DECRYPT",
+                proj1_title: "FIRST_COLLAB",
+                proj1_desc: "My first design collaboration that I made and was immediately approved",
+                proj2_title: "GUI / UI UX",
+                proj2_desc: "I'm not good at GUI, and I'm still learning until now",
+                proj3_title: "BUILD",
+                proj3_desc: "This is my build (I like to use free model)",
+                proj4_title: "MY WORK",
+                proj4_desc: "Several maps from 2021-2026 (some have been sold)",
+                proj5_title: "GALLERY",
+                proj5_desc: "Random gallery of my creations",
+                proj6_title: "NPC_MANAGER",
+                proj6_desc: "I have a unique habit in debugging. I always integrate detailed print-tracking and error-code logging systems in every important module.",
+                lock_archives: "LOCK ARCHIVES",
+                youtubers_title: "HALL_OF_FAME",
+                youtubers_subtitle: "Top 6 YouTubers who have played my Roblox maps",
+                youtuber_badge: "HONORED PLAYER",
+                youtuber_desc: "Thank you for playing my game!",
+                uplink_title: "UPLINK",
+                discord_copy: "Click to copy ID",
+                discord_copied: "COPIED TO CLIPBOARD!",
+                dock_home: "Home",
+                dock_home_aria: "Go to Home section",
+                dock_identity: "Identity",
+                dock_identity_aria: "Go to Identity section",
+                dock_archives: "Archives",
+                dock_archives_aria: "Go to Archives section",
+                dock_hof: "Hall of Fame",
+                dock_hof_aria: "Go to Hall of Fame section",
+                dock_lang: "Language",
+                dock_lang_aria: "Change Language",
+                theme_light: "Light Mode",
+                theme_dark: "Dark Mode"
+            }
+        };
+
+        function setLanguage(lang) {
+            document.querySelectorAll('[data-translate]').forEach(el => {
+                const key = el.getAttribute('data-translate');
+                if (translations[lang] && translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+
+            document.querySelectorAll('[data-translate-attr]').forEach(el => {
+                const attrString = el.getAttribute('data-translate-attr');
+                try {
+                    const config = JSON.parse(attrString);
+                    for (const [attr, key] of Object.entries(config)) {
+                        if (translations[lang] && translations[lang][key]) {
+                            el.setAttribute(attr, translations[lang][key]);
+                        }
+                    }
+                } catch (e) {
+                    // ignore malformed config
+                }
+            });
+
+            const themeToggleEl = document.getElementById('theme-toggle');
+            if (themeToggleEl) {
+                const isLight = document.body.classList.contains('light-mode');
+                const label = isLight
+                    ? (translations[lang]?.theme_dark || 'Dark Mode')
+                    : (translations[lang]?.theme_light || 'Light Mode');
+                themeToggleEl.setAttribute('data-label', label);
+            }
+
+            localStorage.setItem('preferred-language', lang);
+            document.documentElement.setAttribute('lang', lang);
+        }
+
+        // Initialize language selection
+        const langModal = document.getElementById('lang-modal');
+        const savedLang = localStorage.getItem('preferred-language');
+
+        if (savedLang) {
+            setLanguage(savedLang);
+            if (langModal) {
+                langModal.style.display = 'none';
+            }
+        } else {
+            if (langModal) {
+                langModal.style.display = 'flex'; // show modal on first visit
+            }
+        }
+
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const lang = btn.getAttribute('data-lang');
+                setLanguage(lang);
+                if (langModal) {
+                    langModal.classList.add('fade-out');
+                    setTimeout(() => {
+                        langModal.style.display = 'none';
+                    }, 500);
+                }
+            });
+        });
+
+        const langToggle = document.getElementById('lang-toggle');
+        if (langToggle) {
+            langToggle.addEventListener('click', () => {
+                if (langModal) {
+                    langModal.style.display = 'flex';
+                    langModal.classList.remove('fade-out');
+                }
+            });
+        }
+
+        // Accessibility for keyboard navigation
+        [themeToggle, langToggle].forEach(el => {
+            if (el) {
+                el.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        el.click();
+                    }
+                });
+            }
+        });
 
     </script>
 </body>
