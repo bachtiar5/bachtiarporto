@@ -19,11 +19,11 @@
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
 
     <link
-        href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Roboto+Mono:wght@400;700&family=Inter:wght@400;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Roboto+Mono:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
         rel="stylesheet" media="print" onload="this.media='all'">
     <noscript>
         <link
-            href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Roboto+Mono:wght@400;700&family=Inter:wght@400;600;700&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Roboto+Mono:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
             rel="stylesheet">
     </noscript>
 
@@ -40,27 +40,28 @@
             --primary: #ff003c;
             --primary-dark: #990024;
             --silver: #e0e0e0;
-            --silver-dim: #888888;
+            --silver-dim: #9b9b9b; /* Improved dark-mode contrast */
 
             --font-head: 'Archivo Black', sans-serif;
             --font-code: 'Roboto Mono', monospace;
-            --font-roblox: 'Inter', sans-serif;
+            --font-roblox: 'Plus Jakarta Sans', sans-serif; /* Custom modern font instead of Inter */
 
-            --ease-smooth: cubic-bezier(0.23, 1, 0.32, 1);
+            /* Exponential ease-out-expo (modern, no bounce/elastic) */
+            --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
             --ease-elastic: cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
         /* --- TEMA TERANG (LIGHT MODE) --- */
         body.light-mode {
-            --bg-color: #f5f5f7;
-            --bg-grid: #e0e0e0;
+            --bg-color: #f8f9fa; /* Editorial off-white */
+            --bg-grid: #e5e5e7;
             --primary: #0066cc;
             --primary-dark: #004c99;
-            --silver: #111111;
-            --silver-dim: #555555;
+            --silver: #1a1a1a; /* Clean high-contrast dark text */
+            --silver-dim: #4f4f4f; /* Improved light-mode contrast */
             background-image:
-                linear-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+                linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
         }
 
         body.light-mode::before {
@@ -116,16 +117,16 @@
         }
 
         body.light-mode .modal-content {
-            background: #fff;
-            border-color: #ccc;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+            background: #ffffff;
+            border-color: rgba(0, 0, 0, 0.1);
+            box-shadow: 0 30px 90px rgba(0, 0, 0, 0.15);
         }
 
         body.light-mode .modal-header,
         body.light-mode .modal-footer {
-            background: #f0f0f0;
-            border-color: #ddd;
-            color: #333;
+            background: transparent;
+            border-color: rgba(0, 0, 0, 0.05);
+            color: #4f4f4f;
         }
 
         body.light-mode .modal-title {
@@ -152,9 +153,10 @@
         }
 
         body.light-mode .gradient-text {
-            background: linear-gradient(90deg, #111, #555);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: #1a1a1a;
+            background: none;
+            -webkit-background-clip: initial;
+            -webkit-text-fill-color: initial;
         }
 
         * {
@@ -209,8 +211,8 @@
         body {
             background-color: var(--bg-color);
             color: var(--silver);
-            font-family: var(--font-code);
-            overflow-x: hidden;
+            font-family: var(--font-roblox); /* Use standard sans-serif body font, reserving mono for code */
+            overflow-x: clip;
             background-image:
                 linear-gradient(rgba(20, 20, 20, 0.4) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(20, 20, 20, 0.4) 1px, transparent 1px);
@@ -321,16 +323,15 @@
                 height: 40px;
                 border: 1px solid rgba(255, 255, 255, 0.5);
                 position: fixed;
-                transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%) scale(1);
                 border-radius: 50%;
                 pointer-events: none;
                 z-index: 20000;
-                transition: width 0.2s, height 0.2s, background 0.2s, border-color 0.5s ease;
+                transition: transform 0.2s var(--ease-smooth), background 0.2s, border-color 0.5s ease;
             }
 
             body.hovering .cursor-outline {
-                width: 60px;
-                height: 60px;
+                transform: translate(-50%, -50%) scale(1.5);
                 border-color: var(--primary);
                 background: rgba(255, 0, 60, 0.1);
                 mix-blend-mode: difference;
@@ -422,9 +423,18 @@
             margin-top: -15vh;
         }
 
+        .hero-desc {
+            color: var(--silver-dim);
+            max-width: 500px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            font-size: 1rem;
+            transition: color 0.5s ease;
+        }
+
         .hero h1 {
             font-family: var(--font-head);
-            font-size: clamp(3rem, 8vw, 7rem);
+            font-size: clamp(3rem, 7vw, 6rem);
             line-height: 0.9;
             margin-bottom: 1.5rem;
             color: white;
@@ -438,9 +448,10 @@
         }
 
         .gradient-text {
-            background: linear-gradient(90deg, #ffffff, #888888);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: #ffffff;
+            background: none;
+            -webkit-background-clip: initial;
+            -webkit-text-fill-color: initial;
         }
 
         .police-tape-container {
@@ -538,7 +549,7 @@
             font-family: var(--font-head);
             font-size: 2rem;
             color: white;
-            letter-spacing: 1px;
+            letter-spacing: 0.03em;
             transition: color 0.5s ease;
         }
 
@@ -601,28 +612,33 @@
             display: flex;
             align-items: center;
             gap: 20px;
-            background: rgba(15, 15, 15, 0.6);
-            border: 1px solid #333;
-            padding: 15px 20px;
-            border-radius: 12px;
-            transition: transform 0.3s var(--ease-elastic), box-shadow 0.3s ease, border-color 0.3s ease;
+            background: transparent;
+            border: none;
+            padding: 12px 0;
+            border-radius: 0;
+            transition: transform 0.3s var(--ease-smooth);
             cursor: pointer;
         }
 
         body.light-mode .founder-card {
-            background: rgba(255, 255, 255, 0.6);
-            border-color: #ddd;
+            background: transparent;
+            border: none;
+        }
+
+        .founder-card:not(:last-child) {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        body.light-mode .founder-card:not(:last-child) {
+            border-bottom-color: rgba(0, 0, 0, 0.05);
         }
 
         .founder-card:hover {
-            transform: scale(1.02) translateX(10px);
-            box-shadow: 0 10px 20px rgba(255, 0, 60, 0.2);
-            border-color: var(--primary);
+            transform: translateX(8px);
         }
 
         body.light-mode .founder-card:hover {
-            box-shadow: 0 10px 20px rgba(0, 102, 204, 0.2);
-            border-color: #0066cc;
+            transform: translateX(8px);
         }
 
         .founder-card img {
@@ -630,21 +646,16 @@
             height: 70px;
             object-fit: contain;
             filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.2));
-            transition: transform 0.3s ease;
         }
 
-        .founder-card:hover img {
-            transform: scale(1.1);
-        }
-
-        .founder-info h4 {
+        .founder-info h3 {
             font-family: var(--font-head);
             color: white;
             font-size: 1.2rem;
             margin-bottom: 5px;
         }
 
-        body.light-mode .founder-info h4 {
+        body.light-mode .founder-info h3 {
             color: #111;
         }
 
@@ -658,41 +669,52 @@
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 30px;
+            gap: 40px;
             margin-bottom: 80px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding-bottom: 50px;
+        }
+
+        body.light-mode .stats-grid {
+            border-bottom-color: rgba(0, 0, 0, 0.05);
         }
 
         .stat-box {
-            background: rgba(15, 15, 15, 0.8);
-            border: 1px solid #333;
-            padding: 30px 20px;
-            border-radius: 10px;
-            text-align: center;
-            transition: transform 0.3s ease, border-color 0.3s ease;
+            background: transparent;
+            border: none;
+            padding: 0;
+            text-align: left;
+            transition: transform 0.3s var(--ease-smooth);
         }
 
         body.light-mode .stat-box {
-            background: rgba(255, 255, 255, 0.8);
-            border-color: #ddd;
+            background: transparent;
+            border: none;
         }
 
         .stat-box:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary);
+            transform: translateY(-4px);
         }
 
         .stat-number {
             font-family: var(--font-head);
-            font-size: 3rem;
-            color: var(--primary);
-            margin-bottom: 10px;
+            font-size: 3.5rem;
+            color: white;
+            margin-bottom: 8px;
+            line-height: 1;
+        }
+
+        body.light-mode .stat-number {
+            color: #111;
         }
 
         .stat-label {
-            font-size: 0.9rem;
+            font-size: 0.75rem;
             color: var(--silver-dim);
-            letter-spacing: 1px;
-            font-family: var(--font-head);
+            letter-spacing: 0.03em;
+            font-family: var(--font-roblox);
+            text-transform: uppercase;
+            font-weight: 700;
         }
 
         @media (max-width: 768px) {
@@ -743,7 +765,7 @@
 
         .skill-note {
             font-size: 0.75rem;
-            color: #888;
+            color: var(--silver-dim);
             font-style: italic;
         }
 
@@ -771,11 +793,11 @@
             height: 100%;
             background: var(--primary);
             border-radius: 4px;
-            width: 0;
-            /* Animated later via JS */
-            transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+            width: 100%;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 1.5s var(--ease-smooth);
             position: relative;
-            box-shadow: 0 0 10px var(--primary);
         }
 
         .roblox-id-container {
@@ -1051,22 +1073,26 @@
             align-items: center;
             cursor: pointer;
             z-index: 10;
-            transition: transform 0.4s var(--ease-smooth), opacity 0.4s;
-            box-shadow: 0 0 30px rgba(255, 0, 60, 0.4);
+            transition: transform 0.4s var(--ease-smooth), opacity 0.4s, background-color 0.3s;
+            border: 1px solid var(--primary);
+            background: rgba(10, 10, 10, 0.5);
             font-family: var(--font-head);
         }
 
         .bomb-trigger:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 50px rgba(255, 0, 60, 0.8);
+            transform: scale(1.05);
+            background: var(--primary);
+            color: #050505;
         }
 
         body.light-mode .bomb-trigger {
-            box-shadow: 0 0 30px rgba(0, 102, 204, 0.4);
+            background: rgba(255, 255, 255, 0.8);
+            border-color: var(--primary);
         }
 
         body.light-mode .bomb-trigger:hover {
-            box-shadow: 0 0 50px rgba(0, 102, 204, 0.8);
+            background: var(--primary);
+            color: #ffffff;
         }
 
         .bomb-trigger i {
@@ -1078,9 +1104,9 @@
             position: absolute;
             width: 130px;
             height: 130px;
-            background: rgba(15, 15, 15, 0.9);
+            background: rgba(15, 15, 15, 0.95);
             border: 1px solid var(--primary);
-            border-radius: 15px;
+            border-radius: 8px; /* Capped border-radius */
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -1094,30 +1120,28 @@
             transform: translate(var(--tx), var(--ty)) scale(0) rotate(-180deg);
             pointer-events: none;
             z-index: 5;
-            transition: transform 0.8s var(--ease-elastic), opacity 0.6s ease, background 0.3s, box-shadow 0.3s, border-color 0.5s ease;
-            box-shadow: inset 0 0 15px rgba(255, 0, 60, 0.1);
+            transition: transform 0.8s var(--ease-elastic), opacity 0.6s ease, background-color 0.3s, border-color 0.5s ease;
         }
 
         .archive-item:hover {
             background: var(--primary);
-            color: black;
+            color: #050505;
             z-index: 20;
             cursor: pointer;
-            box-shadow: 0 10px 40px rgba(255, 0, 60, 0.6);
         }
 
         .archive-item i {
             font-size: 2rem;
             margin-bottom: 10px;
             color: var(--primary);
-            transition: 0.3s;
+            transition: color 0.3s ease;
         }
 
         .archive-item:hover i {
-            color: black;
+            color: #050505;
         }
 
-        .archive-item h4 {
+        .archive-item h3 {
             font-family: var(--font-head);
             font-size: 0.85rem;
             line-height: 1.2;
@@ -1202,45 +1226,43 @@
 
         .modal-content {
             width: 90%;
-            max-width: 1000px;
+            max-width: 900px;
             height: 80vh;
-            background: #0a0a0a;
-            border: 1px solid var(--primary);
-            display: grid;
-            grid-template-rows: 60px 1fr 80px;
+            background: #0d0d10;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
             opacity: 0;
-            transform: scale(0.8) translateY(50px);
-            filter: blur(10px);
-            box-shadow: 0 0 50px rgba(255, 0, 60, 0.1);
-            transition: background 0.5s ease;
+            transform: scale(0.95);
+            box-shadow: 0 30px 90px rgba(0, 0, 0, 0.9);
+            transition: transform 0.4s var(--ease-smooth), opacity 0.4s var(--ease-smooth);
+            overflow: hidden;
         }
 
         .modal-overlay.open .modal-content {
-            animation: cyberPop 0.6s var(--ease-elastic) forwards;
+            opacity: 1;
+            transform: scale(1);
         }
 
-        @keyframes cyberPop {
-            to {
-                opacity: 1;
-                transform: scale(1) translateY(0);
-                filter: blur(0);
-            }
-        }
-
-        .modal-header,
-        .modal-footer {
-            background: #000;
-            padding: 0 30px;
+        .modal-header {
+            padding: 20px 30px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            border-bottom: 1px solid #222;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            background: transparent;
         }
 
         .modal-footer {
-            border-top: 1px solid #222;
-            border-bottom: none;
-            color: #888;
+            padding: 20px 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            background: transparent;
+            color: var(--silver-dim);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
 
         .modal-title {
@@ -1666,14 +1688,14 @@
         }
 
         .youtuber-card {
-            background: rgba(15, 15, 15, 0.8);
-            border: 1px solid #333;
-            border-radius: 12px;
-            padding: 15px;
+            background: rgba(20, 20, 22, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+            padding: 24px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s var(--ease-smooth), border-color 0.3s ease;
             position: relative;
             overflow: hidden;
             cursor: pointer;
@@ -1681,17 +1703,17 @@
 
         body.light-mode .youtuber-card {
             background: rgba(255, 255, 255, 0.8);
-            border-color: #ddd;
+            border-color: rgba(0, 0, 0, 0.08);
         }
 
         .youtuber-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-8px);
             border-color: var(--primary);
-            box-shadow: 0 10px 30px rgba(255, 0, 60, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
         }
 
         body.light-mode .youtuber-card:hover {
-            box-shadow: 0 10px 30px rgba(0, 102, 204, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
         }
 
         .youtuber-img-wrapper {
@@ -1713,14 +1735,7 @@
             width: 100%;
             height: auto;
             object-fit: contain;
-            transition: transform 0.5s ease;
-            filter: grayscale(30%);
             display: block;
-        }
-
-        .youtuber-card:hover .youtuber-img {
-            transform: scale(1.1);
-            filter: grayscale(0%);
         }
 
         .youtuber-name {
@@ -1923,8 +1938,7 @@
                     <span class="gradient-text">ROBLOX</span> <br>
                     <span class="outline" data-translate="hero_title_dev">Developer</span>
                 </h1>
-                <div data-translate="hero_desc"
-                    style="max-width: 500px; color: #888; line-height: 1.6; margin-bottom: 30px;">
+                <div data-translate="hero_desc" class="hero-desc">
                     Selamat Datang di Portofolio saya, <span class="text-primary" style="font-weight:bold">Nama Saya
                         Bachtiar / Adit, </span>dan sering di panggil <span class="text-primary"
                         style="font-weight:bold">Tahu bulat</span>
@@ -1950,7 +1964,6 @@
 
         <section id="about" class="section-padding">
             <div class="section-header">
-                <span class="section-num">01</span>
                 <h2 class="section-title hacker-text" data-value="IDENTITY" data-translate="about_title"
                     data-translate-attr='{"data-value": "about_title"}'>IDENTITY</h2>
             </div>
@@ -1977,19 +1990,19 @@
                             <div class="founder-card" data-hover>
                                 <img src="image/aihstudio.png" alt="AIH Studio">
                                 <div class="founder-info">
-                                    <h4>AIH STUDIO</h4>
+                                    <h3>AIH STUDIO</h3>
                                     <span data-translate="aih_studio_est">Est. 2023 • 400.000+ Members</span>
                                 </div>
                             </div>
                             <div class="founder-card" data-hover>
                                 <img src="image/aihgank.png" alt="AIH Gank">
                                 <div class="founder-info">
-                                    <h4>AIH GANK</h4>
+                                    <h3>AIH GANK</h3>
                                     <span data-translate="aih_gank_est">Est. 2025</span>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>        
                     <a href="#projects" class="btn-shine" data-translate="view_project"
                         style="display:inline-block; padding: 12px 30px; text-decoration: none; font-family: var(--font-head); font-size: 0.9rem; margin-top: 20px;"
                         data-hover>VIEW PROJECT</a>
@@ -2074,7 +2087,6 @@
             </div>
 
             <div class="section-header">
-                <span class="section-num">#</span>
                 <h2 class="section-title hacker-text" data-value="MY_SKILL" data-translate="skills_title"
                     data-translate-attr='{"data-value": "skills_title"}'>MY_SKILLS</h2>
             </div>
@@ -2162,7 +2174,6 @@
 
         <section id="projects" class="section-padding">
             <div class="section-header">
-                <span class="section-num">02</span>
                 <h2 class="section-title hacker-text" data-value="COOL_RIGHT?" data-translate="projects_title"
                     data-translate-attr='{"data-value": "projects_title"}'>MY_PROJECT</h2>
             </div>
@@ -2180,7 +2191,7 @@
                     data-desc="Design Collab pertama saya yang saya buat dan langsung di setujui"
                     data-images='["image/Archives/FristCollab/Screenshot 2026-02-16 063438.png", "image/Archives/FristCollab/Screenshot 2026-03-20 122642.png", "image/Archives/FristCollab/Screenshot 2026-03-20 124802.png", "image/Archives/FristCollab/Screenshot 2026-03-24 192447.png", "image/Archives/FristCollab/Screenshot 2026-03-25 135121.png", "image/Archives/FristCollab/Screenshot 2026-03-25 181701.png"]'>
                     <i class="fa-solid fa-map-location-dot"></i>
-                    <h4>FIRST_COLLAB</h4>
+                    <h3>FIRST_COLLAB</h3>
                 </div>
 
                 <div class="archive-item" data-hover
@@ -2188,7 +2199,7 @@
                     data-title="GUI / UI UX" data-desc="Saya tidak jago di gui, dan saya masih belajar sampai sekarang"
                     data-images='["image/Archives/UiUx/Screenshot 2026-03-30 151603.png", "image/Archives/UiUx/Screenshot 2026-03-30 151850.png", "image/Archives/UiUx/Screenshot 2026-03-30 151858.png", "image/Archives/UiUx/Screenshot 2026-03-30 151923.png", "image/Archives/UiUx/Screenshot 2026-03-30 152407.png", "image/Archives/UiUx/Screenshot 2026-06-13 000835.png", "image/Archives/UiUx/Screenshot 2026-06-13 000847.png", "image/Archives/UiUx/Screenshot 2026-06-13 000854.png", "image/Archives/UiUx/Screenshot 2026-06-13 000859.png"]'>
                     <i class="fa-solid fa-layer-group"></i>
-                    <h4>GUI / UI UX</h4>
+                    <h3>GUI / UI UX</h3>
                 </div>
 
                 <div class="archive-item" data-hover
@@ -2196,7 +2207,7 @@
                     data-desc="ini adalah build saya (saya suka menggunakan free model)"
                     data-images='["image/Archives/Build/Screenshot 2025-12-18 211443.png", "image/Archives/Build/Screenshot 2025-12-18 211541.png", "image/Archives/Build/Screenshot 2025-12-18 211550.png", "image/Archives/Build/Screenshot 2025-12-18 211604.png", "image/Archives/Build/Screenshot 2026-02-13 180945.png", "image/Archives/Build/Screenshot 2026-02-13 181048.png", "image/Archives/Build/Screenshot 2026-02-14 115720.png", "image/Archives/Build/Screenshot 2026-02-14 115733.png", "image/Archives/Build/Screenshot 2026-02-14 115826.png", "image/Archives/Build/Screenshot 2026-02-14 205657.png", "image/Archives/Build/Screenshot 2026-02-15 070757.png", "image/Archives/Build/Screenshot 2026-03-30 151036.png", "image/Archives/Build/Screenshot 2026-03-30 151049.png", "image/Archives/Build/Screenshot 2026-03-30 161640.png", "image/Archives/Build/Screenshot 2026-03-30 161745.png", "image/Archives/Build/Screenshot 2026-05-19 223439.png", "image/Archives/Build/Screenshot 2026-05-19 223450.png", "image/Archives/Build/Screenshot 2026-05-19 223550.png", "image/Archives/Build/Screenshot 2026-05-19 231123.png"]'>
                     <i class="fa-solid fa-cube"></i>
-                    <h4>BUILD</h4>
+                    <h3>BUILD</h3>
                 </div>
 
                 <div class="archive-item" data-hover
@@ -2204,7 +2215,7 @@
                     data-desc="Beberapa Map dari 2021-2026 ( ada yang sudah terjual )"
                     data-images='["image/Archives/MyWork/Screenshot 2026-03-30 155149.png", "image/Archives/MyWork/Screenshot 2026-03-30 155213.png", "image/Archives/MyWork/Screenshot 2026-03-30 155229.png", "image/Archives/MyWork/Screenshot 2026-03-30 155257.png", "image/Archives/MyWork/Screenshot 2026-03-30 155356.png", "image/Archives/MyWork/Screenshot 2026-06-13 000942.png"]'>
                     <i class="fa-solid fa-gamepad"></i>
-                    <h4>MY WORK</h4>
+                    <h3>MY WORK</h3>
                 </div>
 
                 <div class="archive-item" data-hover
@@ -2212,7 +2223,7 @@
                     data-desc="Random Gallery dari karya karya saya"
                     data-images='["image/Archives/Gallery/Cuplikan layar 2025-08-30 115417.png", "image/Archives/Gallery/Cuplikan layar 2025-08-30 115529.png", "image/Archives/Gallery/Cuplikan layar 2025-09-20 130632.png", "image/Archives/Gallery/Cuplikan layar 2025-09-20 130650.png", "image/Archives/Gallery/Cuplikan layar 2025-09-25 220621.png", "image/Archives/Gallery/Cuplikan layar 2025-10-06 174451.png", "image/Archives/Gallery/Cuplikan layar 2025-10-08 072736.png", "image/Archives/Gallery/Screenshot 2025-11-18 191212.png", "image/Archives/Gallery/Screenshot 2026-01-12 172237.png", "image/Archives/Gallery/Screenshot 2026-01-30 175806.png", "image/Archives/Gallery/Screenshot 2026-02-16 063438.png"]'>
                     <i class="fa-solid fa-wand-magic-sparkles"></i>
-                    <h4>GALLERY</h4>
+                    <h3>GALLERY</h3>
                 </div>
 
                 <div class="archive-item" data-hover
@@ -2221,7 +2232,7 @@
                     data-desc="Saya memiliki kebiasaan unik dalam pengembangan Debugging. Saya selalu mengintegrasikan sistem print-tracking dan error-code logging yang detail di setiap modul penting. "
                     data-images='["image/Archives/LuaUCode/Screenshot 2026-06-13 001441.png", "image/Archives/LuaUCode/Screenshot 2026-06-13 001454.png", "image/Archives/LuaUCode/Screenshot 2026-06-13 001607.png", "image/Archives/LuaUCode/Screenshot 2026-06-13 001644.png", "image/Archives/LuaUCode/Screenshot 2026-06-13 001700.png", "image/Archives/LuaUCode/Screenshot 2026-06-13 001711.png", "image/Archives/LuaUCode/Screenshot 2026-06-13 001747.png"]'>
                     <i class="fa-solid fa-code"></i>
-                    <h4>NPC_MANAGER</h4>
+                    <h3>NPC_MANAGER</h3>
                 </div>
 
                 <div class="reset-bomb" id="reset-btn" data-hover>
@@ -2249,7 +2260,6 @@
 
         <section id="youtubers" class="section-padding">
             <div class="section-header">
-                <span class="section-num">03</span>
                 <h2 class="section-title hacker-text" data-value="HALL_OF_FAME" data-translate="youtubers_title"
                     data-translate-attr='{"data-value": "youtubers_title"}'>HALL_OF_FAME</h2>
             </div>
@@ -2320,7 +2330,6 @@
 
         <section id="uplink" class="section-padding">
             <div class="section-header">
-                <span class="section-num">04</span>
                 <h2 class="section-title hacker-text" data-value="UPLINK" data-translate="uplink_title"
                     data-translate-attr='{"data-value": "uplink_title"}'>UPLINK</h2>
             </div>
@@ -2611,14 +2620,14 @@
         // --- EFEK MAGNIFICATION MAC OS DOCK (SMOOTH 60FPS) ---
         const dockItemsObj = document.querySelectorAll('.dock-item');
         const dockPanel = document.getElementById('mac-dock');
-        const maxScale = 1.5;
-        const maxDist = 120;
+        const maxScale = 1.4;
+        const maxDist = 100;
 
         if (window.innerWidth > 768) {
             dockPanel.addEventListener('mousemove', (e) => {
                 requestAnimationFrame(() => {
                     dockItemsObj.forEach(item => {
-                        item.style.transition = '';
+                        item.style.transition = 'none';
 
                         const rect = item.getBoundingClientRect();
                         const centerX = rect.left + rect.width / 2;
@@ -2626,10 +2635,8 @@
 
                         if (dist < maxDist) {
                             const scale = 1 + (maxScale - 1) * (1 - dist / maxDist);
-                            item.style.width = `${50 * scale}px`;
-                            item.style.height = `${50 * scale}px`;
-                            item.style.margin = `0 ${5 * scale}px`;
-                            item.style.fontSize = `${1.2 * (scale - 0.2)}rem`;
+                            const translateY = -10 * (scale - 1);
+                            item.style.transform = `translateY(${translateY}px) scale(${scale})`;
                         } else {
                             resetDockItem(item);
                         }
@@ -2640,17 +2647,14 @@
             dockPanel.addEventListener('mouseleave', () => {
                 requestAnimationFrame(() => {
                     dockItemsObj.forEach(item => {
-                        item.style.transition = 'width 0.25s ease-out, height 0.25s ease-out, margin 0.25s ease-out, font-size 0.25s ease-out';
+                        item.style.transition = 'transform 0.25s cubic-bezier(0.16, 1, 0.3, 1)';
                         resetDockItem(item);
                     });
                 });
             });
 
             function resetDockItem(item) {
-                item.style.width = '50px';
-                item.style.height = '50px';
-                item.style.margin = '0px';
-                item.style.fontSize = '1.2rem';
+                item.style.transform = '';
             }
         }
 
@@ -2760,7 +2764,8 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const el = entry.target;
-                    el.style.width = el.getAttribute('data-width');
+                    const widthVal = parseFloat(el.getAttribute('data-width')) || 0;
+                    el.style.transform = `scaleX(${widthVal / 100})`;
                     observer.unobserve(el);
                 }
             });
