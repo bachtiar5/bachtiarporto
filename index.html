@@ -2020,7 +2020,7 @@
 
                             <div class="rbx-avatar-section">
                                 <div class="rbx-avatar-wrapper">
-                                    <img src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-A9C907725D4796C61A65CFC47D4149DB-Png/150/150/AvatarHeadshot/Webp/noFilter"
+                                    <img id="rbx-avatar-img" src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-A9C907725D4796C61A65CFC47D4149DB-Png/150/150/AvatarHeadshot/Webp/noFilter"
                                         alt="Avatar" class="rbx-avatar" loading="lazy">
                                     <div class="rbx-online-dot"></div>
                                 </div>
@@ -2034,25 +2034,25 @@
 
                             <div class="rbx-info-section">
                                 <div class="rbx-display-name">
-                                    TahuBulat
-                                    <svg class="rbx-verified-icon" viewBox="0 0 24 24">
-                                        <path
+                                    <span id="rbx-display-name">TahuBulat</span>
+                                    <svg class="rbx-verified-icon" id="rbx-verified-icon" viewBox="0 0 24 24">
+                                        <path fill="#00A2FF"
                                             d="M11.233 1.841a1.5 1.5 0 0 1 1.534 0l1.696 1a1.5 1.5 0 0 0 1.058.196l1.93-.418a1.5 1.5 0 0 1 1.764 1.107l.542 1.898a1.5 1.5 0 0 0 .807.973l1.785.836a1.5 1.5 0 0 1 .808 1.921l-.736 1.832a1.5 1.5 0 0 0 0 1.074l.736 1.832a1.5 1.5 0 0 1-.808 1.921l-1.785.836a1.5 1.5 0 0 0-.807.973l-.542 1.898a1.5 1.5 0 0 1-1.764 1.107l-1.93-.418a1.5 1.5 0 0 0-1.058.196l-1.696 1a1.5 1.5 0 0 1-1.534 0l-1.696-1a1.5 1.5 0 0 0-1.058-.196l-1.93.418a1.5 1.5 0 0 1-1.764-1.107l-.542-1.898a1.5 1.5 0 0 0-.807-.973l-1.785-.836a1.5 1.5 0 0 1-.808-1.921l.736-1.832a1.5 1.5 0 0 0 0-1.074l-.736-1.832a1.5 1.5 0 0 1 .808-1.921l1.785-.836a1.5 1.5 0 0 0 .807-.973l.542-1.898a1.5 1.5 0 0 1 1.764-1.107l1.93.418a1.5 1.5 0 0 0 1.058-.196l1.696-1Zm-1.127 12.33 5.484-5.485a.75.75 0 1 0-1.06-1.061l-4.954 4.954-2.454-2.454a.75.75 0 1 0-1.06 1.06l2.984 2.985a.75.75 0 0 0 1.06 0Z">
                                         </path>
                                     </svg>
                                 </div>
-                                <div class="rbx-username">@Synxsixz</div>
+                                <div class="rbx-username" id="rbx-username">@Synxsixz</div>
                                 <div class="rbx-bio" data-translate="rbx_bio">Solo dev | 2021 - 2026 | Total Visit : 8m+
                                     |
                                     Founder Aih Gank / Aih Studio
                                 </div>
 
                                 <div class="rbx-stats">
-                                    <div class="rbx-stat"><span class="rbx-stat-num">46</span><span
+                                    <div class="rbx-stat"><span class="rbx-stat-num" id="rbx-friends-count">46</span><span
                                             class="rbx-stat-text" data-translate="rbx_friends">Friends</span></div>
-                                    <div class="rbx-stat"><span class="rbx-stat-num">862</span><span
+                                    <div class="rbx-stat"><span class="rbx-stat-num" id="rbx-followers-count">862</span><span
                                             class="rbx-stat-text" data-translate="rbx_followers">Followers</span></div>
-                                    <div class="rbx-stat"><span class="rbx-stat-num">1</span><span class="rbx-stat-text"
+                                    <div class="rbx-stat"><span class="rbx-stat-num" id="rbx-following-count">1</span><span class="rbx-stat-text"
                                             data-translate="rbx_following">Following</span></div>
                                 </div>
                             </div>
@@ -3008,6 +3008,78 @@
             }
         });
 
+        // Roblox API Integration via Proxy
+        async function fetchRobloxData() {
+            const userId = '2052284827';
+            const formatter = new Intl.NumberFormat('en-US', { notation: "compact", maximumFractionDigits: 1 });
+            
+            try {
+                // Fetch User Info (DisplayName, Username, VerifiedBadge)
+                fetch(`https://users.roproxy.com/v1/users/${userId}`)
+                    .then(res => res.json())
+                    .then(data => {
+                        if(data.displayName) document.getElementById('rbx-display-name').textContent = data.displayName;
+                        if(data.name) document.getElementById('rbx-username').textContent = '@' + data.name;
+                        
+                        // Handle Verified Badge visibility
+                        const badgeEl = document.getElementById('rbx-verified-icon');
+                        if (badgeEl && data.hasVerifiedBadge === false) {
+                            badgeEl.style.display = 'none';
+                        }
+                    })
+                    .catch(e => console.error("Error fetching user info:", e));
+
+                // Fetch Avatar Thumbnail
+                fetch(`https://thumbnails.roproxy.com/v1/users/avatar-headshot?userIds=${userId}&size=150x150&format=Png&isCircular=false`)
+                    .then(res => res.json())
+                    .then(data => {
+                        if(data.data && data.data[0] && data.data[0].imageUrl) {
+                            document.getElementById('rbx-avatar-img').src = data.data[0].imageUrl;
+                        }
+                    })
+                    .catch(e => console.error("Error fetching avatar:", e));
+
+                // Fetch Friends Count
+                fetch(`https://friends.roproxy.com/v1/users/${userId}/friends/count`)
+                    .then(res => res.json())
+                    .then(data => {
+                        if(data.count !== undefined) {
+                            document.getElementById('rbx-friends-count').textContent = formatter.format(data.count);
+                        }
+                    })
+                    .catch(e => console.error("Error fetching friends:", e));
+
+                // Fetch Followers Count
+                fetch(`https://friends.roproxy.com/v1/users/${userId}/followers/count`)
+                    .then(res => res.json())
+                    .then(data => {
+                        if(data.count !== undefined) {
+                            document.getElementById('rbx-followers-count').textContent = formatter.format(data.count);
+                        }
+                    })
+                    .catch(e => console.error("Error fetching followers:", e));
+
+                // Fetch Following Count
+                fetch(`https://friends.roproxy.com/v1/users/${userId}/followings/count`)
+                    .then(res => res.json())
+                    .then(data => {
+                        if(data.count !== undefined) {
+                            document.getElementById('rbx-following-count').textContent = formatter.format(data.count);
+                        }
+                    })
+                    .catch(e => console.error("Error fetching following:", e));
+
+            } catch(e) {
+                console.error("Failed to fetch Roblox data:", e);
+            }
+        }
+
+        // Call the function when DOM is loaded
+        if(document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', fetchRobloxData);
+        } else {
+            fetchRobloxData();
+        }
     </script>
 </body>
 
