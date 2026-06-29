@@ -2721,7 +2721,7 @@
 
         // --- SCROLL ANIMATIONS (STATS & SKILLS) ---
         const animateStats = document.querySelectorAll('.stat-number');
-        const animateSkills = document.querySelectorAll('.skill-bar-fill');
+        const animateSkillsBg = document.querySelectorAll('.skill-bar-bg');
 
         const observerOptions = {
             threshold: 0.5
@@ -2764,14 +2764,17 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const el = entry.target;
-                    const widthVal = parseFloat(el.getAttribute('data-width')) || 0;
-                    el.style.transform = `scaleX(${widthVal / 100})`;
+                    const fill = el.querySelector('.skill-bar-fill');
+                    if (fill) {
+                        const widthVal = parseFloat(fill.getAttribute('data-width')) || 0;
+                        fill.style.transform = `scaleX(${widthVal / 100})`;
+                    }
                     observer.unobserve(el);
                 }
             });
         }, observerOptions);
 
-        animateSkills.forEach(skill => skillsObserver.observe(skill));
+        animateSkillsBg.forEach(skill => skillsObserver.observe(skill));
 
         // --- SPOTLIGHT TEXT HOVER ---
         const aboutDesc = document.querySelector('.about-desc');
@@ -3013,61 +3016,82 @@
             const userId = '2052284827';
             const formatter = new Intl.NumberFormat('en-US', { notation: "compact", maximumFractionDigits: 1 });
             
+            // Helper to fetch with fallback proxies
+            async function fetchWithFallback(endpoints) {
+                for (let url of endpoints) {
+                    try {
+                        const res = await fetch(url);
+                        if (res.ok) {
+                            return await res.json();
+                        }
+                    } catch (e) {
+                        // ignore and try next
+                    }
+                }
+                throw new Error('All proxies failed');
+            }
+
             try {
                 // Fetch User Info (DisplayName, Username, VerifiedBadge)
-                fetch(`https://users.roproxy.com/v1/users/${userId}`)
-                    .then(res => res.json())
-                    .then(data => {
+                fetchWithFallback([
+                    `https://users.roproxy.com/v1/users/${userId}`,
+                    `https://corsproxy.io/?https://users.roblox.com/v1/users/${userId}`
+                ]).then(data => {
+                    if(data.displayName) document.getElementById('rbx-display-name').textContent = data.displayName;
+                    if(data.name) document.getElementById('rbx-username').textContent = '@' + data.name;
+                    const badgeEl = document.getElementById('rbx-verified-icon');
+                    if (badgeEl && data.hasVerifiedBadge === false) {
+                        badgeEl.style.display = 'none';
+                    }
+                    localStorage.setItem('rbx_user_info', JSON.stringify(data));
+                }).catch(() => {
+                    const cached = localStorage.getItem('rbx_user_info');
+                    if (cached) {
+                        const data = JSON.parse(cached);
                         if(data.displayName) document.getElementById('rbx-display-name').textContent = data.displayName;
                         if(data.name) document.getElementById('rbx-username').textContent = '@' + data.name;
-                        
-                        // Handle Verified Badge visibility
                         const badgeEl = document.getElementById('rbx-verified-icon');
                         if (badgeEl && data.hasVerifiedBadge === false) {
                             badgeEl.style.display = 'none';
                         }
-                    })
-                    .catch(e => console.error("Error fetching user info:", e));
+                    }
+                });
 
                 // Fetch Avatar Thumbnail
-                fetch(`https://thumbnails.roproxy.com/v1/users/avatar-headshot?userIds=${userId}&size=150x150&format=Png&isCircular=false`)
-                    .then(res => res.json())
-                    .then(data => {
-                        if(data.data && data.data[0] && data.data[0].imageUrl) {
-                            document.getElementById('rbx-avatar-img').src = data.data[0].imageUrl;
-                        }
-                    })
-                    .catch(e => console.error("Error fetching avatar:", e));
+                fetchWithFallback([
+                    `https://corsproxy.io/?https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds=${userId}&size=150x150&format=Png&isCircular=false`,
+                    `https://thumbnails.roproxy.com/v1/users/avatar-headshot?userIds=${userId}&size=150x150&format=Png&isCircular=false`
+                ]).then(data => {
+                    if(data.data && data.data[0] && data.data[0].imageUrl) {
+                        document.getElementById('rbx-avatar-img').src = data.data[0].imageUrl;
+                        localStorage.setItem('rbx_avatar', data.data[0].imageUrl);
+                    }
+                }).catch(() => {
+                    const cached = localStorage.getItem('rbx_avatar');
+                    if (cached) document.getElementById('rbx-avatar-img').src = cached;
+                });
 
-                // Fetch Friends Count
-                fetch(`https://friends.roproxy.com/v1/users/${userId}/friends/count`)
-                    .then(res => res.json())
-                    .then(data => {
+                // Helper for friends/followers/following
+                function fetchCount(type, elementId, storageKey) {
+                    fetchWithFallback([
+                        `https://friends.roproxy.com/v1/users/${userId}/${type}/count`,
+                        `https://corsproxy.io/?https://friends.roblox.com/v1/users/${userId}/${type}/count`
+                    ]).then(data => {
                         if(data.count !== undefined) {
-                            document.getElementById('rbx-friends-count').textContent = formatter.format(data.count);
+                            document.getElementById(elementId).textContent = formatter.format(data.count);
+                            localStorage.setItem(storageKey, data.count);
                         }
-                    })
-                    .catch(e => console.error("Error fetching friends:", e));
+                    }).catch(() => {
+                        const cached = localStorage.getItem(storageKey);
+                        if (cached !== null) {
+                            document.getElementById(elementId).textContent = formatter.format(parseInt(cached));
+                        }
+                    });
+                }
 
-                // Fetch Followers Count
-                fetch(`https://friends.roproxy.com/v1/users/${userId}/followers/count`)
-                    .then(res => res.json())
-                    .then(data => {
-                        if(data.count !== undefined) {
-                            document.getElementById('rbx-followers-count').textContent = formatter.format(data.count);
-                        }
-                    })
-                    .catch(e => console.error("Error fetching followers:", e));
-
-                // Fetch Following Count
-                fetch(`https://friends.roproxy.com/v1/users/${userId}/followings/count`)
-                    .then(res => res.json())
-                    .then(data => {
-                        if(data.count !== undefined) {
-                            document.getElementById('rbx-following-count').textContent = formatter.format(data.count);
-                        }
-                    })
-                    .catch(e => console.error("Error fetching following:", e));
+                fetchCount('friends', 'rbx-friends-count', 'rbx_friends');
+                fetchCount('followers', 'rbx-followers-count', 'rbx_followers');
+                fetchCount('followings', 'rbx-following-count', 'rbx_following');
 
             } catch(e) {
                 console.error("Failed to fetch Roblox data:", e);
