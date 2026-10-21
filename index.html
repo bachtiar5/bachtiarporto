@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bachtiar Aditya — Roblox Developer &amp; Level Designer</title>
-  <meta name="description" content="Portofolio personal Bachtiar Aditya (Tahu bulat) — Roblox Developer, Level Designer, dan Map Architect. Fokus pada worldbuilding imersif dan optimasi gameplay.">
+  <meta name="description" content="Portofolio resmi Bachtiar Aditya (Tahu bulat) — Roblox Developer, Level Designer &amp; Map Architect.">
   <meta name="author" content="Bachtiar Aditya">
   <link rel="icon" type="image/png" href="image/mascot.png">
 
@@ -13,252 +13,1344 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* ==========================================================================
+       BULLETPROOF MONOCHROME ROBLOX DEVELOPER PORTFOLIO STYLES
+       ========================================================================== */
+    :root {
+      --bg-base: #0b0c0e;
+      --bg-surface: #131418;
+      --bg-card: #18191f;
+      --bg-card-hover: #1f2129;
+      
+      --border-subtle: #262830;
+      --border-medium: #383a45;
+      --border-highlight: #525564;
+
+      --text-white: #ffffff;
+      --text-main: #e6e7eb;
+      --text-secondary: #9ea2ae;
+      --text-muted: #666a75;
+
+      --accent: #ffffff;
+      --accent-contrast: #0b0c0e;
+
+      --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 14px;
+      --radius-pill: 9999px;
+
+      --container-max: 1120px;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      color-scheme: dark;
+    }
+
+    body {
+      background-color: var(--bg-base);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Authentic Roblox Studio Baseplate Studs Grid */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image: 
+        radial-gradient(circle at center, rgba(255, 255, 255, 0.08) 1.2px, transparent 1.2px),
+        linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+      background-size: 32px 32px;
+      background-position: 0 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Container Utility */
+    .container {
+      width: 100%;
+      max-width: var(--container-max);
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 24px;
+      padding-right: 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Navigation Bar */
+    .site-nav {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      background-color: rgba(11, 12, 14, 0.9);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-subtle);
+      z-index: 50;
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text-white);
+    }
+
+    .brand-name {
+      font-weight: 700;
+      font-size: 1.05rem;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-badge {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 2px 7px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      color: var(--text-secondary);
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .nav-menu-link {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }
+
+    .nav-menu-link:hover {
+      color: var(--text-white);
+    }
+
+    /* Discord Copy Pill in Navbar */
+    .discord-nav-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 14px;
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-pill);
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-white);
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .discord-nav-btn:hover {
+      background-color: var(--bg-card);
+      border-color: var(--border-medium);
+      transform: translateY(-1px);
+    }
+
+    .discord-nav-btn svg {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+      flex-shrink: 0;
+    }
+
+    /* Hero Section */
+    .hero-section {
+      padding-top: 64px;
+      padding-bottom: 50px;
+    }
+
+    .hero-layout {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .hero-intro-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-pill);
+      font-family: var(--font-mono);
+      font-size: 0.775rem;
+      color: var(--text-secondary);
+      margin-bottom: 20px;
+    }
+
+    .status-dot-active {
+      width: 6px;
+      height: 6px;
+      background-color: var(--text-white);
+      border-radius: 50%;
+      box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+    }
+
+    .hero-title {
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      font-weight: 800;
+      color: var(--text-white);
+      letter-spacing: -0.035em;
+      line-height: 1.15;
+      margin-bottom: 14px;
+    }
+
+    .hero-subtitle {
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      margin-bottom: 18px;
+    }
+
+    .hero-bio {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--text-secondary);
+      max-width: 60ch;
+      margin-bottom: 28px;
+    }
+
+    /* Focused Discord Action Bar */
+    .discord-action-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-md);
+      padding: 10px 14px 10px 18px;
+      max-width: 440px;
+      width: 100%;
+      margin-bottom: 18px;
+    }
+
+    .discord-label-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .discord-label-sub {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .discord-handle-val {
+      font-family: var(--font-mono);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-white);
+    }
+
+    .btn-action-copy {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 16px;
+      background-color: var(--text-white);
+      color: var(--accent-contrast);
+      border: none;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-sans);
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .btn-action-copy:hover {
+      background-color: #dcdde1;
+      transform: translateY(-1px);
+    }
+
+    .btn-action-copy:active {
+      transform: scale(0.97);
+    }
+
+    .btn-action-copy.copied {
+      background-color: #272930;
+      color: var(--text-white);
+      border: 1px solid var(--border-medium);
+    }
+
+    .hero-sublinks {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 0.875rem;
+    }
+
+    .hero-sublink {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.15s ease;
+    }
+
+    .hero-sublink:hover {
+      color: var(--text-white);
+    }
+
+    /* Mascot Presentation (Clean, Unframed, Standing Naturally) */
+    .hero-mascot-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .mascot-stage {
+      position: relative;
+      width: 100%;
+      max-width: 300px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .mascot-img-clean {
+      width: 100%;
+      height: auto;
+      max-height: 350px;
+      object-fit: contain;
+      filter: drop-shadow(0 14px 28px rgba(0, 0, 0, 0.6));
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .mascot-stage:hover .mascot-img-clean {
+      transform: translateY(-4px) scale(1.02);
+    }
+
+    .mascot-shadow-ground {
+      width: 60%;
+      height: 20px;
+      background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.8) 0%, transparent 70%);
+      margin-top: -10px;
+    }
+
+    .mascot-caption-text {
+      margin-top: 10px;
+      font-family: var(--font-mono);
+      font-size: 0.775rem;
+      color: var(--text-muted);
+    }
+
+    /* Impact Metrics Strip */
+    .metrics-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 30px 0;
+      margin-top: 48px;
+    }
+
+    .metric-col {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .metric-stat {
+      font-family: var(--font-mono);
+      font-size: 1.9rem;
+      font-weight: 800;
+      color: var(--text-white);
+      line-height: 1.1;
+    }
+
+    .metric-label {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-main);
+      margin-top: 4px;
+    }
+
+    .metric-desc {
+      font-size: 0.785rem;
+      color: var(--text-muted);
+    }
+
+    /* Section Headers */
+    .section-wrap {
+      padding-top: 96px;
+      padding-bottom: 20px;
+    }
+
+    .section-tag-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .tag-square {
+      width: 6px;
+      height: 6px;
+      background-color: var(--text-white);
+      border-radius: 1px;
+    }
+
+    .tag-title {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-secondary);
+    }
+
+    .section-headline-bar {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 20px;
+      margin-bottom: 36px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .section-heading-h2 {
+      font-size: clamp(1.75rem, 3.2vw, 2.4rem);
+      font-weight: 700;
+      color: var(--text-white);
+      letter-spacing: -0.03em;
+    }
+
+    .section-lead-text {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      max-width: 54ch;
+      margin-top: 4px;
+    }
+
+    /* Category Filter Tabs */
+    .filter-tabs {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .tab-btn {
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      padding: 7px 14px;
+      border-radius: var(--radius-pill);
+      font-family: var(--font-sans);
+      font-size: 0.825rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .tab-btn:hover {
+      color: var(--text-white);
+      border-color: var(--border-medium);
+    }
+
+    .tab-btn.active {
+      background-color: var(--text-white);
+      color: var(--accent-contrast);
+      border-color: var(--text-white);
+    }
+
+    /* Projects Grid - 16:9 Uncropped Visual Cards */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+    }
+
+    .project-item {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .project-item:hover {
+      border-color: var(--border-medium);
+      transform: translateY(-2px);
+    }
+
+    .project-media-container {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background-color: #050608;
+      cursor: pointer;
+      overflow: hidden;
+    }
+
+    .project-media-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: filter 0.2s ease;
+    }
+
+    .media-hover-overlay {
+      position: absolute;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    .project-media-container:hover .media-hover-overlay {
+      opacity: 1;
+    }
+
+    .hover-badge {
+      padding: 7px 14px;
+      background-color: rgba(11, 12, 14, 0.85);
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-pill);
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-white);
+      backdrop-filter: blur(8px);
+    }
+
+    .project-body-content {
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .project-category-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+
+    .project-cat-tag {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .project-count-tag {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .project-name {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-white);
+      margin-bottom: 8px;
+    }
+
+    .project-desc-text {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
+      margin-bottom: 18px;
+      flex-grow: 1;
+    }
+
+    .project-footer-bar {
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    .btn-gallery-open {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: none;
+      border: 1px solid var(--border-subtle);
+      padding: 7px 14px;
+      border-radius: var(--radius-sm);
+      color: var(--text-white);
+      font-family: var(--font-sans);
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .btn-gallery-open:hover {
+      background-color: var(--text-white);
+      color: var(--accent-contrast);
+      border-color: var(--text-white);
+    }
+
+    /* Creators Showcase (Clean uncropped layout) */
+    .creators-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .creator-item-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 18px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      transition: border-color 0.2s ease;
+    }
+
+    .creator-item-card:hover {
+      border-color: var(--border-medium);
+    }
+
+    .creator-photo-square {
+      width: 68px;
+      height: 68px;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      background-color: #050608;
+      border: 1px solid var(--border-subtle);
+      flex-shrink: 0;
+    }
+
+    .creator-photo-square img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .creator-meta-block {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .creator-badge-honor {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 2px;
+    }
+
+    .creator-full-name {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-white);
+      margin-bottom: 2px;
+    }
+
+    .creator-play-note {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      line-height: 1.4;
+    }
+
+    /* About Section */
+    .about-grid-two {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+    }
+
+    .about-card-info h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-white);
+      margin-bottom: 10px;
+    }
+
+    .about-card-info p {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: var(--text-secondary);
+      margin-bottom: 14px;
+    }
+
+    .studio-mention-box {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .studio-logo-pic {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-sm);
+      object-fit: cover;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .studio-text-meta h4 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-white);
+      margin-bottom: 2px;
+    }
+
+    .studio-text-meta p {
+      font-family: var(--font-mono);
+      font-size: 0.785rem;
+      color: var(--text-muted);
+      margin-bottom: 0;
+    }
+
+    /* Dedicated Discord Contact Section */
+    .contact-banner-card {
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-lg);
+      padding: 50px 36px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 40px;
+      margin-bottom: 80px;
+      position: relative;
+    }
+
+    .contact-banner-card h2 {
+      font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+      font-weight: 800;
+      color: var(--text-white);
+      letter-spacing: -0.03em;
+      margin-bottom: 10px;
+    }
+
+    .contact-banner-card p {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      max-width: 52ch;
+      margin-bottom: 28px;
+    }
+
+    .contact-discord-pill {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background-color: var(--bg-base);
+      border: 1px solid var(--border-highlight);
+      border-radius: var(--radius-pill);
+      padding: 8px 12px 8px 22px;
+      max-width: 420px;
+      width: 100%;
+    }
+
+    .contact-handle-str {
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--text-white);
+      flex-grow: 1;
+      text-align: left;
+    }
+
+    .btn-contact-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 20px;
+      background-color: var(--text-white);
+      color: var(--accent-contrast);
+      border: none;
+      border-radius: var(--radius-pill);
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .btn-contact-action:hover {
+      background-color: #dcdde1;
+      transform: scale(1.02);
+    }
+
+    .btn-contact-action:active {
+      transform: scale(0.97);
+    }
+
+    .btn-contact-action.copied {
+      background-color: #272930;
+      color: var(--text-white);
+      border: 1px solid var(--border-medium);
+    }
+
+    .roblox-link-small {
+      margin-top: 20px;
+      font-family: var(--font-mono);
+      font-size: 0.825rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }
+
+    .roblox-link-small:hover {
+      color: var(--text-white);
+    }
+
+    /* Footer */
+    .site-footer {
+      border-top: 1px solid var(--border-subtle);
+      padding: 30px 0;
+    }
+
+    .footer-flex {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .footer-copy-text {
+      font-size: 0.825rem;
+      color: var(--text-muted);
+    }
+
+    .footer-top-anchor {
+      font-size: 0.825rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }
+
+    .footer-top-anchor:hover {
+      color: var(--text-white);
+    }
+
+    /* Gallery Fullscreen Modal (Zero Cropping) */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background-color: rgba(5, 6, 8, 0.94);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      z-index: 100;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    .modal-backdrop.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .modal-box {
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-md);
+      width: 100%;
+      max-width: 940px;
+      max-height: 92vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8);
+    }
+
+    .modal-header-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .modal-title-text {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-white);
+    }
+
+    .modal-btn-dismiss {
+      background: none;
+      border: none;
+      color: var(--text-secondary);
+      font-size: 1.4rem;
+      cursor: pointer;
+      padding: 4px 8px;
+      border-radius: var(--radius-sm);
+      line-height: 1;
+      transition: color 0.15s ease;
+    }
+
+    .modal-btn-dismiss:hover {
+      color: var(--text-white);
+    }
+
+    .modal-viewport {
+      position: relative;
+      background-color: #050608;
+      width: 100%;
+      min-height: 380px;
+      max-height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 12px;
+    }
+
+    .modal-image-element {
+      max-width: 100%;
+      max-height: 58vh;
+      object-fit: contain; /* Always uncropped */
+      display: block;
+    }
+
+    .modal-arrow-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(11, 12, 14, 0.8);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-white);
+      width: 42px;
+      height: 42px;
+      border-radius: var(--radius-pill);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1.1rem;
+      transition: all 0.15s ease;
+    }
+
+    .modal-arrow-btn:hover {
+      background-color: var(--text-white);
+      color: var(--accent-contrast);
+    }
+
+    .modal-prev-btn { left: 16px; }
+    .modal-next-btn { right: 16px; }
+
+    .modal-bottom-row {
+      padding: 14px 20px;
+      border-top: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .modal-caption-str {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+
+    .modal-counter-str {
+      font-family: var(--font-mono);
+      font-size: 0.775rem;
+      color: var(--text-muted);
+      flex-shrink: 0;
+    }
+
+    /* Toast Notification */
+    .toast-popup {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background-color: var(--text-white);
+      color: var(--accent-contrast);
+      padding: 11px 18px;
+      border-radius: var(--radius-pill);
+      font-size: 0.85rem;
+      font-weight: 700;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      z-index: 200;
+      opacity: 0;
+      transform: translateY(12px);
+      pointer-events: none;
+      transition: all 0.2s ease;
+    }
+
+    .toast-popup.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive Breakpoints */
+    @media (max-width: 900px) {
+      .hero-layout {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        padding-top: 10px;
+      }
+
+      .hero-mascot-col {
+        order: -1;
+      }
+
+      .mascot-stage {
+        max-width: 220px;
+      }
+
+      .metrics-bar {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .creators-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .about-grid-two {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .nav-menu {
+        display: none;
+      }
+
+      .metrics-bar {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .creators-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-discord-pill {
+        flex-direction: column;
+        border-radius: var(--radius-md);
+        padding: 14px;
+        align-items: stretch;
+      }
+
+      .contact-handle-str {
+        text-align: center;
+        margin-bottom: 8px;
+      }
+
+      .btn-contact-action {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- Top Navigation Bar -->
-  <nav class="nav-bar">
-    <div class="container nav-container">
-      <div class="nav-identity">
-        <a class="nav-logo-text" href="#top">Bachtiar Aditya</a>
-        <span class="nav-role-badge">Roblox Dev</span>
-      </div>
+  <!-- Navigation Bar -->
+  <header class="site-nav">
+    <div class="container nav-inner">
+      <a class="brand-wrap" href="#top">
+        <span class="brand-name">Bachtiar Aditya</span>
+        <span class="brand-badge">Roblox Dev</span>
+      </a>
 
-      <div class="nav-links">
-        <a class="nav-link" href="#karya">Karya</a>
-        <a class="nav-link" href="#kreator">Kreator</a>
-        <a class="nav-link" href="#tentang">Tentang</a>
-        <a class="nav-link" href="#kontak">Kontak</a>
-      </div>
+      <nav class="nav-menu">
+        <a class="nav-menu-link" href="#karya">Karya</a>
+        <a class="nav-menu-link" href="#kreator">Kreator</a>
+        <a class="nav-menu-link" href="#tentang">Tentang</a>
+        <a class="nav-menu-link" href="#kontak">Kontak</a>
+      </nav>
 
-      <button class="btn-discord-nav" type="button" data-copy-discord aria-label="Salin username Discord tahubulat">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.929 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.894.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+      <button class="discord-nav-btn" type="button" data-copy-discord aria-label="Salin username Discord tahubulat">
+        <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.929 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.894.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
         <span>@tahubulat</span>
       </button>
     </div>
-  </nav>
+  </header>
 
-  <main id="main-content">
+  <main id="main">
 
     <!-- Hero Section -->
-    <section class="hero section" id="top">
-      <div class="container hero-grid">
-        <div class="hero-content">
-          <div class="hero-status-pill">
-            <span class="status-dot"></span>
+    <section class="hero-section" id="top">
+      <div class="container hero-layout">
+        <div class="hero-text-col">
+          <div class="hero-intro-pill">
+            <span class="status-dot-active"></span>
             <span>Tersedia untuk Proyek &amp; Kolaborasi</span>
           </div>
 
-          <h1>Bachtiar Aditya</h1>
+          <h1 class="hero-title">Bachtiar Aditya</h1>
           <p class="hero-subtitle">Level Designer &amp; Map Architect di Platform Roblox</p>
 
-          <p class="hero-desc">
+          <p class="hero-bio">
             Merancang lingkungan game yang hidup, mengedepankan atmosfer sinematik, kenyamanan navigasi pemain, dan optimasi teknis. Dari konsep visual referensi hingga map siap rilis yang dimainkan ratusan ribu pengguna.
           </p>
 
-          <!-- Focused Discord Copy Action -->
-          <div class="hero-discord-box">
-            <div class="discord-identity">
-              <span class="discord-platform-label">Jalur Komunikasi Utama</span>
-              <span class="discord-handle">Discord: tahubulat</span>
+          <!-- Discord Action Bar -->
+          <div class="discord-action-card">
+            <div class="discord-label-group">
+              <span class="discord-label-sub">Jalur Komunikasi Utama</span>
+              <span class="discord-handle-val">Discord: tahubulat</span>
             </div>
-            <button class="btn-copy-discord" type="button" data-copy-discord>Salin Tag</button>
+            <button class="btn-action-copy" type="button" data-copy-discord>Salin Tag</button>
           </div>
 
-          <div class="hero-links-row">
-            <a class="hero-action-link" href="#karya">Lihat Portofolio Karya ↓</a>
-            <span style="color: var(--border-hover);">•</span>
-            <a class="hero-action-link" href="https://www.roblox.com/users/2640291436/profile" target="_blank" rel="noopener noreferrer">Profil Roblox ↗</a>
+          <div class="hero-sublinks">
+            <a class="hero-sublink" href="#karya">Lihat Portofolio Karya &darr;</a>
+            <span style="color: var(--border-medium);">&bull;</span>
+            <a class="hero-sublink" href="https://www.roblox.com/users/2640291436/profile" target="_blank" rel="noopener noreferrer">Profil Roblox &nearr;</a>
           </div>
         </div>
 
-        <!-- Mascot Display (Clean & Natural) -->
-        <div class="hero-art-clean">
-          <div class="mascot-container" title="Maskot Tahu bulat">
-            <img class="mascot-raw" src="image/mascot.png" alt="Maskot resmi Tahu bulat" width="320" height="320">
-            <div class="mascot-shadow"></div>
+        <!-- Mascot Column -->
+        <div class="hero-mascot-col">
+          <div class="mascot-stage" title="Maskot Tahu bulat">
+            <img class="mascot-img-clean" src="image/mascot.png" alt="Maskot Tahu bulat" width="300" height="300">
+            <div class="mascot-shadow-ground"></div>
           </div>
-          <span class="mascot-tagline">Tahu bulat • Game Creator Persona</span>
+          <span class="mascot-caption-text">Tahu bulat &bull; Game Creator Persona</span>
         </div>
       </div>
 
       <!-- Impact Metrics -->
       <div class="container">
-        <div class="impact-strip">
-          <div class="metric-unit">
-            <span class="metric-number">400K+</span>
-            <span class="metric-name">Anggota Komunitas</span>
-            <span class="metric-detail">Ekosistem AIH Studio</span>
+        <div class="metrics-bar">
+          <div class="metric-col">
+            <span class="metric-stat">400K+</span>
+            <span class="metric-label">Anggota Komunitas</span>
+            <span class="metric-desc">Ekosistem AIH Studio</span>
           </div>
-          <div class="metric-unit">
-            <span class="metric-number">6+</span>
-            <span class="metric-name">Top YouTuber</span>
-            <span class="metric-detail">Memainkan map di sesi video</span>
+          <div class="metric-col">
+            <span class="metric-stat">6+</span>
+            <span class="metric-label">Top YouTuber</span>
+            <span class="metric-desc">Memainkan map di sesi video</span>
           </div>
-          <div class="metric-unit">
-            <span class="metric-number">5+ Thn</span>
-            <span class="metric-name">Pengalaman Platform</span>
-            <span class="metric-detail">Eksplorasi Roblox Studio</span>
+          <div class="metric-col">
+            <span class="metric-stat">5+ Thn</span>
+            <span class="metric-label">Pengalaman Platform</span>
+            <span class="metric-desc">Eksplorasi Roblox Studio</span>
           </div>
-          <div class="metric-unit">
-            <span class="metric-number">Direct</span>
-            <span class="metric-name">Kontak Discord</span>
-            <span class="metric-detail">Komunikasi cepat via @tahubulat</span>
+          <div class="metric-col">
+            <span class="metric-stat">Direct</span>
+            <span class="metric-label">Kontak Discord</span>
+            <span class="metric-desc">Komunikasi via @tahubulat</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Showcase Karya (Uncropped 16:9) -->
-    <section class="section" id="karya">
+    <!-- Projects Section (Uncropped 16:9) -->
+    <section class="section-wrap" id="karya">
       <div class="container">
-        <div class="section-meta">
-          <span class="meta-stud"></span>
-          <span class="meta-label">Koleksi Proyek</span>
+        <div class="section-tag-row">
+          <span class="tag-square"></span>
+          <span class="tag-title">Koleksi Proyek</span>
         </div>
 
-        <div class="section-head-wrap">
+        <div class="section-headline-bar">
           <div>
-            <h2>Arsip &amp; Karya Pilihan</h2>
-            <p class="section-lead">Dokumentasi asli level design, build lingkungan, sistem UI, dan arsitektur skrip.</p>
+            <h2 class="section-heading-h2">Arsip &amp; Karya Pilihan</h2>
+            <p class="section-lead-text">Dokumentasi asli level design, build lingkungan, sistem UI, dan arsitektur skrip.</p>
           </div>
 
           <!-- Category Filter Bar -->
-          <div class="filter-bar">
-            <button class="filter-btn active" type="button" data-filter="all">Semua</button>
-            <button class="filter-btn" type="button" data-filter="level">Level Design</button>
-            <button class="filter-btn" type="button" data-filter="build">Build &amp; Props</button>
-            <button class="filter-btn" type="button" data-filter="uiux">UI/UX</button>
-            <button class="filter-btn" type="button" data-filter="scripting">LuaU</button>
+          <div class="filter-tabs">
+            <button class="tab-btn active" type="button" data-filter="all">Semua</button>
+            <button class="tab-btn" type="button" data-filter="level">Level Design</button>
+            <button class="tab-btn" type="button" data-filter="build">Build &amp; Props</button>
+            <button class="tab-btn" type="button" data-filter="uiux">UI/UX</button>
+            <button class="tab-btn" type="button" data-filter="scripting">LuaU</button>
           </div>
         </div>
 
         <!-- Projects Grid -->
-        <div class="showcase-grid">
+        <div class="projects-grid">
 
           <!-- Card 1: Level Design -->
-          <article class="showcase-card" data-category="level">
-            <div class="card-media-wrap" data-gallery-key="level-design" role="button" tabindex="0" aria-label="Buka galeri Map Architecture">
+          <article class="project-item" data-category="level">
+            <div class="project-media-container" data-gallery-key="level-design" role="button" tabindex="0" aria-label="Buka galeri Map Architecture">
               <img src="image/Archives/MyWork/Screenshot 2026-03-30 155149.png" alt="Map Architecture karya Bachtiar" loading="lazy">
-              <div class="card-media-overlay">
-                <span class="overlay-pill">Buka Galeri Resolusi Penuh</span>
+              <div class="media-hover-overlay">
+                <span class="hover-badge">Buka Galeri Resolusi Penuh</span>
               </div>
             </div>
-            <div class="card-content">
-              <div class="card-category-row">
-                <span class="card-category">Level Design &bull; Environment</span>
-                <span class="card-count">6 Screenshot</span>
+            <div class="project-body-content">
+              <div class="project-category-row">
+                <span class="project-cat-tag">Level Design &bull; Environment</span>
+                <span class="project-count-tag">6 Screenshot</span>
               </div>
-              <h3 class="card-title">Map Architecture &amp; Worldbuilding</h3>
-              <p class="card-summary">Pengembangan tata letak ruang, pencahayaan atmosferik, serta pembagian zona interaksi pemain yang dirancang untuk menjaga engagement dan alur gameplay.</p>
-              <div class="card-action-bar">
-                <button class="btn-card-gallery" type="button" data-gallery-key="level-design">Lihat Galeri ↗</button>
+              <h3 class="project-name">Map Architecture &amp; Worldbuilding</h3>
+              <p class="project-desc-text">Pengembangan tata letak ruang, pencahayaan atmosferik, serta pembagian zona interaksi pemain yang dirancang untuk menjaga engagement dan alur gameplay.</p>
+              <div class="project-footer-bar">
+                <button class="btn-gallery-open" type="button" data-gallery-key="level-design">Lihat Galeri &nearr;</button>
               </div>
             </div>
           </article>
 
           <!-- Card 2: First Collab -->
-          <article class="showcase-card" data-category="level">
-            <div class="card-media-wrap" data-gallery-key="first-collab" role="button" tabindex="0" aria-label="Buka galeri First Collab">
+          <article class="project-item" data-category="level">
+            <div class="project-media-container" data-gallery-key="first-collab" role="button" tabindex="0" aria-label="Buka galeri First Collab">
               <img src="image/Archives/FristCollab/Screenshot 2026-02-16 063438.png" alt="First Collab Design karya Bachtiar" loading="lazy">
-              <div class="card-media-overlay">
-                <span class="overlay-pill">Buka Galeri Resolusi Penuh</span>
+              <div class="media-hover-overlay">
+                <span class="hover-badge">Buka Galeri Resolusi Penuh</span>
               </div>
             </div>
-            <div class="card-content">
-              <div class="card-category-row">
-                <span class="card-category">Collaborative Build</span>
-                <span class="card-count">6 Screenshot</span>
+            <div class="project-body-content">
+              <div class="project-category-row">
+                <span class="project-cat-tag">Collaborative Build</span>
+                <span class="project-count-tag">6 Screenshot</span>
               </div>
-              <h3 class="card-title">First Collab Design Project</h3>
-              <p class="card-summary">Proyek kolaborasi map pertama berstandar komersial yang berhasil disetujui langsung oleh tim mitra untuk masuk ke tahapan produksi penuh.</p>
-              <div class="card-action-bar">
-                <button class="btn-card-gallery" type="button" data-gallery-key="first-collab">Lihat Galeri ↗</button>
+              <h3 class="project-name">First Collab Design Project</h3>
+              <p class="project-desc-text">Proyek kolaborasi map pertama berstandar komersial yang berhasil disetujui langsung oleh tim mitra untuk masuk ke tahapan produksi penuh.</p>
+              <div class="project-footer-bar">
+                <button class="btn-gallery-open" type="button" data-gallery-key="first-collab">Lihat Galeri &nearr;</button>
               </div>
             </div>
           </article>
 
           <!-- Card 3: Custom Props & Builds -->
-          <article class="showcase-card" data-category="build">
-            <div class="card-media-wrap" data-gallery-key="builds" role="button" tabindex="0" aria-label="Buka galeri Custom Builds">
+          <article class="project-item" data-category="build">
+            <div class="project-media-container" data-gallery-key="builds" role="button" tabindex="0" aria-label="Buka galeri Custom Builds">
               <img src="image/Archives/Build/Screenshot 2025-12-18 211443.png" alt="Custom Props karya Bachtiar" loading="lazy">
-              <div class="card-media-overlay">
-                <span class="overlay-pill">Buka Galeri Resolusi Penuh</span>
+              <div class="media-hover-overlay">
+                <span class="hover-badge">Buka Galeri Resolusi Penuh</span>
               </div>
             </div>
-            <div class="card-content">
-              <div class="card-category-row">
-                <span class="card-category">Assets &bull; Scene Modeling</span>
-                <span class="card-count">7 Screenshot</span>
+            <div class="project-body-content">
+              <div class="project-category-row">
+                <span class="project-cat-tag">Assets &bull; Scene Modeling</span>
+                <span class="project-count-tag">7 Screenshot</span>
               </div>
-              <h3 class="card-title">Custom Props &amp; Scene Builds</h3>
-              <p class="card-summary">Rangkaian prop struktural, set pieces, dan elemen dekorasi map yang dibangun dengan efisiensi geometri part untuk menjaga stabilitas frame rate.</p>
-              <div class="card-action-bar">
-                <button class="btn-card-gallery" type="button" data-gallery-key="builds">Lihat Galeri ↗</button>
+              <h3 class="project-name">Custom Props &amp; Scene Builds</h3>
+              <p class="project-desc-text">Rangkaian prop struktural, set pieces, dan elemen dekorasi map yang dibangun dengan efisiensi geometri part untuk menjaga stabilitas frame rate.</p>
+              <div class="project-footer-bar">
+                <button class="btn-gallery-open" type="button" data-gallery-key="builds">Lihat Galeri &nearr;</button>
               </div>
             </div>
           </article>
 
           <!-- Card 4: Roblox UI/UX -->
-          <article class="showcase-card" data-category="uiux">
-            <div class="card-media-wrap" data-gallery-key="uiux" role="button" tabindex="0" aria-label="Buka galeri UI UX">
+          <article class="project-item" data-category="uiux">
+            <div class="project-media-container" data-gallery-key="uiux" role="button" tabindex="0" aria-label="Buka galeri UI UX">
               <img src="image/Archives/UiUx/Screenshot 2026-03-30 151603.png" alt="Roblox UI UX karya Bachtiar" loading="lazy">
-              <div class="card-media-overlay">
-                <span class="overlay-pill">Buka Galeri Resolusi Penuh</span>
+              <div class="media-hover-overlay">
+                <span class="hover-badge">Buka Galeri Resolusi Penuh</span>
               </div>
             </div>
-            <div class="card-content">
-              <div class="card-category-row">
-                <span class="card-category">Interface &bull; Usability</span>
-                <span class="card-count">5 Screenshot</span>
+            <div class="project-body-content">
+              <div class="project-category-row">
+                <span class="project-cat-tag">Interface &bull; Usability</span>
+                <span class="project-count-tag">5 Screenshot</span>
               </div>
-              <h3 class="card-title">Game Interface &amp; UI/UX</h3>
-              <p class="card-summary">Struktur GUI modular dengan standardisasi rasio skala (Scale/Auto-layout) agar tampilan antarmuka selalu proporsional di PC, tablet, maupun layar mobile.</p>
-              <div class="card-action-bar">
-                <button class="btn-card-gallery" type="button" data-gallery-key="uiux">Lihat Galeri ↗</button>
+              <h3 class="project-name">Game Interface &amp; UI/UX</h3>
+              <p class="project-desc-text">Struktur GUI modular dengan standardisasi rasio skala (Scale/Auto-layout) agar tampilan antarmuka selalu proporsional di PC, tablet, maupun layar mobile.</p>
+              <div class="project-footer-bar">
+                <button class="btn-gallery-open" type="button" data-gallery-key="uiux">Lihat Galeri &nearr;</button>
               </div>
             </div>
           </article>
 
           <!-- Card 5: LuaU Code -->
-          <article class="showcase-card" data-category="scripting">
-            <div class="card-media-wrap" data-gallery-key="luau-code" role="button" tabindex="0" aria-label="Buka galeri LuaU Code">
+          <article class="project-item" data-category="scripting">
+            <div class="project-media-container" data-gallery-key="luau-code" role="button" tabindex="0" aria-label="Buka galeri LuaU Code">
               <img src="image/Archives/LuaUCode/Screenshot 2026-06-13 001441.png" alt="LuaU Architecture karya Bachtiar" loading="lazy">
-              <div class="card-media-overlay">
-                <span class="overlay-pill">Buka Galeri Resolusi Penuh</span>
+              <div class="media-hover-overlay">
+                <span class="hover-badge">Buka Galeri Resolusi Penuh</span>
               </div>
             </div>
-            <div class="card-content">
-              <div class="card-category-row">
-                <span class="card-category">Scripting &bull; System Logic</span>
-                <span class="card-count">5 Screenshot</span>
+            <div class="project-body-content">
+              <div class="project-category-row">
+                <span class="project-cat-tag">Scripting &bull; System Logic</span>
+                <span class="project-count-tag">5 Screenshot</span>
               </div>
-              <h3 class="card-title">NPC Manager &amp; System Scripting</h3>
-              <p class="card-summary">Arsitektur kode LuaU yang terintegrasi dengan print-tracking menyeluruh dan logging error sistematis untuk mempermudah pemeliharaan dan debugging jangka panjang.</p>
-              <div class="card-action-bar">
-                <button class="btn-card-gallery" type="button" data-gallery-key="luau-code">Lihat Galeri ↗</button>
+              <h3 class="project-name">NPC Manager &amp; System Scripting</h3>
+              <p class="project-desc-text">Arsitektur kode LuaU yang terintegrasi dengan print-tracking menyeluruh dan logging error sistematis untuk mempermudah pemeliharaan dan debugging jangka panjang.</p>
+              <div class="project-footer-bar">
+                <button class="btn-gallery-open" type="button" data-gallery-key="luau-code">Lihat Galeri &nearr;</button>
               </div>
             </div>
           </article>
 
           <!-- Card 6: Visual Archives -->
-          <article class="showcase-card" data-category="build">
-            <div class="card-media-wrap" data-gallery-key="gallery" role="button" tabindex="0" aria-label="Buka galeri Visual Archives">
+          <article class="project-item" data-category="build">
+            <div class="project-media-container" data-gallery-key="gallery" role="button" tabindex="0" aria-label="Buka galeri Visual Archives">
               <img src="image/Archives/Gallery/Cuplikan layar 2025-08-30 115417.png" alt="Visual Archives karya Bachtiar" loading="lazy">
-              <div class="card-media-overlay">
-                <span class="overlay-pill">Buka Galeri Resolusi Penuh</span>
+              <div class="media-hover-overlay">
+                <span class="hover-badge">Buka Galeri Resolusi Penuh</span>
               </div>
             </div>
-            <div class="card-content">
-              <div class="card-category-row">
-                <span class="card-category">Visual Vault</span>
-                <span class="card-count">5 Screenshot</span>
+            <div class="project-body-content">
+              <div class="project-category-row">
+                <span class="project-cat-tag">Visual Vault</span>
+                <span class="project-count-tag">5 Screenshot</span>
               </div>
-              <h3 class="card-title">Creative Visual Archives</h3>
-              <p class="card-summary">Dokumentasi eksplorasi konsep, uji coba lighting dinamis, dan aset visual eksperimental selama proses pengerjaan lingkungan permainan.</p>
-              <div class="card-action-bar">
-                <button class="btn-card-gallery" type="button" data-gallery-key="gallery">Lihat Galeri ↗</button>
+              <h3 class="project-name">Creative Visual Archives</h3>
+              <p class="project-desc-text">Dokumentasi eksplorasi konsep, uji coba lighting dinamis, dan aset visual eksperimental selama proses pengerjaan lingkungan permainan.</p>
+              <div class="project-footer-bar">
+                <button class="btn-gallery-open" type="button" data-gallery-key="gallery">Lihat Galeri &nearr;</button>
               </div>
             </div>
           </article>
@@ -267,108 +1359,108 @@
       </div>
     </section>
 
-    <!-- Creator Hall of Fame (Clean Photos) -->
-    <section class="section" id="kreator">
+    <!-- Creator Hall of Fame -->
+    <section class="section-wrap" id="kreator">
       <div class="container">
-        <div class="section-meta">
-          <span class="meta-stud"></span>
-          <span class="meta-label">Hall of Fame</span>
+        <div class="section-tag-row">
+          <span class="tag-square"></span>
+          <span class="tag-title">Hall of Fame</span>
         </div>
 
-        <div class="section-head-wrap">
+        <div class="section-headline-bar">
           <div>
-            <h2>Dimainkan oleh Kreator Ternama</h2>
-            <p class="section-lead">Apresiasi dan pengakuan saat karya map dinikmati langsung oleh figur gaming terbesar di Indonesia.</p>
+            <h2 class="section-heading-h2">Dimainkan oleh Kreator Ternama</h2>
+            <p class="section-lead-text">Apresiasi dan pengakuan saat karya map dinikmati langsung oleh figur gaming terbesar di Indonesia.</p>
           </div>
         </div>
 
-        <div class="creators-grid-clean">
-          <div class="creator-card-clean">
-            <div class="creator-photo-box">
+        <div class="creators-grid">
+          <div class="creator-item-card">
+            <div class="creator-photo-square">
               <img src="image/youtuber/Windah Basudara.png" alt="Windah Basudara" loading="lazy">
             </div>
-            <div class="creator-meta-box">
-              <span class="creator-badge">Honored Player</span>
-              <span class="creator-name">Windah Basudara</span>
-              <p class="creator-detail">Memainkan karya di sesi siaran langsung.</p>
+            <div class="creator-meta-block">
+              <span class="creator-badge-honor">Honored Player</span>
+              <span class="creator-full-name">Windah Basudara</span>
+              <p class="creator-play-note">Memainkan karya di sesi siaran langsung.</p>
             </div>
           </div>
 
-          <div class="creator-card-clean">
-            <div class="creator-photo-box">
+          <div class="creator-item-card">
+            <div class="creator-photo-square">
               <img src="image/youtuber/MiawAug.png" alt="MiawAug" loading="lazy">
             </div>
-            <div class="creator-meta-box">
-              <span class="creator-badge">Honored Player</span>
-              <span class="creator-name">MiawAug</span>
-              <p class="creator-detail">Menikmati konten dan gameplay map.</p>
+            <div class="creator-meta-block">
+              <span class="creator-badge-honor">Honored Player</span>
+              <span class="creator-full-name">MiawAug</span>
+              <p class="creator-play-note">Menikmati konten dan gameplay map.</p>
             </div>
           </div>
 
-          <div class="creator-card-clean">
-            <div class="creator-photo-box">
+          <div class="creator-item-card">
+            <div class="creator-photo-square">
               <img src="image/youtuber/Chandra Y.png" alt="Chandra Y." loading="lazy">
             </div>
-            <div class="creator-meta-box">
-              <span class="creator-badge">Honored Player</span>
-              <span class="creator-name">Chandra Y.</span>
-              <p class="creator-detail">Menjajal tantangan dan atmosfer game.</p>
+            <div class="creator-meta-block">
+              <span class="creator-badge-honor">Honored Player</span>
+              <span class="creator-full-name">Chandra Y.</span>
+              <p class="creator-play-note">Menjajal tantangan dan atmosfer game.</p>
             </div>
           </div>
 
-          <div class="creator-card-clean">
-            <div class="creator-photo-box">
+          <div class="creator-item-card">
+            <div class="creator-photo-square">
               <img src="image/youtuber/Stresman.png" alt="Stresman" loading="lazy">
             </div>
-            <div class="creator-meta-box">
-              <span class="creator-badge">Honored Player</span>
-              <span class="creator-name">Stresman</span>
-              <p class="creator-detail">Eksplorasi map bersama komunitas.</p>
+            <div class="creator-meta-block">
+              <span class="creator-badge-honor">Honored Player</span>
+              <span class="creator-full-name">Stresman</span>
+              <p class="creator-play-note">Eksplorasi map bersama komunitas.</p>
             </div>
           </div>
 
-          <div class="creator-card-clean">
-            <div class="creator-photo-box">
+          <div class="creator-item-card">
+            <div class="creator-photo-square">
               <img src="image/youtuber/Hayogo.png" alt="Hayogo" loading="lazy">
             </div>
-            <div class="creator-meta-box">
-              <span class="creator-badge">Honored Player</span>
-              <span class="creator-name">Hayogo</span>
-              <p class="creator-detail">Menguji mekanika dan keseruan bermain.</p>
+            <div class="creator-meta-block">
+              <span class="creator-badge-honor">Honored Player</span>
+              <span class="creator-full-name">Hayogo</span>
+              <p class="creator-play-note">Menguji mekanika dan keseruan bermain.</p>
             </div>
           </div>
 
-          <div class="creator-card-clean">
-            <div class="creator-photo-box">
+          <div class="creator-item-card">
+            <div class="creator-photo-square">
               <img src="image/youtuber/Jelool.png" alt="Jelool" loading="lazy">
             </div>
-            <div class="creator-meta-box">
-              <span class="creator-badge">Honored Player</span>
-              <span class="creator-name">Jelool</span>
-              <p class="creator-detail">Merasakan pengalaman game secara utuh.</p>
+            <div class="creator-meta-block">
+              <span class="creator-badge-honor">Honored Player</span>
+              <span class="creator-full-name">Jelool</span>
+              <p class="creator-play-note">Merasakan pengalaman game secara utuh.</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Tentang Pengembang (About Me) -->
-    <section class="section" id="tentang">
+    <!-- About Section -->
+    <section class="section-wrap" id="tentang">
       <div class="container">
-        <div class="section-meta">
-          <span class="meta-stud"></span>
-          <span class="meta-label">Profil Personal</span>
+        <div class="section-tag-row">
+          <span class="tag-square"></span>
+          <span class="tag-title">Profil Personal</span>
         </div>
 
-        <div class="section-head-wrap">
+        <div class="section-headline-bar">
           <div>
-            <h2>Tentang Bachtiar Aditya</h2>
-            <p class="section-lead">Perjalanan, fokus pengembangan, dan dedikasi pada kualitas karya game.</p>
+            <h2 class="section-heading-h2">Tentang Bachtiar Aditya</h2>
+            <p class="section-lead-text">Perjalanan, fokus pengembangan, dan dedikasi pada kualitas karya game.</p>
           </div>
         </div>
 
-        <div class="about-columns">
-          <div class="about-text-block">
+        <div class="about-grid-two">
+          <div class="about-card-info">
             <h3>Filosofi Pengembangan</h3>
             <p>
               Bagi saya, sebuah map bukan sekadar susunan part atau model 3D, melainkan fondasi utama yang membentuk emosi dan pengalaman pemain saat pertama kali melangkah masuk ke dalam game.
@@ -378,15 +1470,15 @@
             </p>
           </div>
 
-          <div class="about-text-block">
+          <div class="about-card-info">
             <h3>Komunitas &amp; Ekosistem</h3>
             <p>
               Selain mengerjakan perancangan level secara mandiri, saya juga mendirikan dan mengelola ekosistem komunitas game untuk menjembatani komunikasi antarpemain dan developer.
             </p>
 
-            <div class="community-box">
-              <img class="community-logo" src="image/aihstudio.png" alt="AIH Studio Logo" loading="lazy">
-              <div class="community-info">
+            <div class="studio-mention-box">
+              <img class="studio-logo-pic" src="image/aihstudio.png" alt="AIH Studio Logo" loading="lazy">
+              <div class="studio-text-meta">
                 <h4>AIH Studio</h4>
                 <p>Est. 2023 &bull; 400.000+ Anggota Terdaftar</p>
               </div>
@@ -397,12 +1489,12 @@
     </section>
 
     <!-- Dedicated Discord Contact Section -->
-    <section class="contact-section" id="kontak">
+    <section class="section-wrap" id="kontak">
       <div class="container">
-        <div class="contact-card-highlight">
-          <div class="section-meta" style="margin-bottom: 8px;">
-            <span class="meta-stud"></span>
-            <span class="meta-label">Hubungi Saya</span>
+        <div class="contact-banner-card">
+          <div class="section-tag-row" style="margin-bottom: 8px;">
+            <span class="tag-square"></span>
+            <span class="tag-title">Hubungi Saya</span>
           </div>
 
           <h2>Mari Berdiskusi &amp; Kolaborasi</h2>
@@ -410,13 +1502,13 @@
             Tertarik bekerja sama untuk perancangan level design, arsitektur map, atau pengembangan game Roblox berikutnya? Mari ngobrol langsung di Discord.
           </p>
 
-          <div class="contact-discord-interactive">
-            <span class="interactive-tag">@tahubulat</span>
-            <button class="btn-contact-copy" type="button" data-copy-discord>Salin Username Discord</button>
+          <div class="contact-discord-pill">
+            <span class="contact-handle-str">@tahubulat</span>
+            <button class="btn-contact-action" type="button" data-copy-discord>Salin Username Discord</button>
           </div>
 
-          <a class="roblox-profile-sublink" href="https://www.roblox.com/users/2640291436/profile" target="_blank" rel="noopener noreferrer">
-            Lihat Akun Roblox Resmi ↗
+          <a class="roblox-link-small" href="https://www.roblox.com/users/2640291436/profile" target="_blank" rel="noopener noreferrer">
+            Lihat Akun Roblox Resmi &nearr;
           </a>
         </div>
       </div>
@@ -425,37 +1517,259 @@
   </main>
 
   <!-- Clean Footer -->
-  <footer class="footer-clean">
-    <div class="container footer-row">
-      <p class="footer-copy">&copy; <span id="current-year">2026</span> Bachtiar Aditya. Hak cipta dilindungi.</p>
-      <a class="footer-back-link" href="#top">Kembali ke Atas &uarr;</a>
+  <footer class="site-footer">
+    <div class="container footer-flex">
+      <p class="footer-copy-text">&copy; <span id="current-year">2026</span> Bachtiar Aditya. Hak cipta dilindungi.</p>
+      <a class="footer-top-anchor" href="#top">Kembali ke Atas &uarr;</a>
     </div>
   </footer>
 
   <!-- Fullscreen Uncropped Gallery Modal -->
-  <div class="modal-overlay" id="gallery-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-    <div class="modal-shell">
-      <div class="modal-top-bar">
-        <span class="modal-headline" id="modal-title">Judul Galeri</span>
-        <button class="modal-btn-close" id="modal-close" type="button" aria-label="Tutup galeri">&times;</button>
+  <div class="modal-backdrop" id="gallery-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-box">
+      <div class="modal-header-bar">
+        <span class="modal-title-text" id="modal-title">Judul Galeri</span>
+        <button class="modal-btn-dismiss" id="modal-close" type="button" aria-label="Tutup galeri">&times;</button>
       </div>
-      <div class="modal-stage">
-        <button class="modal-nav-button nav-prev" id="modal-prev" type="button" aria-label="Foto sebelumnya">&larr;</button>
-        <img class="modal-display-img" id="modal-img" src="" alt="Pratinjau proyek">
-        <button class="modal-nav-button nav-next" id="modal-next" type="button" aria-label="Foto selanjutnya">&rarr;</button>
+      <div class="modal-viewport">
+        <button class="modal-arrow-btn modal-prev-btn" id="modal-prev" type="button" aria-label="Foto sebelumnya">&larr;</button>
+        <img class="modal-image-element" id="modal-img" src="" alt="Pratinjau proyek">
+        <button class="modal-arrow-btn modal-next-btn" id="modal-next" type="button" aria-label="Foto selanjutnya">&rarr;</button>
       </div>
-      <div class="modal-bottom-bar">
-        <span class="modal-caption-text" id="modal-caption">Keterangan galeri.</span>
-        <span class="modal-counter-badge" id="modal-counter">1 / 1</span>
+      <div class="modal-bottom-row">
+        <span class="modal-caption-str" id="modal-caption">Keterangan galeri.</span>
+        <span class="modal-counter-str" id="modal-counter">1 / 1</span>
       </div>
     </div>
   </div>
 
   <!-- Toast Notification Feedback -->
-  <div class="toast-notice" id="toast-notice" role="status" aria-live="polite">
+  <div class="toast-popup" id="toast-notice" role="status" aria-live="polite">
     Username Discord berhasil disalin
   </div>
 
-  <script src="script.js"></script>
+  <script>
+    /* ==========================================================================
+       INLINE SCRIPTS — GUARANTEED EXECUTION WITH ZERO DEPENDENCIES
+       ========================================================================== */
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Current Year
+      const yearEl = document.getElementById('current-year');
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+      // 2. Toast
+      const toast = document.getElementById('toast-notice');
+      let toastTimer = null;
+      function showToast(message) {
+        if (!toast) return;
+        toast.textContent = message;
+        toast.classList.add('visible');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => {
+          toast.classList.remove('visible');
+        }, 2200);
+      }
+
+      // 3. Discord Copy Handler
+      const DISCORD_USER = 'tahubulat';
+      function copyDiscordHandle(btn) {
+        navigator.clipboard.writeText(DISCORD_USER).then(() => {
+          showToast(`Discord tag "${DISCORD_USER}" berhasil disalin`);
+          if (btn) {
+            const original = btn.getAttribute('data-original-text') || btn.textContent;
+            if (!btn.getAttribute('data-original-text')) {
+              btn.setAttribute('data-original-text', original);
+            }
+            btn.textContent = 'Tersalin ✓';
+            btn.classList.add('copied');
+            setTimeout(() => {
+              btn.textContent = btn.getAttribute('data-original-text');
+              btn.classList.remove('copied');
+            }, 2000);
+          }
+        }).catch(() => {
+          showToast(`Salin manual: ${DISCORD_USER}`);
+        });
+      }
+
+      document.querySelectorAll('[data-copy-discord]').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          copyDiscordHandle(btn);
+        });
+      });
+
+      // 4. Gallery Data
+      const projectGalleries = {
+        'level-design': {
+          title: 'Map Architecture & Environment',
+          caption: 'Desain atmosfer lingkungan, pencahayaan sinematik, dan optimasi part Roblox Studio.',
+          images: [
+            'image/Archives/MyWork/Screenshot 2026-03-30 155149.png',
+            'image/Archives/MyWork/Screenshot 2026-03-30 155213.png',
+            'image/Archives/MyWork/Screenshot 2026-03-30 155229.png',
+            'image/Archives/MyWork/Screenshot 2026-03-30 155257.png',
+            'image/Archives/MyWork/Screenshot 2026-03-30 155356.png',
+            'image/Archives/MyWork/Screenshot 2026-06-13 000942.png'
+          ]
+        },
+        'first-collab': {
+          title: 'First Collab Design',
+          caption: 'Proyek kolaboratif berstandar studio, dirancang untuk alur navigasi pemain yang lancar.',
+          images: [
+            'image/Archives/FristCollab/Screenshot 2026-02-16 063438.png',
+            'image/Archives/FristCollab/Screenshot 2026-03-20 122642.png',
+            'image/Archives/FristCollab/Screenshot 2026-03-20 124802.png',
+            'image/Archives/FristCollab/Screenshot 2026-03-24 192447.png',
+            'image/Archives/FristCollab/Screenshot 2026-03-25 135121.png',
+            'image/Archives/FristCollab/Screenshot 2026-03-25 181701.png'
+          ]
+        },
+        'builds': {
+          title: 'Custom Props & Scene Builds',
+          caption: 'Koleksi set piece, model bangunan kustom, dan penataan prop bertema.',
+          images: [
+            'image/Archives/Build/Screenshot 2025-12-18 211443.png',
+            'image/Archives/Build/Screenshot 2025-12-18 211541.png',
+            'image/Archives/Build/Screenshot 2025-12-18 211550.png',
+            'image/Archives/Build/Screenshot 2026-02-13 180945.png',
+            'image/Archives/Build/Screenshot 2026-02-14 115720.png',
+            'image/Archives/Build/Screenshot 2026-03-30 151036.png',
+            'image/Archives/Build/Screenshot 2026-05-19 223439.png'
+          ]
+        },
+        'uiux': {
+          title: 'Roblox UI/UX Interface',
+          caption: 'Desain user interface terukur (Scale/Layout) yang adaptif untuk mobile dan PC.',
+          images: [
+            'image/Archives/UiUx/Screenshot 2026-03-30 151603.png',
+            'image/Archives/UiUx/Screenshot 2026-03-30 151850.png',
+            'image/Archives/UiUx/Screenshot 2026-03-30 151923.png',
+            'image/Archives/UiUx/Screenshot 2026-06-13 000835.png',
+            'image/Archives/UiUx/Screenshot 2026-06-13 000859.png'
+          ]
+        },
+        'luau-code': {
+          title: 'NPC Manager & Scripting Systems',
+          caption: 'Sistem skrip modular dengan logging print-tracking dan penanganan error terpusat.',
+          images: [
+            'image/Archives/LuaUCode/Screenshot 2026-06-13 001441.png',
+            'image/Archives/LuaUCode/Screenshot 2026-06-13 001454.png',
+            'image/Archives/LuaUCode/Screenshot 2026-06-13 001607.png',
+            'image/Archives/LuaUCode/Screenshot 2026-06-13 001644.png',
+            'image/Archives/LuaUCode/Screenshot 2026-06-13 001747.png'
+          ]
+        },
+        'gallery': {
+          title: 'Visual Archives',
+          caption: 'Dokumentasi acak proses kreatif dan eksperimen visual selama pengembangan.',
+          images: [
+            'image/Archives/Gallery/Cuplikan layar 2025-08-30 115417.png',
+            'image/Archives/Gallery/Cuplikan layar 2025-09-20 130632.png',
+            'image/Archives/Gallery/Cuplikan layar 2025-09-25 220621.png',
+            'image/Archives/Gallery/Screenshot 2025-11-18 191212.png',
+            'image/Archives/Gallery/Screenshot 2026-01-30 175806.png'
+          ]
+        }
+      };
+
+      // 5. Modal Gallery View
+      const modal = document.getElementById('gallery-modal');
+      const modalTitle = document.getElementById('modal-title');
+      const modalImg = document.getElementById('modal-img');
+      const modalCaption = document.getElementById('modal-caption');
+      const modalCounter = document.getElementById('modal-counter');
+      const modalClose = document.getElementById('modal-close');
+      const btnPrev = document.getElementById('modal-prev');
+      const btnNext = document.getElementById('modal-next');
+
+      let currentGallery = null;
+      let currentIndex = 0;
+
+      function renderImage() {
+        if (!currentGallery) return;
+        const list = currentGallery.images;
+        modalImg.src = list[currentIndex];
+        modalImg.alt = `${currentGallery.title} - ${currentIndex + 1}`;
+        modalCounter.textContent = `${currentIndex + 1} / ${list.length}`;
+      }
+
+      function openModal(key) {
+        const item = projectGalleries[key];
+        if (!item) return;
+        currentGallery = item;
+        currentIndex = 0;
+        modalTitle.textContent = item.title;
+        modalCaption.textContent = item.caption;
+        renderImage();
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeModal() {
+        if (!modal) return;
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+        currentGallery = null;
+      }
+
+      function nextImg() {
+        if (!currentGallery) return;
+        currentIndex = (currentIndex + 1) % currentGallery.images.length;
+        renderImage();
+      }
+
+      function prevImg() {
+        if (!currentGallery) return;
+        currentIndex = (currentIndex - 1 + currentGallery.images.length) % currentGallery.images.length;
+        renderImage();
+      }
+
+      document.querySelectorAll('[data-gallery-key]').forEach(el => {
+        el.addEventListener('click', (e) => {
+          e.preventDefault();
+          const key = el.getAttribute('data-gallery-key');
+          openModal(key);
+        });
+      });
+
+      if (modalClose) modalClose.addEventListener('click', closeModal);
+      if (btnNext) btnNext.addEventListener('click', nextImg);
+      if (btnPrev) btnPrev.addEventListener('click', prevImg);
+
+      if (modal) {
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) closeModal();
+        });
+      }
+
+      document.addEventListener('keydown', (e) => {
+        if (!modal || !modal.classList.contains('active')) return;
+        if (e.key === 'Escape') closeModal();
+        if (e.key === 'ArrowRight') nextImg();
+        if (e.key === 'ArrowLeft') prevImg();
+      });
+
+      // 6. Category Filtering
+      const tabs = document.querySelectorAll('.tab-btn');
+      const cards = document.querySelectorAll('.project-item');
+
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          tabs.forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+          const filter = tab.getAttribute('data-filter');
+
+          cards.forEach(card => {
+            if (filter === 'all' || card.getAttribute('data-category') === filter) {
+              card.style.display = 'flex';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
+    });
+  </script>
 </body>
 </html>
