@@ -3,463 +3,457 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bachtiar Aditya — Roblox Developer & Map Architect</title>
-  <meta name="description" content="Portofolio resmi Bachtiar Aditya (Tahu bulat) — Developer & Map Architect Roblox, Founder of AIH Studio (400k+ Members). Dibuat untuk menghadirkan pengalaman bermain berkelas.">
+  <title>Bachtiar Aditya — Roblox Developer &amp; Level Designer</title>
+  <meta name="description" content="Portofolio personal Bachtiar Aditya (Tahu bulat) — Roblox Developer, Level Designer, dan Map Architect. Fokus pada worldbuilding imersif dan optimasi gameplay.">
   <meta name="author" content="Bachtiar Aditya">
   <link rel="icon" type="image/png" href="image/mascot.png">
 
   <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <!-- Header -->
-  <header class="header">
-    <div class="header-container">
-      <a class="wordmark" href="#top" aria-label="Beranda Bachtiar Aditya">
-        <img class="wordmark-avatar" src="image/mascot.png" width="32" height="32" alt="Tahu bulat mascot">
-        <span>bachtiar<span class="wordmark-light">aditya</span></span>
-      </a>
-      <nav class="header-nav" aria-label="Navigasi Utama">
+  <!-- Top Navigation Bar -->
+  <nav class="nav-bar">
+    <div class="container nav-container">
+      <div class="nav-identity">
+        <a class="nav-logo-text" href="#top">Bachtiar Aditya</a>
+        <span class="nav-role-badge">Roblox Dev</span>
+      </div>
+
+      <div class="nav-links">
         <a class="nav-link" href="#karya">Karya</a>
         <a class="nav-link" href="#kreator">Kreator</a>
-        <a class="nav-link" href="#studio">Studio</a>
-        <a class="nav-link" href="#perjalanan">Perjalanan</a>
-        <a class="nav-link" href="#kontak">Profil</a>
-        <a class="nav-cta" href="#kontak">Kontak <span aria-hidden="true">↗</span></a>
-      </nav>
-    </div>
-  </header>
+        <a class="nav-link" href="#tentang">Tentang</a>
+        <a class="nav-link" href="#kontak">Kontak</a>
+      </div>
 
-  <main id="main">
+      <button class="btn-discord-nav" type="button" data-copy-discord aria-label="Salin username Discord tahubulat">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.929 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.894.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+        <span>@tahubulat</span>
+      </button>
+    </div>
+  </nav>
+
+  <main id="main-content">
 
     <!-- Hero Section -->
-    <section class="hero section-shell" id="top">
-      <div class="hero-copy">
-        <p class="eyebrow">
-          <span class="small-square" aria-hidden="true"></span>
-          Roblox Developer &amp; Map Architect
-        </p>
-        <h1>
-          Membangun dunia.<br>
-          <span class="muted-title">Menghidupkan imajinasi.</span>
-        </h1>
-        <p class="hero-desc">
-          Portofolio Bachtiar Aditya (Tahu bulat) — Developer game Roblox dan Founder AIH Studio. Menghadirkan atmosfer visual, mekanika game, dan pengalaman bermain yang dirasakan ratusan ribu pemain.
-        </p>
-        <div class="hero-actions">
-          <a class="primary-btn" href="#karya">Jelajahi Karya <span aria-hidden="true">↓</span></a>
-          <a class="secondary-btn" href="#kontak">Hubungi Saya <span aria-hidden="true">↗</span></a>
-        </div>
-      </div>
-
-      <div class="hero-art">
-        <span class="mascot-hint" id="mascot-hint" aria-hidden="true">
-          KLIK AKU! <span aria-hidden="true">↓</span>
-        </span>
-        <button class="mascot-btn" id="mascot-btn" type="button" aria-label="Interaksi maskot Tahu bulat">
-          <img class="mascot-img" src="image/mascot.png" alt="Maskot resmi Tahu bulat" width="240" height="240">
-          <span class="mascot-caption" id="mascot-caption">Tahu bulat digoreng dadakan! 🟡</span>
-        </button>
-      </div>
-
-      <!-- Impact Stats -->
-      <div class="hero-impact" aria-label="Pencapaian & Dampak">
-        <div class="stat-item">
-          <p class="stat-value">400Rb<span>+</span></p>
-          <p class="stat-label">Anggota Komunitas</p>
-          <p class="stat-sub">AIH Studio Ecosystem</p>
-        </div>
-        <div class="stat-item">
-          <p class="stat-value">6<span>+</span></p>
-          <p class="stat-label">Top YouTuber</p>
-          <p class="stat-sub">Memainkan karya di channel mereka</p>
-        </div>
-        <div class="stat-item">
-          <p class="stat-value">2021</p>
-          <p class="stat-label">Tahun Berkarya</p>
-          <p class="stat-sub">Aktif eksplorasi Roblox Studio</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Karya Pilihan (Featured Projects) -->
-    <section class="content-section section-shell" id="karya">
-      <div class="section-heading">
-        <p class="eyebrow">
-          <span class="small-square" aria-hidden="true"></span>
-          Karya Pilihan
-        </p>
-        <span class="section-number">01 / Proyek</span>
-      </div>
-
-      <div class="section-intro">
-        <h2>Dunia permainan<br><span>dan arsitektur map.</span></h2>
-        <p>Setiap proyek dirancang dengan fokus pada atmosfer lingkungan, kenyamanan navigasi, dan performa optimal saat dimainkan.</p>
-      </div>
-
-      <!-- Tier 1: Flagship Featured Cards -->
-      <div class="featured-grid">
-        <article class="project-card">
-          <div class="project-thumbnail" data-gallery="level-design" role="button" tabindex="0" aria-label="Buka galeri Map Architecture">
-            <span class="project-badge">Featured Map</span>
-            <img src="image/Archives/MyWork/Screenshot 2026-03-30 155149.png" alt="Map Architecture karya Bachtiar" loading="lazy">
+    <section class="hero section" id="top">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="hero-status-pill">
+            <span class="status-dot"></span>
+            <span>Tersedia untuk Proyek &amp; Kolaborasi</span>
           </div>
-          <div class="project-body">
-            <p class="eyebrow">Level &amp; Environment Design</p>
-            <h3 class="project-title">Map Architecture &amp; Worldbuilding</h3>
-            <p class="project-desc">Kompilasi pembangunan map dari 2021 hingga sekarang. Mengutamakan perpaduan lighting sinematik, tata letak ruang, serta detail prop yang mendukung alur gameplay.</p>
-            <div class="project-footer">
-              <span class="project-meta">6 Screenshot Arsip</span>
-              <button class="btn-open-gallery" type="button" data-gallery="level-design">Buka Galeri <span aria-hidden="true">↗</span></button>
-            </div>
-          </div>
-        </article>
 
-        <article class="project-card">
-          <div class="project-thumbnail" data-gallery="first-collab" role="button" tabindex="0" aria-label="Buka galeri First Collab">
-            <span class="project-badge">Collaboration</span>
-            <img src="image/Archives/FristCollab/Screenshot 2026-02-16 063438.png" alt="First Collab Project karya Bachtiar" loading="lazy">
-          </div>
-          <div class="project-body">
-            <p class="eyebrow">Collaborative Production</p>
-            <h3 class="project-title">First Collab Design</h3>
-            <p class="project-desc">Karya kolaborasi lingkungan pertama yang dikerjakan dengan standar profesional studio dan langsung disetujui untuk proses pengembangan lanjutan.</p>
-            <div class="project-footer">
-              <span class="project-meta">6 Screenshot Arsip</span>
-              <button class="btn-open-gallery" type="button" data-gallery="first-collab">Buka Galeri <span aria-hidden="true">↗</span></button>
-            </div>
-          </div>
-        </article>
-      </div>
+          <h1>Bachtiar Aditya</h1>
+          <p class="hero-subtitle">Level Designer &amp; Map Architect di Platform Roblox</p>
 
-      <!-- Tier 2: Secondary Projects Grid -->
-      <div class="compact-grid">
-        <article class="compact-card">
-          <div class="compact-card-header">
-            <div class="compact-card-icon" aria-hidden="true">⬢</div>
-            <span class="project-meta">Prop &amp; Assets</span>
-          </div>
-          <h3>Custom Props &amp; Scene Builds</h3>
-          <p>Eksplorasi pembuatan set piece, struktur bangunan, dan dekorasi lingkungan dengan komposisi visual yang kuat.</p>
-          <button class="btn-open-gallery" type="button" data-gallery="builds">Lihat Galeri <span aria-hidden="true">↗</span></button>
-        </article>
-
-        <article class="compact-card">
-          <div class="compact-card-header">
-            <div class="compact-card-icon" aria-hidden="true">❖</div>
-            <span class="project-meta">UI/UX Systems</span>
-          </div>
-          <h3>Game Interface &amp; UI/UX</h3>
-          <p>Perancangan tata letak antarmuka Roblox yang responsif, terukur (Scale/Layout), dan nyaman diakses pemain.</p>
-          <button class="btn-open-gallery" type="button" data-gallery="uiux">Lihat Galeri <span aria-hidden="true">↗</span></button>
-        </article>
-
-        <article class="compact-card">
-          <div class="compact-card-header">
-            <div class="compact-card-icon" aria-hidden="true">&lt;/&gt;</div>
-            <span class="project-meta">LuaU Architecture</span>
-          </div>
-          <h3>NPC Manager &amp; Scripting</h3>
-          <p>Pengembangan sistem logic dengan integrasi print-tracking menyeluruh dan modular error-logging untuk kemudahan debugging.</p>
-          <button class="btn-open-gallery" type="button" data-gallery="luau-code">Lihat Galeri <span aria-hidden="true">↗</span></button>
-        </article>
-
-        <article class="compact-card">
-          <div class="compact-card-header">
-            <div class="compact-card-icon" aria-hidden="true">✦</div>
-            <span class="project-meta">Visual Vault</span>
-          </div>
-          <h3>Creative Archives &amp; Vault</h3>
-          <p>Dokumentasi perjalanan kreatif, eksperimen mekanika acak, dan proses di balik layar berbagai karya game.</p>
-          <button class="btn-open-gallery" type="button" data-gallery="gallery">Lihat Galeri <span aria-hidden="true">↗</span></button>
-        </article>
-      </div>
-    </section>
-
-    <!-- Creator Showcase / Hall of Fame -->
-    <section class="content-section section-shell" id="kreator">
-      <div class="section-heading">
-        <p class="eyebrow">
-          <span class="small-square" aria-hidden="true"></span>
-          Di Balik Layar &amp; Apresiasi
-        </p>
-        <span class="section-number">02 / Kreator</span>
-      </div>
-
-      <div class="section-intro">
-        <h2>Dimainkan oleh<br><span>kreator ternama.</span></h2>
-        <p>Apresiasi luar biasa ketika karya map dan game Roblox ini dimainkan langsung oleh beberapa kreator konten terbesar di Indonesia.</p>
-      </div>
-
-      <div class="creators-grid">
-        <div class="creator-card">
-          <div class="creator-avatar-wrap">
-            <img src="image/youtuber/Windah Basudara.png" alt="Windah Basudara" loading="lazy">
-          </div>
-          <div class="creator-info">
-            <span class="creator-tag">Honored Player</span>
-            <h3>Windah Basudara</h3>
-            <p class="creator-note">Memainkan karya buatan Bachtiar di sesi siaran.</p>
-          </div>
-        </div>
-
-        <div class="creator-card">
-          <div class="creator-avatar-wrap">
-            <img src="image/youtuber/MiawAug.png" alt="MiawAug" loading="lazy">
-          </div>
-          <div class="creator-info">
-            <span class="creator-tag">Honored Player</span>
-            <h3>MiawAug</h3>
-            <p class="creator-note">Merasakan pengalaman bermain dan keseruan map.</p>
-          </div>
-        </div>
-
-        <div class="creator-card">
-          <div class="creator-avatar-wrap">
-            <img src="image/youtuber/Chandra Y.png" alt="Chandra Y." loading="lazy">
-          </div>
-          <div class="creator-info">
-            <span class="creator-tag">Honored Player</span>
-            <h3>Chandra Y.</h3>
-            <p class="creator-note">Mencoba gameplay dan tantangan yang disajikan.</p>
-          </div>
-        </div>
-
-        <div class="creator-card">
-          <div class="creator-avatar-wrap">
-            <img src="image/youtuber/Stresman.png" alt="Stresman" loading="lazy">
-          </div>
-          <div class="creator-info">
-            <span class="creator-tag">Honored Player</span>
-            <h3>Stresman</h3>
-            <p class="creator-note">Menjelajahi konten kreatif di dalam game.</p>
-          </div>
-        </div>
-
-        <div class="creator-card">
-          <div class="creator-avatar-wrap">
-            <img src="image/youtuber/Hayogo.png" alt="Hayogo" loading="lazy">
-          </div>
-          <div class="creator-info">
-            <span class="creator-tag">Honored Player</span>
-            <h3>Hayogo</h3>
-            <p class="creator-note">Menguji keseruan map dan mekanikanya.</p>
-          </div>
-        </div>
-
-        <div class="creator-card">
-          <div class="creator-avatar-wrap">
-            <img src="image/youtuber/Jelool.png" alt="Jelool" loading="lazy">
-          </div>
-          <div class="creator-info">
-            <span class="creator-tag">Honored Player</span>
-            <h3>Jelool</h3>
-            <p class="creator-note">Menikmati sesi bermain bersama komunitas.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Studio & Komunitas -->
-    <section class="content-section section-shell" id="studio">
-      <div class="section-heading">
-        <p class="eyebrow">
-          <span class="small-square" aria-hidden="true"></span>
-          Studio &amp; Ekosistem
-        </p>
-        <span class="section-number">03 / Studio</span>
-      </div>
-
-      <div class="section-intro">
-        <h2>Rumah untuk berkarya<br><span>dan berbagi pengalaman.</span></h2>
-        <p>Inilah wadah tempat ide-ide dieksekusi dan tempat berkumpulnya ratusan ribu anggota komunitas Roblox.</p>
-      </div>
-
-      <div class="studio-grid">
-        <div class="studio-card">
-          <div class="studio-brand">
-            <img class="studio-logo" src="image/aihstudio.png" alt="Logo AIH Studio" loading="lazy">
-            <div>
-              <h3>AIH STUDIO</h3>
-              <span>Est. 2023 • 400.000+ Members</span>
-            </div>
-          </div>
-          <p>Didirikan sebagai payung utama untuk menciptakan pengalaman bermain di platform Roblox. Tumbuh secara organik hingga menghimpun lebih dari 400.000 anggota yang setia mengikuti setiap pembaruan proyek.</p>
-        </div>
-
-        <div class="studio-card">
-          <div class="studio-brand">
-            <img class="studio-logo" src="image/aihgank.png" alt="Logo AIH Gank" loading="lazy">
-            <div>
-              <h3>AIH GANK</h3>
-              <span>Est. 2025 • Creative Initiative</span>
-            </div>
-          </div>
-          <p>Kelanjutan eksplorasi kreatif dan wadah kolaboratif antarpemain yang dirancang untuk mempererat interaksi antarkomunitas dan mendukung proyek-proyek generasi terbaru.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Perjalanan (Timeline) -->
-    <section class="content-section section-shell" id="perjalanan">
-      <div class="section-heading">
-        <p class="eyebrow">
-          <span class="small-square" aria-hidden="true"></span>
-          Perjalanan Kami
-        </p>
-        <span class="section-number">04 / Kisah</span>
-      </div>
-
-      <div class="section-intro">
-        <h2>Semua berawal dari<br><span>rasa ingin tahu.</span></h2>
-        <p>Dari penasaran dengan cara sebuah game dirancang hingga membangun studio dan komunitas berskala besar.</p>
-      </div>
-
-      <div class="timeline">
-        <div class="timeline-item">
-          <span class="timeline-year">2021</span>
-          <span class="timeline-dot" aria-hidden="true"></span>
-          <div class="timeline-content">
-            <h3>Mengenal Roblox Studio</h3>
-            <p>Pertama kali bersentuhan dengan Roblox Studio, mempelajari dasar-dasar level design, penempatan part, serta bagaimana atmosfer sebuah lingkungan game dibentuk.</p>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <span class="timeline-year">2023</span>
-          <span class="timeline-dot" aria-hidden="true"></span>
-          <div class="timeline-content">
-            <h3>Mendirikan AIH Studio</h3>
-            <p>Meluncurkan AIH Studio secara resmi. Komunitas mulai berkembang pesat dan berhasil mencapai angka 400.000+ anggota aktif.</p>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <span class="timeline-year">2024</span>
-          <span class="timeline-dot" aria-hidden="true"></span>
-          <div class="timeline-content">
-            <h3>Fokus &amp; Pendalaman Keahlian</h3>
-            <p>Kembali aktif secara penuh dengan fokus tajam pada arsitektur map, pencahayaan realistis, optimasi aset, dan struktur scripting LuaU terorganisir.</p>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <span class="timeline-year">2025</span>
-          <span class="timeline-dot" aria-hidden="true"></span>
-          <div class="timeline-content">
-            <h3>Ekspansi &amp; AIH Gank</h3>
-            <p>Memperluas jangkauan komunitas dengan mendirikan AIH Gank dan menjalankan proyek kolaborasi berstandar industri studio.</p>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <span class="timeline-year">2026</span>
-          <span class="timeline-dot" aria-hidden="true"></span>
-          <div class="timeline-content">
-            <h3>Menuju Standar Baru</h3>
-            <p>Terus berinovasi mengembangkan game dan lingkungan Roblox bermutu tinggi yang siap dinikmati jutaan pemain di seluruh dunia.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Profil & Kontak -->
-    <section class="content-section section-shell" id="kontak">
-      <div class="section-heading">
-        <p class="eyebrow">
-          <span class="small-square" aria-hidden="true"></span>
-          Tentang Pengembang
-        </p>
-        <span class="section-number">05 / Profil</span>
-      </div>
-
-      <div class="founder-panel">
-        <div class="founder-photo-wrap">
-          <img src="image/mascot.png" alt="Bachtiar Aditya / Tahu bulat" loading="lazy">
-        </div>
-        <div class="founder-details">
-          <div class="founder-name-group">
-            <p class="eyebrow">Kenali Pengembang</p>
-            <h3>Bachtiar Aditya</h3>
-            <p class="project-meta">Alias: Tahu bulat • Founder of AIH Studio</p>
-          </div>
-          <p class="founder-bio">
-            Saya mendedikasikan waktu untuk menciptakan map dan lingkungan Roblox yang hidup, beratmosfer, dan nyaman dimainkan. Dengan integrasi mekanika LuaU yang rapi dan perhatian penuh pada detail visual, tujuan utama saya adalah menghadirkan game berkualitas yang berkesan bagi para pemain.
+          <p class="hero-desc">
+            Merancang lingkungan game yang hidup, mengedepankan atmosfer sinematik, kenyamanan navigasi pemain, dan optimasi teknis. Dari konsep visual referensi hingga map siap rilis yang dimainkan ratusan ribu pengguna.
           </p>
-          <div class="founder-links">
-            <button class="founder-link-btn" id="copy-discord" type="button" data-discord="tahubulat">
-              <span>Discord</span>
-              <strong>Salin Username ⧉</strong>
-            </button>
-            <a class="founder-link-btn" href="https://www.roblox.com/users/2640291436/profile" target="_blank" rel="noopener noreferrer">
-              <span>Roblox</span>
-              <strong>Lihat Profil ↗</strong>
-            </a>
-            <button class="founder-link-btn" id="copy-email" type="button" data-email="bachtiaradit01@gmail.com">
-              <span>Email</span>
-              <strong>Salin Email ✉</strong>
-            </button>
+
+          <!-- Focused Discord Copy Action -->
+          <div class="hero-discord-box">
+            <div class="discord-identity">
+              <span class="discord-platform-label">Jalur Komunikasi Utama</span>
+              <span class="discord-handle">Discord: tahubulat</span>
+            </div>
+            <button class="btn-copy-discord" type="button" data-copy-discord>Salin Tag</button>
+          </div>
+
+          <div class="hero-links-row">
+            <a class="hero-action-link" href="#karya">Lihat Portofolio Karya ↓</a>
+            <span style="color: var(--border-hover);">•</span>
+            <a class="hero-action-link" href="https://www.roblox.com/users/2640291436/profile" target="_blank" rel="noopener noreferrer">Profil Roblox ↗</a>
+          </div>
+        </div>
+
+        <!-- Mascot Display (Clean & Natural) -->
+        <div class="hero-art-clean">
+          <div class="mascot-container" title="Maskot Tahu bulat">
+            <img class="mascot-raw" src="image/mascot.png" alt="Maskot resmi Tahu bulat" width="320" height="320">
+            <div class="mascot-shadow"></div>
+          </div>
+          <span class="mascot-tagline">Tahu bulat • Game Creator Persona</span>
+        </div>
+      </div>
+
+      <!-- Impact Metrics -->
+      <div class="container">
+        <div class="impact-strip">
+          <div class="metric-unit">
+            <span class="metric-number">400K+</span>
+            <span class="metric-name">Anggota Komunitas</span>
+            <span class="metric-detail">Ekosistem AIH Studio</span>
+          </div>
+          <div class="metric-unit">
+            <span class="metric-number">6+</span>
+            <span class="metric-name">Top YouTuber</span>
+            <span class="metric-detail">Memainkan map di sesi video</span>
+          </div>
+          <div class="metric-unit">
+            <span class="metric-number">5+ Thn</span>
+            <span class="metric-name">Pengalaman Platform</span>
+            <span class="metric-detail">Eksplorasi Roblox Studio</span>
+          </div>
+          <div class="metric-unit">
+            <span class="metric-number">Direct</span>
+            <span class="metric-name">Kontak Discord</span>
+            <span class="metric-detail">Komunikasi cepat via @tahubulat</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Final CTA -->
-    <div class="section-shell final-cta">
-      <div class="final-cta-card">
-        <p class="eyebrow">Kolaborasi &amp; Kerja Sama</p>
-        <h2>Punya ide game menarik<br>untuk diwujudkan bersama?</h2>
-        <p>Terbuka untuk diskusi proyek game, kolaborasi map, maupun perancangan environment berkualitas.</p>
-        <a class="primary-btn" href="mailto:bachtiaradit01@gmail.com">Mulai Percakapan <span aria-hidden="true">↗</span></a>
+    <!-- Showcase Karya (Uncropped 16:9) -->
+    <section class="section" id="karya">
+      <div class="container">
+        <div class="section-meta">
+          <span class="meta-stud"></span>
+          <span class="meta-label">Koleksi Proyek</span>
+        </div>
+
+        <div class="section-head-wrap">
+          <div>
+            <h2>Arsip &amp; Karya Pilihan</h2>
+            <p class="section-lead">Dokumentasi asli level design, build lingkungan, sistem UI, dan arsitektur skrip.</p>
+          </div>
+
+          <!-- Category Filter Bar -->
+          <div class="filter-bar">
+            <button class="filter-btn active" type="button" data-filter="all">Semua</button>
+            <button class="filter-btn" type="button" data-filter="level">Level Design</button>
+            <button class="filter-btn" type="button" data-filter="build">Build &amp; Props</button>
+            <button class="filter-btn" type="button" data-filter="uiux">UI/UX</button>
+            <button class="filter-btn" type="button" data-filter="scripting">LuaU</button>
+          </div>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="showcase-grid">
+
+          <!-- Card 1: Level Design -->
+          <article class="showcase-card" data-category="level">
+            <div class="card-media-wrap" data-gallery-key="level-design" role="button" tabindex="0" aria-label="Buka galeri Map Architecture">
+              <img src="image/Archives/MyWork/Screenshot 2026-03-30 155149.png" alt="Map Architecture karya Bachtiar" loading="lazy">
+              <div class="card-media-overlay">
+                <span class="overlay-pill">Buka Galeri Resolusi Penuh</span>
+              </div>
+            </div>
+            <div class="card-content">
+              <div class="card-category-row">
+                <span class="card-category">Level Design &bull; Environment</span>
+                <span class="card-count">6 Screenshot</span>
+              </div>
+              <h3 class="card-title">Map Architecture &amp; Worldbuilding</h3>
+              <p class="card-summary">Pengembangan tata letak ruang, pencahayaan atmosferik, serta pembagian zona interaksi pemain yang dirancang untuk menjaga engagement dan alur gameplay.</p>
+              <div class="card-action-bar">
+                <button class="btn-card-gallery" type="button" data-gallery-key="level-design">Lihat Galeri ↗</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 2: First Collab -->
+          <article class="showcase-card" data-category="level">
+            <div class="card-media-wrap" data-gallery-key="first-collab" role="button" tabindex="0" aria-label="Buka galeri First Collab">
+              <img src="image/Archives/FristCollab/Screenshot 2026-02-16 063438.png" alt="First Collab Design karya Bachtiar" loading="lazy">
+              <div class="card-media-overlay">
+                <span class="overlay-pill">Buka Galeri Resolusi Penuh</span>
+              </div>
+            </div>
+            <div class="card-content">
+              <div class="card-category-row">
+                <span class="card-category">Collaborative Build</span>
+                <span class="card-count">6 Screenshot</span>
+              </div>
+              <h3 class="card-title">First Collab Design Project</h3>
+              <p class="card-summary">Proyek kolaborasi map pertama berstandar komersial yang berhasil disetujui langsung oleh tim mitra untuk masuk ke tahapan produksi penuh.</p>
+              <div class="card-action-bar">
+                <button class="btn-card-gallery" type="button" data-gallery-key="first-collab">Lihat Galeri ↗</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 3: Custom Props & Builds -->
+          <article class="showcase-card" data-category="build">
+            <div class="card-media-wrap" data-gallery-key="builds" role="button" tabindex="0" aria-label="Buka galeri Custom Builds">
+              <img src="image/Archives/Build/Screenshot 2025-12-18 211443.png" alt="Custom Props karya Bachtiar" loading="lazy">
+              <div class="card-media-overlay">
+                <span class="overlay-pill">Buka Galeri Resolusi Penuh</span>
+              </div>
+            </div>
+            <div class="card-content">
+              <div class="card-category-row">
+                <span class="card-category">Assets &bull; Scene Modeling</span>
+                <span class="card-count">7 Screenshot</span>
+              </div>
+              <h3 class="card-title">Custom Props &amp; Scene Builds</h3>
+              <p class="card-summary">Rangkaian prop struktural, set pieces, dan elemen dekorasi map yang dibangun dengan efisiensi geometri part untuk menjaga stabilitas frame rate.</p>
+              <div class="card-action-bar">
+                <button class="btn-card-gallery" type="button" data-gallery-key="builds">Lihat Galeri ↗</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 4: Roblox UI/UX -->
+          <article class="showcase-card" data-category="uiux">
+            <div class="card-media-wrap" data-gallery-key="uiux" role="button" tabindex="0" aria-label="Buka galeri UI UX">
+              <img src="image/Archives/UiUx/Screenshot 2026-03-30 151603.png" alt="Roblox UI UX karya Bachtiar" loading="lazy">
+              <div class="card-media-overlay">
+                <span class="overlay-pill">Buka Galeri Resolusi Penuh</span>
+              </div>
+            </div>
+            <div class="card-content">
+              <div class="card-category-row">
+                <span class="card-category">Interface &bull; Usability</span>
+                <span class="card-count">5 Screenshot</span>
+              </div>
+              <h3 class="card-title">Game Interface &amp; UI/UX</h3>
+              <p class="card-summary">Struktur GUI modular dengan standardisasi rasio skala (Scale/Auto-layout) agar tampilan antarmuka selalu proporsional di PC, tablet, maupun layar mobile.</p>
+              <div class="card-action-bar">
+                <button class="btn-card-gallery" type="button" data-gallery-key="uiux">Lihat Galeri ↗</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 5: LuaU Code -->
+          <article class="showcase-card" data-category="scripting">
+            <div class="card-media-wrap" data-gallery-key="luau-code" role="button" tabindex="0" aria-label="Buka galeri LuaU Code">
+              <img src="image/Archives/LuaUCode/Screenshot 2026-06-13 001441.png" alt="LuaU Architecture karya Bachtiar" loading="lazy">
+              <div class="card-media-overlay">
+                <span class="overlay-pill">Buka Galeri Resolusi Penuh</span>
+              </div>
+            </div>
+            <div class="card-content">
+              <div class="card-category-row">
+                <span class="card-category">Scripting &bull; System Logic</span>
+                <span class="card-count">5 Screenshot</span>
+              </div>
+              <h3 class="card-title">NPC Manager &amp; System Scripting</h3>
+              <p class="card-summary">Arsitektur kode LuaU yang terintegrasi dengan print-tracking menyeluruh dan logging error sistematis untuk mempermudah pemeliharaan dan debugging jangka panjang.</p>
+              <div class="card-action-bar">
+                <button class="btn-card-gallery" type="button" data-gallery-key="luau-code">Lihat Galeri ↗</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 6: Visual Archives -->
+          <article class="showcase-card" data-category="build">
+            <div class="card-media-wrap" data-gallery-key="gallery" role="button" tabindex="0" aria-label="Buka galeri Visual Archives">
+              <img src="image/Archives/Gallery/Cuplikan layar 2025-08-30 115417.png" alt="Visual Archives karya Bachtiar" loading="lazy">
+              <div class="card-media-overlay">
+                <span class="overlay-pill">Buka Galeri Resolusi Penuh</span>
+              </div>
+            </div>
+            <div class="card-content">
+              <div class="card-category-row">
+                <span class="card-category">Visual Vault</span>
+                <span class="card-count">5 Screenshot</span>
+              </div>
+              <h3 class="card-title">Creative Visual Archives</h3>
+              <p class="card-summary">Dokumentasi eksplorasi konsep, uji coba lighting dinamis, dan aset visual eksperimental selama proses pengerjaan lingkungan permainan.</p>
+              <div class="card-action-bar">
+                <button class="btn-card-gallery" type="button" data-gallery-key="gallery">Lihat Galeri ↗</button>
+              </div>
+            </div>
+          </article>
+
+        </div>
       </div>
-    </div>
+    </section>
+
+    <!-- Creator Hall of Fame (Clean Photos) -->
+    <section class="section" id="kreator">
+      <div class="container">
+        <div class="section-meta">
+          <span class="meta-stud"></span>
+          <span class="meta-label">Hall of Fame</span>
+        </div>
+
+        <div class="section-head-wrap">
+          <div>
+            <h2>Dimainkan oleh Kreator Ternama</h2>
+            <p class="section-lead">Apresiasi dan pengakuan saat karya map dinikmati langsung oleh figur gaming terbesar di Indonesia.</p>
+          </div>
+        </div>
+
+        <div class="creators-grid-clean">
+          <div class="creator-card-clean">
+            <div class="creator-photo-box">
+              <img src="image/youtuber/Windah Basudara.png" alt="Windah Basudara" loading="lazy">
+            </div>
+            <div class="creator-meta-box">
+              <span class="creator-badge">Honored Player</span>
+              <span class="creator-name">Windah Basudara</span>
+              <p class="creator-detail">Memainkan karya di sesi siaran langsung.</p>
+            </div>
+          </div>
+
+          <div class="creator-card-clean">
+            <div class="creator-photo-box">
+              <img src="image/youtuber/MiawAug.png" alt="MiawAug" loading="lazy">
+            </div>
+            <div class="creator-meta-box">
+              <span class="creator-badge">Honored Player</span>
+              <span class="creator-name">MiawAug</span>
+              <p class="creator-detail">Menikmati konten dan gameplay map.</p>
+            </div>
+          </div>
+
+          <div class="creator-card-clean">
+            <div class="creator-photo-box">
+              <img src="image/youtuber/Chandra Y.png" alt="Chandra Y." loading="lazy">
+            </div>
+            <div class="creator-meta-box">
+              <span class="creator-badge">Honored Player</span>
+              <span class="creator-name">Chandra Y.</span>
+              <p class="creator-detail">Menjajal tantangan dan atmosfer game.</p>
+            </div>
+          </div>
+
+          <div class="creator-card-clean">
+            <div class="creator-photo-box">
+              <img src="image/youtuber/Stresman.png" alt="Stresman" loading="lazy">
+            </div>
+            <div class="creator-meta-box">
+              <span class="creator-badge">Honored Player</span>
+              <span class="creator-name">Stresman</span>
+              <p class="creator-detail">Eksplorasi map bersama komunitas.</p>
+            </div>
+          </div>
+
+          <div class="creator-card-clean">
+            <div class="creator-photo-box">
+              <img src="image/youtuber/Hayogo.png" alt="Hayogo" loading="lazy">
+            </div>
+            <div class="creator-meta-box">
+              <span class="creator-badge">Honored Player</span>
+              <span class="creator-name">Hayogo</span>
+              <p class="creator-detail">Menguji mekanika dan keseruan bermain.</p>
+            </div>
+          </div>
+
+          <div class="creator-card-clean">
+            <div class="creator-photo-box">
+              <img src="image/youtuber/Jelool.png" alt="Jelool" loading="lazy">
+            </div>
+            <div class="creator-meta-box">
+              <span class="creator-badge">Honored Player</span>
+              <span class="creator-name">Jelool</span>
+              <p class="creator-detail">Merasakan pengalaman game secara utuh.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tentang Pengembang (About Me) -->
+    <section class="section" id="tentang">
+      <div class="container">
+        <div class="section-meta">
+          <span class="meta-stud"></span>
+          <span class="meta-label">Profil Personal</span>
+        </div>
+
+        <div class="section-head-wrap">
+          <div>
+            <h2>Tentang Bachtiar Aditya</h2>
+            <p class="section-lead">Perjalanan, fokus pengembangan, dan dedikasi pada kualitas karya game.</p>
+          </div>
+        </div>
+
+        <div class="about-columns">
+          <div class="about-text-block">
+            <h3>Filosofi Pengembangan</h3>
+            <p>
+              Bagi saya, sebuah map bukan sekadar susunan part atau model 3D, melainkan fondasi utama yang membentuk emosi dan pengalaman pemain saat pertama kali melangkah masuk ke dalam game.
+            </p>
+            <p>
+              Sejak mulai mendalami Roblox Studio pada tahun 2021, fokus utama saya adalah merancang tata letak yang ramah bagi mata dan gameplay, mengoptimalkan rendering lighting agar tidak memberatkan perangkat pemain, serta memastikan alur permainan berjalan intuitif tanpa kebingungan.
+            </p>
+          </div>
+
+          <div class="about-text-block">
+            <h3>Komunitas &amp; Ekosistem</h3>
+            <p>
+              Selain mengerjakan perancangan level secara mandiri, saya juga mendirikan dan mengelola ekosistem komunitas game untuk menjembatani komunikasi antarpemain dan developer.
+            </p>
+
+            <div class="community-box">
+              <img class="community-logo" src="image/aihstudio.png" alt="AIH Studio Logo" loading="lazy">
+              <div class="community-info">
+                <h4>AIH Studio</h4>
+                <p>Est. 2023 &bull; 400.000+ Anggota Terdaftar</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dedicated Discord Contact Section -->
+    <section class="contact-section" id="kontak">
+      <div class="container">
+        <div class="contact-card-highlight">
+          <div class="section-meta" style="margin-bottom: 8px;">
+            <span class="meta-stud"></span>
+            <span class="meta-label">Hubungi Saya</span>
+          </div>
+
+          <h2>Mari Berdiskusi &amp; Kolaborasi</h2>
+          <p>
+            Tertarik bekerja sama untuk perancangan level design, arsitektur map, atau pengembangan game Roblox berikutnya? Mari ngobrol langsung di Discord.
+          </p>
+
+          <div class="contact-discord-interactive">
+            <span class="interactive-tag">@tahubulat</span>
+            <button class="btn-contact-copy" type="button" data-copy-discord>Salin Username Discord</button>
+          </div>
+
+          <a class="roblox-profile-sublink" href="https://www.roblox.com/users/2640291436/profile" target="_blank" rel="noopener noreferrer">
+            Lihat Akun Roblox Resmi ↗
+          </a>
+        </div>
+      </div>
+    </section>
 
   </main>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="section-shell">
-      <div class="footer-top">
-        <a class="wordmark" href="#top">
-          <img class="wordmark-avatar" src="image/mascot.png" width="32" height="32" alt="Tahu bulat">
-          <span>bachtiar<span class="wordmark-light">aditya</span></span>
-        </a>
-        <a class="footer-back-top" href="#top">Kembali ke atas <span aria-hidden="true">↑</span></a>
-      </div>
-      <div class="footer-bottom">
-        <p>© <span id="current-year">2026</span> Bachtiar Aditya (Tahu bulat). Hak cipta dilindungi.</p>
-        <a href="mailto:bachtiaradit01@gmail.com">bachtiaradit01@gmail.com</a>
-      </div>
+  <!-- Clean Footer -->
+  <footer class="footer-clean">
+    <div class="container footer-row">
+      <p class="footer-copy">&copy; <span id="current-year">2026</span> Bachtiar Aditya. Hak cipta dilindungi.</p>
+      <a class="footer-back-link" href="#top">Kembali ke Atas &uarr;</a>
     </div>
   </footer>
 
-  <!-- Modal Gallery Viewer -->
+  <!-- Fullscreen Uncropped Gallery Modal -->
   <div class="modal-overlay" id="gallery-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3 class="modal-title" id="modal-title">Judul Galeri</h3>
-        <button class="modal-close-btn" id="modal-close" type="button" aria-label="Tutup galeri">✕</button>
+    <div class="modal-shell">
+      <div class="modal-top-bar">
+        <span class="modal-headline" id="modal-title">Judul Galeri</span>
+        <button class="modal-btn-close" id="modal-close" type="button" aria-label="Tutup galeri">&times;</button>
       </div>
-      <div class="modal-gallery-stage">
-        <button class="modal-nav-btn modal-nav-prev" id="modal-prev" type="button" aria-label="Foto sebelumnya">←</button>
-        <img class="modal-img" id="modal-img" src="" alt="Cuplikan proyek">
-        <button class="modal-nav-btn modal-nav-next" id="modal-next" type="button" aria-label="Foto selanjutnya">→</button>
+      <div class="modal-stage">
+        <button class="modal-nav-button nav-prev" id="modal-prev" type="button" aria-label="Foto sebelumnya">&larr;</button>
+        <img class="modal-display-img" id="modal-img" src="" alt="Pratinjau proyek">
+        <button class="modal-nav-button nav-next" id="modal-next" type="button" aria-label="Foto selanjutnya">&rarr;</button>
       </div>
-      <div class="modal-footer">
-        <p class="modal-caption" id="modal-caption">Deskripsi galeri.</p>
-        <span class="modal-counter" id="modal-counter">1 / 1</span>
+      <div class="modal-bottom-bar">
+        <span class="modal-caption-text" id="modal-caption">Keterangan galeri.</span>
+        <span class="modal-counter-badge" id="modal-counter">1 / 1</span>
       </div>
     </div>
   </div>
 
-  <!-- Toast Notification -->
-  <div class="toast" id="toast" role="status" aria-live="polite">
-    <span id="toast-msg">Disalin ke clipboard!</span>
+  <!-- Toast Notification Feedback -->
+  <div class="toast-notice" id="toast-notice" role="status" aria-live="polite">
+    Username Discord berhasil disalin
   </div>
 
   <script src="script.js"></script>
