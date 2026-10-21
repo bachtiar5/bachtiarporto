@@ -277,7 +277,7 @@
       padding: 24px 32px 80px;
     }
 
-    /* Skills Row (Replacing Friends Row) */
+    /* Skills Row (Authentic Roblox Friends Replacement) */
     .rbx-skills-section {
       margin-bottom: 36px;
     }
@@ -285,9 +285,9 @@
     .rbx-skills-scroll {
       display: flex;
       align-items: flex-start;
-      gap: 20px;
+      gap: 22px;
       overflow-x: auto;
-      padding-bottom: 12px;
+      padding: 4px 4px 14px;
       scrollbar-width: thin;
       scrollbar-color: var(--rbx-border) transparent;
     }
@@ -300,59 +300,107 @@
       width: 82px;
       flex-shrink: 0;
       cursor: pointer;
-      transition: transform 0.15s ease;
+      text-decoration: none;
+      user-select: none;
+      transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .skill-bubble-col:hover {
-      transform: translateY(-2px);
+      transform: translateY(-4px);
+    }
+
+    .skill-avatar-wrap {
+      position: relative;
+      width: 72px;
+      height: 72px;
+      margin-bottom: 8px;
     }
 
     .skill-avatar-frame {
-      position: relative;
-      width: 68px;
-      height: 68px;
+      width: 72px;
+      height: 72px;
       border-radius: 50%;
       background-color: var(--rbx-surface-elevated);
       border: 2px solid var(--rbx-border-light);
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 8px;
       overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+      transition: border-color 0.2s ease, transform 0.2s ease;
     }
 
-    .skill-icon-glyph {
-      font-size: 1.5rem;
-      font-weight: 800;
-      color: var(--rbx-text-white);
-      user-select: none;
+    .skill-bubble-col:hover .skill-avatar-frame {
+      border-color: var(--rbx-blue);
+    }
+
+    .skill-avatar-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .skill-avatar-frame.contain-logo {
+      background-color: #ffffff;
+      padding: 10px;
+    }
+
+    .skill-avatar-frame.contain-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .skill-vector-svg {
+      width: 36px;
+      height: 36px;
+      display: block;
+      transition: transform 0.2s ease;
+    }
+
+    .skill-bubble-col:hover .skill-vector-svg {
+      transform: scale(1.1);
     }
 
     .skill-online-dot {
       position: absolute;
       bottom: 2px;
       right: 2px;
-      width: 14px;
-      height: 14px;
-      background-color: var(--rbx-green);
-      border: 3px solid var(--rbx-bg);
+      width: 15px;
+      height: 15px;
+      background-color: #00b06f;
+      border: 2.5px solid var(--rbx-bg);
       border-radius: 50%;
+      box-shadow: 0 0 6px rgba(0, 176, 111, 0.6);
+      z-index: 2;
+    }
+
+    .skill-online-dot.collab-dot {
+      background-color: var(--rbx-blue);
+      box-shadow: 0 0 6px rgba(0, 162, 255, 0.6);
     }
 
     .skill-name-label {
-      font-size: 0.775rem;
-      font-weight: 600;
-      color: var(--rbx-text-primary);
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--rbx-text-white);
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      max-width: 80px;
+      max-width: 82px;
+      line-height: 1.2;
     }
 
     .skill-sub-meta {
-      font-size: 0.685rem;
+      font-size: 0.69rem;
       color: var(--rbx-text-muted);
-      font-family: var(--font-mono);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 82px;
+      line-height: 1.2;
+      margin-top: 2px;
     }
 
     /* Section Headings */
@@ -400,6 +448,49 @@
 
     .rbx-game-card:hover {
       transform: translateY(-3px);
+    }
+
+    /* YouTuber Grid (Vertical 4:5 Cards to fit 1080x1350 Posters without Cropping) */
+    .rbx-youtubers-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 18px;
+      margin-bottom: 40px;
+    }
+
+    @media (max-width: 1200px) {
+      .rbx-youtubers-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 680px) {
+      .rbx-youtubers-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+    }
+
+    .rbx-game-thumb-portrait {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      background-color: var(--rbx-surface-elevated);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--rbx-border);
+      position: relative;
+    }
+
+    .rbx-game-thumb-portrait img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.28s ease;
+    }
+
+    .rbx-game-card:hover .rbx-game-thumb-portrait img {
+      transform: scale(1.035);
     }
 
     .rbx-game-thumb-169 {
@@ -897,6 +988,62 @@
       text-decoration: underline;
     }
 
+    /* Modal 3: YouTuber Showcase Modal */
+    .rbx-youtuber-modal {
+      background-color: var(--rbx-surface);
+      border-radius: var(--radius-lg);
+      width: 100%;
+      max-width: 640px;
+      max-height: 90vh;
+      overflow-y: auto;
+      border: 1px solid var(--rbx-border-light);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.85);
+      position: relative;
+      animation: modalFadeIn 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .rbx-yt-modal-img-wrap {
+      width: 100%;
+      background-color: #0b0d10;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      border-bottom: 1px solid var(--rbx-border);
+    }
+
+    .rbx-yt-modal-img-wrap img {
+      max-width: 100%;
+      max-height: 520px;
+      object-fit: contain;
+      border-radius: var(--radius-sm);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
+    }
+
+    .rbx-yt-modal-body {
+      padding: 24px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .rbx-yt-modal-title {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--rbx-text-white);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .rbx-yt-modal-desc {
+      font-size: 0.92rem;
+      color: var(--rbx-text-secondary);
+      line-height: 1.6;
+    }
+
     /* Toast Notification */
     .toast-msg {
       position: fixed;
@@ -1017,87 +1164,132 @@
   <!-- Main Feed -->
   <main class="rbx-main-wrap">
 
-    <!-- Skills Row (Replacing Friends Bar as requested) -->
+    <!-- Skills Row (Authentic Roblox Friends Replacement) -->
     <section class="rbx-skills-section">
       <div class="rbx-skills-scroll">
 
-        <!-- Add Skill / Collab Bubble -->
-        <div class="skill-bubble-col" id="collab-bubble-btn" title="Ajak Kolaborasi">
-          <div class="skill-avatar-frame" style="border-style: dashed; border-color: var(--rbx-blue);">
-            <span class="skill-icon-glyph" style="color: var(--rbx-blue);">+</span>
+        <!-- Friend 1: Collab / Discord (@Synxsixz) -->
+        <div class="skill-bubble-col" id="collab-bubble-btn" title="Klik untuk salin Discord @tahubulat">
+          <div class="skill-avatar-wrap">
+            <div class="skill-avatar-frame" style="border-color: var(--rbx-blue);">
+              <img src="image/mascot.png" alt="TahuBulat Mascot" class="skill-avatar-img">
+            </div>
+            <span class="skill-online-dot collab-dot"></span>
           </div>
-          <span class="skill-name-label" style="color: var(--rbx-blue);">Collab</span>
+          <span class="skill-name-label" style="color: var(--rbx-blue);">TahuBulat</span>
           <span class="skill-sub-meta">Discord</span>
         </div>
 
-        <!-- Skill 1: Luau -->
-        <div class="skill-bubble-col" data-filter-tag="luau">
-          <div class="skill-avatar-frame">
-            <span class="skill-icon-glyph">&lt;/&gt;</span>
+        <!-- Friend 2: Luau (Official Luau Logo) -->
+        <div class="skill-bubble-col" data-filter-tag="luau" title="Keahlian Luau Scripting &amp; Systems">
+          <div class="skill-avatar-wrap">
+            <div class="skill-avatar-frame" style="background-color: #00172e; border-color: #00A2FF;">
+              <svg role="img" viewBox="0 0 24 24" class="skill-vector-svg" fill="#00A2FF" xmlns="http://www.w3.org/2000/svg">
+                <title>Luau</title>
+                <path d="M24 5.072 18.928 24 0 18.928 5.072 0 24 5.072ZM8.984 18.402l-.085.375.61.163 1.005-3.75-.641-.172-.731 2.728c-.26.322-.635.417-1.125.286-.462-.124-.616-.47-.464-1.039l.649-2.422-.641-.172-.654 2.44c-.12.455-.107.828.039 1.117.148.287.422.485.822.592.483.13.888.081 1.216-.146Zm3.818 1.42.672.18.015-.055c-.034-.227-.004-.512.088-.857l.462-1.725c.093-.382.045-.713-.142-.994-.187-.282-.496-.481-.928-.597a1.897 1.897 0 0 0-.793-.05 1.42 1.42 0 0 0-.652.272.912.912 0 0 0-.343.488l.645.172c.044-.164.159-.283.344-.357a.969.969 0 0 1 .622-.02c.261.07.44.19.54.36.098.168.117.364.057.588l-.079.295-.624-.167c-.538-.145-.985-.148-1.342-.01-.353.135-.582.398-.687.789-.086.32-.04.618.14.891.183.272.458.458.828.557.414.11.811.05 1.192-.179-.028.196-.033.336-.015.42Zm-.934-.774a.8.8 0 0 1-.47-.307.606.606 0 0 1-.075-.526c.123-.46.577-.584 1.363-.374l.502.135-.206.77a.978.978 0 0 1-.5.3 1.166 1.166 0 0 1-.614.002ZM21 6.804l-3.786-1.015L16.2 9.575l3.786 1.014L21 6.804ZM3.818 16.832l1.207-4.502-.67-.18-1.352 5.047 3.06.82.146-.544-2.39-.64Zm12.944 3.654-.086.375.61.163 1.005-3.75-.641-.172-.731 2.728c-.26.322-.634.417-1.124.286-.462-.124-.617-.47-.465-1.039l.65-2.422-.642-.172-.654 2.44c-.12.456-.106.828.04 1.117.147.288.421.485.821.592.483.13.889.081 1.217-.146Z"/>
+              </svg>
+            </div>
             <span class="skill-online-dot"></span>
           </div>
           <span class="skill-name-label">Luau</span>
-          <span class="skill-sub-meta">Systems</span>
+          <span class="skill-sub-meta">Roblox Script</span>
         </div>
 
-        <!-- Skill 2: Level Design -->
-        <div class="skill-bubble-col" data-filter-tag="level">
-          <div class="skill-avatar-frame">
-            <span class="skill-icon-glyph">⬢</span>
-            <span class="skill-online-dot"></span>
-          </div>
-          <span class="skill-name-label">Level Design</span>
-          <span class="skill-sub-meta">Worldbuild</span>
-        </div>
-
-        <!-- Skill 3: Building -->
-        <div class="skill-bubble-col" data-filter-tag="build">
-          <div class="skill-avatar-frame">
-            <span class="skill-icon-glyph">🧱</span>
+        <!-- Friend 3: Building (Official Roblox Studio Logo) -->
+        <div class="skill-bubble-col" data-filter-tag="build" title="Roblox Studio Level &amp; Map Building">
+          <div class="skill-avatar-wrap">
+            <div class="skill-avatar-frame" style="background-color: #0b1a2d; border-color: #00A2FF;">
+              <svg role="img" viewBox="0 0 24 24" class="skill-vector-svg" fill="#00A2FF" xmlns="http://www.w3.org/2000/svg">
+                <title>Roblox Studio</title>
+                <path d="M 13.936 15.356 L 1.826 12.112 L 0 18.93 L 18.928 24 L 21.608 14.01 L 14.79 12.18 L 13.936 15.356 Z M 5.072 0 L 2.394 9.992 L 9.21 11.822 L 10.064 8.644 L 22.174 11.89 L 24 5.072 L 5.072 0 Z"/>
+              </svg>
+            </div>
             <span class="skill-online-dot"></span>
           </div>
           <span class="skill-name-label">Building</span>
-          <span class="skill-sub-meta">Props &amp; Map</span>
+          <span class="skill-sub-meta">Roblox Studio</span>
         </div>
 
-        <!-- Skill 4: UI/UX -->
-        <div class="skill-bubble-col" data-filter-tag="uiux">
-          <div class="skill-avatar-frame">
-            <span class="skill-icon-glyph">❖</span>
+        <!-- Friend 4: Animasi (Official Blender 3D Logo) -->
+        <div class="skill-bubble-col" data-filter-tag="animasi" title="Blender 3D Modeling &amp; Animation">
+          <div class="skill-avatar-wrap">
+            <div class="skill-avatar-frame" style="background-color: #1a1a20; border-color: #EA7600;">
+              <svg role="img" viewBox="0 0 24 24" class="skill-vector-svg" fill="#EA7600" xmlns="http://www.w3.org/2000/svg">
+                <title>Blender</title>
+                <path d="M12.51 13.214c.046-.8.438-1.506 1.03-2.006a3.424 3.424 0 0 1 2.212-.79c.85 0 1.631.3 2.211.79.592.5.983 1.206 1.028 2.005.045.823-.285 1.586-.865 2.153a3.389 3.389 0 0 1-2.374.938 3.393 3.393 0 0 1-2.376-.938c-.58-.567-.91-1.33-.865-2.152M7.35 14.831c.006.314.106.922.256 1.398a7.372 7.372 0 0 0 1.593 2.757 8.227 8.227 0 0 0 2.787 2.001 8.947 8.947 0 0 0 3.66.76 8.964 8.964 0 0 0 3.657-.772 8.285 8.285 0 0 0 2.785-2.01 7.428 7.428 0 0 0 1.592-2.762 6.964 6.964 0 0 0 .25-3.074 7.123 7.123 0 0 0-1.016-2.779 7.764 7.764 0 0 0-1.852-2.043h.002L13.566 2.55l-.02-.015c-.492-.378-1.319-.376-1.86.002-.547.382-.609 1.015-.123 1.415l-.001.001 3.126 2.543-9.53.01h-.013c-.788.001-1.545.518-1.695 1.172-.154.665.38 1.217 1.2 1.22V8.9l4.83-.01-8.62 6.617-.034.025c-.813.622-1.075 1.658-.563 2.313.52.667 1.625.668 2.447.004L7.414 14s-.069.52-.063.831zm12.09 1.741c-.97.988-2.326 1.548-3.795 1.55-1.47.004-2.827-.552-3.797-1.538a4.51 4.51 0 0 1-1.036-1.622 4.282 4.282 0 0 1 .282-3.519 4.702 4.702 0 0 1 1.153-1.371c.942-.768 2.141-1.183 3.396-1.185 1.256-.002 2.455.41 3.398 1.175.48.391.87.854 1.152 1.367a4.28 4.28 0 0 1 .522 1.706 4.236 4.236 0 0 1-.239 1.811 4.54 4.54 0 0 1-1.035 1.626"/>
+              </svg>
+            </div>
+            <span class="skill-online-dot"></span>
+          </div>
+          <span class="skill-name-label">Animasi</span>
+          <span class="skill-sub-meta">Blender 3D</span>
+        </div>
+
+        <!-- Friend 5: UI / UX (Official Figma Logo) -->
+        <div class="skill-bubble-col" data-filter-tag="uiux" title="Roblox GUI &amp; Figma Design">
+          <div class="skill-avatar-wrap">
+            <div class="skill-avatar-frame" style="background-color: #1e1e24;">
+              <svg role="img" viewBox="0 0 24 24" class="skill-vector-svg" style="width: 28px; height: 28px;" xmlns="http://www.w3.org/2000/svg">
+                <title>Figma</title>
+                <path fill="#F24E1E" d="M8 0h4v8H8a4 4 0 1 1 0-8z"/>
+                <path fill="#FF7262" d="M12 0h4a4 4 0 1 1 0 8h-4V0z"/>
+                <path fill="#A259FF" d="M8 8h4v8H8a4 4 0 1 1 0-8z"/>
+                <path fill="#1ABCFE" d="M12 8h4a4 4 0 1 1 0 8 4 4 0 0 1-4-4V8z"/>
+                <path fill="#0ACF83" d="M8 16h4v4a4 4 0 1 1-4-4z"/>
+              </svg>
+            </div>
             <span class="skill-online-dot"></span>
           </div>
           <span class="skill-name-label">UI / UX</span>
           <span class="skill-sub-meta">Adaptive GUI</span>
         </div>
 
-        <!-- Skill 5: Lighting -->
-        <div class="skill-bubble-col" data-filter-tag="lighting">
-          <div class="skill-avatar-frame">
-            <span class="skill-icon-glyph">✦</span>
-            <span class="skill-online-dot"></span>
-          </div>
-          <span class="skill-name-label">Lighting</span>
-          <span class="skill-sub-meta">Atmosphere</span>
-        </div>
-
-        <!-- Skill 6: Optimization -->
-        <div class="skill-bubble-col" data-filter-tag="optimization">
-          <div class="skill-avatar-frame">
-            <span class="skill-icon-glyph">⚡</span>
-            <span class="skill-online-dot"></span>
-          </div>
-          <span class="skill-name-label">Optimasi</span>
-          <span class="skill-sub-meta">Fast FPS</span>
-        </div>
-
-        <!-- Skill 7: AIH Studio -->
-        <div class="skill-bubble-col" data-filter-tag="studio">
-          <div class="skill-avatar-frame" style="border-color: #ffd000;">
-            <span class="skill-icon-glyph" style="font-size: 1.1rem; color: #ffd000;">AIH</span>
+        <!-- Friend 6: AIH Studio (Real Image Logo) -->
+        <div class="skill-bubble-col" data-filter-tag="studio" title="Adventure In Horizon Studio">
+          <div class="skill-avatar-wrap">
+            <div class="skill-avatar-frame contain-logo" style="border-color: #ffd000;">
+              <img src="image/aihstudio.png" alt="AIH Studio" class="skill-avatar-img">
+            </div>
             <span class="skill-online-dot"></span>
           </div>
           <span class="skill-name-label">AIH Studio</span>
-          <span class="skill-sub-meta">400K+ Mem</span>
+          <span class="skill-sub-meta">Lead Dev</span>
+        </div>
+
+        <!-- Friend 7: AIH Gank (Real Image Logo) -->
+        <div class="skill-bubble-col" data-filter-tag="gank" title="AIH Gank Gaming Community">
+          <div class="skill-avatar-wrap">
+            <div class="skill-avatar-frame" style="background-color: #0b0d10; border-color: #d4af37;">
+              <img src="image/aihgank.png" alt="AIH Gank" class="skill-avatar-img">
+            </div>
+            <span class="skill-online-dot"></span>
+          </div>
+          <span class="skill-name-label">AIH Gank</span>
+          <span class="skill-sub-meta">Community</span>
+        </div>
+
+        <!-- Friend 8: Level Design (Real Photo Screenshot) -->
+        <div class="skill-bubble-col" data-filter-tag="level" title="Map &amp; World Architecture">
+          <div class="skill-avatar-wrap">
+            <div class="skill-avatar-frame">
+              <img src="image/Archives/Build/Screenshot 2026-03-30 151036.png" alt="Level Design" class="skill-avatar-img">
+            </div>
+            <span class="skill-online-dot"></span>
+          </div>
+          <span class="skill-name-label">Level Design</span>
+          <span class="skill-sub-meta">Worldbuild</span>
+        </div>
+
+        <!-- Friend 9: Code Systems (Real Photo Screenshot) -->
+        <div class="skill-bubble-col" data-filter-tag="code" title="Luau Modular Architecture">
+          <div class="skill-avatar-wrap">
+            <div class="skill-avatar-frame">
+              <img src="image/Archives/LuaUCode/Screenshot 2026-06-13 001441.png" alt="Code Architecture" class="skill-avatar-img">
+            </div>
+            <span class="skill-online-dot"></span>
+          </div>
+          <span class="skill-name-label">Systems</span>
+          <span class="skill-sub-meta">OOP &amp; Net</span>
         </div>
 
       </div>
@@ -1110,87 +1302,105 @@
         <span class="rbx-title-arrow">&rsaquo;</span>
       </h2>
 
-      <div class="rbx-games-grid-wide" id="youtubers-grid">
+      <div class="rbx-youtubers-grid" id="youtubers-grid">
 
         <!-- YouTuber 1: Windah Basudara -->
-        <div class="rbx-game-card" data-creator="windah" title="Windah Basudara memainkan karya Bachtiar">
-          <div class="rbx-game-thumb-169">
+        <div class="rbx-game-card" data-youtuber-key="windah" title="Klik untuk melihat bukti gameplay Windah Basudara">
+          <div class="rbx-game-thumb-portrait">
             <img src="image/youtuber/Windah Basudara.png" alt="Windah Basudara" loading="lazy">
           </div>
           <div class="rbx-game-info-block">
             <span class="rbx-game-name">Windah Basudara</span>
             <div class="rbx-game-stats">
-              <span class="rbx-rating-span">👍 100%</span>
+              <span class="rbx-rating-span">
+                <svg class="rbx-rating-svg" viewBox="0 0 24 24" width="13" height="13" fill="#00b06f"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg>
+                <span>100%</span>
+              </span>
               <span>Livestream Played</span>
             </div>
           </div>
         </div>
 
         <!-- YouTuber 2: MiawAug -->
-        <div class="rbx-game-card" data-creator="miawaug" title="MiawAug memainkan karya Bachtiar">
-          <div class="rbx-game-thumb-169">
+        <div class="rbx-game-card" data-youtuber-key="miawaug" title="Klik untuk melihat bukti gameplay MiawAug">
+          <div class="rbx-game-thumb-portrait">
             <img src="image/youtuber/MiawAug.png" alt="MiawAug" loading="lazy">
           </div>
           <div class="rbx-game-info-block">
             <span class="rbx-game-name">MiawAug</span>
             <div class="rbx-game-stats">
-              <span class="rbx-rating-span">👍 99%</span>
+              <span class="rbx-rating-span">
+                <svg class="rbx-rating-svg" viewBox="0 0 24 24" width="13" height="13" fill="#00b06f"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg>
+                <span>99%</span>
+              </span>
               <span>Gameplay Video</span>
             </div>
           </div>
         </div>
 
         <!-- YouTuber 3: Chandra Y. -->
-        <div class="rbx-game-card" data-creator="chandra" title="Chandra Y. memainkan karya Bachtiar">
-          <div class="rbx-game-thumb-169">
+        <div class="rbx-game-card" data-youtuber-key="chandra" title="Klik untuk melihat bukti gameplay Chandra Y.">
+          <div class="rbx-game-thumb-portrait">
             <img src="image/youtuber/Chandra Y.png" alt="Chandra Y." loading="lazy">
           </div>
           <div class="rbx-game-info-block">
             <span class="rbx-game-name">Chandra Y.</span>
             <div class="rbx-game-stats">
-              <span class="rbx-rating-span">👍 98%</span>
+              <span class="rbx-rating-span">
+                <svg class="rbx-rating-svg" viewBox="0 0 24 24" width="13" height="13" fill="#00b06f"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg>
+                <span>98%</span>
+              </span>
               <span>Challenge Session</span>
             </div>
           </div>
         </div>
 
         <!-- YouTuber 4: Stresman -->
-        <div class="rbx-game-card" data-creator="stresman" title="Stresman memainkan karya Bachtiar">
-          <div class="rbx-game-thumb-169">
+        <div class="rbx-game-card" data-youtuber-key="stresman" title="Klik untuk melihat bukti gameplay Stresman">
+          <div class="rbx-game-thumb-portrait">
             <img src="image/youtuber/Stresman.png" alt="Stresman" loading="lazy">
           </div>
           <div class="rbx-game-info-block">
             <span class="rbx-game-name">Stresman</span>
             <div class="rbx-game-stats">
-              <span class="rbx-rating-span">👍 97%</span>
+              <span class="rbx-rating-span">
+                <svg class="rbx-rating-svg" viewBox="0 0 24 24" width="13" height="13" fill="#00b06f"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg>
+                <span>97%</span>
+              </span>
               <span>Community Play</span>
             </div>
           </div>
         </div>
 
         <!-- YouTuber 5: Hayogo -->
-        <div class="rbx-game-card" data-creator="hayogo" title="Hayogo memainkan karya Bachtiar">
-          <div class="rbx-game-thumb-169">
+        <div class="rbx-game-card" data-youtuber-key="hayogo" title="Klik untuk melihat bukti gameplay Hayogo">
+          <div class="rbx-game-thumb-portrait">
             <img src="image/youtuber/Hayogo.png" alt="Hayogo" loading="lazy">
           </div>
           <div class="rbx-game-info-block">
             <span class="rbx-game-name">Hayogo</span>
             <div class="rbx-game-stats">
-              <span class="rbx-rating-span">👍 98%</span>
+              <span class="rbx-rating-span">
+                <svg class="rbx-rating-svg" viewBox="0 0 24 24" width="13" height="13" fill="#00b06f"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg>
+                <span>98%</span>
+              </span>
               <span>Mechanics Test</span>
             </div>
           </div>
         </div>
 
         <!-- YouTuber 6: Jelool -->
-        <div class="rbx-game-card" data-creator="jelool" title="Jelool memainkan karya Bachtiar">
-          <div class="rbx-game-thumb-169">
+        <div class="rbx-game-card" data-youtuber-key="jelool" title="Klik untuk melihat bukti gameplay Jelool">
+          <div class="rbx-game-thumb-portrait">
             <img src="image/youtuber/Jelool.png" alt="Jelool" loading="lazy">
           </div>
           <div class="rbx-game-info-block">
             <span class="rbx-game-name">Jelool</span>
             <div class="rbx-game-stats">
-              <span class="rbx-rating-span">👍 96%</span>
+              <span class="rbx-rating-span">
+                <svg class="rbx-rating-svg" viewBox="0 0 24 24" width="13" height="13" fill="#00b06f"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg>
+                <span>96%</span>
+              </span>
               <span>Full Experience</span>
             </div>
           </div>
@@ -1216,8 +1426,14 @@
           <div class="rbx-game-info-block">
             <span class="rbx-game-name">[UPD!] Mie Ayam Sidoarjo</span>
             <div class="rbx-game-stats">
-              <span class="rbx-rating-span">👍 96%</span>
-              <span>👥 2.4K</span>
+              <span class="rbx-rating-span">
+                <svg class="rbx-rating-svg" viewBox="0 0 24 24" width="13" height="13" fill="#00b06f"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg>
+                <span>96%</span>
+              </span>
+              <span class="rbx-players-span">
+                <svg class="rbx-players-svg" viewBox="0 0 24 24" width="13" height="13" fill="#8a8d90"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+                <span>2.4K</span>
+              </span>
             </div>
           </div>
         </div>
@@ -1230,8 +1446,14 @@
           <div class="rbx-game-info-block">
             <span class="rbx-game-name">First Collab Project</span>
             <div class="rbx-game-stats">
-              <span class="rbx-rating-span">👍 94%</span>
-              <span>👥 1.8K</span>
+              <span class="rbx-rating-span">
+                <svg class="rbx-rating-svg" viewBox="0 0 24 24" width="13" height="13" fill="#00b06f"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg>
+                <span>94%</span>
+              </span>
+              <span class="rbx-players-span">
+                <svg class="rbx-players-svg" viewBox="0 0 24 24" width="13" height="13" fill="#8a8d90"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+                <span>1.8K</span>
+              </span>
             </div>
           </div>
         </div>
@@ -1244,8 +1466,14 @@
           <div class="rbx-game-info-block">
             <span class="rbx-game-name">Custom Scene Builds</span>
             <div class="rbx-game-stats">
-              <span class="rbx-rating-span">👍 91%</span>
-              <span>👥 850</span>
+              <span class="rbx-rating-span">
+                <svg class="rbx-rating-svg" viewBox="0 0 24 24" width="13" height="13" fill="#00b06f"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg>
+                <span>91%</span>
+              </span>
+              <span class="rbx-players-span">
+                <svg class="rbx-players-svg" viewBox="0 0 24 24" width="13" height="13" fill="#8a8d90"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+                <span>850</span>
+              </span>
             </div>
           </div>
         </div>
@@ -1258,8 +1486,14 @@
           <div class="rbx-game-info-block">
             <span class="rbx-game-name">Game Interface &amp; GUI</span>
             <div class="rbx-game-stats">
-              <span class="rbx-rating-span">👍 98%</span>
-              <span>👥 3.1K</span>
+              <span class="rbx-rating-span">
+                <svg class="rbx-rating-svg" viewBox="0 0 24 24" width="13" height="13" fill="#00b06f"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg>
+                <span>98%</span>
+              </span>
+              <span class="rbx-players-span">
+                <svg class="rbx-players-svg" viewBox="0 0 24 24" width="13" height="13" fill="#8a8d90"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+                <span>3.1K</span>
+              </span>
             </div>
           </div>
         </div>
@@ -1272,8 +1506,14 @@
           <div class="rbx-game-info-block">
             <span class="rbx-game-name">NPC Manager &amp; LuaU</span>
             <div class="rbx-game-stats">
-              <span class="rbx-rating-span">👍 95%</span>
-              <span>👥 1.2K</span>
+              <span class="rbx-rating-span">
+                <svg class="rbx-rating-svg" viewBox="0 0 24 24" width="13" height="13" fill="#00b06f"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg>
+                <span>95%</span>
+              </span>
+              <span class="rbx-players-span">
+                <svg class="rbx-players-svg" viewBox="0 0 24 24" width="13" height="13" fill="#8a8d90"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+                <span>1.2K</span>
+              </span>
             </div>
           </div>
         </div>
@@ -1286,8 +1526,14 @@
           <div class="rbx-game-info-block">
             <span class="rbx-game-name">Visual Vault Archives</span>
             <div class="rbx-game-stats">
-              <span class="rbx-rating-span">👍 92%</span>
-              <span>👥 500</span>
+              <span class="rbx-rating-span">
+                <svg class="rbx-rating-svg" viewBox="0 0 24 24" width="13" height="13" fill="#00b06f"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg>
+                <span>92%</span>
+              </span>
+              <span class="rbx-players-span">
+                <svg class="rbx-players-svg" viewBox="0 0 24 24" width="13" height="13" fill="#8a8d90"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+                <span>500</span>
+              </span>
             </div>
           </div>
         </div>
@@ -1415,6 +1661,31 @@
           <a class="rbx-profile-official-link" href="https://www.roblox.com/users/2640291436/profile" target="_blank" rel="noopener noreferrer">
             Kunjungi Profil Roblox Resmi di roblox.com &nearr;
           </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       MODAL 3: AUTHENTIC YOUTUBER SHOWCASE LIGHTBOX
+       ========================================================================== -->
+  <div class="rbx-modal-backdrop" id="youtuber-modal">
+    <div class="rbx-youtuber-modal">
+      <button class="rbx-modal-close-corner" id="close-yt-modal" title="Tutup">&times;</button>
+      <div class="rbx-yt-modal-img-wrap">
+        <img id="yt-modal-img" src="" alt="Bukti Gameplay YouTuber">
+      </div>
+      <div class="rbx-yt-modal-body">
+        <h2 class="rbx-yt-modal-title" id="yt-modal-title">
+          <span>YouTuber Name</span>
+          <svg class="rbx-verified-svg" viewBox="0 0 24 24"><path d="M12 2l2.4 2.4 3.4-.4 1 3.2 3.1 1.5-.6 3.3 2.1 2.6-2.1 2.6.6 3.3-3.1 1.5-1 3.2-3.4-.4L12 22l-2.4-2.4-3.4.4-1-3.2-3.1-1.5.6-3.3-2.1-2.6 2.1-2.6-.6-3.3 3.1-1.5 1-3.2 3.4.4L12 2zm-1.2 13.4l6-6-1.4-1.4-4.6 4.6-2-2-1.4 1.4 3.4 3.4z"/></svg>
+        </h2>
+        <p class="rbx-yt-modal-desc" id="yt-modal-desc">Detail sesi gameplay dan rekaman livestream karya Bachtiar.</p>
+        <div style="display:flex; gap: 10px; margin-top: 10px;">
+          <button class="rbx-btn-play-big" type="button" id="yt-discord-contact-btn" style="flex: 1;">
+            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.929 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.894.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028z"/></svg>
+            <span>Hubungi via Discord (@tahubulat)</span>
+          </button>
         </div>
       </div>
     </div>
@@ -1640,13 +1911,109 @@
         });
       });
 
+      // 6. Authentic YouTuber Lightbox Dataset & Modal
+      const youtuberData = {
+        'windah': {
+          title: 'Windah Basudara',
+          image: 'image/youtuber/Windah Basudara.png',
+          desc: 'Windah Basudara memainkan game "Mie Ayam Sidoarjo" karya Bachtiar di sesi livestream hingga membuka Secret Ending: "Mas Eko dari Bakso Malang" di hadapan ratusan ribu penonton!'
+        },
+        'miawaug': {
+          title: 'MiawAug',
+          image: 'image/youtuber/MiawAug.png',
+          desc: 'MiawAug merekam gameplay eksplorasi petualangan horor "Mie Ayam Sidoarjo" karya Bachtiar. Menikmati suasana gerobak malam hari dan set piece anomali khas nusantara.'
+        },
+        'chandra': {
+          title: 'Chandra Y.',
+          image: 'image/youtuber/Chandra Y.png',
+          desc: 'Chandra Y. menyelesaikan sesi challenge interaktif di map karya Bachtiar, menguji alur teka-teki dan atmosfer horor yang dibangun.'
+        },
+        'stresman': {
+          title: 'Stresman',
+          image: 'image/youtuber/Stresman.png',
+          desc: 'Stresman bersama komunitas merasakan intensitas gameplay dan ketegangan lingkungan di game garapan Bachtiar.'
+        },
+        'hayogo': {
+          title: 'Hayogo',
+          image: 'image/youtuber/Hayogo.png',
+          desc: 'Hayogo menguji mekanik logic, timing navigasi, dan tata ruang level design yang dirancang rapi di Roblox Studio.'
+        },
+        'jelool': {
+          title: 'Jelool',
+          image: 'image/youtuber/Jelool.png',
+          desc: 'Jelool menjelajahi seluruh detail visual lingkungan dan memecahkan setiap rahasia cerita yang disematkan di dalam game karya Bachtiar.'
+        }
+      };
+
+      const ytModal = document.getElementById('youtuber-modal');
+      const closeYtModal = document.getElementById('close-yt-modal');
+      const ytModalImg = document.getElementById('yt-modal-img');
+      const ytModalTitle = document.getElementById('yt-modal-title');
+      const ytModalDesc = document.getElementById('yt-modal-desc');
+      const ytDiscordContactBtn = document.getElementById('yt-discord-contact-btn');
+
+      function openYouTuber(key) {
+        const item = youtuberData[key];
+        if (!item || !ytModal) return;
+        ytModalImg.src = item.image;
+        if (ytModalTitle && ytModalTitle.firstElementChild) {
+          ytModalTitle.firstElementChild.textContent = item.title;
+        }
+        ytModalDesc.textContent = item.desc;
+        ytModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeYouTuber() {
+        if (ytModal) ytModal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+
+      if (closeYtModal) closeYtModal.addEventListener('click', closeYouTuber);
+      if (ytDiscordContactBtn) ytDiscordContactBtn.addEventListener('click', () => copyDiscord(ytDiscordContactBtn));
+
+      document.querySelectorAll('[data-youtuber-key]').forEach(card => {
+        card.addEventListener('click', () => {
+          const key = card.getAttribute('data-youtuber-key');
+          openYouTuber(key);
+        });
+      });
+
+      // 7. Skill bubble click: highlight or smooth scroll to projects
+      const skillMap = {
+        'luau': 'luau',
+        'build': 'builds',
+        'animasi': 'first-collab',
+        'uiux': 'uiux',
+        'studio': 'mie-ayam',
+        'gank': 'mie-ayam',
+        'level': 'builds',
+        'code': 'luau'
+      };
+
+      document.querySelectorAll('.skill-bubble-col[data-filter-tag]').forEach(bubble => {
+        bubble.addEventListener('click', () => {
+          const tag = bubble.getAttribute('data-filter-tag');
+          const projKey = skillMap[tag];
+          if (projKey) {
+            const targetCard = document.querySelector(`[data-project-key="${projKey}"]`);
+            if (targetCard) {
+              targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              targetCard.style.boxShadow = '0 0 0 3px var(--rbx-blue)';
+              setTimeout(() => { targetCard.style.boxShadow = 'none'; }, 2000);
+            }
+          }
+        });
+      });
+
       // Close modals when clicking backdrop
-      [profileModal, expModal].forEach(modal => {
+      [profileModal, expModal, ytModal].forEach(modal => {
         if (modal) {
           modal.addEventListener('click', (e) => {
             if (e.target === modal) {
               closeProfile();
               closeExperience();
+              closeYouTuber();
             }
           });
         }
@@ -1657,6 +2024,7 @@
         if (e.key === 'Escape') {
           closeProfile();
           closeExperience();
+          closeYouTuber();
         }
       });
 
