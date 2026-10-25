@@ -802,7 +802,7 @@
             width: 100%;
             transform: scaleX(0);
             transform-origin: left;
-            transition: transform 1.5s var(--ease-smooth);
+            transition: transform 0.65s var(--ease-smooth);
             position: relative;
         }
 
@@ -1127,7 +1127,7 @@
             transform: translate(var(--tx), var(--ty)) scale(0) rotate(-180deg);
             pointer-events: none;
             z-index: 5;
-            transition: transform 0.8s var(--ease-elastic), opacity 0.6s ease, background-color 0.3s, border-color 0.5s ease;
+            transition: transform 0.4s var(--ease-smooth), opacity 0.3s ease, background-color 0.3s, border-color 0.5s ease;
         }
 
         .archive-item:hover {
@@ -1887,6 +1887,60 @@
             border-color: var(--primary);
             box-shadow: 0 0 25px rgba(0, 102, 204, 0.5);
         }
+
+        /* Responsive layout and motion budget. */
+        html { scroll-padding-top: 90px; }
+        .about-grid > *, .skill-name-group { min-width: 0; }
+        .about-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(24px, 4vw, 60px); }
+        .hero { min-height: 100svh; }
+        .skill-info { gap: 8px; flex-wrap: wrap; }
+        .skill-name-group { flex-wrap: wrap; }
+        .gallery-viewport { flex: 1; min-height: 0; }
+        .modal-content { height: 80dvh; max-height: calc(100dvh - 32px); }
+        .modal-header { gap: 12px; }
+        .modal-title { overflow-wrap: anywhere; }
+        .modal-close { flex-shrink: 0; min-width: 44px; min-height: 44px; }
+        .modal-footer { max-height: 30%; overflow-y: auto; flex-shrink: 0; }
+        .dock-panel { position: relative; }
+        .dock-container { max-width: calc(100vw - 16px); bottom: max(12px, env(safe-area-inset-bottom)); }
+        .motion-paused *, .motion-paused *::after { animation-play-state: paused !important; }
+        .cursor-dot, .cursor-outline { left: 0; top: 0; display: none; }
+        @media (min-width: 769px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+            * { cursor: auto; }
+            body.cursor-active, body.cursor-active * { cursor: none; }
+            body.cursor-active .cursor-dot, body.cursor-active .cursor-outline { display: block; }
+            .cursor-outline { transition: background 0.15s, border-color 0.15s; }
+        }
+        @media (max-width: 1024px) {
+            .about-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 768px) {
+            * { cursor: auto; }
+            .hero { padding: 110px 6% 170px; }
+            .hero h1 { font-size: clamp(2rem, 9vw, 3.5rem); overflow-wrap: anywhere; }
+            .hero-content { margin-top: 0; }
+            .section-title { font-size: clamp(1.6rem, 7vw, 2.5rem); overflow-wrap: anywhere; }
+            .about-text .about-subtitle { font-size: clamp(1.35rem, 6vw, 1.8rem); }
+            .modal-header, .modal-footer { padding: 14px 16px; }
+            .modal-title { font-size: 1.1rem; }
+            .modal-content { width: calc(100% - 24px); height: 85dvh; }
+            .slider-btn { width: 44px; height: 44px; }
+            .menu-toggle { min-width: 44px; min-height: 44px; }
+            .nav-links { max-height: calc(100dvh - 80px); overflow-y: auto; }
+            nav, .dock-panel, .nav-links, .modal-overlay, .lang-modal-overlay { backdrop-filter: none; }
+            .lang-modal-content { max-height: calc(100dvh - 32px); overflow-y: auto; padding: 24px 18px; }
+            .lang-modal-title { font-size: clamp(1.2rem, 5vw, 1.8rem); }
+        }
+        @media (max-width: 380px) {
+            .dock-panel { gap: 4px; padding: 8px; }
+            .dock-item { width: 36px; height: 40px; }
+            .stats-grid { gap: 8px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { scroll-behavior: auto !important; animation: none !important; transition: none !important; cursor: auto !important; }
+            #matrix-canvas, .cursor-dot, .cursor-outline { display: none !important; }
+            .lang-modal-content { opacity: 1; transform: none; }
+        }
     </style>
 </head>
 
@@ -1984,14 +2038,14 @@
                         <p class="founder-title" data-translate="founder_title">FOUNDER OF</p>
                         <div class="founder-cards">
                             <div class="founder-card" data-hover>
-                                <img src="image/aihstudio.png" alt="AIH Studio">
+                                <img loading="lazy" decoding="async" src="image/aihstudio.png" alt="AIH Studio">
                                 <div class="founder-info">
                                     <h3>AIH STUDIO</h3>
                                     <span data-translate="aih_studio_est">Est. 2023 • 400.000+ Members</span>
                                 </div>
                             </div>
                             <div class="founder-card" data-hover>
-                                <img src="image/aihgank.png" alt="AIH Gank">
+                                <img loading="lazy" decoding="async" src="image/aihgank.png" alt="AIH Gank">
                                 <div class="founder-info">
                                     <h3>AIH GANK</h3>
                                     <span data-translate="aih_gank_est">Est. 2025</span>
@@ -2010,13 +2064,13 @@
 
                         <div class="border-glow-inner">
                             <div class="rbx-banner">
-                                <img src="https://tr.rbxcdn.com/180DAY-31fd945893bed23773b60d3ea8c2e5fe/1440/456/Image/Png/noFilter"
+                                <img decoding="async" src="https://tr.rbxcdn.com/180DAY-31fd945893bed23773b60d3ea8c2e5fe/1440/456/Image/Png/noFilter"
                                     alt="Banner" class="rbx-banner-img" loading="lazy">
                             </div>
 
                             <div class="rbx-avatar-section">
                                 <div class="rbx-avatar-wrapper">
-                                    <img id="rbx-avatar-img"
+                                    <img decoding="async" id="rbx-avatar-img"
                                         src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-A9C907725D4796C61A65CFC47D4149DB-Png/150/150/AvatarHeadshot/Webp/noFilter"
                                         alt="Avatar" class="rbx-avatar" loading="lazy">
                                     <div class="rbx-online-dot"></div>
@@ -2274,7 +2328,7 @@
                     data-title="Windah Basudara" data-desc="Terima kasih telah memainkan game saya!"
                     data-images='["image/youtuber/Windah Basudara.png"]'>
                     <div class="youtuber-img-wrapper">
-                        <img src="image/youtuber/Windah Basudara.png" alt="Windah Basudara" class="youtuber-img"
+                        <img decoding="async" src="image/youtuber/Windah Basudara.png" alt="Windah Basudara" class="youtuber-img"
                             loading="lazy">
                     </div>
                     <h3 class="youtuber-name">Windah Basudara</h3>
@@ -2284,7 +2338,7 @@
                     data-title="MiawAug" data-desc="Terima kasih telah memainkan game saya!"
                     data-images='["image/youtuber/MiawAug.png"]'>
                     <div class="youtuber-img-wrapper">
-                        <img src="image/youtuber/MiawAug.png" alt="MiawAug" class="youtuber-img" loading="lazy">
+                        <img decoding="async" src="image/youtuber/MiawAug.png" alt="MiawAug" class="youtuber-img" loading="lazy">
                     </div>
                     <h3 class="youtuber-name">MiawAug</h3>
                     <span class="youtuber-badge" data-translate="youtuber_badge">HONORED PLAYER</span>
@@ -2293,7 +2347,7 @@
                     data-title="Chandra Y" data-desc="Terima kasih telah memainkan game saya!"
                     data-images='["image/youtuber/Chandra Y.png"]'>
                     <div class="youtuber-img-wrapper">
-                        <img src="image/youtuber/Chandra Y.png" alt="Chandra Y" class="youtuber-img" loading="lazy">
+                        <img decoding="async" src="image/youtuber/Chandra Y.png" alt="Chandra Y" class="youtuber-img" loading="lazy">
                     </div>
                     <h3 class="youtuber-name">Chandra Y</h3>
                     <span class="youtuber-badge" data-translate="youtuber_badge">HONORED PLAYER</span>
@@ -2302,7 +2356,7 @@
                     data-title="Stresman" data-desc="Terima kasih telah memainkan game saya!"
                     data-images='["image/youtuber/Stresman.png"]'>
                     <div class="youtuber-img-wrapper">
-                        <img src="image/youtuber/Stresman.png" alt="Stresman" class="youtuber-img" loading="lazy">
+                        <img decoding="async" src="image/youtuber/Stresman.png" alt="Stresman" class="youtuber-img" loading="lazy">
                     </div>
                     <h3 class="youtuber-name">Stresman</h3>
                     <span class="youtuber-badge" data-translate="youtuber_badge">HONORED PLAYER</span>
@@ -2311,7 +2365,7 @@
                     data-title="Hayogo" data-desc="Terima kasih telah memainkan game saya!"
                     data-images='["image/youtuber/Hayogo.png"]'>
                     <div class="youtuber-img-wrapper">
-                        <img src="image/youtuber/Hayogo.png" alt="Hayogo" class="youtuber-img" loading="lazy">
+                        <img decoding="async" src="image/youtuber/Hayogo.png" alt="Hayogo" class="youtuber-img" loading="lazy">
                     </div>
                     <h3 class="youtuber-name">Hayogo</h3>
                     <span class="youtuber-badge" data-translate="youtuber_badge">HONORED PLAYER</span>
@@ -2320,7 +2374,7 @@
                     data-title="Jelool" data-desc="Terima kasih telah memainkan game saya!"
                     data-images='["image/youtuber/Jelool.png"]'>
                     <div class="youtuber-img-wrapper">
-                        <img src="image/youtuber/Jelool.png" alt="Jelool" class="youtuber-img" loading="lazy">
+                        <img decoding="async" src="image/youtuber/Jelool.png" alt="Jelool" class="youtuber-img" loading="lazy">
                     </div>
                     <h3 class="youtuber-name">Jelool</h3>
                     <span class="youtuber-badge" data-translate="youtuber_badge">HONORED PLAYER</span>
@@ -2400,48 +2454,97 @@
     </div>
 
     <script>
-        // --- MATRIX CANVAS (desktop only) ---
-        const isMobile = window.innerWidth < 768;
-        const canvas = document.getElementById('matrix-canvas');
+        // --- MOTION PREFERENCES & FRAME-COALESCED POINTER EFFECTS ---
+        const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+        const desktopPointer = window.matchMedia('(min-width: 769px) and (hover: hover) and (pointer: fine)');
+        const canAnimatePointer = () => desktopPointer.matches && !reducedMotion.matches && !document.hidden;
 
-        if (!isMobile) {
-            const ctx = canvas.getContext('2d');
-            canvas.width = window.innerWidth; canvas.height = window.innerHeight;
-            const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*<>[]{}';
-            const fontSize = 16; const columns = canvas.width / fontSize;
-            const rainDrops = []; for (let x = 0; x < columns; x++) rainDrops[x] = 1;
-
-            let lastTime = 0;
-            const drawMatrix = (timestamp) => {
-                if (document.hidden) { // skip drawing when tab is inactive to save CPU
-                    requestAnimationFrame(drawMatrix);
-                    return;
-                }
-                const delta = timestamp - lastTime;
-                if (delta >= 35) { // throttle to ~28fps
-                    lastTime = timestamp - (delta % 35);
-                    const isLight = document.body.classList.contains('light-mode');
-                    ctx.fillStyle = isLight ? 'rgba(240, 240, 240, 0.05)' : 'rgba(5, 5, 5, 0.05)';
-                    ctx.fillRect(0, 0, canvas.width, canvas.height);
-                    ctx.fillStyle = isLight ? '#0066cc' : '#ff003c';
-                    ctx.font = fontSize + 'px monospace';
-                    for (let i = 0; i < rainDrops.length; i++) {
-                        const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
-                        ctx.globalAlpha = Math.random() * 0.5 + 0.5;
-                        ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
-                        ctx.globalAlpha = 1.0;
-                        if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975) rainDrops[i] = 0;
-                        rainDrops[i]++;
-                    }
-                }
-                requestAnimationFrame(drawMatrix);
+        // Keep only the newest pointer event; cancel pending work on exit or preference changes.
+        function pointerEffect(element, render, reset) {
+            if (!element) return;
+            let frame = 0, latest;
+            const stop = () => {
+                cancelAnimationFrame(frame);
+                frame = 0;
+                reset();
             };
-            requestAnimationFrame((timestamp) => {
-                lastTime = timestamp;
-                drawMatrix(timestamp);
-            });
-            window.addEventListener('resize', () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; });
+            element.addEventListener('pointermove', event => {
+                if (!canAnimatePointer() || event.pointerType === 'touch') return;
+                latest = event;
+                if (!frame) frame = requestAnimationFrame(() => {
+                    frame = 0;
+                    if (canAnimatePointer()) render(latest);
+                });
+            }, { passive: true });
+            element.addEventListener('pointerleave', stop);
+            element.addEventListener('pointercancel', stop);
+            desktopPointer.addEventListener('change', stop);
+            reducedMotion.addEventListener('change', stop);
+            document.addEventListener('visibilitychange', stop);
         }
+
+        // --- MATRIX CANVAS: stop entirely on mobile, reduced motion or hidden tabs ---
+        const canvas = document.getElementById('matrix-canvas');
+        const ctx = canvas.getContext('2d');
+        const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*<>[]{}';
+        const fontSize = 20;
+        let matrixFrame = 0, lastMatrixTime = 0, rainDrops = [];
+        let matrixVisible = true;
+        function resizeMatrix() {
+            // Bound the backing buffer on large / high-resolution displays.
+            canvas.width = Math.min(window.innerWidth, 1440);
+            canvas.height = Math.round(window.innerHeight * canvas.width / window.innerWidth);
+            rainDrops = Array.from({ length: Math.ceil(canvas.width / fontSize) }, () => 1);
+        }
+        function drawMatrix(timestamp) {
+            if (timestamp - lastMatrixTime >= 50) {
+                lastMatrixTime = timestamp;
+                const light = document.body.classList.contains('light-mode');
+                ctx.fillStyle = light ? 'rgba(240,240,240,0.08)' : 'rgba(5,5,5,0.08)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = light ? '#0066cc' : '#ff003c';
+                ctx.font = fontSize + 'px monospace';
+                rainDrops.forEach((drop, i) => {
+                    ctx.fillText(alphabet[Math.floor(Math.random() * alphabet.length)], i * fontSize, drop * fontSize);
+                    rainDrops[i] = drop * fontSize > canvas.height && Math.random() > 0.975 ? 0 : drop + 1;
+                });
+            }
+            matrixFrame = requestAnimationFrame(drawMatrix);
+        }
+        function syncMatrix() {
+            cancelAnimationFrame(matrixFrame);
+            matrixFrame = 0;
+            if (ctx && canAnimatePointer() && matrixVisible) {
+                resizeMatrix();
+                lastMatrixTime = 0;
+                matrixFrame = requestAnimationFrame(drawMatrix);
+            } else if (ctx) ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+        document.addEventListener('visibilitychange', syncMatrix);
+        desktopPointer.addEventListener('change', syncMatrix);
+        reducedMotion.addEventListener('change', syncMatrix);
+        let matrixResizeFrame = 0;
+        window.addEventListener('resize', () => {
+            cancelAnimationFrame(matrixResizeFrame);
+            matrixResizeFrame = requestAnimationFrame(syncMatrix);
+        }, { passive: true });
+        new IntersectionObserver(entries => {
+            matrixVisible = entries[0].isIntersecting;
+            syncMatrix();
+        }).observe(document.querySelector('.hero'));
+
+        // Pause CSS loops when their section is offscreen or the tab is hidden.
+        const loopingSections = document.querySelectorAll('.hero, .archive-container');
+        const visibleSections = new WeakSet();
+        function syncLoops() {
+            loopingSections.forEach(section => section.classList.toggle('motion-paused', document.hidden || !visibleSections.has(section)));
+        }
+        const loopObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => entry.isIntersecting ? visibleSections.add(entry.target) : visibleSections.delete(entry.target));
+            syncLoops();
+        });
+        loopingSections.forEach(section => loopObserver.observe(section));
+        document.addEventListener('visibilitychange', syncLoops);
 
         // --- MOBILE MENU TOGGLE ---
         const menuToggle = document.getElementById('mobile-menu-toggle');
@@ -2465,71 +2568,51 @@
             });
         });
 
-        // --- HACKER TEXT EFFECT ---
-        const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+        // --- HACKER TEXT EFFECT: one timer per heading, restored on exit ---
+        const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
         document.querySelectorAll('.hacker-text').forEach(item => {
-            item.addEventListener('mouseover', event => {
+            let interval = 0, originalText = '';
+            const stop = () => {
+                clearInterval(interval);
+                interval = 0;
+                if (originalText) item.textContent = item.dataset.value || originalText;
+            };
+            item.addEventListener('pointerenter', () => {
+                if (!canAnimatePointer()) return;
+                stop();
+                originalText = item.dataset.value || item.textContent;
                 let iterations = 0;
-                const originalText = event.target.dataset.value || event.target.innerText;
-                const interval = setInterval(() => {
-                    event.target.innerText = originalText.split("").map((l, i) => {
-                        if (i < iterations) return originalText[i];
-                        return letters[Math.floor(Math.random() * letters.length)];
-                    }).join("");
-                    if (iterations >= originalText.length) clearInterval(interval);
-                    iterations += 1 / 2;
+                interval = setInterval(() => {
+                    iterations += Math.max(1, originalText.length / 12);
+                    item.textContent = originalText.split('').map((letter, i) => i < iterations || letter === ' ' ? letter : letters[Math.floor(Math.random() * letters.length)]).join('');
+                    if (iterations >= originalText.length) stop();
                 }, 30);
             });
+            item.addEventListener('pointerleave', stop);
+            reducedMotion.addEventListener('change', stop);
+            document.addEventListener('visibilitychange', stop);
         });
 
-        // --- CUSTOM CURSOR & 3D TILT CARD ---
+        // --- CUSTOM CURSOR: transform-only updates, no idle animation loop ---
         const cursorDot = document.querySelector('.cursor-dot');
         const cursorOutline = document.querySelector('.cursor-outline');
+        pointerEffect(document.documentElement, event => {
+            document.body.classList.add('cursor-active');
+            const position = `translate3d(${event.clientX}px, ${event.clientY}px, 0)`;
+            cursorDot.style.transform = position + ' translate(-50%, -50%)';
+            cursorOutline.style.transform = position + ' translate(-50%, -50%)';
+        }, () => document.body.classList.remove('cursor-active'));
+
         const tiltCard = document.getElementById('tilt-card');
         const tiltContainer = document.querySelector('.roblox-id-container');
+        pointerEffect(tiltContainer, event => {
+            const rect = tiltContainer.getBoundingClientRect();
+            const x = (event.clientX - rect.left - rect.width / 2) / (rect.width / 2);
+            const y = (event.clientY - rect.top - rect.height / 2) / (rect.height / 2);
+            tiltCard.style.transform = `rotateX(${y * -8}deg) rotateY(${x * 8}deg)`;
+        }, () => { tiltCard.style.transform = ''; });
 
-        if (window.matchMedia("(pointer: fine)").matches) {
-            let mouseX = 0, mouseY = 0;
-            let outlineX = 0, outlineY = 0;
-            let initialized = false;
 
-            window.addEventListener('mousemove', (e) => {
-                mouseX = e.clientX;
-                mouseY = e.clientY;
-                cursorDot.style.left = `${mouseX}px`;
-                cursorDot.style.top = `${mouseY}px`;
-                if (!initialized) {
-                    outlineX = mouseX;
-                    outlineY = mouseY;
-                    initialized = true;
-                }
-            });
-
-            const updateCursor = () => {
-                if (initialized) { // lerp trailing calculation
-                    outlineX += (mouseX - outlineX) * 0.15;
-                    outlineY += (mouseY - outlineY) * 0.15;
-                    cursorOutline.style.left = `${outlineX}px`;
-                    cursorOutline.style.top = `${outlineY}px`;
-                }
-                requestAnimationFrame(updateCursor);
-            };
-            requestAnimationFrame(updateCursor);
-
-            if (tiltContainer && tiltCard) {
-                tiltContainer.addEventListener('mousemove', (e) => {
-                    const rect = tiltContainer.getBoundingClientRect();
-                    const x = e.clientX - rect.left; const y = e.clientY - rect.top;
-                    const centerX = rect.width / 2; const centerY = rect.height / 2;
-                    const rotateX = ((y - centerY) / centerY) * -12;
-                    const rotateY = ((x - centerX) / centerX) * 12;
-                    tiltCard.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-                });
-                tiltContainer.addEventListener('mouseleave', () => {
-                    tiltCard.style.transform = `rotateX(0) rotateY(0)`;
-                });
-            }
-        }
 
         document.querySelectorAll('[data-hover]').forEach(el => {
             el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
@@ -2563,7 +2646,7 @@
                     const y = Math.sin(angle) * radius;
                     item.style.setProperty('--tx', `${x}px`);
                     item.style.setProperty('--ty', `${y}px`);
-                    item.style.transitionDelay = `${index * 0.05}s`;
+                    item.style.transitionDelay = `${index * 0.025}s`;
                 });
             }
         });
@@ -2601,10 +2684,15 @@
 
                 galleryTrack.innerHTML = '';
                 currentSlide = 0; totalSlides = images.length;
-                images.forEach(src => {
+                images.forEach((src, index) => {
                     const slide = document.createElement('div');
                     slide.className = 'gallery-slide';
-                    slide.innerHTML = `<img src="${src}" class="gallery-img">`;
+                    const image = document.createElement('img');
+                    image.className = 'gallery-img';
+                    image.alt = title + ' — ' + (index + 1);
+                    image.decoding = 'async';
+                    image.dataset.src = src;
+                    slide.appendChild(image);
                     galleryTrack.appendChild(slide);
                 });
                 updateGallery();
@@ -2615,48 +2703,26 @@
         closeBtn.addEventListener('click', () => modal.classList.remove('open'));
         nextBtn.addEventListener('click', () => { currentSlide = (currentSlide + 1) % totalSlides; updateGallery(); });
         prevBtn.addEventListener('click', () => { currentSlide = (currentSlide - 1 + totalSlides) % totalSlides; updateGallery(); });
-        function updateGallery() { galleryTrack.style.transform = `translateX(-${currentSlide * 100}%)`; }
-
-        // --- EFEK MAGNIFICATION MAC OS DOCK (SMOOTH 60FPS) ---
-        const dockItemsObj = document.querySelectorAll('.dock-item');
-        const dockPanel = document.getElementById('mac-dock');
-        const maxScale = 1.4;
-        const maxDist = 100;
-
-        if (window.innerWidth > 768) {
-            dockPanel.addEventListener('mousemove', (e) => {
-                requestAnimationFrame(() => {
-                    dockItemsObj.forEach(item => {
-                        item.style.transition = 'none';
-
-                        const rect = item.getBoundingClientRect();
-                        const centerX = rect.left + rect.width / 2;
-                        const dist = Math.abs(e.clientX - centerX);
-
-                        if (dist < maxDist) {
-                            const scale = 1 + (maxScale - 1) * (1 - dist / maxDist);
-                            const translateY = -10 * (scale - 1);
-                            item.style.transform = `translateY(${translateY}px) scale(${scale})`;
-                        } else {
-                            resetDockItem(item);
-                        }
-                    });
-                });
+        function updateGallery() {
+            galleryTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+            // Load the current image and the next one only, including wrap-around.
+            [currentSlide, (currentSlide + 1) % totalSlides].forEach(index => {
+                const image = galleryTrack.children[index]?.querySelector('img');
+                if (image && !image.hasAttribute('src')) image.src = image.dataset.src;
             });
-
-            dockPanel.addEventListener('mouseleave', () => {
-                requestAnimationFrame(() => {
-                    dockItemsObj.forEach(item => {
-                        item.style.transition = 'transform 0.25s cubic-bezier(0.16, 1, 0.3, 1)';
-                        resetDockItem(item);
-                    });
-                });
-            });
-
-            function resetDockItem(item) {
-                item.style.transform = '';
-            }
         }
+
+        // --- DOCK: read layout once, then apply transforms in one frame ---
+        const dockItemsObj = [...document.querySelectorAll('.dock-item')];
+        const dockPanel = document.getElementById('mac-dock');
+        pointerEffect(dockPanel, event => {
+            const panelLeft = dockPanel.getBoundingClientRect().left;
+            const centers = dockItemsObj.map(item => panelLeft + item.offsetLeft + item.offsetWidth / 2);
+            dockItemsObj.forEach((item, index) => {
+                const scale = 1 + 0.3 * Math.max(0, 1 - Math.abs(event.clientX - centers[index]) / 100);
+                item.style.transform = `translateY(${-10 * (scale - 1)}px) scale(${scale})`;
+            });
+        }, () => dockItemsObj.forEach(item => { item.style.transform = ''; }));
 
         // --- FITUR LIGHT / DARK MODE TOGGLE ---
         const themeToggle = document.getElementById('theme-toggle');
@@ -2677,46 +2743,16 @@
             }
         });
 
-        // --- LOGIKA MOUSE TRACKING UNTUK BORDER GLOW ---
-        const glowCards = document.querySelectorAll('.border-glow-card');
-
-        glowCards.forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                requestAnimationFrame(() => {
-                    const rect = card.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-
-                    const cx = rect.width / 2;
-                    const cy = rect.height / 2;
-
-                    const dx = x - cx;
-                    const dy = y - cy;
-
-                    let kx = Infinity;
-                    let ky = Infinity;
-                    if (dx !== 0) kx = cx / Math.abs(dx);
-                    if (dy !== 0) ky = cy / Math.abs(dy);
-                    const edge = Math.min(Math.max(1 / Math.min(kx, ky), 0), 1);
-
-                    let degrees = 0;
-                    if (dx !== 0 || dy !== 0) {
-                        const radians = Math.atan2(dy, dx);
-                        degrees = radians * (180 / Math.PI) + 90;
-                        if (degrees < 0) degrees += 360;
-                    }
-
-                    // Update CSS Variables secara real-time
-                    card.style.setProperty('--edge-proximity', (edge * 100).toFixed(3));
-                    card.style.setProperty('--cursor-angle', `${degrees.toFixed(3)}deg`);
-                });
-            });
-
-            card.addEventListener('mouseleave', () => {
-                requestAnimationFrame(() => {
-                    card.style.setProperty('--edge-proximity', '0');
-                });
-            });
+        // --- BORDER GLOW: coalesced updates, desktop pointer only ---
+        document.querySelectorAll('.border-glow-card').forEach(card => {
+            pointerEffect(card, event => {
+                const rect = card.getBoundingClientRect();
+                const dx = event.clientX - rect.left - rect.width / 2;
+                const dy = event.clientY - rect.top - rect.height / 2;
+                const edge = Math.min(1, Math.max(Math.abs(dx) / (rect.width / 2), Math.abs(dy) / (rect.height / 2)));
+                card.style.setProperty('--edge-proximity', (edge * 100).toFixed(2));
+                card.style.setProperty('--cursor-angle', (Math.atan2(dy, dx) * 180 / Math.PI + 90) + 'deg');
+            }, () => card.style.setProperty('--edge-proximity', '0'));
         });
 
         // --- SCROLL ANIMATIONS (STATS & SKILLS) ---
@@ -2733,25 +2769,14 @@
                     const el = entry.target;
                     const target = parseFloat(el.getAttribute('data-target'));
                     const suffix = el.getAttribute('data-suffix') || '';
-                    const duration = 2000; // 2 seconds
-                    const frameDuration = 1000 / 60; // 60fps
-                    const totalFrames = Math.round(duration / frameDuration);
-                    let frame = 0;
-
-                    const counter = setInterval(() => {
-                        frame++;
-                        const progress = frame / totalFrames;
-                        // Use an ease-out formula for slower finish
-                        const easeOut = 1 - Math.pow(1 - progress, 3);
-                        const currentVal = Math.round(target * easeOut);
-
-                        el.innerText = currentVal + suffix;
-
-                        if (frame === totalFrames) {
-                            clearInterval(counter);
-                            el.innerText = target + suffix;
-                        }
-                    }, frameDuration);
+                    const started = performance.now();
+                    const tick = now => {
+                        const progress = reducedMotion.matches || document.hidden ? 1 : Math.min((now - started) / 700, 1);
+                        const value = progress === 1 ? target : Math.round(target * (1 - Math.pow(1 - progress, 3)));
+                        el.textContent = value + suffix;
+                        if (progress < 1) requestAnimationFrame(tick);
+                    };
+                    requestAnimationFrame(tick);
 
                     observer.unobserve(el);
                 }
@@ -2776,23 +2801,14 @@
 
         animateSkillsBg.forEach(skill => skillsObserver.observe(skill));
 
-        // --- SPOTLIGHT TEXT HOVER ---
+        // --- SPOTLIGHT: one update per frame ---
         const aboutDesc = document.querySelector('.about-desc');
-        if (aboutDesc) {
-            aboutDesc.addEventListener('mousemove', (e) => {
-                const rect = aboutDesc.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                aboutDesc.style.setProperty('--mouse-x', `${x}px`);
-                aboutDesc.style.setProperty('--mouse-y', `${y}px`);
-            });
-            aboutDesc.addEventListener('mouseenter', () => {
-                aboutDesc.classList.add('spotlight-active');
-            });
-            aboutDesc.addEventListener('mouseleave', () => {
-                aboutDesc.classList.remove('spotlight-active');
-            });
-        }
+        pointerEffect(aboutDesc, event => {
+            const rect = aboutDesc.getBoundingClientRect();
+            aboutDesc.style.setProperty('--mouse-x', (event.clientX - rect.left) + 'px');
+            aboutDesc.style.setProperty('--mouse-y', (event.clientY - rect.top) + 'px');
+            aboutDesc.classList.add('spotlight-active');
+        }, () => aboutDesc.classList.remove('spotlight-active'));
 
         // --- MULTI-LANGUAGE TRANSLATION DICTIONARY ---
         const translations = {
