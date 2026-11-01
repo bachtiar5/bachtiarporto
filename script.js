@@ -26,6 +26,7 @@
   };
   const english = {
     skip:'Skip to content',home:'Home',work:'Work',about:'About',contact:'Contact',letsTalk:'Let’s talk',
+    navProjects:'Projects',navCareer:'Career',careerPreviewLabel:'A little of my journey',careerPreviewDesc:'From discovering Roblox Studio to building a studio and returning to collaborate on projects.',careerPreviewLink:'Follow my journey',now:'Now',allReleasedGames:'See the published games',
     heroLine1:'Hi, I’m',heroLine2:'Bachtiar.',heroIntro:'Roblox developer. World builder.',
     heroDesc:'I’m Bachtiar Aditya, also known as Adit or Tahu Bulat. Over 2 years bringing ideas to life through maps, environments, and player experiences in Roblox Studio.',
     heroYears:'Years of experience',heroPublished:'Projects published',heroClients:'Clients served',clientsCount:'Clients served',experienceCount:'Years in Roblox Studio',
@@ -152,6 +153,7 @@
     $('.identity-switcher').setAttribute('aria-label',language==='id'?'Pilih kartu identitas':'Choose an identity card');
     $('.deck-next').setAttribute('aria-label',language==='id'?'Ganti kartu identitas':'Switch identity card');
     renderCollections();
+    document.dispatchEvent(new CustomEvent('portfolio:languagechange',{detail:{language}}));
   }
   $$('[data-lang]').forEach(button => button.addEventListener('click',() => setLanguage(button.dataset.lang)));
 
@@ -169,7 +171,7 @@
   $$('.nav-link').forEach(link => link.addEventListener('click',closeMenu));
   document.addEventListener('click',event => {if (!event.target.closest('.site-header')) closeMenu();});
   document.addEventListener('keydown',event => {if(event.key==='Escape' && menu.classList.contains('is-open')) {closeMenu();menuButton.focus();}});
-  matchMedia('(min-width:641px)').addEventListener('change',closeMenu);
+  matchMedia('(min-width:861px)').addEventListener('change',closeMenu);
 
   const dialog = $('#gallery-dialog');
   const image = $('#gallery-image');
@@ -283,7 +285,7 @@
   $$('[data-count]').forEach(element=>countObserver.observe(element));
   document.addEventListener('pointerover',event=>{
     if(event.pointerType==='touch')return;
-    const group=event.target.closest('.hero-stats>div,.stats-row>div,.profile-counts>div');
+    const group=event.target.closest('.hero-stats>div,.stats-row>div,.profile-counts>div,.game-metrics>div');
     if(!group||group.contains(event.relatedTarget))return;
     group.querySelectorAll('[data-count]').forEach(countFromZero);
   });
@@ -376,13 +378,20 @@
     if(control===controlTarget){cancelAnimationFrame(controlFrame);controlFrame=0;controlTarget=null;}
   });
   setLanguage(language);
+  document.addEventListener('portfolio:content',()=>{watchReveals();enhanceControls();$$('[data-count]').forEach(number=>countObserver.observe(number));});
+  document.addEventListener('portfolio:beforecontent',event=>{
+    const root=event.detail?.root;if(!(root instanceof Element))return;
+    root.querySelectorAll('[data-count]').forEach(number=>{countObserver.unobserve(number);if(counting.has(number)){cancelAnimationFrame(counting.get(number));counting.delete(number);}});
+    root.querySelectorAll('.reveal').forEach(element=>revealObserver.unobserve(element));
+  });
   watchReveals();
   document.documentElement.classList.add('motion-ready');
 
   // Keep the single navigation in sync without a continuous animation loop.
   let scrollFrame = 0;
-  const sectionIds = ['home','projects','about','uplink'];
+  const sectionIds = ['home','about','uplink'];
   function syncNavigation() {
+    if(document.body.dataset.page && document.body.dataset.page!=='home'){scrollFrame=0;return;}
     let current = 'home';
     sectionIds.forEach(id=>{if(document.getElementById(id).getBoundingClientRect().top<=160)current=id;});
     $$('.nav-link').forEach(link=>{
