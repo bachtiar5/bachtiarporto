@@ -6,6 +6,13 @@
 .hero .hero-visual { display:grid; grid-template-rows:22px var(--preview-height); gap:10px; align-self:center; }
 .hero .visual-topline { margin:0; align-self:center; }
 .hero .world-frame { height:100%; }
+.hero .visual-topline { display:flex; align-items:center; justify-content:space-between; gap:8px; }
+.preview-controls { display:flex; align-items:center; gap:5px; }
+.preview-position { font-size:11px; font-variant-numeric:tabular-nums; letter-spacing:0; margin-right:3px; white-space:nowrap; }
+.preview-controls button { display:grid; place-items:center; width:25px; height:25px; padding:0; border:0; border-radius:50%; background:transparent; color:var(--muted); font-size:16px; line-height:1; transition:background .2s,color .2s; }
+.preview-controls button:hover,.preview-controls button:focus-visible { background:var(--surface-2); color:var(--accent); }
+.world-frame .preview-curtain { position:absolute; inset:-2px; z-index:3; background:linear-gradient(145deg,#20291b,#101510); border-top:2px solid var(--accent); pointer-events:none; transform:translateY(105%); }
+@media(max-width:640px) { .preview-controls button { width:32px; height:32px; } }
 @keyframes mascot-settle { 0%,100% {translate:0 0} 50% {translate:0 -4px} }
 .archive-published-link { width:fit-content; margin-bottom:25px; color:var(--accent); font-size:16px; }
 .career-preview { margin-top:26px; padding-top:22px; border-top:1px solid var(--line); }
