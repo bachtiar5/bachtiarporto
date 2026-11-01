@@ -157,6 +157,20 @@
   }
   $$('[data-release-filter]').forEach(button=>button.addEventListener('click',()=>{filter=button.dataset.releaseFilter;applyGameFilter();}));
 
+  function journeyMedia(games,t) {
+    if(!games.length)return '';
+    return `<div class="journey-media"><div class="journey-project-art" tabindex="0" role="region" aria-label="${language==='id'?'Foto proyek':'Project photos'}">${games.map(game=>`<a href="${esc(game.url)}" target="_blank" rel="noopener noreferrer" aria-label="${esc(t.openGame+': '+game.name)}"><img src="${esc(game.thumbnail)}" width="768" height="432" alt="${esc(game.name)}"></a>`).join('')}</div>${games.length>1?`<div class="journey-photo-controls"><button type="button" class="icon-button" data-photo-direction="-1" aria-label="${language==='id'?'Foto sebelumnya':'Previous photo'}">←</button><span class="journey-photo-position" aria-live="polite">1 / ${games.length}</span><button type="button" class="icon-button" data-photo-direction="1" aria-label="${language==='id'?'Foto berikutnya':'Next photo'}">→</button></div>`:''}</div>`;
+  }
+  function setupJourneyMedia() {
+    const gallery=$('#journey-detail .journey-project-art');if(!gallery)return;
+    const buttons=$$('#journey-detail [data-photo-direction]'),position=$('#journey-detail .journey-photo-position');
+    const update=()=>{const index=gallery.clientWidth?Math.round(gallery.scrollLeft/gallery.clientWidth):0;if(position)position.textContent=`${index+1} / ${gallery.children.length}`;buttons.forEach(button=>button.disabled=Number(button.dataset.photoDirection)<0?index===0:index===gallery.children.length-1);};
+    const move=direction=>gallery.scrollBy({left:direction*gallery.clientWidth,behavior:reduced.matches?'instant':'smooth'});
+    buttons.forEach(button=>button.addEventListener('click',()=>move(Number(button.dataset.photoDirection))));
+    gallery.addEventListener('scroll',update,{passive:true});
+    gallery.addEventListener('keydown',event=>{if(event.target!==gallery||!['ArrowLeft','ArrowRight'].includes(event.key))return;event.preventDefault();move(event.key==='ArrowRight'?1:-1);});
+    update();
+  }
   function renderJourney(withMotion=false) {
     const t=texts();
     $('#journey-flow').style.setProperty('--journey-step',String(chapter/(chapters.length-1)));
@@ -169,7 +183,8 @@
     const visitNote=breakthrough?'Mie Ayam Sidoarjo: '+new Intl.NumberFormat(locale).format(breakthrough.visits)+(language==='id'?' kunjungan · Data Roblox ':' visits · Roblox data ')+date(window.publishedProjects.capturedAt):'';
     const projectLinks=related.map(game=>`<a class="text-link" href="${esc(game.url)}" target="_blank" rel="noopener noreferrer"><span>${esc(game.name)}</span><span aria-hidden="true">↗</span></a>`).join('');
     detail.setAttribute('aria-labelledby',`journey-tab-${chapter}`);
-    detail.innerHTML=`<div class="journey-year-art${related.length?' has-projects':''}"><span>${item.year}</span>${related.length?`<div class="journey-project-art">${related.map(game=>`<a href="${esc(game.url)}" target="_blank" rel="noopener noreferrer" aria-label="${esc(t.openGame+': '+game.name)}"><img src="${esc(game.thumbnail)}" width="140" height="79" alt="${esc(game.name)}"></a>`).join('')}</div>`:`<img src="${esc(item.icon)}" width="90" height="90" alt="">`}</div><div class="journey-story"><p class="eyebrow">${esc(t.chapter)} ${String(chapter+1).padStart(2,'0')} / ${String(chapters.length).padStart(2,'0')}</p><h2>${esc(copy.intro)}</h2><p>${esc(copy.body)}</p>${visitNote?`<p class="journey-note">${esc(visitNote)}</p>`:''}<p class="journey-note">${esc(copy.note)}</p>${copy.highlight?`<p><strong>${esc(copy.highlight)}</strong><br>${esc(copy.highlightBody)}</p>`:''}${studioNote?`<p class="journey-note">${esc(studioNote)}</p>`:''}${projectLinks}${item.studio?`<a class="text-link" href="https://www.roblox.com/share/g/35569543" target="_blank" rel="noopener noreferrer"><span>AIH Studio</span><span aria-hidden="true">↗</span></a>`:''}${item.projects?`<a class="text-link" href="#/projects"><span>${esc(t.seeProjects)}</span><span aria-hidden="true">↗</span></a>`:''}</div>`;
+    detail.innerHTML=`<div class="journey-year-art${related.length?' has-projects':item.studio?' has-studio':''}"><span>${item.year}</span>${related.length?journeyMedia(related,t):item.studio?`<svg class="journey-studio-mark" viewBox="39 318 1196 626" role="img" aria-label="AIH Studio"><image href="${esc(item.icon)}" width="1280" height="1280"/></svg>`:`<img src="${esc(item.icon)}" width="90" height="90" alt="">`}</div><div class="journey-story"><p class="eyebrow">${esc(t.chapter)} ${String(chapter+1).padStart(2,'0')} / ${String(chapters.length).padStart(2,'0')}</p><h2>${esc(copy.intro)}</h2><p>${esc(copy.body)}</p>${visitNote?`<p class="journey-note">${esc(visitNote)}</p>`:''}<p class="journey-note">${esc(copy.note)}</p>${copy.highlight?`<p><strong>${esc(copy.highlight)}</strong><br>${esc(copy.highlightBody)}</p>`:''}${studioNote?`<p class="journey-note">${esc(studioNote)}</p>`:''}${projectLinks}${item.studio?`<a class="text-link" href="https://www.roblox.com/share/g/35569543" target="_blank" rel="noopener noreferrer"><span>AIH Studio</span><span aria-hidden="true">↗</span></a>`:''}${item.projects?`<a class="text-link" href="#/projects"><span>${esc(t.seeProjects)}</span><span aria-hidden="true">↗</span></a>`:''}</div>`;
+    setupJourneyMedia();
     $('#journey-prev').disabled=chapter===0;$('#journey-next').disabled=chapter===chapters.length-1;
     $('#journey-position').textContent=`${chapter+1} / ${chapters.length}`;
     if(withMotion)motion(detail,[{opacity:0,transform:'translateY(12px)'},{opacity:1,transform:'translateY(0)'}],{duration:400,easing:'cubic-bezier(.16,1,.3,1)'});
