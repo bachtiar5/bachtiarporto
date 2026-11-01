@@ -15,6 +15,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700&family=Manrope:wght@400;500;600;650;700;750;800&display=swap" rel="stylesheet">
   <script>try { document.documentElement.dataset.theme = localStorage.getItem('bachtiar-theme') || 'dark'; } catch {} document.documentElement.dataset.startPage = location.hash === '#/projects' ? 'projects' : location.hash === '#/career' ? 'career' : 'home';</script>
+  <script>try { if (!sessionStorage.getItem('bachtiar-welcome-seen') && !matchMedia('(prefers-reduced-motion: reduce)').matches) { document.documentElement.dataset.welcome='pending'; setTimeout(function(){delete document.documentElement.dataset.welcome;},3000); } } catch {}</script>
+  <link rel="stylesheet" href="welcome-intro.css?v=20261102-welcome">
   <link rel="stylesheet" href="styles.css?v=20261102-peak-skills-v2">
   <script src="portfolio-data.js?v=gallery-c1bc92719b26ec32" defer></script>
   <script src="profile-data.js?v=20261102-peak-skills-v2" defer></script>
@@ -26,8 +28,10 @@
   <script src="site-pages.js?v=20261102-internships" defer></script>
   <script src="baseplate.js?v=20261102-peak-skills-v2" defer></script>
   <script src="hero-preview.js?v=20261102-auto-gallery" defer></script>
+  <script src="welcome-intro.js?v=20261102-welcome" defer></script>
 </head>
 <body><div class="studio-baseplate" aria-hidden="true"><div class="baseplate-grid"></div><div class="baseplate-spot"></div></div>
+  <section class="welcome-intro" role="dialog" aria-modal="true" aria-label="Selamat datang di portofolio Bachtiar"><div class="welcome-content"><img class="welcome-mascot" src="image/mascot.png" alt="" width="210" height="210" decoding="async"><p class="welcome-name">bachtiar<span>.</span></p><span class="welcome-rule" aria-hidden="true"></span></div><button class="welcome-skip" type="button">Lewati intro</button></section>
   <a class="skip-link" href="#main-content" data-i18n="skip">Langsung ke konten</a>
   <header class="site-header">
     <div class="reading-progress" aria-hidden="true"></div>
