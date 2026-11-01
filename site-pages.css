@@ -80,12 +80,14 @@ html:not([data-pages-ready])[data-start-page=projects] #home-page,html:not([data
 .journey-node.is-current .journey-year { color:var(--accent); }
 .journey-detail { display:grid; grid-template-columns:.65fr 1.35fr; gap:55px; padding-block:42px; border-block:1px solid var(--line); scroll-margin-top:90px; }
 .journey-detail:focus-visible { outline:1px solid var(--accent); outline-offset:10px; }
-.journey-year-art { display:flex; flex-direction:column; justify-content:space-between; align-items:flex-start; gap:28px; padding:5px 0 15px; }
+.journey-year-art { display:flex; flex-direction:column; justify-content:flex-start; align-items:flex-start; gap:24px; padding:5px 0 15px; }
 .journey-year-art>span { font-family:var(--heading); font-size:clamp(70px,9vw,120px); line-height:1; letter-spacing:-7px; color:var(--accent); }
 .journey-year-art>img { width:80px; height:80px; object-fit:contain; }
+.journey-year-art>img[src*="aihstudio"] { width:150px; height:100px; }
 .journey-year-art.has-projects { justify-content:flex-start; }
-.journey-project-art { display:flex; flex-wrap:wrap; gap:12px; }
-.journey-project-art img { width:140px; height:auto; }
+.journey-project-art { display:grid; grid-template-columns:minmax(0,1fr); gap:16px; width:100%; max-width:360px; }
+.journey-project-art a { display:block; min-width:0; }
+.journey-project-art img { width:100%; height:auto; }
 .journey-year-art>img[src*="icons/"] { filter:invert(85%) sepia(36%) saturate(700%) hue-rotate(30deg); }
 [data-theme=light] .journey-year-art>img[src*="icons/"] { filter:invert(28%) sepia(28%) saturate(1000%) hue-rotate(43deg); }
 .journey-story>.eyebrow { color:var(--muted); font-size:13px; letter-spacing:0; margin-bottom:17px; }
@@ -175,6 +177,7 @@ html:not([data-pages-ready])[data-start-page=projects] #home-page,html:not([data
  .journey-flow::after { height:calc((100% - 90px) * var(--journey-step)); transition:height .4s ease-out; }
  .journey-detail { grid-template-columns:1fr; gap:25px; padding-block:29px; }
  .journey-year-art { flex-direction:row; align-items:center; padding:0; }
+ .journey-year-art.has-projects { flex-direction:column; align-items:flex-start; }
  .journey-year-art>span { font-size:75px; letter-spacing:-4px; }
  .journey-year-art>img { width:55px; height:55px; }
  .journey-story h2 { font-size:25px; line-height:1.5; }

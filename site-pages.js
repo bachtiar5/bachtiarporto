@@ -15,14 +15,14 @@
     "id": {
       "title": "Pertama kenal Roblox Studio",
       "intro": "Mulainya dari rasa penasaran.",
-      "body": "Pada 2021, aku pertama kali mengenal Roblox Studio dan mencoba beberapa fitur dasarnya. Waktu itu belum ada rencana serius menjadi game developer; aku hanya penasaran bagaimana game dibuat. Eksplorasinya singkat, lalu aku berhenti menggunakannya.",
-      "note": "Ini tahun pertama mengenal Roblox Studio, bukan awal karier profesionalku."
+      "body": "Tahun 2021 aku pertama kali coba Roblox Studio. Aku penasaran sama fitur dasarnya, tapi waktu itu belum kepikiran serius jadi game developer. Setelah mencoba sebentar, aku berhenti memakainya.",
+      "note": "Waktu itu aku baru mengenal Roblox Studio dan belum mulai berkarier sebagai developer."
     },
     "en": {
       "title": "Discovering Roblox Studio",
       "intro": "It started with curiosity.",
-      "body": "In 2021, I discovered Roblox Studio and tried some of its basic features. I had no serious plans to become a game developer yet; I was simply curious about how games were made. This brief exploration ended when I stopped using it.",
-      "note": "This was my first introduction to Roblox Studio, not the start of a professional career."
+      "body": "I first tried Roblox Studio in 2021. I was curious about its basic features, but I had no serious plans to become a game developer yet. After a short time experimenting, I stopped using it.",
+      "note": "I was just getting to know Roblox Studio and had not started a career as a developer."
     }
   },
   {
@@ -31,14 +31,14 @@
     "id": {
       "title": "Menjelajahi game sebagai pemain",
       "intro": "Masih menikmati game dari sisi pemain.",
-      "body": "Sepanjang 2022, aku lebih banyak bermain dan menjelajahi game di Roblox maupun platform lain. Aku belum aktif mengembangkan game saat itu. Masa ini menjadi bagian dari eksplorasiku sebagai pemain, sebelum kembali tertarik membuat game sendiri.",
-      "note": "Mengenal berbagai pengalaman bermain sebelum mulai belajar membuatnya."
+      "body": "Sepanjang 2022 aku lebih banyak main game, baik di Roblox maupun platform lain. Aku belum aktif bikin game sendiri. Aku masih menikmati berbagai game sebagai pemain sebelum akhirnya tertarik belajar membuatnya.",
+      "note": "Setahun ini lebih banyak kuhabiskan buat main dan menjelajahi game."
     },
     "en": {
       "title": "Exploring games as a player",
       "intro": "Experiencing games from the player’s side.",
-      "body": "Throughout 2022, I spent more time playing and exploring games on Roblox and other platforms. I was not actively developing games during this period. This was a time of exploration as a player, before I became interested in making games of my own again.",
-      "note": "Exploring different player experiences before learning to create them."
+      "body": "In 2022, I spent more time playing games on Roblox and other platforms. I was not actively making games of my own. I was still exploring games as a player before becoming interested in learning how to make them.",
+      "note": "This year was mostly about playing and exploring games."
     }
   },
   {
@@ -47,15 +47,15 @@
     "studio": true,
     "id": {
       "title": "Belajar mandiri & AIH Studio",
-      "intro": "Dari mencoba bikin game, sampai membangun komunitas.",
-      "body": "Aku mulai belajar Roblox Studio secara mandiri lewat tutorial YouTube. Aku mencoba obby, Backrooms, horror sederhana, serta game perang dan pertempuran; sebagian besar belum selesai atau dirilis, dan belum menghasilkan pendapatan. Pada tahun yang sama, aku mendirikan komunitas Roblox AIH Studio, langkah penting yang memperluas kegiatanku dari belajar sendiri menjadi membangun komunitas.",
-      "note": "Setelah beberapa percobaan, aku vakum dari pengembangan game dan tidak aktif mengerjakan proyek hingga menjelang akhir 2024."
+      "intro": "Belajar dari YouTube dan mulai AIH Studio.",
+      "body": "Tahun 2023 aku mulai belajar Roblox Studio sendiri lewat tutorial YouTube. Aku mencoba bikin obby, Backrooms, horror sederhana, sampai game perang dan pertempuran. Kebanyakan belum selesai atau belum dirilis, dan belum menghasilkan uang. Di tahun yang sama aku mendirikan AIH Studio, jadi selain belajar bikin game aku juga mulai membangun komunitas Roblox.",
+      "note": "Setelah beberapa percobaan itu, aku sempat berhenti bikin game. Aku baru kembali menjelang akhir 2024."
     },
     "en": {
       "title": "Self-taught learning & AIH Studio",
-      "intro": "From experimenting with games to building a community.",
-      "body": "I started teaching myself Roblox Studio through YouTube tutorials. I experimented with obbies, Backrooms, simple horror, and war and combat games; most remained unfinished or unpublished, and none generated income. That same year, I founded the Roblox community AIH Studio, an important step from learning on my own to building a community.",
-      "note": "After these experiments, I took a break from game development and remained inactive until late 2024."
+      "intro": "Learning from YouTube and starting AIH Studio.",
+      "body": "In 2023, I began learning Roblox Studio on my own through YouTube tutorials. I tried making obbies, Backrooms, simple horror games, and war and combat games. Most were unfinished or unpublished, and none earned any money. That same year I founded AIH Studio, so alongside learning to make games I also started building a Roblox community.",
+      "note": "After these experiments, I took a break from making games. I returned in late 2024."
     }
   },
   {
@@ -66,15 +66,15 @@
     ],
     "id": {
       "title": "Kembali lewat Gunung Butak",
-      "intro": "Pengalaman mendaki jadi ide untuk kembali berkarya.",
-      "body": "Menjelang akhir 2024, aku kembali menggunakan Roblox Studio dan mulai mengembangkan Gunung Butak. Idenya terinspirasi dari pengalamanku sendiri saat mendaki Gunung Butak. Ini proyek serius pertama setelah masa vakum, berbeda dari eksperimen belajar pada 2023, dan menjadi pijakan untuk mengerjakan proyek berikutnya.",
-      "note": "Pengembangan dimulai menjelang akhir 2024; data proyek Roblox mencatat tanggal pembuatan pada 2025."
+      "intro": "Balik bikin game lewat cerita pendakianku sendiri.",
+      "body": "Menjelang akhir 2024 aku kembali membuka Roblox Studio dan mulai mengerjakan Gunung Butak. Idenya datang dari pengalamanku mendaki Gunung Butak. Ini proyek pertama yang kukerjakan lebih serius setelah vakum. Sebelumnya aku sudah pernah mencoba bikin game, tapi masih untuk belajar.",
+      "note": "Aku mulai mengerjakannya menjelang akhir 2024. Tanggal pembuatan proyek yang tercatat di Roblox ada di tahun 2025."
     },
     "en": {
       "title": "Returning with Gunung Butak",
-      "intro": "A personal hiking experience inspired my return.",
-      "body": "In late 2024, I returned to Roblox Studio and began developing Gunung Butak. It was inspired by my own experience hiking the mountain. This was my first serious project after the break, distinct from my learning experiments in 2023, and it became a foundation for the projects that followed.",
-      "note": "Development began in late 2024; the Roblox project record lists its creation date in 2025."
+      "intro": "A hiking trip gave me an idea for my return.",
+      "body": "In late 2024, I opened Roblox Studio again and started working on Gunung Butak. The idea came from my own experience hiking the mountain. It was the first project I took more seriously after my break. I had tried making games before, but those were learning experiments.",
+      "note": "I began working on it in late 2024. The project creation date recorded on Roblox is in 2025."
     }
   },
   {
@@ -87,15 +87,15 @@
     ],
     "id": {
       "title": "Proyek lanjutan & freelance",
-      "intro": "Makin banyak pengalaman, mulai menemukan arah.",
-      "body": "Setelah Gunung Butak, aku mengembangkan Gunung Kawi dan Gunung Deti untuk memperluas pengalaman membuat game. Unsur horror di Gunung Kawi memunculkan ketertarikanku untuk mendalami genre itu. Aku juga mulai menerima pekerjaan freelance dan mengerjakan kebutuhan klien, sehingga pengalamanku berkembang dari proyek sendiri ke proyek untuk orang lain.",
-      "note": "Pada akhir 2025, aku mulai mengembangkan Mie Ayam Sidoarjo, game horror pertamaku yang benar-benar berfokus pada genre tersebut."
+      "intro": "Lanjut bikin game dan mulai menerima proyek klien.",
+      "body": "Setelah Gunung Butak, aku lanjut mengerjakan Gunung Kawi dan Gunung Deti. Unsur horror di Gunung Kawi bikin aku tertarik mendalami genre itu. Aku juga mulai menerima pekerjaan freelance, jadi mulai belajar mengerjakan game sesuai kebutuhan klien.",
+      "note": "Akhir 2025 aku mulai bikin Mie Ayam Sidoarjo. Ini game pertamaku yang benar-benar fokus ke horror."
     },
     "en": {
       "title": "More projects & freelance work",
-      "intro": "Broadening my experience and finding a direction.",
-      "body": "After Gunung Butak, I developed Gunung Kawi and Gunung Deti to broaden my experience making games. The horror elements in Gunung Kawi sparked my interest in exploring the genre further. I also began taking freelance work and building projects for clients, expanding beyond my own projects to meet other people’s needs.",
-      "note": "In late 2025, I began developing Mie Ayam Sidoarjo, my first game with a full focus on horror."
+      "intro": "Making more games and taking on client projects.",
+      "body": "After Gunung Butak, I worked on Gunung Kawi and Gunung Deti. The horror elements in Gunung Kawi made me want to explore the genre further. I also started taking freelance work and learning how to build games around a client’s needs.",
+      "note": "In late 2025, I started making Mie Ayam Sidoarjo. It was my first game with a full focus on horror."
     }
   },
   {
@@ -108,19 +108,19 @@
     "projects": true,
     "id": {
       "title": "Mie Ayam, kolaborasi & LOSI",
-      "intro": "Mie Ayam Sidoarjo membuka banyak kesempatan baru.",
-      "body": "Memasuki 2026, Mie Ayam Sidoarjo mendapat perhatian besar dari komunitas Roblox dan menjadi salah satu titik terobosan karierku. Dukungan YouTuber, kreator konten, dan developer—termasuk IFQIYEH yang membantu mempromosikannya—membawa game ini ke lebih banyak pemain. Perkembangannya membuka kesempatan kolaborasi dengan The Morgue Shift, Bakso Malang Anomalies, dan Shopee.",
-      "note": "The Morgue Shift dan Bakso Malang Anomalies merupakan pengalaman kolaborasi, bukan game yang kubuat sendiri.",
+      "intro": "Mie Ayam Sidoarjo mulai dikenal banyak pemain.",
+      "body": "Memasuki 2026, Mie Ayam Sidoarjo mulai ramai di komunitas Roblox. Banyak YouTuber, kreator konten, dan developer ikut membantu mengenalkannya. Salah satunya IFQIYEH, yang membantu promosi supaya game ini menjangkau lebih banyak pemain. Dari sini aku mendapat kesempatan kolaborasi dengan The Morgue Shift, Bakso Malang Anomalies, dan Shopee.",
+      "note": "The Morgue Shift dan Bakso Malang Anomalies adalah bagian dari kolaborasiku. Keduanya bukan game yang kubuat sendiri.",
       "highlight": "Bergabung dengan LOSI Studio",
-      "highlightBody": "Sepanjang 2026, aku terus mengembangkan game, mengerjakan freelance, dan menghasilkan beberapa proyek yang terjual. Aku juga bergabung dengan LOSI Studio dan terlibat dalam pengembangan Hotel Anomali bersama developer lainnya. Menurut informasi yang kumiliki, LOSI Studio dimiliki oleh Bang Windah dan Andi Lukito; pengalaman ini menjadi langkah penting menuju kerja sama profesional dalam studio."
+      "highlightBody": "Di tahun yang sama aku tetap mengerjakan game dan proyek freelance. Beberapa proyekku juga berhasil terjual. Aku lalu bergabung dengan LOSI Studio dan ikut mengembangkan Hotel Anomali bersama developer lain. Setahuku, LOSI Studio dimiliki Bang Windah dan Andi Lukito. Di sini aku mendapat pengalaman bekerja bersama tim studio."
     },
     "en": {
       "title": "Mie Ayam, collaborations & LOSI",
-      "intro": "Mie Ayam Sidoarjo opened new opportunities.",
-      "body": "In 2026, Mie Ayam Sidoarjo gained significant attention from the Roblox community and became a breakthrough in my career. Support from YouTubers, content creators, and developers—including IFQIYEH, who helped promote it—brought the game to more players. Its growth opened opportunities to collaborate with The Morgue Shift, Bakso Malang Anomalies, and Shopee.",
-      "note": "The Morgue Shift and Bakso Malang Anomalies were collaborations, not games I created on my own.",
+      "intro": "Mie Ayam Sidoarjo reached more players.",
+      "body": "In 2026, Mie Ayam Sidoarjo began getting attention in the Roblox community. YouTubers, content creators, and developers helped introduce it to more people. One of them was IFQIYEH, who helped promote the game and reach more players. This led to opportunities to collaborate with The Morgue Shift, Bakso Malang Anomalies, and Shopee.",
+      "note": "The Morgue Shift and Bakso Malang Anomalies were part of my collaboration experience. They were not games I made on my own.",
       "highlight": "Joining LOSI Studio",
-      "highlightBody": "Throughout 2026, I continued developing games, taking freelance work, and completing projects that were sold. I also joined LOSI Studio and contributed to Hotel Anomali alongside other developers. According to the information I have, LOSI Studio is owned by Bang Windah and Andi Lukito; this experience was an important step toward professional studio collaboration."
+      "highlightBody": "That same year I continued making games and taking freelance projects. Some of my projects were sold. I then joined LOSI Studio and helped develop Hotel Anomali with other developers. As far as I know, LOSI Studio is owned by Bang Windah and Andi Lukito. This gave me experience working with a studio team."
     }
   }
 ];
