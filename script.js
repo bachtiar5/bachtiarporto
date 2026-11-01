@@ -246,8 +246,28 @@
 
   // Two identical groups travel one full group to the right, with no loop jump.
   const strip=$('.discipline-strip'),track=$('.marquee-track');
-  const logoClone=$('.marquee-group').cloneNode(true);
-  logoClone.setAttribute('aria-hidden','true');track.appendChild(logoClone);
+  const skillGroup=$('.marquee-group');
+  const skillItems=[...skillGroup.children].map(item=>item.cloneNode(true));
+  let marqueeWidth=0,marqueeFrame=0;
+  function fitSkillStream(force=false) {
+    const width=$('.marquee-window').clientWidth;
+    if(!width||(!force&&width===marqueeWidth))return;
+    marqueeWidth=width;
+    skillGroup.replaceChildren(...skillItems.map(item=>item.cloneNode(true)));
+    // Repeat actual items to fill wide screens; never pad a group with empty width.
+    let repeats=1;
+    while(skillGroup.getBoundingClientRect().width<width&&repeats<8) {
+      skillGroup.append(...skillItems.map(item=>{const clone=item.cloneNode(true);clone.setAttribute('aria-hidden','true');return clone;}));repeats++;
+    }
+    const period=skillGroup.getBoundingClientRect().width;
+    const clone=skillGroup.cloneNode(true);clone.setAttribute('aria-hidden','true');
+    track.replaceChildren(skillGroup,clone);
+    track.style.animationDuration=`${period/40}s`;
+  }
+  const streamResize=new ResizeObserver(()=>{cancelAnimationFrame(marqueeFrame);marqueeFrame=requestAnimationFrame(()=>fitSkillStream());});
+  streamResize.observe($('.marquee-window'));
+  fitSkillStream();
+  document.fonts.ready.then(()=>fitSkillStream(true));
   function updateMarqueeLabel() {
     const paused=$('.marquee-pause').getAttribute('aria-pressed')==='true';
     $('.marquee-pause').setAttribute('aria-label',language==='id'?`${paused?'Lanjutkan':'Jeda'} animasi logo`:`${paused?'Play':'Pause'} logo animation`);
@@ -341,7 +361,7 @@
     const setNumber=(selector,value)=>{
       const element=$(selector);if(!element)return;
       if(counting.has(element)){cancelAnimationFrame(counting.get(element));counting.delete(element);}
-      element.dataset.count=String(value);element.dataset.countLocale=locale;element.textContent=formatter.format(value);countObserver.observe(element);
+      element.dataset.count=String(value);element.dataset.countLocale=locale;element.textContent=formatter.format(value);element.parentElement.dataset.finalValue=formatter.format(value);countObserver.observe(element);
     };
     if(Array.isArray(games)&&games.every(game=>Number.isSafeInteger(game.visits)&&game.visits>=0))setNumber('#total-game-visits',games.reduce((sum,game)=>sum+game.visits,0));
     if(Number.isSafeInteger(studio?.memberCount)&&studio.memberCount>=0)setNumber('#studio-member-count',studio.memberCount);
