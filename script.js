@@ -27,6 +27,7 @@
   const english = {
     skip:'Skip to content',home:'Home',work:'Work',about:'About',contact:'Contact',letsTalk:'Let’s talk',
     navProjects:'Projects',navCareer:'Career',careerPreviewLabel:'A little of my journey',careerPreviewDesc:'From discovering Roblox Studio to building a studio and returning to collaborate on projects.',careerPreviewLink:'Follow my journey',now:'Now',allReleasedGames:'See the published games',
+    skillStripTitle:'My skills',studioMembers:'AIH Studio members',skillWriter:'Writing stories, lore, and dialogue for games.',skillDesigner:'Designing game concepts, mechanics, levels, and player progression.',
     heroLine1:'Hi, I’m',heroLine2:'Bachtiar.',heroIntro:'Roblox developer. World builder.',
     heroDesc:'I’m Bachtiar Aditya, also known as Adit or Tahu Bulat. Over 2 years bringing ideas to life through maps, environments, and player experiences in Roblox Studio.',
     heroYears:'Years of experience',heroPublished:'Projects published',heroClients:'Clients served',clientsCount:'Clients served',experienceCount:'Years in Roblox Studio',
@@ -44,7 +45,7 @@
     aboutP1:'Since the age of 13, I’ve been curious about how video games are designed. I discovered Roblox Studio in 2021 and returned actively in late 2024, focusing on maps and environments.',
     aboutP2:'I work from visual references, paying attention to atmosphere, detail, and the player experience. I’m continuing to learn scripting, optimization, UI/UX, and collaborative game development.',
     founder:'FOUNDER OF',visits:'Total game visits',projectsCount:'Projects published',sold:'Projects sold',started:'First discovered Roblox Studio',
-    skillsHeading:'What I work on.',skillWorld:'Maps, terrain, and environments with a focus on atmosphere and the player experience.',
+    skillsHeading:'Skills I use.',skillWorld:'Maps, terrain, and environments with a focus on atmosphere and the player experience.',
     skillCode:'Developing game mechanics, modular systems, and debugging while continuing to learn Lua / Luau.',
     skillUI:'Learning to design clear interfaces that feel at home in a Roblox game.',
     momentsIndex:'03 / HALL OF FAME',momentsHeading:'They stopped by<br>my worlds.',
@@ -149,6 +150,7 @@
     updateThemeLabel();
     updateMarqueeLabel();
     updateMenuLabel();
+    renderPortfolioSummary();
     renderRobloxProfile();
     $('.identity-switcher').setAttribute('aria-label',language==='id'?'Pilih kartu identitas':'Choose an identity card');
     $('.deck-next').setAttribute('aria-label',language==='id'?'Ganti kartu identitas':'Switch identity card');
@@ -330,6 +332,23 @@
     ['friends','followers','following'].forEach(key=>{const number=$('#profile-'+key);if(counting.has(number)){cancelAnimationFrame(counting.get(number));counting.delete(number);}number.textContent=formatter.format(profile[key]);number.dataset.count=String(profile[key]);number.dataset.countLocale=language==='id'?'id-ID':'en-US';countObserver.observe(number);});
     const captured=new Intl.DateTimeFormat(language==='id'?'id-ID':'en-US',{day:'numeric',month:'short',year:'numeric',timeZone:'Asia/Bangkok'}).format(new Date(profile.capturedAt));
     $('#profile-data-date').textContent=(language==='id'?'Data resmi Roblox · ':'Official Roblox data · ')+captured;
+  }
+  function renderPortfolioSummary() {
+    const games=window.publishedProjects?.projects;
+    const studio=window.studioProfile;
+    const locale=language==='id'?'id-ID':'en-US';
+    const formatter=new Intl.NumberFormat(locale);
+    const setNumber=(selector,value)=>{
+      const element=$(selector);if(!element)return;
+      if(counting.has(element)){cancelAnimationFrame(counting.get(element));counting.delete(element);}
+      element.dataset.count=String(value);element.dataset.countLocale=locale;element.textContent=formatter.format(value);countObserver.observe(element);
+    };
+    if(Array.isArray(games)&&games.every(game=>Number.isSafeInteger(game.visits)&&game.visits>=0))setNumber('#total-game-visits',games.reduce((sum,game)=>sum+game.visits,0));
+    if(Number.isSafeInteger(studio?.memberCount)&&studio.memberCount>=0)setNumber('#studio-member-count',studio.memberCount);
+    if(games&&studio?.capturedAt) {
+      const captured=new Intl.DateTimeFormat(locale,{day:'numeric',month:'short',year:'numeric',timeZone:'Asia/Bangkok'}).format(new Date(studio.capturedAt));
+      $('#summary-data-note').textContent=language==='id'?`Kunjungan dijumlahkan dari ${games.length} game di halaman Proyek. Anggota AIH Studio: data Roblox ${captured}.`:`Visits summed from the ${games.length} games on the Projects page. AIH Studio members: Roblox data from ${captured}.`;
+    }
   }
   let identity='mascot';
   function switchIdentity(value) {
