@@ -29,6 +29,8 @@
     heroLine1:'Hi, I’m',heroLine2:'Bachtiar.',heroIntro:'Roblox developer. World builder.',
     heroDesc:'I’m Bachtiar Aditya, also known as Adit or Tahu Bulat. Over 2 years bringing ideas to life through maps, environments, and player experiences in Roblox Studio.',
     heroYears:'Years of experience',heroPublished:'Projects published',heroClients:'Clients served',clientsCount:'Clients served',experienceCount:'Years in Roblox Studio',
+    worldCaption:'Maps I’ve<br><em>worked on.</em>',
+    selectedWorld:'A glimpse of my work',
     profileFriends:'Friends',profileFollowers:'Followers',profileFollowing:'Following',openRoblox:'Open Roblox profile',mascotTab:'Mascot',robloxTab:'Roblox profile',deckHint:'Two sides of the same creator. Click to switch.',
     exploreWork:'Explore my work',robloxProfile:'Roblox profile',heroNote:'From a visual reference,<br>to a place worth exploring.',
     worldLabel:'ONE WORLD, MANY STORIES',heroBottom:'BUILT WITH CURIOSITY.',scroll:'SCROLL TO EXPLORE',
@@ -257,16 +259,34 @@
   document.addEventListener('visibilitychange',()=>document.documentElement.classList.toggle('page-hidden',document.hidden));
 
   const counting=new Map();
-  const countObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{
-    if(!entry.isIntersecting)return;
-    countObserver.unobserve(entry.target);
-    const target=Number(entry.target.dataset.count);
-    if(reducedMotion.matches){entry.target.textContent=target;return;}
+  const countedInView=new WeakSet();
+  function countFromZero(element) {
+    if(counting.has(element))return;
+    const target=Number(element.dataset.count);
+    const formatter=element.dataset.countLocale?new Intl.NumberFormat(element.dataset.countLocale):null;
+    const format=value=>formatter?formatter.format(value):String(value);
+    if(reducedMotion.matches){element.textContent=format(target);return;}
+    element.textContent=format(0);
     const start=performance.now();
-    function tick(now){const t=Math.min(1,(now-start)/1000);entry.target.textContent=Math.round(target*(1-Math.pow(1-t,3)));if(t<1)counting.set(entry.target,requestAnimationFrame(tick));else counting.delete(entry.target);}
-    counting.set(entry.target,requestAnimationFrame(tick));
+    function tick(now) {
+      const t=Math.min(1,(now-start)/1100);
+      element.textContent=format(t===1?target:Math.floor(target*t));
+      if(t<1)counting.set(element,requestAnimationFrame(tick));else counting.delete(element);
+    }
+    counting.set(element,requestAnimationFrame(tick));
+  }
+  const countObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{
+    if(!entry.isIntersecting||entry.intersectionRatio<.6){countedInView.delete(entry.target);return;}
+    if(entry.target.closest('[inert]')||countedInView.has(entry.target))return;
+    countedInView.add(entry.target);countFromZero(entry.target);
   }),{threshold:.6});
   $$('[data-count]').forEach(element=>countObserver.observe(element));
+  document.addEventListener('pointerover',event=>{
+    if(event.pointerType==='touch')return;
+    const group=event.target.closest('.hero-stats>div,.stats-row>div,.profile-counts>div');
+    if(!group||group.contains(event.relatedTarget))return;
+    group.querySelectorAll('[data-count]').forEach(countFromZero);
+  });
 
   // A single frame per pointer update; no idle render loop or touch tilt.
   let tiltFrame=0,tiltTarget=null,tiltEvent=null;
@@ -291,7 +311,7 @@
     if(!reducedMotion.matches)return;
     document.getAnimations().forEach(animation=>{if(animation.effect?.getTiming().iterations!==Infinity)animation.finish();});
     $$('.reveal').forEach(el=>el.classList.add('is-visible'));
-    counting.forEach((frame,el)=>{cancelAnimationFrame(frame);el.textContent=el.dataset.count;});counting.clear();
+    counting.forEach((frame,el)=>{cancelAnimationFrame(frame);el.textContent=el.dataset.countLocale?new Intl.NumberFormat(el.dataset.countLocale).format(Number(el.dataset.count)):el.dataset.count;});counting.clear();
     $$('.project-image-wrap').forEach(el=>{el.style.removeProperty('--tilt-x');el.style.removeProperty('--tilt-y');});
   });
   // Roblox blocks cross-origin browser reads. Use the verified official API snapshot,
@@ -305,7 +325,7 @@
     $('#profile-verified').hidden=!profile.hasVerifiedBadge;
     $('#profile-verified').setAttribute('aria-label',language==='id'?'Profil terverifikasi':'Verified profile');
     const formatter=new Intl.NumberFormat(language==='id'?'id-ID':'en-US');
-    ['friends','followers','following'].forEach(key=>{$('#profile-'+key).textContent=formatter.format(profile[key]);});
+    ['friends','followers','following'].forEach(key=>{const number=$('#profile-'+key);if(counting.has(number)){cancelAnimationFrame(counting.get(number));counting.delete(number);}number.textContent=formatter.format(profile[key]);number.dataset.count=String(profile[key]);number.dataset.countLocale=language==='id'?'id-ID':'en-US';countObserver.observe(number);});
     const captured=new Intl.DateTimeFormat(language==='id'?'id-ID':'en-US',{day:'numeric',month:'short',year:'numeric',timeZone:'Asia/Bangkok'}).format(new Date(profile.capturedAt));
     $('#profile-data-date').textContent=(language==='id'?'Data resmi Roblox · ':'Official Roblox data · ')+captured;
   }
@@ -317,10 +337,12 @@
     identity=value;stack.dataset.active=value;
     previous.setAttribute('aria-hidden','true');previous.inert=true;
     next.setAttribute('aria-hidden','false');next.inert=false;
+    next.querySelectorAll('[data-count]').forEach(countFromZero);
     $$('[data-identity]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.identity===value)));
     [previous,next].forEach(card=>card.getAnimations().forEach(animation=>animation.cancel()));
-    animate(previous,[{transform:'translate(0,0) rotate(-1deg)'},{transform:'translate(-30px,4px) rotate(-8deg)',offset:.45},{transform:'translate(15px,-12px) rotate(4deg) scale(.97)'}],{duration:550,easing:'cubic-bezier(.16,1,.3,1)'});
-    animate(next,[{transform:'translate(15px,-12px) rotate(4deg) scale(.97)'},{transform:'translate(25px,-8px) rotate(7deg)',offset:.4},{transform:'translate(0,0) rotate(-1deg)'}],{duration:550,easing:'cubic-bezier(.16,1,.3,1)'});
+    const rear=matchMedia('(max-width:640px)').matches?'translate(8px,-7px) rotate(1deg) scale(.98)':'translate(12px,-9px) rotate(1.5deg) scale(.97)';
+    animate(previous,[{transform:'translate(0,0)'},{transform:'translate(-6px,4px) rotate(-1deg)',offset:.45},{transform:rear}],{duration:500,easing:'cubic-bezier(.16,1,.3,1)'});
+    animate(next,[{transform:rear},{transform:'translate(12px,-6px) rotate(2deg)',offset:.4},{transform:'translate(0,0)'}],{duration:500,easing:'cubic-bezier(.16,1,.3,1)'});
   }
   $$('[data-identity]').forEach(button=>{
     button.addEventListener('click',()=>switchIdentity(button.dataset.identity));

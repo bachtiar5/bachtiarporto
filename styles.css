@@ -40,3 +40,259 @@
 .identity-stack-wrap{overflow:clip;padding:20px 22px 0 10px}
 
 .nav-cta.interactive-control:hover{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}.filter-button.interactive-control:hover{border-color:var(--accent);background:var(--surface-2)}.deck-tab[aria-pressed=false]:hover{background:var(--surface-2);color:var(--text)}
+
+/* Readability and simpler surfaces. */
+body { font-size:17px; }
+.section { padding-block:76px; }
+.eyebrow,.small-label,.visual-topline,.visual-bottomline,.hero-bottom,.caption-label,.project-total,.card-meta { font-size:12px; letter-spacing:.025em; line-height:1.55; }
+.section-index { font-size:13px; margin-bottom:14px; letter-spacing:.025em; }
+.section-heading { gap:36px; margin-bottom:30px; align-items:flex-start; }
+.section-heading h2 { font-size:clamp(32px,3.5vw,48px); letter-spacing:-1.5px; line-height:1.2; }
+.section-description { font-size:16px; line-height:1.8; max-width:390px; padding-top:5px; }
+.nav-shell { min-height:80px; }
+.nav-link { font-size:15px; padding:8px 12px; }
+.nav-link.is-active { background:none; border-color:transparent; color:var(--accent); }
+.nav-cta { font-size:14px; border:0; padding:10px 4px; border-radius:0; }
+.language-switch { border:0; }
+.language-switch button { font-size:12px; }
+.theme-toggle,.menu-toggle { border:0; }
+.brand-mark,.identity-brand { border-radius:0; }
+.hero { grid-template-columns:repeat(3,minmax(0,1fr)); column-gap:40px; padding-top:40px; align-items:center; }
+.hero-copy { padding-block:0; }
+.hero h1 { font-size:clamp(44px,4.3vw,64px); margin:18px 0; letter-spacing:-2.8px; }
+.hero .eyebrow { font-size:12px; letter-spacing:.015em; }
+.hero-intro { font-size:18px; }
+.hero-description { font-size:16px; line-height:1.8; max-width:none; }
+.hero-stats { grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; margin-top:22px; padding-top:20px; }
+.hero-stats strong { font-size:34px; }
+.hero-stats>div>span { font-size:13px; line-height:1.55; max-width:112px; margin-top:8px; }
+.hero-actions { gap:20px; flex-wrap:wrap; margin-top:25px; }
+.hero-actions .button { font-size:15px; padding:14px 21px; }
+.hero-actions .text-link { font-size:14px; }
+.hero-mascot { height:440px; padding:0; margin:0; align-self:center; overflow:visible; }
+.mascot-float { width:100%; max-width:360px; margin-inline:auto; }
+.mascot-float img { transform:translateY(-5%); mask-image:none; }
+.mascot-orbit,.mascot-nameplate,.mascot-coordinate { display:none; }
+.mascot-halo { transform:none; width:100%; }
+.hero .world-frame { height:410px; border-radius:90px 90px 12px 12px; }
+.hero .world-caption { left:22px; right:20px; bottom:24px; }
+.hero .world-caption p { font-size:30px; line-height:1.2; }
+.hero .caption-label { font-size:11px; letter-spacing:.02em; }
+.hero .visual-topline { font-size:12px; letter-spacing:.02em; margin-bottom:12px; }
+.hero .visual-bottomline { display:none; }
+.hero-bottom { margin-top:20px; margin-bottom:22px; font-size:12px; letter-spacing:0; }
+.hero-bottom>span { display:none; }
+.hero-bottom>a { margin-left:auto; }
+.discipline-strip .discipline-item { font-size:16px; }
+.marquee-group { padding-block:22px; }
+.filter-button { font-size:15px; min-height:44px; }
+.filter-button.is-active { background:none; border-color:transparent; color:var(--accent); }
+.filter-button.interactive-control:hover { border-color:transparent; background:var(--surface-2); }
+.card-meta { font-size:12px; letter-spacing:.015em; }
+.project-card h3 { font-size:25px; margin-top:9px; }
+.project-description { font-size:16px; line-height:1.75; max-width:none; }
+.image-count { font-size:12px; letter-spacing:0; }
+.work-footnote { display:none; }
+.project-grid { row-gap:34px; }
+.about-grid { gap:44px; align-items:start; }
+.about-heading { margin-bottom:30px; }
+.about-copy .about-lead { font-size:25px; line-height:1.5; }
+.about-copy>p { font-size:16px; line-height:1.85; margin-bottom:18px; }
+.founder-row { margin-top:22px; padding-top:18px; gap:20px; }
+.founder-row>.small-label { font-size:13px; }
+.studio-identity { background:none; border:0; box-shadow:none; padding:4px 0; border-radius:0; min-width:190px; gap:13px; }
+.studio-identity:hover { box-shadow:none; }
+.studio-identity strong { font-size:17px; }
+.studio-identity span { font-size:14px; }
+.studio-identity img { border-radius:0; width:46px; height:46px; }
+.studio-identity.interactive-control::before { display:none; }
+.studio-identity.interactive-control:hover { box-shadow:none; }
+.identity-stack-wrap { overflow:visible; padding:22px 28px 16px 12px; }
+.identity-stack { height:650px; }
+.identity-sheet { border-radius:16px; box-shadow:0 8px 24px #0002; }
+.identity-stack[data-active=mascot] .identity-mascot,.identity-stack[data-active=roblox] .identity-roblox { transform:none; }
+.identity-stack[data-active=mascot] .identity-roblox,.identity-stack[data-active=roblox] .identity-mascot { transform:translate(12px,-9px) rotate(1.5deg) scale(.97); }
+.identity-art>img { max-height:490px; }
+.identity-edition,.identity-art-note,.identity-card-bottom { font-size:12px; letter-spacing:.02em; }
+.identity-sheet .identity-caption { padding:22px; }
+.identity-caption h3 { font-size:22px; }
+.identity-caption p { font-size:15px; }
+.identity-switcher { background:none; border:0; padding:0; border-radius:0; gap:18px; margin-top:22px; }
+.deck-tab { border-radius:0; padding:9px 1px; border-bottom:2px solid transparent; font-size:15px; }
+.deck-tab[aria-pressed=true] { background:none; color:var(--accent); border-bottom-color:var(--accent); }
+.deck-tab[aria-pressed=false]:hover { background:none; }
+.deck-hint { font-size:13px; line-height:1.6; }
+.deck-next { border:0; }
+.roblox-card-top { font-size:12px; letter-spacing:.02em; padding:20px 22px 0; }
+.roblox-avatar-stage { height:218px; }
+.roblox-card-info { padding:8px 22px 18px; }
+.profile-title-row h3 { font-size:26px; }
+.profile-handle { font-size:15px; }
+.profile-bio { font-size:14px; line-height:1.65; min-height:70px; margin-top:12px; -webkit-line-clamp:3; }
+.profile-counts strong { font-size:24px; }
+.profile-counts span { font-size:13px; }
+.profile-counts { padding-block:18px; }
+.identity-sheet .profile-link { font-size:15px; border:0; border-top:1px solid var(--line); border-radius:0; padding:13px 0; }
+.identity-sheet .profile-link:hover { background:none; color:var(--accent); }
+.profile-data-date { font-size:11px; margin-top:6px; }
+.stats-row { margin-top:38px; padding-block:26px; }
+.stats-row>div { border-left:0; padding-inline:20px; }
+.stats-row strong { font-size:40px; }
+.stats-row p { font-size:14px; line-height:1.6; }
+.skills-heading { margin-top:42px; }
+.skills-heading>.small-label { display:none; }
+.skills-grid { gap:28px; margin-top:28px; }
+.skills-grid h4 { font-size:21px; }
+.skills-grid p { font-size:16px; line-height:1.8; }
+.skill-tags span { font-size:13px; border:0; border-radius:0; padding:0; margin-right:8px; }
+.moment-caption { font-size:16px; }
+.contact-section { padding-block:48px 28px; }
+.contact-topline>.small-label { display:none; }
+.contact-main { padding-block:26px 35px; gap:48px; }
+.contact-main h2 { font-size:clamp(40px,4.7vw,64px); }
+.contact-main p { font-size:16px; line-height:1.8; max-width:400px; }
+.discord-button { padding:16px 0 22px; border:0; border-bottom:1px solid var(--line); border-radius:0; background:none; }
+.discord-button .small-label { font-size:15px; letter-spacing:0; }
+.discord-name { font-size:42px; margin-top:8px; }
+.discord-hint { font-size:15px; margin-top:8px; }
+.discord-button.interactive-control:hover { box-shadow:none; }
+.discord-button::before { display:none; }
+.contact-main .copy-status { font-size:14px; }
+.contact-socials a { font-size:15px; }
+.site-footer { min-height:88px; }
+.site-footer p,.back-top { font-size:13px; }
+.gallery-dialog { max-height:calc(100dvh - 28px); }
+.gallery-shell { max-height:calc(100dvh - 32px); }
+.gallery-header { padding:16px 22px; }
+.gallery-header .small-label { font-size:12px; letter-spacing:.02em; }
+.gallery-header h2 { font-size:24px; }
+.gallery-stage { flex:1 1 auto; min-height:0; }
+.gallery-stage img { max-height:calc(100dvh - 240px); min-height:0; width:100%; height:100%; object-fit:contain; }
+.gallery-footer { padding:16px 22px; }
+.gallery-footer>p { font-size:15px; line-height:1.65; }
+.gallery-controls>span { font-size:14px; min-width:58px; }
+@media(max-width:1150px) {
+ .container { width:calc(100% - 64px); }
+ .hero { column-gap:28px; }
+ .hero h1 { font-size:49px; }
+ .hero .eyebrow { font-size:11px; }
+ .hero-description { font-size:16px; }
+ .hero .world-frame { height:400px; }
+ .hero .world-caption p { font-size:27px; }
+ .hero-stats { gap:10px; }
+ .hero-stats>div>span { font-size:13px; }
+ .hero-actions { gap:16px; }
+ .hero-actions .button { font-size:14px; padding:13px 17px; }
+ .hero-actions .text-link { font-size:14px; }
+ .mascot-float { width:100%; max-width:340px; }
+ .about-grid { gap:28px; }
+ .identity-stack { height:660px; }
+ .roblox-avatar-stage { height:218px; }
+ .about-copy .about-lead { font-size:24px; }
+}
+@media(max-width:900px) {
+ .container { width:calc(100% - 48px); }
+ .hero { grid-template-columns:minmax(0,1.2fr) minmax(0,1fr); gap:26px; }
+ .hero-mascot { height:430px; overflow:visible; }
+ .hero .hero-visual { grid-column:1/-1; margin-top:0; }
+ .hero .world-frame { height:300px; border-radius:45px 45px 12px 12px; }
+ .hero .world-caption p { font-size:32px; }
+ .hero .world-caption { bottom:24px; }
+ .about-grid { grid-template-columns:1fr; gap:30px; }
+ .identity-stack-wrap { max-width:460px; padding-right:28px; }
+ .identity-stack { height:650px; }
+ .about-copy { max-width:none; }
+ .skills-grid { gap:22px; }
+ .skills-grid article+article { padding-left:20px; }
+ .skills-grid h4 { font-size:19px; }
+}
+@media(max-width:640px) {
+ .container { width:calc(100% - 40px); }
+ .section { padding-block:52px; }
+ .nav-shell { min-height:72px; }
+ .nav-link { font-size:16px; }
+ .hero { grid-template-columns:1fr; padding-top:26px; row-gap:22px; }
+ .hero h1 { font-size:clamp(46px,13vw,62px); margin-block:17px; }
+ .hero .eyebrow { font-size:12px; }
+ .hero-intro { font-size:18px; }
+ .hero-description { font-size:16px; line-height:1.8; }
+ .hero-stats { gap:12px; grid-template-columns:repeat(3,minmax(0,1fr)); }
+ .hero-stats strong { font-size:32px; }
+ .hero-stats>div>span { font-size:13px; max-width:none; }
+ .hero-actions .button,.hero-actions .text-link { font-size:15px; }
+ .hero-mascot { height:320px; margin:5px auto 0; max-width:350px; width:100%; }
+ .mascot-float { width:90%; max-width:310px; }
+ .hero .hero-visual { margin-top:0; }
+ .hero .world-frame { height:280px; border-radius:65px 65px 12px 12px; }
+ .hero .caption-label { font-size:11px; }
+ .hero .world-caption p { font-size:29px; }
+ .hero-bottom { margin-block:0 16px; font-size:12px; }
+ .hero-bottom a span:first-child { max-width:none; }
+ .discipline-strip .discipline-item { font-size:15px; }
+ .section-heading { display:block; margin-bottom:24px; }
+ .section-heading h2 { font-size:34px; letter-spacing:-1px; }
+ .section-description { font-size:16px; max-width:none; margin-top:14px; padding:0; }
+ .section-index { font-size:12px; margin-bottom:12px; }
+ .project-toolbar { flex-wrap:wrap; margin-bottom:22px; gap:8px; }
+ .filter-button { font-size:14px; padding-inline:11px; }
+ .project-total { font-size:12px; padding-top:0; }
+ .project-grid { row-gap:28px; }
+ .project-card h3 { font-size:24px; }
+ .project-description { font-size:16px; }
+ .card-meta { font-size:11px; }
+ .image-count { font-size:12px; }
+ .about-grid { gap:24px; }
+ .identity-stack-wrap { padding:18px 22px 10px 8px; max-width:390px; }
+ .identity-stack { height:640px; }
+ .identity-stack[data-active=mascot] .identity-roblox,.identity-stack[data-active=roblox] .identity-mascot { transform:translate(8px,-7px) rotate(1deg) scale(.98); }
+ .identity-edition { left:20px; font-size:11px; }
+ .identity-art-note,.identity-card-bottom { font-size:11px; }
+ .identity-sheet .identity-caption { padding:20px; }
+ .identity-caption h3 { font-size:21px; }
+ .identity-caption p { font-size:15px; }
+ .roblox-avatar-stage { height:192px; }
+ .roblox-card-info { padding-inline:18px; }
+ .roblox-card-top { padding-inline:18px; font-size:11px; }
+ .profile-bio { font-size:14px; min-height:70px; }
+ .profile-counts strong { font-size:22px; }
+ .profile-counts span { font-size:12px; }
+ .profile-data-date { font-size:11px; }
+ .identity-sheet .profile-link { font-size:15px; }
+ .identity-switcher { gap:14px; }
+ .deck-tab { font-size:14px; padding-inline:0; }
+ .deck-hint { font-size:13px; }
+ .about-copy .about-lead { font-size:23px; }
+ .about-copy>p { font-size:16px; }
+ .founder-row { gap:14px; }
+ .founder-row>.small-label { width:100%; }
+ .studio-identity { min-width:210px; }
+ .stats-row>div { padding:22px 12px!important; }
+ .stats-row strong { font-size:36px; }
+ .stats-row p { font-size:14px; }
+ .skills-heading h3 { font-size:27px; }
+ .skills-grid { grid-template-columns:1fr; gap:24px; }
+ .skills-grid article+article { padding:22px 0 0; }
+ .skills-grid h4 { font-size:21px; }
+ .skills-grid p { font-size:16px; }
+ .skill-tags span { font-size:14px; }
+ .moment-caption { font-size:15px; }
+ .contact-main { grid-template-columns:1fr; gap:22px; }
+ .contact-main h2 { font-size:46px; letter-spacing:-2px; }
+ .contact-main p { font-size:16px; max-width:none; margin-top:16px; }
+ .discord-name { font-size:40px; }
+ .discord-hint { font-size:15px; }
+ .contact-socials { gap:18px; }
+ .contact-socials .small-label,.contact-socials a { font-size:14px; }
+ .site-footer p,.back-top { font-size:13px; }
+ .gallery-header { padding:14px 16px; }
+ .gallery-header h2 { font-size:22px; }
+ .gallery-header .small-label { font-size:12px; }
+ .gallery-stage img { max-height:calc(100dvh - 280px); }
+ .gallery-footer { padding:14px 16px; gap:14px; }
+ .gallery-footer>p { font-size:15px; }
+}
+
+/* Let the profile determine its height so larger text cannot cut the card. */
+.identity-stack{display:grid;height:auto!important;min-height:0}.identity-sheet{position:relative;inset:auto;grid-area:1/1;min-height:620px}.identity-art{min-height:360px}@media(max-width:640px){.identity-sheet{min-height:610px}.identity-art{min-height:340px}}
+
+.identity-edition,.identity-art-note,.identity-card-bottom{display:none}.roblox-card-top{font-size:14px;letter-spacing:0}

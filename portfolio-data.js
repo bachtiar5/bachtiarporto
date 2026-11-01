@@ -1,4 +1,4 @@
-// Collections preserved from the original portfolio.
+// Original project collections.
 window.portfolioData = {
   "projects": [
     {
@@ -9,7 +9,7 @@ window.portfolioData = {
         "en": "Roblox projects"
       },
       "description": {
-        "id": "Kumpulan map dan game yang pernah saya kerjakan sepanjang perjalanan di Roblox.",
+        "id": "Beberapa map dan game yang pernah kukerjakan di Roblox.",
         "en": "A collection of maps and games I have worked on throughout my Roblox journey."
       },
       "images": [
@@ -29,7 +29,7 @@ window.portfolioData = {
         "en": "First collaboration"
       },
       "description": {
-        "id": "Dari referensi visual menjadi ruang untuk bermain bersama.",
+        "id": "Proyek kolaborasi pertamaku, mulai dari referensi sampai jadi map.",
         "en": "From visual references to a shared space for play."
       },
       "images": [
@@ -49,7 +49,7 @@ window.portfolioData = {
         "en": "Builds & details"
       },
       "description": {
-        "id": "Bangunan, properti, dan detail kecil yang menghidupkan sebuah map.",
+        "id": "Kumpulan bangunan, properti, dan detail map yang pernah kubikin.",
         "en": "Buildings, props, and the small details that bring a map to life."
       },
       "images": [
@@ -82,7 +82,7 @@ window.portfolioData = {
         "en": "Game interfaces"
       },
       "description": {
-        "id": "Eksperimen GUI dan UI/UX untuk pengalaman bermain yang lebih jelas.",
+        "id": "Beberapa percobaan GUI dan UI/UX. Bagian ini masih terus kupelajari.",
         "en": "GUI and UI/UX experiments for a clearer player experience."
       },
       "images": [
@@ -105,7 +105,7 @@ window.portfolioData = {
         "en": "NPC Manager"
       },
       "description": {
-        "id": "Sistem modular dengan print-tracking dan error logging untuk debugging.",
+        "id": "Sistem NPC dengan modul, print-tracking, dan error logging buat bantu debugging.",
         "en": "Modular systems with print tracking and error logging for debugging."
       },
       "images": [
@@ -126,7 +126,7 @@ window.portfolioData = {
         "en": "Visual journal"
       },
       "description": {
-        "id": "Kumpulan momen, eksperimen, dan proses di balik karya.",
+        "id": "Foto-foto waktu ngerjain proyek, nyobain ide, dan main bareng.",
         "en": "Moments, experiments, and the process behind the work."
       },
       "images": [
