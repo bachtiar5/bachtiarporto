@@ -196,22 +196,20 @@ html:not([data-pages-ready])[data-start-page=projects] #home-page,html:not([data
 .hero .hero-actions .button { font-size:14px; padding:13px 16px; gap:14px; }
 .hero .hero-actions .text-link { font-size:14px; gap:9px; }
 .hero .hero-actions>a { flex-shrink:0; }
-.discipline-strip { display:grid; grid-template-columns:auto minmax(0,1fr) auto; align-items:center; }
-.skills-strip-heading { margin:0; padding:0 24px 0 max(24px,calc((100vw - 1280px)/2)); border-right:1px solid var(--line); }
-.skills-strip-heading h2 { font-size:17px; line-height:1.5; letter-spacing:0; white-space:nowrap; color:var(--accent); }
+.discipline-strip { display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:center; }
 .discipline-strip .marquee-window { min-width:0; margin:0; mask-image:linear-gradient(90deg,transparent,#000 24px,#000 calc(100% - 24px),transparent); }
 .discipline-strip .marquee-group { min-width:0; flex:0 0 auto; width:max-content; gap:48px; padding:23px 24px; }
 .discipline-strip .marquee-track { gap:0; }
 .discipline-strip .marquee-pause,.discipline-strip .marquee-pause.interactive-control,.discipline-strip .marquee-pause.interactive-control:hover { position:static; inset:auto; transform:none; margin:0 20px 0 10px; }
-.stats-row { grid-template-columns:repeat(5,max-content); justify-content:start; gap:34px; }
-.stats-row>div { min-width:0; border:0!important; padding:10px 0!important; }
+.stats-row { display:flex; flex-wrap:wrap; justify-content:center; gap:34px; text-align:center; }
+.stats-row>div { display:flex; flex-direction:column; align-items:center; flex:0 0 auto; min-width:0; border:0!important; padding:10px 0!important; }
 .stats-row strong { font-size:clamp(26px,2.6vw,38px); letter-spacing:-1px; font-variant-numeric:tabular-nums; }
 .stats-row p { font-size:14px; line-height:1.65; max-width:none; }
 .stat-visits strong,.stat-studio strong { white-space:nowrap; }
 .stat-visits strong,.stat-studio strong { display:grid; width:max-content; }
 .stat-visits strong::after,.stat-studio strong::after { content:attr(data-final-value); visibility:hidden; grid-area:1/1; }
 .stat-visits strong>span,.stat-studio strong>span { grid-area:1/1; }
-.summary-data-note { font-size:13px; line-height:1.8; color:var(--muted); margin-top:14px; max-width:900px; }
+.summary-data-note { font-size:13px; line-height:1.8; color:var(--muted); margin:14px auto 0; max-width:900px; text-align:center; }
 .skills-grid { display:block; margin-top:22px; }
 .skills-grid>article,.skills-grid>article+article,.skills-grid>article:nth-child(n+4) { display:grid; grid-template-columns:38px minmax(190px,250px) minmax(0,1fr); column-gap:24px; row-gap:0; grid-column:auto; padding:23px 0; border:0; border-bottom:1px solid var(--line); }
 .skills-grid .skill-icon { grid-column:1; grid-row:1/3; min-height:0; padding-top:3px; }
@@ -220,6 +218,11 @@ html:not([data-pages-ready])[data-start-page=projects] #home-page,html:not([data
 .skills-grid .skill-tags { grid-column:3; grid-row:2; margin-top:8px; }
 .skills-grid .skill-icon img { width:27px; height:27px; object-fit:contain; filter:invert(85%) sepia(36%) saturate(700%) hue-rotate(30deg); }
 [data-theme=light] .skills-grid .skill-icon img { filter:invert(28%) sepia(28%) saturate(1000%) hue-rotate(43deg); }
+.ai-tool-list { gap:16px; }
+.ai-tool-list>span { display:inline-flex; align-items:center; gap:7px; }
+.ai-tool-list img { width:20px; height:20px; object-fit:contain; filter:brightness(0) invert(1); }
+[data-theme=light] .ai-tool-list img { filter:none; }
+.ai-tool-list img[src*="googlegemini"],.discipline-item img[src*="googlegemini"] { filter:invert(56%) sepia(79%) saturate(1223%) hue-rotate(194deg) brightness(105%); }
 .skills-grid article h4 { transition:color .2s; }
 .skills-grid article:hover h4 { color:var(--accent); }
 @media(max-width:1099px) {
@@ -237,13 +240,13 @@ html:not([data-pages-ready])[data-start-page=projects] #home-page,html:not([data
  .hero .hero-mascot { margin-top:4px; }
  .hero .hero-actions { margin-top:12px; gap:16px; }
  .hero .hero-actions .button,.hero .hero-actions .text-link { font-size:15px; }
- .skills-strip-heading { padding:0 14px 0 20px; }
- .skills-strip-heading h2 { font-size:15px; }
  .discipline-strip .marquee-group { gap:30px; padding:20px 15px; }
  .discipline-strip .marquee-pause,.discipline-strip .marquee-pause.interactive-control:hover { margin:0 9px 0 4px; }
  .stats-row { grid-template-columns:repeat(2,minmax(0,1fr)); gap:17px 22px; padding-block:18px; }
  .stats-row .stat-visits { grid-column:span 2; }
  .stats-row>div { padding:9px 0!important; }
+ .stats-row>div { flex-basis:calc((100% - 22px)/2); max-width:calc((100% - 22px)/2); }
+ .stats-row>.stat-visits { flex-basis:100%; max-width:100%; }
  .stats-row strong { font-size:32px; }
  .stat-studio strong { font-size:28px; }
  .stats-row p { font-size:14px; max-width:160px; }

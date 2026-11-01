@@ -27,7 +27,7 @@
   const english = {
     skip:'Skip to content',home:'Home',work:'Work',about:'About',contact:'Contact',letsTalk:'Let’s talk',
     navProjects:'Projects',navCareer:'Career',careerPreviewLabel:'A little of my journey',careerPreviewDesc:'From discovering Roblox Studio to building a studio and returning to collaborate on projects.',careerPreviewLink:'Follow my journey',now:'Now',allReleasedGames:'See the published games',
-    skillStripTitle:'My skills',studioMembers:'AIH Studio members',skillWriter:'Writing stories, lore, and dialogue for games.',skillDesigner:'Designing game concepts, mechanics, levels, and player progression.',
+    studioMembers:'AIH Studio members',skillWriter:'Writing stories, lore, and dialogue for games.',skillDesigner:'Designing game concepts, mechanics, levels, and player progression.',skillVibe:'Coding with help from ChatGPT and Gemini.',
     heroLine1:'Hi, I’m',heroLine2:'Bachtiar.',heroIntro:'Roblox developer. World builder.',
     heroDesc:'I’m Bachtiar Aditya, also known as Adit or Tahu Bulat. Over 2 years bringing ideas to life through maps, environments, and player experiences in Roblox Studio.',
     heroYears:'Years of experience',heroPublished:'Projects published',heroClients:'Clients served',clientsCount:'Clients served',experienceCount:'Years in Roblox Studio',
@@ -139,6 +139,7 @@
     $('#gallery-next').setAttribute('aria-label',language==='id'?'Gambar berikutnya':'Next image');
     $('.main-nav').setAttribute('aria-label',language==='id'?'Navigasi utama':'Main navigation');
     $('.filters').setAttribute('aria-label',language==='id'?'Filter karya':'Filter work');
+    $('.discipline-strip').setAttribute('aria-label',language==='id'?'Skill dan tools':'Skills and tools');
     $('.world-frame').setAttribute('aria-label',language==='id'?'Jelajahi proyek map dan environment':'Explore maps and environments');
     $('.skip-link').textContent = dictionary[language].skip;
     $('.wordmark').setAttribute('aria-label',language==='id'?'Bachtiar, beranda':'Bachtiar, home');
