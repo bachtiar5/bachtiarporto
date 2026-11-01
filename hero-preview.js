@@ -5,10 +5,9 @@
   const curtain=frame.querySelector('.preview-curtain'),counter=root.querySelector('.preview-position');
   const pause=root.querySelector('[data-preview-pause]');
   const motion=matchMedia('(prefers-reduced-motion: reduce)');
-  const projects=window.portfolioData.projects;
-  const find=id=>projects.find(project=>project.id===id);
-  const build=find('build');
-  const slides=[0,11,15,6,4].map(index=>({src:build.images[index],title:build.title}));
+  const data=window.portfolioData;
+  const slides=(data.heroImages||data.projects.find(project=>project.id==='build')?.images||[]).map(src=>({src,title:{id:'Cuplikan map karya Bachtiar',en:'A map by Bachtiar'}}));
+  if(!slides.length)return;
   let index=0,timer=0,busy=false,visible=false,hovered=false,focused=false,paused=motion.matches;
   const language=()=>document.documentElement.lang==='en'?'en':'id';
   const allowed=()=>visible&&!document.hidden&&!hovered&&!focused&&!paused&&!busy;
