@@ -10,7 +10,7 @@
     entries.forEach(entry => {if(entry.isIntersecting){entry.target.classList.add('is-visible');revealObserver.unobserve(entry.target);}});
   },{threshold:.08,rootMargin:'0px 0px -28px 0px'});
   function watchReveals() {
-    $$('.section-heading>div,.section-description,.project-card,.identity-panel,.about-copy,.stats-row,.skills-heading,.skills-grid article,.moment-button,.contact-topline,.contact-main,.contact-socials').forEach(element => {
+    $$('.section-heading>div,.section-description,.project-card,.identity-stack-wrap,.about-copy,.stats-row,.skills-heading,.skills-grid article,.moment-button,.contact-topline,.contact-main,.contact-socials').forEach(element => {
       if(element.classList.contains('reveal')) return;
       element.classList.add('reveal');
       if(element.matches('.project-card,.moment-button,.skills-grid article')) {
@@ -29,6 +29,7 @@
     heroLine1:'Hi, I’m',heroLine2:'Bachtiar.',heroIntro:'Roblox developer. World builder.',
     heroDesc:'I’m Bachtiar Aditya, also known as Adit or Tahu Bulat. Over 2 years bringing ideas to life through maps, environments, and player experiences in Roblox Studio.',
     heroYears:'Years of experience',heroPublished:'Projects published',heroClients:'Clients served',clientsCount:'Clients served',experienceCount:'Years in Roblox Studio',
+    profileFriends:'Friends',profileFollowers:'Followers',profileFollowing:'Following',openRoblox:'Open Roblox profile',mascotTab:'Mascot',robloxTab:'Roblox profile',deckHint:'Two sides of the same creator. Click to switch.',
     exploreWork:'Explore my work',robloxProfile:'Roblox profile',heroNote:'From a visual reference,<br>to a place worth exploring.',
     worldLabel:'ONE WORLD, MANY STORIES',heroBottom:'BUILT WITH CURIOSITY.',scroll:'SCROLL TO EXPLORE',
     workIndex:'01 / SELECTED WORK',workHeading:'Ideas you can<br>step into.',
@@ -73,6 +74,7 @@
     $('#moments-grid').innerHTML = data.moments.map(moment => `<button type="button" class="moment-button" data-gallery="${moment.id}" aria-label="${language==='id'?'Lihat momen':'View moment'}: ${escape(localText(moment.title))}"><div class="moment-image-wrap"><img src="${escape(moment.images[0])}" alt="${escape(localText(moment.title))} — Roblox" loading="lazy" decoding="async"></div><span class="moment-caption"><span>${escape(localText(moment.title))}</span><span aria-hidden="true">↗</span></span></button>`).join('');
     applyFilter();
     watchReveals();
+    enhanceControls();
   }
   async function applyFilter(withMotion = false) {
     const version = ++filterVersion;
@@ -144,6 +146,9 @@
     updateThemeLabel();
     updateMarqueeLabel();
     updateMenuLabel();
+    renderRobloxProfile();
+    $('.identity-switcher').setAttribute('aria-label',language==='id'?'Pilih kartu identitas':'Choose an identity card');
+    $('.deck-next').setAttribute('aria-label',language==='id'?'Ganti kartu identitas':'Switch identity card');
     renderCollections();
   }
   $$('[data-lang]').forEach(button => button.addEventListener('click',() => setLanguage(button.dataset.lang)));
@@ -288,6 +293,65 @@
     $$('.reveal').forEach(el=>el.classList.add('is-visible'));
     counting.forEach((frame,el)=>{cancelAnimationFrame(frame);el.textContent=el.dataset.count;});counting.clear();
     $$('.project-image-wrap').forEach(el=>{el.style.removeProperty('--tilt-x');el.style.removeProperty('--tilt-y');});
+  });
+  // Roblox blocks cross-origin browser reads. Use the verified official API snapshot,
+  // local avatar, and an honest capture date rather than a third-party proxy.
+  function renderRobloxProfile() {
+    const profile=window.robloxProfile;
+    if(!profile)return;
+    $('#profile-display-name').textContent=profile.displayName;
+    $('#profile-handle').textContent='@'+profile.name;
+    $('#profile-bio').textContent=profile.description;
+    $('#profile-verified').hidden=!profile.hasVerifiedBadge;
+    $('#profile-verified').setAttribute('aria-label',language==='id'?'Profil terverifikasi':'Verified profile');
+    const formatter=new Intl.NumberFormat(language==='id'?'id-ID':'en-US');
+    ['friends','followers','following'].forEach(key=>{$('#profile-'+key).textContent=formatter.format(profile[key]);});
+    const captured=new Intl.DateTimeFormat(language==='id'?'id-ID':'en-US',{day:'numeric',month:'short',year:'numeric',timeZone:'Asia/Bangkok'}).format(new Date(profile.capturedAt));
+    $('#profile-data-date').textContent=(language==='id'?'Data resmi Roblox · ':'Official Roblox data · ')+captured;
+  }
+  let identity='mascot';
+  function switchIdentity(value) {
+    if(value===identity)return;
+    const stack=$('.identity-stack');
+    const previous=$('#identity-'+identity),next=$('#identity-'+value);
+    identity=value;stack.dataset.active=value;
+    previous.setAttribute('aria-hidden','true');previous.inert=true;
+    next.setAttribute('aria-hidden','false');next.inert=false;
+    $$('[data-identity]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.identity===value)));
+    [previous,next].forEach(card=>card.getAnimations().forEach(animation=>animation.cancel()));
+    animate(previous,[{transform:'translate(0,0) rotate(-1deg)'},{transform:'translate(-30px,4px) rotate(-8deg)',offset:.45},{transform:'translate(15px,-12px) rotate(4deg) scale(.97)'}],{duration:550,easing:'cubic-bezier(.16,1,.3,1)'});
+    animate(next,[{transform:'translate(15px,-12px) rotate(4deg) scale(.97)'},{transform:'translate(25px,-8px) rotate(7deg)',offset:.4},{transform:'translate(0,0) rotate(-1deg)'}],{duration:550,easing:'cubic-bezier(.16,1,.3,1)'});
+  }
+  $$('[data-identity]').forEach(button=>{
+    button.addEventListener('click',()=>switchIdentity(button.dataset.identity));
+    button.addEventListener('keydown',event=>{if(['ArrowLeft','ArrowRight','Home','End'].includes(event.key)){event.preventDefault();const value=event.key==='Home'?'mascot':event.key==='End'?'roblox':identity==='mascot'?'roblox':'mascot';switchIdentity(value);$(`[data-identity="${value}"]`).focus();}});
+  });
+  $('.deck-next').addEventListener('click',()=>switchIdentity(identity==='mascot'?'roblox':'mascot'));
+  let deckTouch=null;
+  $('.identity-stack').addEventListener('touchstart',event=>{deckTouch=event.touches.length===1?{x:event.touches[0].clientX,y:event.touches[0].clientY}:null;},{passive:true});
+  $('.identity-stack').addEventListener('touchend',event=>{if(!deckTouch)return;const dx=event.changedTouches[0].clientX-deckTouch.x,dy=event.changedTouches[0].clientY-deckTouch.y;if(Math.abs(dx)>55&&Math.abs(dx)>Math.abs(dy)*1.5)switchIdentity(identity==='mascot'?'roblox':'mascot');deckTouch=null;},{passive:true});
+
+  function enhanceControls() {
+    $$('.button,.nav-cta,.text-link,.icon-button,.filter-button,.discord-button,.studio-identity,.deck-tab,.profile-link,.back-top,.language-switch button').forEach(control=>control.classList.add('interactive-control'));
+  }
+  let controlFrame=0,controlTarget=null,controlPointer=null;
+  document.addEventListener('pointermove',event=>{
+    if(reducedMotion.matches||!finePointer.matches||event.pointerType==='touch')return;
+    const control=event.target.closest('.interactive-control');if(!control)return;
+    controlTarget=control;controlPointer={x:event.clientX,y:event.clientY};
+    if(controlFrame)return;
+    controlFrame=requestAnimationFrame(()=>{
+      controlFrame=0;if(!controlTarget?.isConnected)return;
+      const rect=controlTarget.getBoundingClientRect(),x=controlPointer.x-rect.left,y=controlPointer.y-rect.top;
+      controlTarget.style.setProperty('--mag-x',`${(x/rect.width-.5)*5}px`);
+      controlTarget.style.setProperty('--mag-y',`${(y/rect.height-.5)*5}px`);
+      controlTarget.style.setProperty('--control-x',`${x}px`);controlTarget.style.setProperty('--control-y',`${y}px`);
+    });
+  },{passive:true});
+  document.addEventListener('pointerout',event=>{
+    const control=event.target.closest('.interactive-control');if(!control||control.contains(event.relatedTarget))return;
+    control.style.removeProperty('--mag-x');control.style.removeProperty('--mag-y');
+    if(control===controlTarget){cancelAnimationFrame(controlFrame);controlFrame=0;controlTarget=null;}
   });
   setLanguage(language);
   watchReveals();
