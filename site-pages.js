@@ -204,12 +204,20 @@
   $('#journey-prev').addEventListener('click',()=>selectChapter(chapter-1));
   $('#journey-next').addEventListener('click',()=>selectChapter(chapter+1));
 
+  function renderInternships() {
+    const en=language==='en';
+    $$('[data-internship-status]').forEach(section=>{
+      cleanup(section);
+      section.setAttribute('aria-label',en?'Current internships':'Magang saat ini');
+      section.innerHTML=`<div class="internship-heading"><h2>${en?'Where I’m interning':'Lagi magang di'}</h2><span class="internship-active"><i aria-hidden="true"></i>${en?'Ongoing':'Sedang berjalan'}</span></div><div class="internship-studios">${window.studioInternships.map(studio=>`<a class="internship-studio" href="${esc(studio.url)}" target="_blank" rel="noopener noreferrer"><img src="${esc(studio.image)}" alt="${esc(studio.name)}" width="64" height="64" loading="lazy"><div><h3>${esc(studio.name)}</h3><span>@${esc(studio.handle)}</span><p>${en?'Active internship':'Magang aktif'}</p></div><span class="internship-arrow" aria-hidden="true">↗</span></a>`).join('')}</div>`;
+    });
+  }
   function translate() {
     language=document.documentElement.lang==='en'?'en':'id';
     $$('[data-page-text]').forEach(element=>{element.innerHTML=texts()[element.dataset.pageText];});
     $('.release-filters').setAttribute('aria-label',texts().filterLabel);
     $('#journey-flow').setAttribute('aria-label',texts().yearLabel);
-    renderGames();renderJourney();
+    renderInternships();renderGames();renderJourney();
     if(page!=='home')document.title=`${texts()[page]} — Bachtiar Aditya`;
   }
   const pageForHash=hash=>hash==='#/projects'?'projects':hash==='#/career'?'career':'home';

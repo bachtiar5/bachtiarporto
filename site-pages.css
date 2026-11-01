@@ -16,6 +16,29 @@
 @keyframes mascot-settle { 0%,100% {translate:0 0} 50% {translate:0 -4px} }
 .archive-published-link { width:fit-content; margin-bottom:25px; color:var(--accent); font-size:16px; }
 .career-preview { margin-top:26px; padding-top:22px; border-top:1px solid var(--line); }
+.internship-status { margin:0 0 42px; padding:24px 0; border-block:1px solid var(--line); }
+.internship-heading { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; margin-bottom:22px; }
+.internship-heading h2 { font-size:24px; line-height:1.4; letter-spacing:-.5px; }
+.internship-active { display:inline-flex; align-items:center; gap:8px; font-size:13px; color:var(--muted); }
+.internship-active i { width:6px; height:6px; border-radius:50%; background:var(--accent); }
+.internship-studios { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:30px; }
+.internship-studio { display:flex; align-items:center; gap:17px; min-width:0; padding:8px 0; }
+.internship-studio>img { width:64px; height:64px; flex:0 0 64px; border-radius:50%; object-fit:cover; transition:transform .3s; }
+.internship-studio h3 { font-size:20px; line-height:1.4; transition:color .2s; }
+.internship-studio div>span { display:block; font-size:14px; color:var(--muted); }
+.internship-studio p { font-size:14px; color:var(--accent); margin-top:4px; }
+.internship-arrow { margin-left:auto; font-size:23px; color:var(--accent); transition:transform .3s; }
+.internship-studio:hover h3 { color:var(--accent); }
+.internship-studio:hover>img { transform:translateY(-3px); }
+.internship-studio:hover .internship-arrow { transform:translate(3px,-3px); }
+.internship-compact { margin:26px 0 0; padding-bottom:0; border-bottom:0; }
+.internship-compact .internship-studios { gap:18px; }
+.internship-compact .internship-studio { gap:12px; }
+.internship-compact .internship-studio>img { width:48px; height:48px; flex-basis:48px; }
+.internship-compact .internship-studio h3 { font-size:17px; }
+.internship-compact .internship-arrow { font-size:20px; }
+@media(max-width:640px) { .internship-studios { grid-template-columns:1fr; gap:12px; } .internship-heading h2 { font-size:23px; } }
+@media(prefers-reduced-motion:reduce) { .internship-studio>img,.internship-arrow { transition:none; } }
 .career-preview .eyebrow { font-size:14px; color:var(--muted); }
 .mini-journey { display:flex; align-items:center; flex-wrap:wrap; gap:12px; margin-block:14px; }
 .mini-journey span { font-family:var(--heading); font-size:18px; font-weight:600; }
