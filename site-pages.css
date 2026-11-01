@@ -37,6 +37,10 @@
 .internship-compact .internship-studio>img { width:48px; height:48px; flex-basis:48px; }
 .internship-compact .internship-studio h3 { font-size:17px; }
 .internship-compact .internship-arrow { font-size:20px; }
+#career-page .internship-status { max-width:560px; margin-inline:auto; }
+#career-page .internship-studios { display:flex; flex-wrap:wrap; gap:16px 48px; }
+#career-page .internship-studio { flex:0 0 auto; }
+#career-page .internship-arrow { margin-left:8px; }
 @media(max-width:640px) { .internship-studios { grid-template-columns:1fr; gap:12px; } .internship-heading h2 { font-size:23px; } }
 @media(prefers-reduced-motion:reduce) { .internship-studio>img,.internship-arrow { transition:none; } }
 .career-preview .eyebrow { font-size:14px; color:var(--muted); }
