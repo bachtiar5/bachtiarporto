@@ -7,20 +7,21 @@
   <title>Bachtiar Aditya — Roblox Developer</title>
   <meta name="description" content="Portofolio Bachtiar Aditya, dikenal sebagai Tahu Bulat. Map, environment, scripting, dan UI/UX untuk dunia Roblox.">
   <meta property="og:title" content="Bachtiar Aditya — Roblox Developer">
-  <meta property="og:description" content="Dunia kecil. Ide besar. Jelajahi karya Roblox, environment, dan eksperimen Bachtiar Aditya.">
+  <meta property="og:description" content="Bachtiar Aditya, Roblox Developer. 2+ tahun di Roblox Studio, 7 proyek dipublikasikan, dan 60+ klien ditangani.">
   <meta property="og:type" content="website">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23101110'/%3E%3Ctext x='16' y='46' fill='%23d4f78b' font-family='Arial' font-size='44' font-weight='bold'%3Eb%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700&family=Manrope:wght@400;500;600;650;700;750;800&display=swap" rel="stylesheet">
   <script>try { document.documentElement.dataset.theme = localStorage.getItem('bachtiar-theme') || 'dark'; } catch {}</script>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=20261102-motion">
   <script src="portfolio-data.js" defer></script>
-  <script src="script.js" defer></script>
+  <script src="script.js?v=20261102-motion" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main-content" data-i18n="skip">Langsung ke konten</a>
   <header class="site-header">
+    <div class="reading-progress" aria-hidden="true"></div>
     <div class="nav-shell container">
       <a href="#home" class="wordmark" aria-label="Bachtiar, beranda">bachtiar<span class="brand-dot">.</span></a>
       <nav class="main-nav" id="main-nav" aria-label="Navigasi utama">
@@ -47,15 +48,16 @@
     <section class="hero container" id="home" aria-labelledby="hero-title">
       <div class="hero-copy">
         <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> ROBLOX DEVELOPER & WORLD BUILDER</p>
-        <h1 id="hero-title"><span data-i18n="heroLine1">Dunia kecil.</span><br><span class="muted-title" data-i18n="heroLine2">Ide besar.</span></h1>
-        <p class="hero-intro" data-i18n="heroIntro">Halo, saya Bachtiar Aditya.</p>
-        <p class="hero-description" data-i18n="heroDesc">Biasa dipanggil Adit atau Tahu Bulat. Saya membangun map, merancang pengalaman, dan menghidupkan ide di Roblox.</p>
+        <h1 id="hero-title"><span data-i18n="heroLine1">Halo, saya</span><br><span class="hero-name" data-i18n="heroLine2">Bachtiar.</span></h1>
+        <p class="hero-intro" data-i18n="heroIntro">Roblox developer. Pembuat dunia.</p>
+        <p class="hero-description" data-i18n="heroDesc">Saya Bachtiar Aditya, biasa dipanggil Adit atau Tahu Bulat. Lebih dari 2 tahun menghidupkan ide lewat map, environment, dan pengalaman bermain di Roblox Studio.</p>
+        <div class="hero-stats" aria-label="Pengalaman dan pencapaian"><div><strong><span data-count="2">2</span><span class="stat-plus">+</span></strong><span data-i18n="heroYears">Tahun pengalaman</span></div><div><strong><span data-count="7">7</span></strong><span data-i18n="heroPublished">Proyek dipublikasikan</span></div><div><strong><span data-count="60">60</span><span class="stat-plus">+</span></strong><span data-i18n="heroClients">Klien ditangani</span></div></div>
         <div class="hero-actions">
           <a class="button button-primary" href="#projects"><span data-i18n="exploreWork">Jelajahi karya</span><span aria-hidden="true">↗</span></a>
           <a class="text-link" href="https://www.roblox.com/users/2052284827/profile" target="_blank" rel="noopener noreferrer"><span data-i18n="robloxProfile">Profil Roblox</span><span aria-hidden="true">↗</span></a>
         </div>
-        <div class="hero-signoff"><span class="mini-symbol" aria-hidden="true">✳</span><p data-i18n="heroNote">Dari sebuah referensi,<br>jadi tempat untuk bereksplorasi.</p></div>
       </div>
+      <div class="hero-mascot" aria-label="Maskot Bachtiar"><div class="mascot-halo" aria-hidden="true"></div><div class="mascot-orbit" aria-hidden="true"></div><div class="mascot-float"><img src="image/mascot.png" alt="Maskot Roblox milik Bachtiar memakai topi hitam dan kaus balap" width="1021" height="1024" decoding="async" fetchpriority="high"></div><span class="mascot-nameplate"><span class="status-dot" aria-hidden="true"></span> TAHU BULAT <span class="nameplate-handle">/ @Synxsixz</span></span><span class="mascot-coordinate" aria-hidden="true">IMAGINE. BUILD. PLAY.</span></div>
       <div class="hero-visual">
         <div class="visual-topline"><span>SELECTED WORLD / 01</span><span class="tiny-cross" aria-hidden="true">+</span></div>
         <a class="world-frame" href="#projects" aria-label="Jelajahi proyek map dan environment">
@@ -68,7 +70,7 @@
       </div>
       <div class="hero-bottom"><span data-i18n="heroBottom">DIBUAT DENGAN RASA INGIN TAHU.</span><a href="#projects"><span data-i18n="scroll">GULIR UNTUK MELIHAT KARYA</span><span aria-hidden="true">↓</span></a></div>
     </section>
-    <div class="discipline-strip" aria-label="Bidang karya"><div class="container"><span>Roblox Studio</span><i aria-hidden="true">✳</i><span>Environment Design</span><i aria-hidden="true">✳</i><span>Luau Scripting</span><i aria-hidden="true">✳</i><span>Game UI / UX</span><i aria-hidden="true">✳</i><span>World Building</span></div></div>
+    <section class="discipline-strip" aria-label="Bidang karya"><div class="marquee-window"><div class="marquee-track"><div class="marquee-group"><span class="discipline-item"><img src="image/icons/robloxstudio.svg" alt="" width="30" height="30"><span>Roblox Studio</span></span><span class="discipline-item"><img src="image/icons/trees.svg" alt="" width="30" height="30"><span>Environment Design</span></span><span class="discipline-item"><img src="image/icons/luau.svg" alt="" width="30" height="30"><span>Luau Scripting</span></span><span class="discipline-item"><img src="image/icons/panels-top-left.svg" alt="" width="30" height="30"><span>Game UI / UX</span></span><span class="discipline-item"><img src="image/icons/earth.svg" alt="" width="30" height="30"><span>World Building</span></span></div></div></div><button class="marquee-pause icon-button" type="button" aria-label="Jeda animasi logo" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="pause-symbol" d="M9 6v12M15 6v12"/><path class="play-symbol" d="m9 5 10 7-10 7Z"/></svg></button></section>
     <section class="section container" id="projects" aria-labelledby="projects-title">
       <div class="section-heading"><div><p class="eyebrow section-index" data-i18n="workIndex">01 / PILIHAN KARYA</p><h2 id="projects-title" data-i18n="workHeading">Ide yang bisa<br>kamu jelajahi.</h2></div><p class="section-description" data-i18n="workDesc">Dari environment hingga sistem di baliknya. Pilih sebuah karya untuk melihat proses dan detailnya.</p></div>
       <div class="project-toolbar"><div class="filters" role="group" aria-label="Filter karya">
@@ -87,7 +89,7 @@
         <div class="identity-panel"><div class="identity-monogram" aria-hidden="true">b<span>.</span></div><div class="identity-caption"><div><h3>Bachtiar Aditya</h3><p>Adit / Tahu Bulat</p></div><span class="identity-stamp" aria-hidden="true">↗</span></div><a class="profile-link" href="https://www.roblox.com/users/2052284827/profile" target="_blank" rel="noopener noreferrer"><span>ROBLOX / @Synxsixz</span><span aria-hidden="true">↗</span></a></div>
         <div class="about-copy"><p class="about-lead" data-i18n="aboutLead">Saya ingin membuat tempat yang bukan cuma dilihat, tapi juga dirasakan.</p><p data-i18n="aboutP1">Sejak usia 13 tahun, saya penasaran dengan cara video game dirancang. Saya mulai mengenal Roblox Studio pada 2021, lalu kembali aktif pada akhir 2024 dengan fokus pada map dan environment.</p><p data-i18n="aboutP2">Saya membangun dari referensi visual, memperhatikan atmosfer, detail, dan pengalaman pemain. Sekarang saya terus belajar scripting, optimasi, UI/UX, serta kolaborasi dalam pengembangan game.</p><div class="founder-row"><span class="small-label" data-i18n="founder">FOUNDER OF</span><div class="studio-identity"><img src="image/aihstudio.png" alt="" width="36" height="36" loading="lazy"><div><strong>AIH Studio</strong><span>Est. 2023</span></div></div><div class="studio-identity"><img src="image/aihgank.png" alt="" width="36" height="36" loading="lazy"><div><strong>AIH Gank</strong><span>Est. 2025</span></div></div></div></div>
       </div>
-      <div class="stats-row" aria-label="Ringkasan portofolio"><div><strong>8m<span>+</span></strong><p data-i18n="visits">Total kunjungan game</p></div><div><strong>6<span>+</span></strong><p data-i18n="projectsCount">Proyek dikerjakan</p></div><div><strong>10<span>+</span></strong><p data-i18n="sold">Proyek terjual</p></div><div><strong>2021</strong><p data-i18n="started">Mulai mengenal Roblox Studio</p></div></div>
+      <div class="stats-row" aria-label="Ringkasan portofolio"><div><strong>8m<span>+</span></strong><p data-i18n="visits">Total kunjungan game</p></div><div><strong><span class="count-value" data-count="7">7</span></strong><p data-i18n="projectsCount">Proyek dipublikasikan</p></div><div><strong><span class="count-value" data-count="60">60</span><span>+</span></strong><p data-i18n="clientsCount">Klien ditangani</p></div><div><strong><span class="count-value" data-count="2">2</span><span>+</span></strong><p data-i18n="experienceCount">Tahun di Roblox Studio</p></div></div>
       <div class="skills-heading" id="stats-skills"><h3 data-i18n="skillsHeading">Yang saya kerjakan.</h3><span class="small-label">ALWAYS A WORK IN PROGRESS</span></div>
       <div class="skills-grid"><article><span class="skill-icon" aria-hidden="true">◇</span><h4>World building</h4><p data-i18n="skillWorld">Map, terrain, dan penataan environment dengan fokus pada atmosfer serta pengalaman pemain.</p><div class="skill-tags"><span>Roblox Studio</span><span>Terrain</span><span>Lighting</span></div></article><article><span class="skill-icon" aria-hidden="true">{ }</span><h4>Gameplay & scripting</h4><p data-i18n="skillCode">Mengembangkan mekanik game, sistem modular, dan debugging sambil terus mendalami Lua / Luau.</p><div class="skill-tags"><span>Lua / Luau</span><span>Game mechanics</span></div></article><article><span class="skill-icon" aria-hidden="true">▤</span><h4>Interface & experience</h4><p data-i18n="skillUI">Belajar merancang antarmuka yang jelas dan menyatu dengan pengalaman bermain di Roblox.</p><div class="skill-tags"><span>UI / UX</span><span>Game GUI</span></div></article></div>
     </div></section>
