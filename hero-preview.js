@@ -7,8 +7,8 @@
   const motion=matchMedia('(prefers-reduced-motion: reduce)');
   const projects=window.portfolioData.projects;
   const find=id=>projects.find(project=>project.id===id);
-  const build=find('build'),work=find('my-work'),collab=find('first-collab');
-  const slides=[[build,0],[work,0],[collab,0],[build,6],[build,15]].map(([project,index])=>({src:project.images[index],title:project.title}));
+  const build=find('build');
+  const slides=[0,11,15,6,4].map(index=>({src:build.images[index],title:build.title}));
   let index=0,timer=0,busy=false,visible=false,hovered=false,focused=false,paused=motion.matches;
   const language=()=>document.documentElement.lang==='en'?'en':'id';
   const allowed=()=>visible&&!document.hidden&&!hovered&&!focused&&!paused&&!busy;
