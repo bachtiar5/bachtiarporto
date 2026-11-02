@@ -556,3 +556,20 @@ html:not([data-pages-ready])[data-start-page=hall-of-fame] #home-page { display:
  .supporter-chevron { transition:none; }
  .supporter-wall-top>button { display:none; }
 }
+/* Move the entire mascot group, including its actions, toward the visual centre. */
+@media(min-width:901px) {
+ .hero .hero-mascot { position:relative; left:-24px; }
+}
+@media(min-width:901px) and (max-width:1099px) {
+ .hero .hero-mascot { left:-16px; }
+}
+/* Let paired project cards share content rows, whatever the description length. */
+@media(min-width:641px) {
+ .released-card { display:flex; flex-direction:column; }
+ .released-card .game-contribution { flex:1; }
+ .released-card .released-link { align-self:start; }
+ @supports(grid-template-rows:subgrid) {
+  .released-card { display:grid; grid-row:span 7; grid-template-rows:subgrid; row-gap:0; }
+  .released-card .released-image,.released-card .released-card-heading,.released-card .game-contribution,.released-card .game-peak,.released-card .game-metrics,.released-card .game-dates,.released-card .released-link { align-self:start; }
+ }
+}
