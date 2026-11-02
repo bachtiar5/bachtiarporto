@@ -4,6 +4,8 @@
   const frame=root.querySelector('.world-frame'),picture=frame.querySelector('.hero-world');
   const curtain=frame.querySelector('.preview-curtain'),counter=root.querySelector('.preview-position');
   const pause=root.querySelector('[data-preview-pause]');
+  const content=frame.querySelector('.preview-transition-content');
+  const parts={curtain,content,rule:frame.querySelector('.preview-transition-rule')};
   const motion=matchMedia('(prefers-reduced-motion: reduce)');
   const data=window.portfolioData;
   const slides=(data.heroImages||data.projects.find(project=>project.id==='build')?.images||[]).map(src=>({src,title:{id:'Cuplikan map karya Bachtiar',en:'A map by Bachtiar'}}));
@@ -24,6 +26,7 @@
     pause.textContent=paused?'▶':'Ⅱ';
     counter.textContent=`${String(index+1).padStart(2,'0')} / ${String(slides.length).padStart(2,'0')}`;
     picture.alt=slides[index].title[language()];
+    frame.querySelector('[data-preview-label]').textContent=en?'Work preview':'Cuplikan karya';
   }
   async function change(direction) {
     if(busy)return;
@@ -31,16 +34,13 @@
     const next=(index+direction+slides.length)%slides.length,slide=slides[next];
     try {
       const preload=new Image();preload.src=slide.src;await preload.decode();
-      if(!motion.matches)await curtain.animate([{transform:'translateY(105%)'},{transform:'translateY(0)'}],{duration:230,easing:'cubic-bezier(.65,0,.35,1)',fill:'forwards'}).finished;
+      if(!motion.matches)await window.portfolioTransition(parts,'cover');
       picture.src=slide.src;index=next;labels();
-      if(!motion.matches) {
-        picture.animate([{transform:'scale(1.08)'},{transform:'scale(1)'}],{duration:950,easing:'cubic-bezier(.16,1,.3,1)'});
-        await curtain.animate([{transform:'translateY(0)'},{transform:'translateY(-105%)'}],{duration:390,delay:50,easing:'cubic-bezier(.65,0,.35,1)',fill:'forwards'}).finished;
-      }
+      if(!motion.matches)await window.portfolioTransition(parts,'reveal');
     } catch {
       // Keep the current image if an asset cannot be loaded.
     } finally {
-      curtain.getAnimations().forEach(animation=>animation.cancel());
+      [curtain,content,parts.rule].forEach(element=>element.getAnimations().forEach(animation=>animation.cancel()));
       busy=false;schedule();
     }
   }

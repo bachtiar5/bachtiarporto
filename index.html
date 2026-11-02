@@ -16,22 +16,23 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700&family=Manrope:wght@400;500;600;650;700;750;800&display=swap" rel="stylesheet">
   <script>try { document.documentElement.dataset.theme = localStorage.getItem('bachtiar-theme') || 'dark'; } catch {} document.documentElement.dataset.startPage = location.hash === '#/projects' ? 'projects' : location.hash === '#/career' ? 'career' : 'home';</script>
   <script>try { if (!sessionStorage.getItem('bachtiar-welcome-seen') && !matchMedia('(prefers-reduced-motion: reduce)').matches) { document.documentElement.dataset.welcome='pending'; setTimeout(function(){delete document.documentElement.dataset.welcome;},3000); } } catch {}</script>
-  <link rel="stylesheet" href="welcome-intro.css?v=20261102-welcome">
+  <link rel="stylesheet" href="welcome-intro.css?v=20261102-shared-motion">
   <link rel="stylesheet" href="styles.css?v=20261102-peak-skills-v2">
+  <script src="transitions.js?v=20261102-shared-motion" defer></script>
   <script src="portfolio-data.js?v=gallery-c1bc92719b26ec32" defer></script>
   <script src="profile-data.js?v=20261102-peak-skills-v2" defer></script>
-  <link rel="stylesheet" href="site-pages.css?v=20261102-project-roles">
+  <link rel="stylesheet" href="site-pages.css?v=20261102-shared-motion">
   <script src="published-projects.js?v=20261102-project-roles" defer></script>
   <script src="studio-data.js?v=20261102-peak-skills-v2" defer></script>
   <script src="script.js?v=20261102-peak-skills-v2" defer></script>
   <script src="internship-data.js?v=20261102-internships" defer></script>
-  <script src="site-pages.js?v=20261102-project-roles" defer></script>
+  <script src="site-pages.js?v=20261102-shared-motion" defer></script>
   <script src="baseplate.js?v=20261102-peak-skills-v2" defer></script>
-  <script src="hero-preview.js?v=20261102-auto-gallery" defer></script>
-  <script src="welcome-intro.js?v=20261102-welcome" defer></script>
+  <script src="hero-preview.js?v=20261102-shared-motion" defer></script>
+  <script src="welcome-intro.js?v=20261102-shared-motion" defer></script>
 </head>
 <body><div class="studio-baseplate" aria-hidden="true"><div class="baseplate-grid"></div><div class="baseplate-spot"></div></div>
-  <section class="welcome-intro" role="dialog" aria-modal="true" aria-label="Selamat datang di portofolio Bachtiar"><div class="welcome-content"><img class="welcome-mascot" src="image/mascot.png" alt="" width="210" height="210" decoding="async"><p class="welcome-name">bachtiar<span>.</span></p><span class="welcome-rule" aria-hidden="true"></span></div><button class="welcome-skip" type="button">Lewati intro</button></section>
+  <section class="welcome-intro" role="dialog" aria-modal="true" aria-label="Selamat datang di portofolio Bachtiar"><div class="welcome-curtain"></div><div class="welcome-content"><img class="welcome-mascot" src="image/mascot.png" alt="" width="210" height="210" decoding="async"><p class="welcome-name">bachtiar<span>.</span></p><span class="welcome-rule" aria-hidden="true"></span></div><button class="welcome-skip" type="button">Lewati intro</button></section>
   <a class="skip-link" href="#main-content" data-i18n="skip">Langsung ke konten</a>
   <header class="site-header">
     <div class="reading-progress" aria-hidden="true"></div>
@@ -80,7 +81,7 @@
         <a class="world-frame" href="#/projects" aria-label="Jelajahi proyek map dan environment">
           <img class="hero-world" src="image/Archives/Build/Screenshot%202025-12-18%20211443.png" alt="Environment hutan dan jembatan di Roblox karya Bachtiar Aditya" fetchpriority="high" decoding="async">
           <div class="world-shade"></div>
-          <span class="preview-curtain" aria-hidden="true"></span>
+          <span class="preview-curtain" aria-hidden="true"></span><span class="preview-transition-content" aria-hidden="true"><img src="image/brand-mark.svg" width="44" height="44" alt=""><span data-preview-label>Cuplikan karya</span><span class="preview-transition-rule"></span></span>
           <div class="world-caption"><div><span class="caption-label" data-i18n="worldLabel">DIBUAT DI ROBLOX STUDIO</span><p data-i18n="worldCaption">Map yang<br><em>pernah kubuat.</em></p></div><span class="round-arrow" aria-hidden="true">↗</span></div>
         </a>
         <div class="visual-bottomline"><span>ENVIRONMENT · LEVEL DESIGN · LUAU</span><span>2021 — <span data-year>2026</span></span></div>

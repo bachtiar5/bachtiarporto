@@ -10,3 +10,13 @@ html[data-welcome=pending] .welcome-intro { display:grid; }
 .welcome-skip:hover { border-color:#d4f78b; color:#d4f78b; }
 .welcome-skip:focus-visible { outline:2px solid #d4f78b; outline-offset:4px; }
 @media(prefers-reduced-motion:reduce) { html[data-welcome=pending] .welcome-intro { display:none; } }
+
+/* Match the accent curtain used by page navigation. */
+.welcome-intro { background:transparent; color:var(--on-accent); }
+.welcome-intro::before { display:none; }
+.welcome-curtain { position:absolute; inset:0; background:var(--accent); transform:translateY(100%); }
+.welcome-content { opacity:0; gap:22px; }
+.welcome-name { font-size:clamp(38px,6vw,70px); font-weight:650; line-height:1.15; }
+.welcome-name span { color:inherit; }
+.welcome-rule { width:100px; background:currentColor; opacity:.55; transform:scaleX(0); }
+.welcome-skip { color:var(--text); background:var(--bg); border-color:var(--line); }

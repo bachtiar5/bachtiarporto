@@ -250,17 +250,11 @@
     $('#transition-label').textContent=texts()[next];
     if(reduced.matches) {if(push)history.pushState(null,'',hash);paintPage(hash);overlay.classList.remove('is-active');return;}
     overlay.classList.add('is-active');
-    await Promise.allSettled([
-      motion(curtain,[{transform:'translateY(100%)'},{transform:'translateY(0)'}],{duration:280,easing:'cubic-bezier(.65,0,.35,1)',fill:'forwards'}).finished,
-      motion(content,[{opacity:0,transform:'translateY(14px)'},{opacity:1,transform:'translateY(0)'}],{duration:300,delay:70,easing:'cubic-bezier(.16,1,.3,1)',fill:'forwards'}).finished,
-      motion($('.transition-rule'),[{transform:'scaleX(0)'},{transform:'scaleX(1)'}],{duration:330,delay:50,easing:'ease-out',fill:'forwards'}).finished
-    ]);
+    const parts={curtain,content,rule:$('.transition-rule')};
+    await window.portfolioTransition(parts,'cover');
     if(version!==navigationVersion)return;
     if(push)history.pushState(null,'',hash);paintPage(hash);
-    await Promise.allSettled([
-      motion(content,[{opacity:1,transform:'translateY(0)'},{opacity:0,transform:'translateY(-12px)'}],{duration:150,easing:'ease-in',fill:'forwards'}).finished,
-      motion(curtain,[{transform:'translateY(0)'},{transform:'translateY(-100%)'}],{duration:340,delay:50,easing:'cubic-bezier(.65,0,.35,1)',fill:'forwards'}).finished
-    ]);
+    await window.portfolioTransition(parts,'reveal');
     if(version===navigationVersion)overlay.classList.remove('is-active');
   }
   document.addEventListener('click',event=>{

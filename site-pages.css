@@ -368,3 +368,10 @@ main,.site-footer { position:relative; z-index:1; }
 .game-role>span { color:var(--muted); font-size:13px; }
 .game-role strong { color:var(--text); font-size:16px; line-height:1.6; overflow-wrap:anywhere; }
 .game-contribution-description { margin-top:8px; color:var(--muted); font-size:14px; line-height:1.75; }
+
+/* The preview uses the same curtain, content, and rule as page navigation. */
+.world-frame .preview-curtain { background:var(--accent); border:0; transform:translateY(100%); }
+.preview-transition-content { position:absolute; inset:0; z-index:4; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:22px; color:var(--on-accent); opacity:0; pointer-events:none; }
+.preview-transition-content>img { width:48px; height:48px; }
+[data-preview-label] { font-family:var(--heading); font-size:clamp(24px,3vw,38px); font-weight:650; line-height:1.15; letter-spacing:-1px; }
+.preview-transition-rule { width:100px; height:2px; background:currentColor; opacity:.55; transform:scaleX(0); transform-origin:left; }

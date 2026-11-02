@@ -1,3 +1,4 @@
+// Roblox API snapshot. Updated by scripts/sync-roblox.mjs.
 window.robloxProfile = {
   "id": 2052284827,
   "name": "Synxsixz",
@@ -6,8 +7,8 @@ window.robloxProfile = {
   "created": "2020-12-01T10:17:19.36Z",
   "hasVerifiedBadge": true,
   "friends": 148,
-  "followers": 1225,
+  "followers": 1224,
   "following": 1,
-  "capturedAt": "2026-11-01T17:14:14.7688966Z",
+  "capturedAt": "2026-11-02T03:44:41.097Z",
   "source": "https://users.roblox.com/v1/users/2052284827"
 };
