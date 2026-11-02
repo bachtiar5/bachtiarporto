@@ -14,19 +14,21 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700&family=Manrope:wght@400;500;600;650;700;750;800&display=swap" rel="stylesheet">
-  <script>try { document.documentElement.dataset.theme = localStorage.getItem('bachtiar-theme') || 'dark'; } catch {} document.documentElement.dataset.startPage = location.hash === '#/projects' ? 'projects' : location.hash === '#/career' ? 'career' : 'home';</script>
+  <script>try { document.documentElement.dataset.theme = localStorage.getItem('bachtiar-theme') || 'dark'; } catch {} document.documentElement.dataset.startPage = location.hash === '#/projects' ? 'projects' : location.hash === '#/career' ? 'career' : location.hash === '#/hall-of-fame' ? 'hall-of-fame' : 'home';</script>
   <script>try { if (!sessionStorage.getItem('bachtiar-welcome-seen') && !matchMedia('(prefers-reduced-motion: reduce)').matches) { document.documentElement.dataset.welcome='pending'; setTimeout(function(){delete document.documentElement.dataset.welcome;},3000); } } catch {}</script>
   <link rel="stylesheet" href="welcome-intro.css?v=20261102-shared-motion">
   <link rel="stylesheet" href="styles.css?v=20261102-heading-focus-v2">
   <script src="transitions.js?v=20261102-shared-motion" defer></script>
   <script src="portfolio-data.js?v=gallery-c1bc92719b26ec32" defer></script>
   <script src="profile-data.js?v=20261102-peak-skills-v2" defer></script>
-  <link rel="stylesheet" href="site-pages.css?v=20261102-heading-focus">
+  <link rel="stylesheet" href="site-pages.css?v=20261102-hall">
   <script src="published-projects.js?v=20261102-project-roles" defer></script>
   <script src="studio-data.js?v=20261102-peak-skills-v2" defer></script>
-  <script src="script.js?v=20261102-peak-skills-v2" defer></script>
+  <script src="script.js?v=20261102-hall" defer></script>
   <script src="internship-data.js?v=20261102-internships" defer></script>
-  <script src="site-pages.js?v=20261102-shared-motion" defer></script>
+  <script src="hall-of-fame-data.js?v=20261102-hall" defer></script>
+  <script src="site-pages.js?v=20261102-hall" defer></script>
+  <script src="hall-of-fame.js?v=20261102-hall" defer></script>
   <script src="baseplate.js?v=20261102-peak-skills-v2" defer></script>
   <script src="hero-preview.js?v=20261102-shared-motion" defer></script>
   <script src="welcome-intro.js?v=20261102-intro-focus-v3" defer></script>
@@ -42,6 +44,7 @@
         <a href="#home" class="nav-link is-active" data-i18n="home">Beranda</a>
         <a href="#/projects" class="nav-link" data-i18n="navProjects">Proyek</a>
         <a href="#/career" class="nav-link" data-i18n="navCareer">Karier</a>
+        <a href="#/hall-of-fame" class="nav-link">Hall of Fame</a>
         <a href="#about" class="nav-link" data-i18n="about">Tentang</a>
         <a href="#uplink" class="nav-link" data-i18n="contact">Kontak</a>
       </nav>
@@ -114,7 +117,7 @@
       <div class="skills-heading" id="stats-skills"><h3 data-i18n="skillsHeading">Skill yang kupakai.</h3><span class="small-label">ALWAYS A WORK IN PROGRESS</span></div>
       <div class="skills-grid"><article><span class="skill-icon" aria-hidden="true"><img src="image/icons/earth.svg" alt="" width="28" height="28"></span><h4>World building</h4><p data-i18n="skillWorld">Bikin map, terrain, dan ngatur lighting supaya tempatnya enak dilihat dan seru buat dijelajahi.</p><div class="skill-tags"><span>Roblox Studio</span><span>Terrain</span><span>Lighting</span></div></article><article><span class="skill-icon" aria-hidden="true"><img src="image/icons/luau.svg" alt="" width="28" height="28"></span><h4>Gameplay & scripting</h4><p data-i18n="skillCode">Ngulik Lua / Luau buat mekanik game, sistem modular, dan nyari sumber bug.</p><div class="skill-tags"><span>Lua / Luau</span><span>Game mechanics</span></div></article><article><span class="skill-icon" aria-hidden="true"><img src="image/icons/panels-top-left.svg" alt="" width="28" height="28"></span><h4>Interface & experience</h4><p data-i18n="skillUI">Masih belajar bikin tampilan game yang gampang dipakai dan cocok sama gamenya.</p><div class="skill-tags"><span>UI / UX</span><span>Game GUI</span></div></article><article><span class="skill-icon" aria-hidden="true"><img src="image/icons/notebook-pen.svg" alt="" width="28" height="28"></span><h4>Story Writer / Writer</h4><p data-i18n="skillWriter">Nulis cerita, lore, dan dialog buat game.</p><div class="skill-tags"><span>Storytelling</span><span>Dialogue</span><span>World lore</span></div></article><article><span class="skill-icon" aria-hidden="true"><img src="image/icons/puzzle.svg" alt="" width="28" height="28"></span><h4>Game Designer</h4><p data-i18n="skillDesigner">Nyusun konsep, mekanik, level, dan progres pemain.</p><div class="skill-tags"><span>Game design</span><span>Level design</span><span>Player progression</span></div></article><article class="skill-ai"><span class="skill-icon" aria-hidden="true"><img src="image/icons/code-xml.svg" alt="" width="28" height="28"></span><h4>Vibe Coding</h4><p data-i18n="skillVibe">Ngoding dengan bantuan ChatGPT dan Gemini.</p><div class="skill-tags ai-tool-list"><span><img src="image/icons/openai.svg" alt="" width="20" height="20">ChatGPT</span><span><img src="image/icons/googlegemini.svg" alt="" width="20" height="20">Gemini</span></div></article></div>
     </div></section>
-    <section class="section container moments-section" id="youtubers" aria-labelledby="moments-title"><div class="section-heading"><div><p class="eyebrow section-index" data-i18n="momentsIndex">03 / Pernah main di sini</p><h2 id="moments-title" data-i18n="momentsHeading">Mapku pernah mereka mainkan.</h2></div><p class="section-description" data-i18n="momentsDesc">Beberapa momen waktu kreator main di map buatanku. Senang banget bisa lihat mereka nyobain.</p></div><div class="moments-grid" id="moments-grid"></div></section>
+    <section class="section container moments-section" id="youtubers" aria-labelledby="moments-title"><div class="section-heading"><div><p class="eyebrow section-index" data-i18n="momentsIndex">03 / Pernah main di sini</p><h2 id="moments-title" data-i18n="momentsHeading">Mapku pernah mereka mainkan.</h2></div><p class="section-description" data-i18n="momentsDesc">Beberapa momen waktu kreator main di map buatanku. Senang banget bisa lihat mereka nyobain.</p></div><div class="moments-grid" id="moments-grid"></div><a class="text-link hall-home-link" href="#/hall-of-fame"><span data-i18n="hallLink">Lihat semua ucapan terima kasih</span><span aria-hidden="true">↗</span></a></section>
     <section class="contact-section" id="uplink" aria-labelledby="contact-title"><div class="container"><div class="contact-topline"><p class="eyebrow section-index" data-i18n="contactIndex">04 / Kontak</p><span class="small-label">GOOD WORLDS START WITH A HELLO.</span></div><div class="contact-main"><div><h2 id="contact-title" data-i18n="contactHeading">Ada ide?<br><span>Ngobrol aja.</span></h2><p data-i18n="contactDesc">Mau kerja bareng, bahas Roblox, atau sekadar say hi? Cari aku di Discord.</p></div><div class="discord-wrap"><button type="button" class="discord-button" id="discord-button"><span class="discord-label"><img src="image/icons/discord.svg" width="30" height="30" alt=""><span class="small-label" data-i18n="copyDiscord">Discord-ku</span></span><span class="discord-name">bachadit <span aria-hidden="true">↗</span></span><span class="discord-hint" data-i18n="clickCopy">Klik buat salin username</span></button><p class="copy-status" id="copy-status" role="status" aria-live="polite"></p></div></div><div class="contact-socials"><span class="small-label" data-i18n="elsewhere">Aku juga ada di</span><a href="https://www.youtube.com/@bachtiaradit" target="_blank" rel="noopener noreferrer">YouTube ↗</a><a href="https://www.instagram.com/bachtiaraditya_" target="_blank" rel="noopener noreferrer">Instagram ↗</a><a href="https://www.tiktok.com/@bachtiaradit_" target="_blank" rel="noopener noreferrer">TikTok ↗</a><a href="https://github.com/bachtiar5" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div></div></section>
     </div>
     <section id="projects-page" class="site-page" hidden aria-labelledby="released-title"><div class="container subpage">
@@ -132,6 +135,7 @@
       <div class="journey-controls"><button type="button" class="text-link" id="journey-prev"><span aria-hidden="true">←</span><span data-page-text="previousChapter">Tahun sebelumnya</span></button><span id="journey-position" aria-live="polite"></span><button type="button" class="text-link" id="journey-next"><span data-page-text="nextChapter">Tahun berikutnya</span><span aria-hidden="true">→</span></button></div>
       <div class="journey-next-step"><p data-page-text="nextStory">Ceritanya masih lanjut. Sekarang, lihat apa yang sudah kubikin.</p><a class="button button-primary" href="#/projects"><span data-page-text="seeProjects">Lihat proyekku</span><span aria-hidden="true">↗</span></a></div>
     </div></section>
+    <section id="hall-of-fame-page" class="site-page" hidden aria-labelledby="hall-title"></section>
   </main>
   <div class="page-transition" id="page-transition" aria-hidden="true"><div class="transition-curtain"></div><div class="transition-content"><img src="image/brand-mark.svg?v=20261102-peak-skills-v2" width="44" height="44" alt=""><span id="transition-label"></span><span class="transition-rule"></span></div></div>
   <p class="sr-only" id="page-announcer" role="status" aria-live="polite"></p>

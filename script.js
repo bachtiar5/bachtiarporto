@@ -48,6 +48,7 @@
     skillsHeading:'Skills I use.',skillWorld:'Maps, terrain, and environments with a focus on atmosphere and the player experience.',
     skillCode:'Developing game mechanics, modular systems, and debugging while continuing to learn Lua / Luau.',
     skillUI:'Learning to design clear interfaces that feel at home in a Roblox game.',
+    hallLink:'See all the thank-you notes',
     momentsIndex:'03 / HALL OF FAME',momentsHeading:'They stopped by<br>my worlds.',
     momentsDesc:'Moments when creators played my maps. Thank you for being part of the story.',
     contactIndex:'04 / START A CONVERSATION',contactHeading:'Have an idea?<br>Let’s <span>build it.</span>',
@@ -75,7 +76,7 @@
         <div class="project-image-wrap"><img class="project-image" src="${escape(project.images[0])}" alt="${escape(localText(project.title))}" loading="lazy" decoding="async"><span class="image-count">${photoLabel(project.images.length)}</span><span class="card-open-icon" aria-hidden="true">↗</span></div>
         <div class="card-meta"><span>${categories[project.category]}</span><span>0${index+1}</span></div><h3>${escape(localText(project.title))}</h3>
       </button><p class="project-description">${escape(localText(project.description))}</p></article>`).join('');
-    $('#moments-grid').innerHTML = data.moments.map(moment => `<button type="button" class="moment-button" data-gallery="${moment.id}" aria-label="${language==='id'?'Lihat momen':'View moment'}: ${escape(localText(moment.title))}"><div class="moment-image-wrap"><img src="${escape(moment.images[0])}" alt="${escape(localText(moment.title))} — Roblox" loading="lazy" decoding="async"></div><span class="moment-caption"><span>${escape(localText(moment.title))}</span><span aria-hidden="true">↗</span></span></button>`).join('');
+    $('#moments-grid').innerHTML = data.moments.slice(0,3).map(moment => `<button type="button" class="moment-button" data-gallery="${moment.id}" aria-label="${language==='id'?'Lihat momen':'View moment'}: ${escape(localText(moment.title))}"><div class="moment-image-wrap"><img src="${escape(moment.images[0])}" alt="${escape(localText(moment.title))} — Roblox" loading="lazy" decoding="async"></div><span class="moment-caption"><span>${escape(localText(moment.title))}</span><span aria-hidden="true">↗</span></span></button>`).join('');
     applyFilter();
     watchReveals();
     enhanceControls();
@@ -174,7 +175,7 @@
   $$('.nav-link').forEach(link => link.addEventListener('click',closeMenu));
   document.addEventListener('click',event => {if (!event.target.closest('.site-header')) closeMenu();});
   document.addEventListener('keydown',event => {if(event.key==='Escape' && menu.classList.contains('is-open')) {closeMenu();menuButton.focus();}});
-  matchMedia('(min-width:861px)').addEventListener('change',closeMenu);
+  matchMedia('(min-width:1051px)').addEventListener('change',closeMenu);
 
   const dialog = $('#gallery-dialog');
   const image = $('#gallery-image');
