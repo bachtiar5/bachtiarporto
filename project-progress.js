@@ -1,0 +1,21 @@
+/* Visual design credit: Bachtiar Aditya. Rights and exclusions: COPYRIGHT.md.
+   Design origin: design-origin-bachtiar-aditya-bachtiarporto-2026 */
+(() => {
+  'use strict';
+  const esc=value=>String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  function render() {
+    const en=document.documentElement.lang==='en',lang=en?'en':'id';
+    const t=en?{status:'In progress',home:'What I’m building now',page:'Currently in development',view:'See the progress',photos:'View progress photos',note:'Not published yet. Roblox statistics will be available after release.',likes:'Likes',active:'Active players',favorites:'Favorites',visits:'Visits',released:'Published games',release:'Release date',unavailable:'Not available before release'}:{status:'Sedang digarap',home:'Yang lagi kukerjakan',page:'Proyek yang sedang digarap',view:'Lihat progresnya',photos:'Lihat foto progres',note:'Belum dipublikasikan. Statistik Roblox akan tersedia setelah game dirilis.',likes:'Like',active:'Pemain aktif',favorites:'Favorit',visits:'Kunjungan',released:'Game yang sudah rilis',release:'Tanggal rilis',unavailable:'Belum tersedia sebelum rilis'};
+    const projects=window.ongoingProjects||[];
+    const local=value=>value[lang]||value.id;
+    const home=document.querySelector('[data-ongoing-home]'),page=document.querySelector('[data-ongoing-projects]');
+    [home,page].forEach(root=>document.dispatchEvent(new CustomEvent('portfolio:beforecontent',{detail:{root}})));
+    home.hidden=page.hidden=projects.length===0;
+    home.innerHTML=projects.length?`<div class="ongoing-home-heading"><p class="eyebrow">${t.status}</p><h2 id="ongoing-home-title">${t.home}</h2></div>`+projects.map(project=>`<article class="ongoing-home-card"><button class="ongoing-home-image" type="button" data-gallery="${esc(project.id)}" aria-label="${esc(t.photos+' '+local(project.title))}"><img src="${esc(project.images[0])}" width="1449" height="797" loading="lazy" decoding="async" alt="${esc(local(project.title))}"><span aria-hidden="true">↗</span></button><div class="ongoing-home-copy"><span class="ongoing-badge"><i aria-hidden="true"></i>${t.status}</span><h3>${esc(local(project.title))}</h3><p>${esc(local(project.description))}</p><a class="text-link" href="#/projects">${t.view}<span aria-hidden="true">↗</span></a></div></article>`).join(''):'';
+    page.innerHTML=projects.length?`<header class="ongoing-section-heading"><h2 id="ongoing-projects-title">${t.page}</h2><span>${projects.length} ${en?(projects.length===1?'project':'projects'):'proyek'}</span></header>`+projects.map(project=>`<article class="ongoing-card"><div class="ongoing-media"><button class="ongoing-cover" type="button" data-gallery="${esc(project.id)}" aria-label="${esc(t.photos+' '+local(project.title))}"><img src="${esc(project.images[0])}" width="1449" height="797" loading="lazy" decoding="async" alt="${esc(local(project.title))}"><span class="ongoing-photo-label">${t.photos}<span aria-hidden="true">↗</span></span></button><div class="ongoing-thumbnails">${project.images.map((image,index)=>`<button type="button" data-gallery="${esc(project.id)}" data-gallery-start="${index}" aria-label="${esc(t.photos+' '+(index+1))}"><img src="${esc(image)}" width="100" height="64" loading="lazy" alt="${esc(local(project.title)+' '+(index+1))}"></button>`).join('')}</div></div><div class="ongoing-details"><span class="ongoing-badge"><i aria-hidden="true"></i>${t.status}</span><h3>${esc(local(project.title))}</h3><p class="ongoing-description">${esc(local(project.description))}</p><div class="game-peak"><span>Peak CCU</span><strong aria-label="${t.unavailable}">?</strong></div><dl class="game-metrics">${['likes','active','favorites','visits'].map(key=>`<div><dt>${t[key]}</dt><dd aria-label="${t.unavailable}">?</dd></div>`).join('')}</dl><p class="ongoing-release">${t.release}<strong aria-label="${t.unavailable}">?</strong></p><p class="ongoing-stats-note">${t.note}</p></div></article>`).join(''):'';
+    document.querySelector('[data-published-heading]').textContent=t.released;
+    document.dispatchEvent(new CustomEvent('portfolio:content'));
+  }
+  document.addEventListener('portfolio:languagechange',render);
+  render();
+})();

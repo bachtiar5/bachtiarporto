@@ -40,6 +40,8 @@ The website requests DM Sans and Manrope from Google Fonts in `index.html`; font
 
 ## Other images and items requiring confirmation
 
+Work-in-progress screenshots in `image/ongoing/seporsi-mie-ayam/` were supplied by the portfolio owner on 2 November 2026 for the unpublished project Seporsi Mie Ayam [Horror]. They are displayed through `ongoing-projects.js`, separately from published-game API snapshots. This records their submission, not independent verification of rights in every depicted element.
+
 | Files or location | Available provenance | Information still needed |
 | --- | --- | --- |
 | `image/youtuber/` | Screenshots used to acknowledge creators who played the portfolio owner's maps | Original video or post links, screenshot authorship, and any applicable permission or other basis for use. No endorsement or ownership of creators' content is claimed. |

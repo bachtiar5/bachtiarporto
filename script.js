@@ -65,7 +65,7 @@
   let language = [urlLang, store.get('preferred-language')].find(value => ['id','en'].includes(value)) || 'en';
   let filter = 'all';
   const data = window.portfolioData;
-  const collections = [...data.projects, ...data.moments];
+  const collections = [...data.projects, ...data.moments, ...(window.ongoingProjects||[])];
   const escape = value => String(value).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
   const localText = values => values[language] || values.id;
   const photoLabel = count => `${count} ${language === 'id' ? 'FOTO' : 'PHOTOS'}`;
@@ -210,7 +210,7 @@
     $('#gallery-counter').textContent = `${String(imageIndex+1).padStart(2,'0')} / ${String(active.images.length).padStart(2,'0')}`;
     $('#gallery-prev').disabled = active.images.length === 1;
     $('#gallery-next').disabled = active.images.length === 1;
-    $('#gallery-kicker').textContent = active.id.startsWith('moment') ? 'HALL OF FAME' : (language==='id'?'ARSIP KARYA':'PROJECT ARCHIVE');
+    $('#gallery-kicker').textContent = active.id.startsWith('ongoing-') ? (language==='id'?'SEDANG DIGARAP':'WORK IN PROGRESS') : active.id.startsWith('moment') ? 'HALL OF FAME' : (language==='id'?'ARSIP KARYA':'PROJECT ARCHIVE');
     if(active.images.length>1) {const nextImage = new Image();nextImage.src=active.images[(imageIndex+1)%active.images.length];}
   }
   document.addEventListener('click',event => {
@@ -218,7 +218,7 @@
     if(!button) return;
     active = collections.find(collection=>collection.id === button.dataset.gallery);
     if(!active) return;
-    returnFocus = button;imageIndex=0;closingGallery=false;image.removeAttribute('src');image.alt='';image.style.opacity='0';renderImage();dialog.showModal();document.body.classList.add('modal-open');$('#gallery-close').focus();
+    returnFocus = button;imageIndex=Math.max(0,Math.min(active.images.length-1,Number(button.dataset.galleryStart)||0));closingGallery=false;image.removeAttribute('src');image.alt='';image.style.opacity='0';renderImage();dialog.showModal();document.body.classList.add('modal-open');$('#gallery-close').focus();
     animate(dialog,[{opacity:0,transform:'translateY(18px) scale(.97)'},{opacity:1,transform:'translateY(0) scale(1)'}],{duration:320,easing:'cubic-bezier(.16,1,.3,1)'});
   });
   function stepImage(direction) {if(!active) return;imageIndex=(imageIndex+direction+active.images.length)%active.images.length;renderImage();}

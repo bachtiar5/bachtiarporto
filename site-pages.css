@@ -630,3 +630,48 @@ body { overflow-x:clip; }
 .site-footer .footer-credit>a { text-decoration:underline; text-underline-offset:3px; }
 .site-footer .footer-credit>a:hover { color:var(--accent); }
 @media(max-width:640px) { .site-footer { flex-wrap:wrap; justify-content:space-between; } .footer-credit { order:3; flex-basis:100%; max-width:none; } }
+/* Unreleased work is separate from published-game API statistics. */
+.ongoing-home { padding-top:55px; }
+.ongoing-home-heading { display:flex; flex-direction:column; gap:12px; margin-bottom:24px; }
+.ongoing-home-heading>.eyebrow { color:var(--accent); font-size:12px; }
+.ongoing-home-heading h2 { font-size:clamp(28px,3vw,38px); letter-spacing:-1px; }
+.ongoing-home-card { display:grid; grid-template-columns:minmax(0,1.1fr) minmax(0,1fr); border:1px solid var(--line); border-radius:18px; overflow:hidden; background:var(--surface); }
+.ongoing-home-image,.ongoing-cover { display:block; position:relative; width:100%; padding:0; border:0; text-align:left; background:var(--surface-2); overflow:hidden; }
+.ongoing-home-image>img { width:100%; height:100%; min-height:260px; object-fit:cover; }
+.ongoing-home-image>span { position:absolute; right:18px; bottom:18px; display:grid; place-items:center; width:38px; height:38px; border-radius:50%; background:var(--accent); color:var(--on-accent); font-size:23px; }
+.ongoing-home-copy { display:flex; flex-direction:column; align-items:flex-start; justify-content:center; padding:32px; }
+.ongoing-badge { display:inline-flex; align-items:center; gap:8px; padding:6px 11px; border:1px solid color-mix(in srgb,var(--accent) 30%,var(--line)); border-radius:24px; color:var(--accent); font-size:12px; line-height:1.5; }
+.ongoing-badge i { width:6px; height:6px; border-radius:50%; background:currentColor; }
+.ongoing-home-copy h3 { font-size:clamp(25px,3vw,36px); line-height:1.3; letter-spacing:-1px; margin-top:18px; }
+.ongoing-home-copy>p { font-size:16px; line-height:1.8; color:var(--muted); margin-top:14px; }
+.ongoing-home-copy>.text-link { color:var(--accent); font-size:15px; margin-top:24px; }
+.ongoing-projects { margin-block:12px 48px; }
+.ongoing-section-heading { display:flex; align-items:center; justify-content:space-between; gap:18px; margin-bottom:24px; }
+.ongoing-section-heading h2,.published-section-heading { font-size:clamp(27px,3vw,36px); line-height:1.3; letter-spacing:-.8px; }
+.ongoing-section-heading>span { color:var(--muted); font-size:14px; white-space:nowrap; }
+.published-section-heading { margin-bottom:22px; }
+.ongoing-card { display:grid; grid-template-columns:minmax(0,1.1fr) minmax(0,1fr); gap:32px; padding:26px; border:1px solid var(--line); border-radius:18px; background:var(--surface); }
+.ongoing-cover { border-radius:12px; }
+.ongoing-cover>img { width:100%; aspect-ratio:16/10; object-fit:cover; }
+.ongoing-photo-label { position:absolute; bottom:14px; left:14px; right:14px; display:flex; align-items:center; justify-content:space-between; gap:14px; border:1px solid #ffffff30; border-radius:8px; padding:9px 13px; background:#101110dc; color:#f1f2ed; font-size:14px; }
+.ongoing-thumbnails { display:flex; flex-wrap:wrap; gap:10px; margin-top:12px; }
+.ongoing-thumbnails>button { padding:0; width:100px; border:1px solid var(--line); border-radius:8px; overflow:hidden; background:var(--surface-2); }
+.ongoing-thumbnails img { width:100%; height:64px; object-fit:cover; }
+.ongoing-thumbnails>button:hover { border-color:var(--accent); }
+.ongoing-details h3 { font-size:clamp(26px,2.8vw,36px); line-height:1.35; letter-spacing:-1px; margin-top:16px; }
+.ongoing-description { margin-top:13px; color:var(--muted); font-size:15px; line-height:1.85; }
+.ongoing-details .game-metrics { margin-top:20px; }
+.ongoing-release { display:flex; justify-content:space-between; align-items:center; gap:20px; color:var(--muted); margin-top:24px; padding-top:16px; border-top:1px solid var(--line); font-size:14px; }
+.ongoing-release>strong { color:var(--text); font-size:21px; }
+.ongoing-stats-note { color:var(--muted); font-size:12px; line-height:1.8; margin-top:13px; }
+@media(max-width:800px) { .ongoing-card { gap:24px; padding:20px; } .ongoing-home-copy { padding:26px; } }
+@media(max-width:640px) {
+ .ongoing-home { padding-top:38px; }
+ .ongoing-home-card,.ongoing-card { grid-template-columns:1fr; }
+ .ongoing-home-image>img { min-height:0; aspect-ratio:16/10; }
+ .ongoing-home-copy { padding:24px; }
+ .ongoing-card { padding:18px; gap:22px; }
+ .ongoing-section-heading { align-items:flex-start; }
+ .ongoing-section-heading h2 { max-width:270px; }
+ .ongoing-section-heading>span { padding-top:6px; }
+}
