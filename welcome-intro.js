@@ -10,7 +10,7 @@
   const previousFocus=document.activeElement;
   const background=[...document.body.children].filter(element=>element!==intro&&element.tagName!=='SCRIPT').map(element=>({element,inert:element.inert}));
   const previousOverflow=document.body.style.overflow;
-  let finished=false,timer=0;
+  let finished=false,timer=0,keyboardUsed=false;
   const parts={curtain:intro.querySelector('.welcome-curtain'),content:intro.querySelector('.welcome-content'),rule:intro.querySelector('.welcome-rule')};
   function finish() {
     if(finished)return;
@@ -22,13 +22,13 @@
     delete document.documentElement.dataset.welcome;
     intro.remove();
     document.removeEventListener('keydown',escape);
-    if(focusWasInside) {
-      const destination=previousFocus!==document.body?previousFocus:document.querySelector(`#${document.body.dataset.page||'home'}-page h1`);
-      if(destination){destination.setAttribute('tabindex','-1');destination.focus({preventScroll:true});}
+    if(focusWasInside&&keyboardUsed) {
+      const destination=previousFocus!==document.body&&previousFocus.matches('a,button,input,select,textarea')?previousFocus:document.querySelector('.skip-link');
+      destination?.focus({preventScroll:true});
     }
   }
-  const escape=event=>{if(event.key==='Escape'){event.preventDefault();finish();}};
-  skip.addEventListener('click',finish);
+  const escape=event=>{if(event.key==='Tab')keyboardUsed=true;if(event.key==='Escape'){keyboardUsed=true;event.preventDefault();finish();}};
+  skip.addEventListener('click',event=>{if(event.detail===0)keyboardUsed=true;finish();});
   document.addEventListener('keydown',escape);
   reduced.addEventListener('change',()=>{if(reduced.matches)finish();},{once:true});
   try {
