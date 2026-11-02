@@ -603,13 +603,13 @@ html:not([data-pages-ready])[data-start-page=hall-of-fame] #home-page { display:
 [data-theme=light] .floating-pixel.is-near,[data-theme=light] .floating-pixel:focus-within,[data-theme=light] .floating-pixel.is-breaking { opacity:.27; }
 @keyframes pixel-zero-gravity {
   0% { transform:translate(0,0) rotate(var(--float-angle)); }
-  25% { transform:translate(-24px,18px) rotate(calc(var(--float-angle) + 90deg)); }
-  50% { transform:translate(20px,-18px) rotate(calc(var(--float-angle) + 180deg)); }
-  75% { transform:translate(-12px,-28px) rotate(calc(var(--float-angle) + 270deg)); }
-  100% { transform:translate(0,0) rotate(calc(var(--float-angle) + 360deg)); }
+  25% { transform:translate(var(--drift-x1),var(--drift-y1)) rotate(calc(var(--float-angle) + var(--float-turn) * .25)); }
+  50% { transform:translate(var(--drift-x2),var(--drift-y2)) rotate(calc(var(--float-angle) + var(--float-turn) * .5)); }
+  75% { transform:translate(var(--drift-x3),var(--drift-y3)) rotate(calc(var(--float-angle) + var(--float-turn) * .75)); }
+  100% { transform:translate(0,0) rotate(calc(var(--float-angle) + var(--float-turn))); }
 }
 @media(max-width:640px) {
- .floating-pixel { width:88px; height:88px; margin:-44px; opacity:.14; }
+ .floating-pixel { left:var(--float-mobile-x); top:var(--float-mobile-y); width:88px; height:88px; margin:-44px; opacity:.14; }
  .floating-pixel[data-float-index="4"],.floating-pixel[data-float-index="5"] { display:none; }
 }
 @media(prefers-reduced-motion:reduce) {
