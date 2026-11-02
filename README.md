@@ -4,21 +4,29 @@ A personal Roblox developer portfolio featuring published projects, a career jou
 
 [Visit the portfolio](https://bachtiar5.github.io/bachtiarporto/)
 
-## Design by Bachtair Adit
+## Design by Bachtiar Aditya
 
-The original visual design and creative direction for this website were provided by **Bachtair Adit**.
+The original visual design and creative direction for this website were provided by **Bachtiar Aditya**, the person identified throughout this portfolio.
 
-Copyright © 2026 Bachtair Adit. All rights reserved to the extent applicable. Please do not republish this portfolio as your own or reuse protected original material without permission.
+The website was developed and revised with AI coding assistance. The design credit does not imply personal authorship or exclusive ownership of every line of code or third-party asset.
+
+Copyright © 2026 Bachtiar Aditya. All rights reserved to the extent applicable. Please do not republish this portfolio as your own or reuse protected original material without permission.
 
 Public visibility does not grant a general reuse license. The rights provided by applicable law, GitHub's Terms of Service, and third-party licenses still apply. See [COPYRIGHT.md](COPYRIGHT.md) for the full notice, its limits, and third-party exclusions.
 
 For permission requests, contact **bachadit** on Discord.
 
+## Asset sources and attribution
+
+[ASSET_SOURCES.md](ASSET_SOURCES.md) lists the design, text, implementation, icons, fonts, images, and API snapshots separately. It records upstream sources and license links, and identifies materials whose authorship or permission records still need confirmation. Attribution and a public source link alone do not establish permission.
+
+Lucide notices are retained in [image/icons/LUCIDE-LICENSE.txt](image/icons/LUCIDE-LICENSE.txt). Brand marks, fonts, avatars, and other third-party material remain subject to their own applicable terms.
+
 ## Source markers
 
 Selected source files and HTML metadata carry the design credit and this marker:
 
-`design-origin-bachtair-adit-bachtiarporto-2026`
+`design-origin-bachtiar-aditya-bachtiarporto-2026`
 
 It is a source identifier, not an unremovable watermark or copy-protection system. Keep the Git history and original design files as records of the design process.
 

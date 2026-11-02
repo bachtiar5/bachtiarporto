@@ -5,3 +5,7 @@
 - SVG files are stored locally to avoid an external image dependency at runtime.
 
 The original Lucide copyright and license notice is retained in [LUCIDE-LICENSE.txt](LUCIDE-LICENSE.txt).
+
+Simple Icons publishes its project under [CC0](https://github.com/simple-icons/simple-icons/blob/develop/LICENSE.md). Its [disclaimer](https://github.com/simple-icons/simple-icons/blob/develop/DISCLAIMER.md) notes that individual brand icons can have additional rights and usage considerations.
+
+See the full [asset and authorship inventory](../../ASSET_SOURCES.md) for fonts, images, API snapshots, and items whose provenance or permission records still need confirmation.

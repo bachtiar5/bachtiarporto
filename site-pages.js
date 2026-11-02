@@ -1,5 +1,5 @@
-/* Visual design credit: Bachtair Adit. Rights and exclusions: COPYRIGHT.md.
-   Design origin: design-origin-bachtair-adit-bachtiarporto-2026 */
+/* Visual design credit: Bachtiar Aditya. Rights and exclusions: COPYRIGHT.md.
+   Design origin: design-origin-bachtiar-aditya-bachtiarporto-2026 */
 (() => {
   'use strict';
   const $=selector=>document.querySelector(selector);

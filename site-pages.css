@@ -1,5 +1,5 @@
-/* Visual design credit: Bachtair Adit. Rights and exclusions: COPYRIGHT.md.
-   Design origin: design-origin-bachtair-adit-bachtiarporto-2026 */
+/* Visual design credit: Bachtiar Aditya. Rights and exclusions: COPYRIGHT.md.
+   Design origin: design-origin-bachtiar-aditya-bachtiarporto-2026 */
 /* A shared visual plane for the mascot and the selected work. */
 .hero { --preview-height:clamp(300px,27vw,360px); }
 .hero .hero-mascot { height:calc(var(--preview-height) + 32px); padding-top:32px; align-self:center; display:flex; align-items:center; justify-content:center; }
