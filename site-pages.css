@@ -703,6 +703,10 @@ body { overflow-x:clip; }
 .ongoing-details .game-metrics dd { font-size:20px; overflow-wrap:anywhere; }
 .ongoing-stats-note { font-size:11px; line-height:1.7; margin-top:14px; }
 .ongoing-unreleased-note { margin-top:auto; padding-top:14px; border-top:1px solid var(--line); color:var(--muted); font-size:14px; line-height:1.75; }
+.ongoing-cover-static>img { aspect-ratio:auto; object-fit:contain; }
+.ongoing-progress-action { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; margin-top:auto; padding-top:18px; border-top:1px solid var(--line); }
+.ongoing-progress-action button { width:fit-content; padding:6px 0; border:0; background:transparent; color:var(--accent); font-size:15px; }
+.ongoing-progress-count { font-size:13px; color:var(--muted); }
 .developer-roblox-card .developer-thanks { margin-top:20px; border-top:0; border-bottom:1px solid var(--line); }
 .developer-roblox-card .developer-thanks-name { color:var(--accent); font-size:21px; }
 .developer-roblox-card .developer-thanks>p:nth-child(2) { color:var(--text); font-size:16px; }

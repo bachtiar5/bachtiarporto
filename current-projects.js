@@ -13,18 +13,17 @@
       if(item.publishedPlaceId&&!published)return null;
       return published?{...item,published,title:{id:published.name,en:published.name},role:published.role,description:published.contribution,images:[published.thumbnail]}:item;
     }).filter(Boolean);
-    const home=document.querySelector('[data-ongoing-home]'),page=document.querySelector('[data-ongoing-projects]');
-    [home,page].forEach(root=>document.dispatchEvent(new CustomEvent('portfolio:beforecontent',{detail:{root}})));
-    home.hidden=page.hidden=projects.length===0;
+    const page=document.querySelector('[data-ongoing-projects]');
+    document.dispatchEvent(new CustomEvent('portfolio:beforecontent',{detail:{root:page}}));
+    page.hidden=projects.length===0;
     const badge=project=>`<span class="ongoing-badge${project.published?' ongoing-badge-live':''}"><i aria-hidden="true"></i>${project.published?t.live:t.status}</span>`;
-    const image=(project,homeCard=false)=>{
+    const image=project=>{
       const photo=`<img src="${esc(project.images[0])}" width="768" height="480" loading="lazy" decoding="async" alt="${esc(local(project.title))}">`;
       const overlay=`<span class="ongoing-photo-label">${project.published?t.open:project.images.length+' '+t.photoCount}<span aria-hidden="true">↗</span></span>`;
-      const className=homeCard?'ongoing-home-image':'ongoing-cover';
-      return project.published?`<a class="${className}" href="${esc(project.published.url)}" target="_blank" rel="noopener noreferrer">${photo}${overlay}</a>`:`<button class="${className}" type="button" data-gallery="${esc(project.id)}" aria-label="${esc(t.photos+' '+local(project.title))}">${photo}${overlay}</button>`;
+      const className='ongoing-cover';
+      return project.published?`<a class="${className}" href="${esc(project.published.url)}" target="_blank" rel="noopener noreferrer">${photo}${overlay}</a>`:`<div class="${className} ongoing-cover-static">${photo}</div>`;
     };
     const role=project=>`<p class="ongoing-role"><span>${t.role}</span><strong>${esc(local(project.role))}</strong></p>`;
-    home.innerHTML=projects.length?`<div class="ongoing-home-heading"><p class="eyebrow">${t.status}</p><h2 id="ongoing-home-title">${t.home}</h2></div><div class="ongoing-home-grid">`+projects.map(project=>`<article class="ongoing-home-card">${image(project,true)}<div class="ongoing-home-copy">${badge(project)}<h3>${esc(local(project.title))}</h3>${role(project)}<a class="text-link" href="#/projects/${encodeURIComponent(project.id)}">${t.view}<span aria-hidden="true">↗</span></a></div></article>`).join('')+'</div>':'';
     const fmt=new Intl.NumberFormat(en?'en-US':'id-ID');
     const metric=(project,key)=>project.published?fmt.format(project.published[key]):'?';
     const peak=project=>{
@@ -33,7 +32,7 @@
       return new Intl.NumberFormat(en?'en-US':'id-ID',{maximumFractionDigits:1}).format(game.peakCcu>=1000?game.peakCcu/1000:game.peakCcu)+(game.peakCcu>=1000?'k':'')+(game.peakCcuLowerBound?'+':'');
     };
     const stamp=new Intl.DateTimeFormat(en?'en-US':'id-ID',{day:'numeric',month:'short',year:'numeric',timeZone:'Asia/Bangkok'}).format(new Date(snapshot.capturedAt));
-    page.innerHTML=projects.length?`<header class="ongoing-section-heading"><h2 id="ongoing-projects-title">${t.page}</h2><span>${projects.length} ${en?'projects':'proyek'}</span></header><div class="ongoing-grid">`+projects.map(project=>`<article class="ongoing-card" data-current-project="${esc(project.id)}" data-current-published="${Boolean(project.published)}"><div class="ongoing-media">${image(project)}</div><div class="ongoing-details">${badge(project)}<h3>${esc(local(project.title))}</h3>${role(project)}<p class="ongoing-description">${esc(local(project.description))}</p>${project.published?`<div class="game-peak"><span>Peak CCU</span><strong>${peak(project)}</strong></div><dl class="game-metrics">${['likes','active','favorites','visits'].map(key=>`<div><dt>${t[key]}</dt><dd>${metric(project,key)}</dd></div>`).join('')}</dl><p class="ongoing-stats-note">${t.captured+' '+stamp}</p>`:`<p class="ongoing-unreleased-note">${en?'Not released yet. Open the photos to see its progress.':'Belum rilis. Lihat perkembangannya lewat foto progres.'}</p>`}</div></article>`).join('')+'</div>':'';
+    page.innerHTML=projects.length?`<header class="ongoing-section-heading"><h2 id="ongoing-projects-title">${t.page}</h2><span>${projects.length} ${en?'projects':'proyek'}</span></header><div class="ongoing-grid">`+projects.map(project=>`<article class="ongoing-card" data-current-project="${esc(project.id)}" data-current-published="${Boolean(project.published)}"><div class="ongoing-media">${image(project)}</div><div class="ongoing-details">${badge(project)}<h3>${esc(local(project.title))}</h3>${role(project)}<p class="ongoing-description">${esc(local(project.description))}</p>${project.published?`<div class="game-peak"><span>Peak CCU</span><strong>${peak(project)}</strong></div><dl class="game-metrics">${['likes','active','favorites','visits'].map(key=>`<div><dt>${t[key]}</dt><dd>${metric(project,key)}</dd></div>`).join('')}</dl><p class="ongoing-stats-note">${t.captured+' '+stamp}</p>`:`<div class="ongoing-progress-action"><button class="text-link" type="button" data-gallery="${esc(project.id)}" aria-label="${esc(t.photos+' '+local(project.title))}"><span>${t.view}</span><span aria-hidden="true">↗</span></button><span class="ongoing-progress-count">${project.images.length} ${t.photoCount}</span></div>`}</div></article>`).join('')+'</div>':'';
     document.querySelector('[data-published-heading]').textContent=t.released;
     document.dispatchEvent(new CustomEvent('portfolio:content'));
   }
