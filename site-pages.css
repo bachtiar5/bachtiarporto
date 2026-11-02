@@ -573,3 +573,18 @@ html:not([data-pages-ready])[data-start-page=hall-of-fame] #home-page { display:
   .released-card .released-image,.released-card .released-card-heading,.released-card .game-contribution,.released-card .game-peak,.released-card .game-metrics,.released-card .game-dates,.released-card .released-link { align-self:start; }
  }
 }
+/* Shared pixel artwork for projects, career, and acknowledgements. */
+.pixel-page-hero>.subpage-heading { max-width:none; padding-block:36px 22px; }
+.pixel-page-hero>.subpage-heading h1 { font-size:clamp(44px,4.8vw,64px); }
+.pixel-page-hero>.subpage-heading>p:last-child { font-size:17px; }
+[data-pixel-slot] { min-width:0; width:100%; }
+.pixel-heart-play { overflow:hidden; }
+.pixel-heart-grid { aspect-ratio:var(--pixel-cols,15)/var(--pixel-rows,12); }
+.heart-pixel { left:calc(var(--px)*100%/var(--pixel-cols,15)); top:calc(var(--py)*100%/var(--pixel-rows,12)); width:calc(100%/var(--pixel-cols,15) - 2px); height:calc(100%/var(--pixel-rows,12) - 2px); }
+[data-pixel-art=hammer] .pixel-heart-grid,[data-pixel-art=journey] .pixel-heart-grid { width:66%; }
+[data-pixel-art=hammer] .heart-pixel[style*="--py: 6"],[data-pixel-art=hammer] .heart-pixel[style*="--py: 7"],[data-pixel-art=hammer] .heart-pixel[style*="--py: 8"],[data-pixel-art=hammer] .heart-pixel[style*="--py: 9"],[data-pixel-art=hammer] .heart-pixel[style*="--py: 10"],[data-pixel-art=hammer] .heart-pixel[style*="--py: 11"] { background:color-mix(in srgb,var(--accent) 68%,#627b36); }
+@media(max-width:900px) { .pixel-page-hero>.subpage-heading h1 { font-size:clamp(38px,5vw,54px); } }
+@media(max-width:640px) {
+ .pixel-page-hero>.subpage-heading { padding-bottom:5px; }
+ .pixel-page-hero>.subpage-heading h1 { font-size:clamp(39px,10.5vw,54px); }
+}
