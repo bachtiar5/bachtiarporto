@@ -372,7 +372,7 @@
       $('#summary-data-note').textContent=language==='id'?`Kunjungan dijumlahkan dari ${games.length} game di halaman Proyek. Jumlah anggota AIH Studio mengikuti data Roblox pada ${captured}.`:`Visits summed from the ${games.length} games on the Projects page. AIH Studio membership is based on Roblox data from ${captured}.`;
     }
   }
-  let identity='mascot';
+  let identity='roblox';
   function switchIdentity(value) {
     if(value===identity)return;
     const stack=$('.identity-stack');
