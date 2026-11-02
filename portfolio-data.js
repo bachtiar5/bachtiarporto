@@ -71,7 +71,17 @@ window.portfolioData = {
         "image/Archives/Build/Screenshot%202026-05-19%20223439.png",
         "image/Archives/Build/Screenshot%202026-05-19%20223450.png",
         "image/Archives/Build/Screenshot%202026-05-19%20223550.png",
-        "image/Archives/Build/Screenshot%202026-05-19%20231123.png"
+        "image/Archives/Build/Screenshot%202026-05-19%20231123.png",
+        "image/Archives/Build/2052284827_85171355133787_1793333210491.png",
+        "image/Archives/Build/2052284827_85171355133787_1793333223592.png",
+        "image/Archives/Build/2052284827_85171355133787_1793333239464.png",
+        "image/Archives/Build/2052284827_85171355133787_1793333251578.png",
+        "image/Archives/Build/2052284827_85171355133787_1793333337176.png",
+        "image/Archives/Build/2052284827_99690346982041_1789638213535.png",
+        "image/Archives/Build/2052284827_99690346982041_1789638243826.png",
+        "image/Archives/Build/2052284827_99690346982041_1791185605734.png",
+        "image/Archives/Build/Screenshot%202026-09-17%20125849.png",
+        "image/Archives/Build/Screenshot%202026-10-12%20143051.png"
       ]
     },
     {
@@ -94,7 +104,13 @@ window.portfolioData = {
         "image/Archives/UiUx/Screenshot%202026-06-13%20000835.png",
         "image/Archives/UiUx/Screenshot%202026-06-13%20000847.png",
         "image/Archives/UiUx/Screenshot%202026-06-13%20000854.png",
-        "image/Archives/UiUx/Screenshot%202026-06-13%20000859.png"
+        "image/Archives/UiUx/Screenshot%202026-06-13%20000859.png",
+        "image/Archives/UiUx/Screenshot%202026-09-01%20115339.png",
+        "image/Archives/UiUx/Screenshot%202026-09-01%20162419.png",
+        "image/Archives/UiUx/Screenshot%202026-10-26%20163033.png",
+        "image/Archives/UiUx/Screenshot%202026-10-26%20163038.png",
+        "image/Archives/UiUx/Screenshot%202026-10-26%20163058.png",
+        "image/Archives/UiUx/Screenshot%202026-10-26%20163109.png"
       ]
     },
     {
@@ -140,7 +156,9 @@ window.portfolioData = {
         "image/Archives/Gallery/Screenshot%202025-11-18%20191212.png",
         "image/Archives/Gallery/Screenshot%202026-01-12%20172237.png",
         "image/Archives/Gallery/Screenshot%202026-01-30%20175806.png",
-        "image/Archives/Gallery/Screenshot%202026-02-16%20063438.png"
+        "image/Archives/Gallery/Screenshot%202026-02-16%20063438.png",
+        "image/Archives/Gallery/2052284827_99690346982041_1789984679018.png",
+        "image/Archives/Gallery/2052284827_99690346982041_1791185593771.png"
       ]
     }
   ],
@@ -235,6 +253,16 @@ window.portfolioData = {
     "image/Archives/Build/Screenshot%202026-03-30%20151036.png",
     "image/Archives/Build/Screenshot%202026-05-19%20223439.png",
     "image/Archives/Build/Screenshot%202026-02-14%20115720.png",
-    "image/Archives/Build/Screenshot%202026-02-13%20180945.png"
+    "image/Archives/Build/Screenshot%202026-02-13%20180945.png",
+    "image/Archives/Build/2052284827_85171355133787_1793333210491.png",
+    "image/Archives/Build/2052284827_85171355133787_1793333223592.png",
+    "image/Archives/Build/2052284827_85171355133787_1793333239464.png",
+    "image/Archives/Build/2052284827_85171355133787_1793333251578.png",
+    "image/Archives/Build/2052284827_85171355133787_1793333337176.png",
+    "image/Archives/Build/2052284827_99690346982041_1789638213535.png",
+    "image/Archives/Build/2052284827_99690346982041_1789638243826.png",
+    "image/Archives/Build/2052284827_99690346982041_1791185605734.png",
+    "image/Archives/Build/Screenshot%202026-09-17%20125849.png",
+    "image/Archives/Build/Screenshot%202026-10-12%20143051.png"
   ]
 };
