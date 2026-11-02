@@ -2,7 +2,7 @@
   'use strict';
   const layer=document.createElement('div');layer.className='floating-pixels';layer.setAttribute('role','group');
   document.body.append(layer);
-  const positions=[[5,22,62,-14],[95,36,54,18],[14,78,65,8],[86,81,58,-22],[45,12,46,26],[64,65,50,-8]];
+  const positions=[[7,22,126,-14],[93,36,112,18],[14,78,136,8],[86,81,122,-22],[45,12,104,26],[64,65,110,-8]];
   let currentPage='',pointerFrame=0;
   function sync() {
     const page=document.body.dataset.page||'home',en=document.documentElement.lang==='en';
