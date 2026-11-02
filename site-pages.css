@@ -686,17 +686,17 @@ body { overflow-x:clip; }
 .ongoing-home-copy { padding:22px; justify-content:flex-start; align-items:flex-start; flex:1; }
 .ongoing-home-copy h3 { font-size:24px; line-height:1.35; letter-spacing:-.6px; margin-top:14px; }
 .ongoing-home-copy>.text-link { margin-top:auto; padding-top:20px; }
-.ongoing-badge { font-size:11px; padding:5px 9px; }
+.ongoing-badge { font-size:11px; padding:0; border:0; border-radius:0; background:transparent; }
 .ongoing-badge-live { color:var(--text); border-color:var(--line); }
 .ongoing-role { display:flex; flex-direction:column; gap:4px; margin-top:12px; font-size:13px; line-height:1.7; }
 .ongoing-role>span { color:var(--muted); font-size:11px; }
 .ongoing-role>strong { font-weight:600; overflow-wrap:anywhere; }
 .ongoing-details { display:flex; flex-direction:column; flex:1; padding:20px; align-items:stretch; }
 .ongoing-details>.ongoing-badge { align-self:flex-start; }
-.ongoing-details h3 { font-size:24px; line-height:1.35; letter-spacing:-.6px; margin-top:14px; min-height:2.7em; }
-.ongoing-details .ongoing-role { min-height:4.7em; }
-.ongoing-description { font-size:14px; line-height:1.75; flex:1; margin-top:12px; }
-.ongoing-details .game-peak { margin-top:16px; padding-block:10px; }
+.ongoing-details h3 { font-size:24px; line-height:1.35; letter-spacing:-.6px; margin-top:12px; min-height:0; }
+.ongoing-details .ongoing-role { min-height:0; margin-top:10px; gap:2px; }
+.ongoing-description { font-size:14px; line-height:1.75; flex:0 0 auto; margin-top:10px; margin-bottom:16px; }
+.ongoing-details .game-peak { margin-top:auto; padding-block:10px; }
 .ongoing-details .game-peak strong { font-size:23px; }
 .ongoing-details .game-metrics { gap:8px; margin-top:16px; }
 .ongoing-details .game-metrics dt { font-size:11px; }
