@@ -588,3 +588,31 @@ html:not([data-pages-ready])[data-start-page=hall-of-fame] #home-page { display:
  .pixel-page-hero>.subpage-heading { padding-bottom:5px; }
  .pixel-page-hero>.subpage-heading h1 { font-size:clamp(39px,10.5vw,54px); }
 }
+/* Faint, interactive miniatures beneath the content. */
+.floating-pixels { position:fixed; inset:0; z-index:0; pointer-events:none; overflow:hidden; }
+.floating-pixel { position:absolute; left:var(--float-x); top:var(--float-y); width:var(--float-size); height:var(--float-size); margin:calc(var(--float-size)/-2); opacity:.09; transition:opacity .35s ease; pointer-events:none; }
+.floating-drift { width:100%; height:100%; animation:pixel-zero-gravity var(--float-duration) linear infinite; animation-delay:var(--float-delay); }
+.floating-pixels .pixel-heart-play { width:100%; height:100%; aspect-ratio:1; border-radius:7px; overflow:visible; pointer-events:none; }
+.floating-pixels .pixel-heart-play::before { display:none; }
+.floating-pixels .pixel-heart-grid { width:90%; }
+.floating-pixels .heart-pixel { width:calc(100%/var(--pixel-cols,15) - .6px); height:calc(100%/var(--pixel-rows,12) - .6px); box-shadow:none; }
+.floating-pixel.is-near,.floating-pixel:focus-within { opacity:.24; }
+.floating-pixel.is-breaking { opacity:.2; }
+.floating-pixel.is-breaking .floating-drift,.floating-pixels.is-suspended .floating-drift { animation-play-state:paused; }
+[data-theme=light] .floating-pixel { opacity:.075; }
+[data-theme=light] .floating-pixel.is-near,[data-theme=light] .floating-pixel:focus-within,[data-theme=light] .floating-pixel.is-breaking { opacity:.18; }
+@keyframes pixel-zero-gravity {
+  0% { transform:translate(0,0) rotate(var(--float-angle)); }
+  25% { transform:translate(-24px,18px) rotate(calc(var(--float-angle) + 90deg)); }
+  50% { transform:translate(20px,-18px) rotate(calc(var(--float-angle) + 180deg)); }
+  75% { transform:translate(-12px,-28px) rotate(calc(var(--float-angle) + 270deg)); }
+  100% { transform:translate(0,0) rotate(calc(var(--float-angle) + 360deg)); }
+}
+@media(max-width:640px) {
+ .floating-pixel { width:44px; height:44px; margin:-22px; opacity:.07; }
+ .floating-pixel[data-float-index="4"],.floating-pixel[data-float-index="5"] { display:none; }
+}
+@media(prefers-reduced-motion:reduce) {
+ .floating-drift { animation:none; transform:rotate(var(--float-angle)); }
+ .floating-pixel { transition:none; }
+}

@@ -13,6 +13,7 @@
   function cancel(s) {
     cancelAnimationFrame(s.frame);s.frame=0;s.generation++;
     s.animations.forEach(animation=>animation.cancel());s.animations=[];s.busy=false;
+    s.stage.classList.remove('is-breaking');
     s.play.removeAttribute('aria-busy');
     s.pixels.forEach(({element})=>element.style.removeProperty('transform'));
   }
@@ -21,6 +22,7 @@
     cancel(s);const generation=s.generation;
     s.stage.classList.remove('heart-thanked');
     if(motion.matches){s.stage.classList.add('heart-thanked');return;}
+    if(s.background)s.stage.classList.add('is-breaking');
     s.busy=true;s.play.setAttribute('aria-busy','true');
     const width=s.grid.getBoundingClientRect().width||280,unit=width/s.cols;
     const ordered=[...s.pixels].sort((a,b)=>b.y-a.y||a.x-b.x);
@@ -50,7 +52,7 @@
     });
     Promise.allSettled(s.animations.map(animation=>animation.finished)).then(()=>{
       if(states.get(s.stage)!==s||s.generation!==generation)return;
-      s.busy=false;s.animations=[];s.play.removeAttribute('aria-busy');
+      s.busy=false;s.animations=[];s.play.removeAttribute('aria-busy');s.stage.classList.remove('is-breaking');
     });
   }
   function createSlots() {
@@ -61,7 +63,7 @@
   }
   function setup(stage) {
     const type=stage.dataset.pixelArt||'heart',shape=shapes[type];
-    const s={stage,type,play:stage.querySelector('.pixel-heart-play'),grid:stage.querySelector('.pixel-heart-grid'),pixels:[],animations:[],frame:0,generation:0,busy:false,active:false,cols:shape[0].length,rows:shape.length};
+    const s={stage,type,background:stage.hasAttribute('data-pixel-background'),play:stage.querySelector('.pixel-heart-play'),grid:stage.querySelector('.pixel-heart-grid'),pixels:[],animations:[],frame:0,generation:0,busy:false,active:false,cols:shape[0].length,rows:shape.length};
     states.set(stage,s);s.grid.style.setProperty('--pixel-cols',s.cols);s.grid.style.setProperty('--pixel-rows',s.rows);
     shape.forEach((row,y)=>[...row].forEach((cell,x)=>{
       if(cell!=='1')return;
@@ -71,9 +73,9 @@
       s.grid.append(element);s.pixels.push({element,x,y});
     }));
     s.play.addEventListener('click',()=>assemble(s,true));
-    stage.querySelector('[data-heart-replay]').addEventListener('click',()=>{cancel(s);assemble(s);});
+    stage.querySelector('[data-heart-replay]')?.addEventListener('click',()=>{cancel(s);assemble(s);});
     s.play.addEventListener('pointermove',event=>{
-      if(s.busy||motion.matches||event.pointerType==='touch')return;
+      if(s.background||s.busy||motion.matches||event.pointerType==='touch')return;
       cancelAnimationFrame(s.frame);
       s.frame=requestAnimationFrame(()=>{
         s.frame=0;if(s.busy||!s.active)return;
@@ -94,17 +96,20 @@
   function mount() {
     createSlots();
     for(const [stage,s] of states)if(!stage.isConnected){cancel(s);states.delete(stage);}
-    const t=words[document.documentElement.lang==='en'?'en':'id'];
+    const en=document.documentElement.lang==='en',t=words[en?'en':'id'];
     document.querySelectorAll('[data-pixel-heart],[data-pixel-art]').forEach(stage=>{
       const s=states.get(stage)||setup(stage),copy=t[s.type];
-      stage.querySelector('.heart-stage-label>span:nth-child(2)').textContent=copy[0];
-      stage.querySelector('.heart-caption').textContent=copy[1];
-      stage.querySelector('.heart-tools>span').textContent=copy[2];
-      stage.querySelector('[data-heart-replay]').innerHTML=`${t.replay} <span aria-hidden="true">↻</span>`;
-      s.play.setAttribute('aria-label',copy[3]+'. '+t.hint);
+      if(!s.background) {
+        stage.querySelector('.heart-stage-label>span:nth-child(2)').textContent=copy[0];
+        stage.querySelector('.heart-caption').textContent=copy[1];
+        stage.querySelector('.heart-tools>span').textContent=copy[2];
+        stage.querySelector('[data-heart-replay]').innerHTML=`${t.replay} <span aria-hidden="true">↻</span>`;
+      }
+      s.play.setAttribute('aria-label',copy[3]+(s.background?(en?' in the background':' di latar belakang'):'')+'. '+t.hint);
       const page=stage.closest('.site-page');
-      const active=page&&!page.hidden&&!document.hidden&&document.documentElement.dataset.welcome!=='pending';
-      if(active&&!s.active)assemble(s);
+      const shown=s.background?stage.dataset.pixelPage===document.body.dataset.page&&!(innerWidth<=640&&Number(stage.dataset.floatIndex)>=4):page&&!page.hidden;
+      const active=shown&&!document.hidden&&document.documentElement.dataset.welcome!=='pending';
+      if(active&&!s.active&&!s.background)assemble(s);
       if(!active)cancel(s);
       s.active=Boolean(active);
     });
@@ -117,5 +122,6 @@
   document.addEventListener('portfolio:welcomecomplete',mount);
   document.addEventListener('visibilitychange',mount);
   motion.addEventListener('change',()=>{states.forEach(s=>{cancel(s);s.active=false;});mount();});
+  window.portfolioPixelArt={refresh:mount,play:stage=>{const s=states.get(stage);if(s?.active)assemble(s,true);}};
   mount();
 })();
