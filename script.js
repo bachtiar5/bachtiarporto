@@ -65,7 +65,7 @@
   let language = [urlLang, store.get('preferred-language')].find(value => ['id','en'].includes(value)) || 'en';
   let filter = 'all';
   const data = window.portfolioData;
-  const collections = [...data.projects, ...data.moments, ...(window.ongoingProjects||[])];
+  const collections = [...data.projects, ...data.moments, ...(window.ongoingProjects||[]).filter(project=>project.images?.length&&project.title)];
   const escape = value => String(value).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
   const localText = values => values[language] || values.id;
   const photoLabel = count => `${count} ${language === 'id' ? 'FOTO' : 'PHOTOS'}`;

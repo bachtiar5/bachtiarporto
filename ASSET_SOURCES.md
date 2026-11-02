@@ -42,6 +42,8 @@ The website requests DM Sans and Manrope from Google Fonts in `index.html`; font
 
 Work-in-progress screenshots in `image/ongoing/seporsi-mie-ayam/` were supplied by the portfolio owner on 2 November 2026 for the unpublished project Seporsi Mie Ayam [Horror]. They are displayed through `ongoing-projects.js`, separately from published-game API snapshots. This records their submission, not independent verification of rights in every depicted element.
 
+The owner also supplied an Indekos (BAND) folder on 2 November 2026. Its ten images match files already in the building, UI, and visual-journal archives, so the current-work gallery references those files without storing duplicate copies. Its owner-designated thumbnail is first. Hotel Anomaly appears as published work still under development; its current-work card references the existing published-game snapshot and credits rather than inventing unpublished statistics or replacing the original description.
+
 | Files or location | Available provenance | Information still needed |
 | --- | --- | --- |
 | `image/youtuber/` | Screenshots used to acknowledge creators who played the portfolio owner's maps | Original video or post links, screenshot authorship, and any applicable permission or other basis for use. No endorsement or ownership of creators' content is claimed. |
