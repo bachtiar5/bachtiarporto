@@ -22,6 +22,7 @@
     delete document.documentElement.dataset.welcome;
     intro.remove();
     document.removeEventListener('keydown',escape);
+    document.dispatchEvent(new CustomEvent('portfolio:welcomecomplete'));
     if(focusWasInside&&keyboardUsed) {
       const destination=previousFocus!==document.body&&previousFocus.matches('a,button,input,select,textarea')?previousFocus:document.querySelector('.skip-link');
       destination?.focus({preventScroll:true});
