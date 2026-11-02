@@ -17,25 +17,34 @@
     s.play.removeAttribute('aria-busy');
     s.pixels.forEach(({element})=>element.style.removeProperty('transform'));
   }
-  function assemble(s,scatter=false) {
+  function assemble(s,scatter=false,point=null) {
     if(s.busy)return;
     cancel(s);const generation=s.generation;
     s.stage.classList.remove('heart-thanked');
     if(motion.matches){s.stage.classList.add('heart-thanked');return;}
     if(s.background)s.stage.classList.add('is-breaking');
     s.busy=true;s.play.setAttribute('aria-busy','true');
-    const width=s.grid.getBoundingClientRect().width||280,unit=width/s.cols;
-    const ordered=[...s.pixels].sort((a,b)=>b.y-a.y||a.x-b.x);
+    const rect=s.grid.getBoundingClientRect(),width=rect.width||280,unit=width/s.cols;
+    const clamp=value=>Math.max(-width*.28,Math.min(width*.28,value));
+    const originX=clamp(point&&rect.width?point.clientX-rect.left-width/2:0)+(Math.random()-.5)*width*.1;
+    const originY=clamp(point&&rect.width?point.clientY-rect.top-unit*s.rows/2:0)+(Math.random()-.5)*width*.1;
+    const swirl=(Math.random()-.5)*.3,sweep=Math.random()*Math.PI*2;
+    const sweepX=Math.cos(sweep),sweepY=Math.sin(sweep),power=.9+Math.random()*.3;
+    const ordered=[...s.pixels].sort(scatter?(a,b)=>(a.x-b.x)*sweepX+(a.y-b.y)*sweepY:(a,b)=>b.y-a.y||a.x-b.x);
     ordered.forEach(({element,x,y},index)=>{
-      const angle=Math.random()*Math.PI*2,radius=width*(.22+Math.random()*.34);
-      const dx=Math.cos(angle)*radius-(x+.5-s.cols/2)*unit;
-      const dy=Math.sin(angle)*radius-(y+.5-s.rows/2)*unit;
-      const loose=`translate(${dx}px,${dy}px) rotate(${Math.random()*160-80}deg) scale(.72)`;
+      const homeX=(x+.5-s.cols/2)*unit,homeY=(y+.5-s.rows/2)*unit;
+      const angle=scatter?Math.atan2(homeY-originY,homeX-originX)+swirl+(Math.random()-.5)*.5:Math.random()*Math.PI*2;
+      const radius=width*(scatter?(.32+Math.random()*.45)*power:.22+Math.random()*.34);
+      // Add an outward displacement to each pixel's own position rather than
+      // pulling it toward a shared ring inside the artwork.
+      const dx=Math.cos(angle)*radius-(scatter?0:homeX);
+      const dy=Math.sin(angle)*radius-(scatter?0:homeY);
+      const loose=`translate(${dx}px,${dy}px) rotate(${Math.random()*280-140}deg) scale(.86)`;
       const rank=index/Math.max(1,ordered.length-1);
       let frames,options;
       if(scatter) {
         // Separate the break, pause, and staggered return so each landing is readable.
-        const scatterEnd=620,returnStart=1050+rank*2100,total=returnStart+720;
+        const scatterEnd=500+Math.random()*160,returnStart=1050+rank*2100,total=returnStart+720;
         frames=[
           {transform:'translate(0,0) rotate(0) scale(1)',opacity:1,offset:0,easing:'cubic-bezier(.16,1,.3,1)'},
           {transform:loose,opacity:.6,offset:scatterEnd/total,easing:'linear'},
@@ -72,7 +81,7 @@
       if(x<6&&y<4)element.classList.add('heart-pixel-highlight');
       s.grid.append(element);s.pixels.push({element,x,y});
     }));
-    s.play.addEventListener('click',()=>assemble(s,true));
+    s.play.addEventListener('click',event=>assemble(s,true,event.detail>0?event:null));
     stage.querySelector('[data-heart-replay]')?.addEventListener('click',()=>{cancel(s);assemble(s);});
     s.play.addEventListener('pointermove',event=>{
       if(s.background||s.busy||motion.matches||event.pointerType==='touch')return;
@@ -122,6 +131,6 @@
   document.addEventListener('portfolio:welcomecomplete',mount);
   document.addEventListener('visibilitychange',mount);
   motion.addEventListener('change',()=>{states.forEach(s=>{cancel(s);s.active=false;});mount();});
-  window.portfolioPixelArt={refresh:mount,play:stage=>{const s=states.get(stage);if(s?.active)assemble(s,true);}};
+  window.portfolioPixelArt={refresh:mount,play:(stage,point=null)=>{const s=states.get(stage);if(s?.active)assemble(s,true,point);}};
   mount();
 })();

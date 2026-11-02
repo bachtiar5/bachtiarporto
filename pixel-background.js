@@ -52,7 +52,7 @@
   document.addEventListener('click',event=>{
     if(event.defaultPrevented||event.button!==0||!emptySpace(event.target))return;
     const stage=hit(event.clientX,event.clientY);
-    if(stage)window.portfolioPixelArt.play(stage);
+    if(stage)window.portfolioPixelArt.play(stage,event);
   });
   document.addEventListener('pointermove',event=>{
     if(event.pointerType==='touch')return;

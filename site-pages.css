@@ -616,3 +616,6 @@ html:not([data-pages-ready])[data-start-page=hall-of-fame] #home-page { display:
  .floating-drift { animation:none; transform:rotate(var(--float-angle)); }
  .floating-pixel { transition:none; }
 }
+/* Let fragments leave the artwork instead of clipping the burst inside its button. */
+.pixel-heart-play { overflow:visible; }
+body { overflow-x:clip; }
