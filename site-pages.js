@@ -52,7 +52,7 @@
       "note": "Setelah beberapa percobaan itu, aku sempat berhenti bikin game. Aku baru kembali menjelang akhir 2024."
     },
     "en": {
-      "title": "Self-taught learning & AIH Studio",
+      "title": "Learning independently & AIH Studio",
       "intro": "Learning from YouTube and starting AIH Studio.",
       "body": "In 2023, I began learning Roblox Studio on my own through YouTube tutorials. I tried making obbies, Backrooms, simple horror games, and war and combat games. Most were unfinished or unpublished, and none earned any money. That same year I founded AIH Studio, so alongside learning to make games I also started building a Roblox community.",
       "note": "After these experiments, I took a break from making games. I returned in late 2024."
@@ -178,9 +178,9 @@
     const item=chapters[chapter],copy=item[language],detail=$('#journey-detail');cleanup(detail);
     const related=(item.projectIds||[]).map(id=>window.publishedProjects.projects.find(game=>game.placeId===id)).filter(Boolean);
     const locale=language==='id'?'id-ID':'en-US';
-    const studioNote=item.studio? 'AIH Studio: '+new Intl.NumberFormat(locale).format(window.studioProfile.memberCount)+(language==='id'?' anggota · Data Roblox ':' members · Roblox data ')+date(window.studioProfile.capturedAt):'';
+    const studioNote=item.studio? (language==='id'?'AIH Studio punya ':'AIH Studio has ')+new Intl.NumberFormat(locale).format(window.studioProfile.memberCount)+(language==='id'?' anggota · Data Roblox ':' members · Roblox data ')+date(window.studioProfile.capturedAt):'';
     const breakthrough=item.year==='2026'?related.find(game=>game.placeId==='110354587993091'):null;
-    const visitNote=breakthrough?'Mie Ayam Sidoarjo: '+new Intl.NumberFormat(locale).format(breakthrough.visits)+(language==='id'?' kunjungan · Data Roblox ':' visits · Roblox data ')+date(window.publishedProjects.capturedAt):'';
+    const visitNote=breakthrough?(language==='id'?'Mie Ayam Sidoarjo sudah mencapai ':'Mie Ayam Sidoarjo has reached ')+new Intl.NumberFormat(locale).format(breakthrough.visits)+(language==='id'?' kunjungan · Data Roblox ':' visits · Roblox data ')+date(window.publishedProjects.capturedAt):'';
     const projectLinks=related.map(game=>`<a class="text-link" href="${esc(game.url)}" target="_blank" rel="noopener noreferrer"><span>${esc(game.name)}</span><span aria-hidden="true">↗</span></a>`).join('');
     detail.setAttribute('aria-labelledby',`journey-tab-${chapter}`);
     detail.innerHTML=`<div class="journey-year-art${related.length?' has-projects':item.studio?' has-studio':''}"><span>${item.year}</span>${related.length?journeyMedia(related,t):item.studio?`<svg class="journey-studio-mark" viewBox="39 318 1196 626" role="img" aria-label="AIH Studio"><image href="${esc(item.icon)}" width="1280" height="1280"/></svg>`:`<img src="${esc(item.icon)}" width="90" height="90" alt="">`}</div><div class="journey-story"><p class="eyebrow">${esc(t.chapter)} ${String(chapter+1).padStart(2,'0')} / ${String(chapters.length).padStart(2,'0')}</p><h2>${esc(copy.intro)}</h2><p>${esc(copy.body)}</p>${visitNote?`<p class="journey-note">${esc(visitNote)}</p>`:''}<p class="journey-note">${esc(copy.note)}</p>${copy.highlight?`<p><strong>${esc(copy.highlight)}</strong><br>${esc(copy.highlightBody)}</p>`:''}${studioNote?`<p class="journey-note">${esc(studioNote)}</p>`:''}${projectLinks}${item.studio?`<a class="text-link" href="https://www.roblox.com/share/g/35569543" target="_blank" rel="noopener noreferrer"><span>AIH Studio</span><span aria-hidden="true">↗</span></a>`:''}${item.projects?`<a class="text-link" href="#/projects"><span>${esc(t.seeProjects)}</span><span aria-hidden="true">↗</span></a>`:''}</div>`;
@@ -218,7 +218,7 @@
     $('.release-filters').setAttribute('aria-label',texts().filterLabel);
     $('#journey-flow').setAttribute('aria-label',texts().yearLabel);
     renderInternships();renderGames();renderJourney();
-    if(page!=='home')document.title=`${texts()[page]} — Bachtiar Aditya`;
+    if(page!=='home')document.title=`${texts()[page]} · Bachtiar Aditya`;
   }
   const pageForHash=hash=>hash==='#/projects'?'projects':hash==='#/career'?'career':hash==='#/hall-of-fame'?'hall-of-fame':'home';
   function paintPage(hash,focus=true) {
@@ -226,7 +226,7 @@
     page=pageForHash(hash);document.body.dataset.page=page;
     document.documentElement.dataset.pagesReady='true';
     ['home','projects','career','hall-of-fame'].forEach(name=>{$('#'+name+'-page').hidden=name!==page;});
-    document.title=page==='home'?'Bachtiar Aditya — Roblox Developer':`${texts()[page]} — Bachtiar Aditya`;
+    document.title=page==='home'?'Bachtiar Aditya, Roblox Developer':`${texts()[page]} · Bachtiar Aditya`;
     $$('.nav-link').forEach(link=>{
       const active=page==='home'?link.getAttribute('href')==='#home':link.getAttribute('href')===`#/${page}`;
       link.classList.toggle('is-active',active);if(active)link.setAttribute('aria-current','page');else link.removeAttribute('aria-current');

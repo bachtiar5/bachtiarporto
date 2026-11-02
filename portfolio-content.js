@@ -105,7 +105,7 @@ window.portfolioData = {
         "en": "NPC Manager"
       },
       "description": {
-        "id": "Sistem NPC dengan modul, print-tracking, dan error logging buat bantu debugging.",
+        "id": "Sistem NPC berbasis modul dengan pencatatan aktivitas dan error buat bantu mencari bug.",
         "en": "Modular systems with print tracking and error logging for debugging."
       },
       "images": [

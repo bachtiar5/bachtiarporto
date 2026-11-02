@@ -48,7 +48,7 @@
     skillsHeading:'Skills I use.',skillWorld:'Maps, terrain, and environments with a focus on atmosphere and the player experience.',
     skillCode:'Developing game mechanics, modular systems, and debugging while continuing to learn Lua / Luau.',
     skillUI:'Learning to design clear interfaces that feel at home in a Roblox game.',
-    hallLink:'See all the thank-you notes',
+    hallLink:'See everyone I want to thank',
     momentsIndex:'03 / HALL OF FAME',momentsHeading:'They stopped by<br>my worlds.',
     momentsDesc:'Moments when creators played my maps. Thank you for being part of the story.',
     contactIndex:'04 / START A CONVERSATION',contactHeading:'Have an idea?<br>Let’s <span>build it.</span>',
@@ -76,7 +76,7 @@
         <div class="project-image-wrap"><img class="project-image" src="${escape(project.images[0])}" alt="${escape(localText(project.title))}" loading="lazy" decoding="async"><span class="image-count">${photoLabel(project.images.length)}</span><span class="card-open-icon" aria-hidden="true">↗</span></div>
         <div class="card-meta"><span>${categories[project.category]}</span><span>0${index+1}</span></div><h3>${escape(localText(project.title))}</h3>
       </button><p class="project-description">${escape(localText(project.description))}</p></article>`).join('');
-    $('#moments-grid').innerHTML = data.moments.slice(0,3).map(moment => `<button type="button" class="moment-button" data-gallery="${moment.id}" aria-label="${language==='id'?'Lihat momen':'View moment'}: ${escape(localText(moment.title))}"><div class="moment-image-wrap"><img src="${escape(moment.images[0])}" alt="${escape(localText(moment.title))} — Roblox" loading="lazy" decoding="async"></div><span class="moment-caption"><span>${escape(localText(moment.title))}</span><span aria-hidden="true">↗</span></span></button>`).join('');
+    $('#moments-grid').innerHTML = data.moments.slice(0,3).map(moment => `<button type="button" class="moment-button" data-gallery="${moment.id}" aria-label="${language==='id'?'Lihat momen':'View moment'}: ${escape(localText(moment.title))}"><div class="moment-image-wrap"><img src="${escape(moment.images[0])}" alt="${escape(localText(moment.title))}, Roblox" loading="lazy" decoding="async"></div><span class="moment-caption"><span>${escape(localText(moment.title))}</span><span aria-hidden="true">↗</span></span></button>`).join('');
     applyFilter();
     watchReveals();
     enhanceControls();
@@ -191,7 +191,7 @@
     $('#image-error').hidden = true;
     stage.classList.add('is-loading');stage.setAttribute('aria-busy','true');
     const source=active.images[imageIndex];
-    const alt=`${localText(active.title)} — ${imageIndex+1} / ${active.images.length}`;
+    const alt=`${localText(active.title)}, ${imageIndex+1} / ${active.images.length}`;
     const loader=new Image();
     loader.onload=()=>{
       if(version!==imageVersion||!active)return;
@@ -241,7 +241,7 @@
   $('#discord-button').addEventListener('click',async()=>{
     clearTimeout(copyTimer);
     try {await navigator.clipboard.writeText('bachadit');$('#copy-status').textContent=language==='id'?'Username tersalin. Sampai jumpa di Discord!':'Username copied. See you on Discord!';}
-    catch {$('#copy-status').textContent=language==='id'?'Salin manual username: bachadit':'Copy this username: bachadit';}
+    catch {$('#copy-status').textContent=language==='id'?'Kamu bisa salin username bachadit secara manual.':'You can copy the username bachadit manually.';}
     copyTimer=setTimeout(()=>{$('#copy-status').textContent='';},6000);
   });
   $$('[data-year]').forEach(el => el.textContent = new Date().getFullYear());
@@ -369,7 +369,7 @@
     if(Number.isSafeInteger(studio?.memberCount)&&studio.memberCount>=0)setNumber('#studio-member-count',studio.memberCount);
     if(games&&studio?.capturedAt) {
       const captured=new Intl.DateTimeFormat(locale,{day:'numeric',month:'short',year:'numeric',timeZone:'Asia/Bangkok'}).format(new Date(studio.capturedAt));
-      $('#summary-data-note').textContent=language==='id'?`Kunjungan dijumlahkan dari ${games.length} game di halaman Proyek. Anggota AIH Studio: data Roblox ${captured}.`:`Visits summed from the ${games.length} games on the Projects page. AIH Studio members: Roblox data from ${captured}.`;
+      $('#summary-data-note').textContent=language==='id'?`Kunjungan dijumlahkan dari ${games.length} game di halaman Proyek. Jumlah anggota AIH Studio mengikuti data Roblox pada ${captured}.`:`Visits summed from the ${games.length} games on the Projects page. AIH Studio membership is based on Roblox data from ${captured}.`;
     }
   }
   let identity='mascot';
