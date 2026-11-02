@@ -59,7 +59,7 @@
   const indonesian = Object.fromEntries($$('[data-i18n]').map(el => [el.dataset.i18n, el.innerHTML]));
   const dictionary = {id:indonesian,en:english};
   const urlLang = new URLSearchParams(location.search).get('lang');
-  let language = [urlLang, store.get('preferred-language')].find(value => ['id','en'].includes(value)) || 'id';
+  let language = [urlLang, store.get('preferred-language')].find(value => ['id','en'].includes(value)) || 'en';
   let filter = 'all';
   const data = window.portfolioData;
   const collections = [...data.projects, ...data.moments];
