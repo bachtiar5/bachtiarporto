@@ -369,6 +369,9 @@ main,.site-footer { position:relative; z-index:1; }
 .game-role strong { color:var(--text); font-size:16px; line-height:1.6; overflow-wrap:anywhere; }
 .game-contribution-description { margin-top:8px; color:var(--muted); font-size:14px; line-height:1.75; }
 
+/* Headings receive focus after navigation for screen readers without a decorative outline. */
+.site-page h1[tabindex="-1"]:focus,.site-page h2[tabindex="-1"]:focus { outline:none; }
+
 /* The preview uses the same curtain, content, and rule as page navigation. */
 .world-frame .preview-curtain { background:var(--accent); border:0; transform:translateY(100%); }
 .preview-transition-content { position:absolute; inset:0; z-index:4; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:22px; color:var(--on-accent); opacity:0; pointer-events:none; }
