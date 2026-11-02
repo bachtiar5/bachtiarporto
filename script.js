@@ -1,3 +1,5 @@
+/* Visual design credit: Bachtair Adit. Rights and exclusions: COPYRIGHT.md.
+   Design origin: design-origin-bachtair-adit-bachtiarporto-2026 */
 /* Data stays separate so every original collection can grow without layout changes. */
 (() => {
   'use strict';
@@ -25,6 +27,7 @@
     set(key, value) { try { localStorage.setItem(key, value); } catch {} }
   };
   const english = {
+    designCredit:'Design by Bachtair Adit.',copyrightNotice:'Usage terms',
     skip:'Skip to content',home:'Home',work:'Work',about:'About',contact:'Contact',letsTalk:'Let’s talk',
     navProjects:'Projects',navCareer:'Career',careerPreviewLabel:'A little of my journey',careerPreviewDesc:'From discovering Roblox Studio to building a studio and returning to collaborate on projects.',careerPreviewLink:'Follow my journey',now:'Now',allReleasedGames:'See the published games',
     studioMembers:'AIH Studio members',skillWriter:'Writing stories, lore, and dialogue for games.',skillDesigner:'Designing game concepts, mechanics, levels, and player progression.',skillVibe:'Coding with help from ChatGPT and Gemini.',

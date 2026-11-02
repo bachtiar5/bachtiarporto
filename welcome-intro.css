@@ -1,3 +1,5 @@
+/* Visual design credit: Bachtair Adit. Rights and exclusions: COPYRIGHT.md.
+   Design origin: design-origin-bachtair-adit-bachtiarporto-2026 */
 .welcome-intro { display:none; position:fixed; inset:0; z-index:200; place-items:center; overflow:hidden; background:#101410; color:#f1f2ed; }
 html[data-welcome=pending] .welcome-intro { display:grid; }
 .welcome-intro::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 50% 55%,#d4f78b0e,transparent 55%),linear-gradient(#d4f78b08 1px,transparent 1px),linear-gradient(90deg,#d4f78b08 1px,transparent 1px); background-size:auto,48px 48px,48px 48px; pointer-events:none; }

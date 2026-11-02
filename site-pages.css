@@ -1,3 +1,5 @@
+/* Visual design credit: Bachtair Adit. Rights and exclusions: COPYRIGHT.md.
+   Design origin: design-origin-bachtair-adit-bachtiarporto-2026 */
 /* A shared visual plane for the mascot and the selected work. */
 .hero { --preview-height:clamp(300px,27vw,360px); }
 .hero .hero-mascot { height:calc(var(--preview-height) + 32px); padding-top:32px; align-self:center; display:flex; align-items:center; justify-content:center; }
@@ -619,3 +621,12 @@ html:not([data-pages-ready])[data-start-page=hall-of-fame] #home-page { display:
 /* Let fragments leave the artwork instead of clipping the burst inside its button. */
 .pixel-heart-play { overflow:visible; }
 body { overflow-x:clip; }
+
+/* Portfolio ownership and original design credit. */
+.site-footer { padding-block:24px; gap:24px; }
+.footer-credit { display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:5px 16px; max-width:640px; text-align:center; }
+.footer-credit>p:first-child { flex-basis:100%; }
+.site-footer .footer-credit p,.site-footer .footer-credit>a { font-size:12px; line-height:1.7; color:var(--muted); }
+.site-footer .footer-credit>a { text-decoration:underline; text-underline-offset:3px; }
+.site-footer .footer-credit>a:hover { color:var(--accent); }
+@media(max-width:640px) { .site-footer { flex-wrap:wrap; justify-content:space-between; } .footer-credit { order:3; flex-basis:100%; max-width:none; } }

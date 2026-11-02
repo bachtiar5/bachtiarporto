@@ -1,3 +1,5 @@
+/* Visual design credit: Bachtair Adit. Rights and exclusions: COPYRIGHT.md.
+   Design origin: design-origin-bachtair-adit-bachtiarporto-2026 */
 /* Bachtiar — a quieter frame for worlds worth exploring. */
 :root{color-scheme:dark;--bg:#101110;--surface:#171917;--surface-2:#1d201c;--text:#f1f2ed;--muted:#a1a59b;--line:#30332c;--accent:#d4f78b;--on-accent:#17200d;--header:rgba(16,17,16,.94);--heading:'Manrope',sans-serif;--body:'DM Sans',sans-serif}
 :root[data-theme=light]{color-scheme:light;--bg:#f7f8f2;--surface:#eeefe8;--surface-2:#e4e7dc;--text:#1b2117;--muted:#5e6757;--line:#d0d6c6;--accent:#426215;--on-accent:#fff;--header:rgba(247,248,242,.95)}

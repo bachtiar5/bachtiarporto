@@ -1,3 +1,5 @@
+/* Visual design credit: Bachtair Adit. Rights and exclusions: COPYRIGHT.md.
+   Design origin: design-origin-bachtair-adit-bachtiarporto-2026 */
 (() => {
   'use strict';
   const easing='cubic-bezier(.65,0,.35,1)';
