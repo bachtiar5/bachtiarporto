@@ -38,7 +38,9 @@ jobs:
         with:
           node-version: '22'
       - name: Refresh Roblox statistics
-        run: node scripts/sync-roblox.mjs
+        run: |
+          node scripts/sync-roblox.mjs
+          node scripts/sync-developers.mjs
       - name: Update galleries from image folders
         run: node scripts/sync-gallery.mjs
       - name: Setup Pages

@@ -442,3 +442,34 @@ html:not([data-pages-ready])[data-start-page=hall-of-fame] #home-page { display:
  .thanks-empty { padding:22px; }
  .thanks-closing { margin-top:38px; padding:38px 10px; }
 }
+/* Roblox developer profiles and two unassigned places. */
+.developer-profile-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:24px; align-items:stretch; }
+.developer-roblox-card { display:flex; flex-direction:column; min-width:0; border:1px solid var(--line); border-radius:20px; background:var(--bg); overflow:hidden; }
+.developer-profile-heading { display:flex; align-items:center; gap:10px; padding:24px 23px 0; color:var(--muted); font-size:13px; }
+.developer-profile-heading img { width:22px; height:22px; filter:invert(72%) sepia(60%) saturate(600%) hue-rotate(165deg); }
+.developer-avatar-stage { display:grid; place-items:center; height:240px; margin-top:12px; background:radial-gradient(ellipse,#3b5f7926,transparent 68%); }
+.developer-avatar-stage img { width:100%; height:100%; object-fit:contain; }
+.developer-profile-body { display:flex; flex-direction:column; padding:10px 23px 20px; flex:1; }
+.developer-profile-body h3 { display:flex; align-items:center; gap:7px; font-size:25px; line-height:1.4; letter-spacing:-.7px; overflow-wrap:anywhere; }
+.developer-verified { width:21px; height:21px; flex-shrink:0; }
+.developer-handle { color:var(--muted); font-size:14px; margin-top:4px; overflow-wrap:anywhere; }
+.developer-bio { color:var(--muted); font-size:13px; line-height:1.8; white-space:pre-line; overflow-wrap:anywhere; margin-top:17px; }
+.developer-profile-counts { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; padding-block:22px; margin:0; }
+.developer-profile-counts>div { display:flex; flex-direction:column; gap:8px; min-width:0; }
+.developer-profile-counts dt { order:2; font-size:12px; color:var(--muted); overflow-wrap:anywhere; }
+.developer-profile-counts dd { order:1; margin:0; font-family:var(--heading); font-size:23px; line-height:1.4; font-weight:650; overflow-wrap:anywhere; }
+.developer-profile-link { display:flex; align-items:center; justify-content:space-between; gap:10px; font-size:14px; font-weight:600; padding-top:18px; border-top:1px solid var(--line); }
+.developer-profile-link:hover { color:var(--accent); }
+.developer-data-date { color:var(--muted); font-size:11px; text-align:center; margin-top:18px; line-height:1.7; }
+.developer-thanks { padding:23px; border-top:1px solid var(--line); background:var(--surface); }
+.developer-thanks-name { font-family:var(--heading); font-size:17px; font-weight:650; line-height:1.6; }
+.developer-thanks>p:nth-child(2) { margin-top:9px; color:var(--muted); font-size:14px; line-height:1.85; }
+.developer-thanks .text-link { width:fit-content; margin-top:16px; color:var(--accent); font-size:14px; }
+.developer-placeholder { display:grid; place-items:center; min-height:450px; background:radial-gradient(ellipse at 50% 40%,color-mix(in srgb,var(--accent) 5%,var(--bg)),var(--bg) 70%); border-style:dashed; }
+.developer-placeholder>span { font-family:var(--heading); color:var(--muted); font-size:110px; font-weight:500; line-height:1; opacity:.6; }
+@media(max-width:1050px) { .developer-profile-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media(max-width:640px) {
+ .developer-profile-grid { grid-template-columns:1fr; gap:20px; }
+ .developer-avatar-stage { height:250px; }
+ .developer-placeholder { min-height:360px; }
+}
