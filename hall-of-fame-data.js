@@ -12,5 +12,12 @@ window.hallOfFameData = {
     url: 'https://www.roblox.com/users/321717747/profile',
     community: { name: 'The Bopes', url: 'https://www.roblox.com/communities/35324876/The-Bopes#!/about' }
   }],
-  supporters: []
+  supporters: [
+    { name: 'Allamy' }, { name: 'Wono' }, { name: 'Kiki' },
+    { name: 'Oce' }, { name: 'Fariz' }, { name: 'Rio' },
+    { name: 'Dafa' }, { name: 'Andy Lukito' }, { name: 'Suga' },
+    { name: 'Rangga' }, { name: 'Aqil' }, { name: 'Adam' },
+    { name: 'Haykal' }, { name: 'Dametrius Abagnale' }, { name: 'Rifki' },
+    { name: 'Koto' }, { name: 'Kecap Bango' }, { name: 'Yowroo' }
+  ]
 };
