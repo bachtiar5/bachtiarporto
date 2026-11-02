@@ -18,7 +18,7 @@
       for(let i=slots.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[slots[i],slots[j]]=[slots[j],slots[i]];}
       layer.innerHTML=positions.map(([x,y,size],index)=>{
         const shape=type||['hammer','heart','journey','heart','hammer','journey'][index];
-        const direction=(index%2===0)!==reverseFirst?1:-1,duration=random(58,115),phase=Math.random();
+        const direction=(index%2===0)!==reverseFirst?1:-1,duration=random(28,52),phase=Math.random();
         // Keep initial angles apart even with independent negative animation phases.
         const angle=orientation+slots[index]*60+random(-12,12)-direction*phase*360;
         const [mx,my]=mobilePositions[index]||[x,y];
