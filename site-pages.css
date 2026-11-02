@@ -592,17 +592,17 @@ html:not([data-pages-ready])[data-start-page=hall-of-fame] #home-page { display:
 }
 /* Faint, interactive miniatures beneath the content. */
 .floating-pixels { position:fixed; inset:0; z-index:0; pointer-events:none; overflow:hidden; }
-.floating-pixel { position:absolute; left:var(--float-x); top:var(--float-y); width:var(--float-size); height:var(--float-size); margin:calc(var(--float-size)/-2); opacity:.18; transition:opacity .35s ease; pointer-events:none; }
+.floating-pixel { position:absolute; left:var(--float-x); top:var(--float-y); width:var(--float-size); height:var(--float-size); margin:calc(var(--float-size)/-2); opacity:.065; transition:opacity .35s ease; pointer-events:none; }
 .floating-drift { width:100%; height:100%; animation:pixel-zero-gravity var(--float-duration) linear infinite; animation-delay:var(--float-delay); }
 .floating-pixels .pixel-heart-play { width:100%; height:100%; aspect-ratio:1; border-radius:7px; overflow:visible; pointer-events:none; }
 .floating-pixels .pixel-heart-play::before { display:none; }
 .floating-pixels .pixel-heart-grid { width:90%; }
 .floating-pixels .floating-pixel .heart-pixel { width:calc(100%/var(--pixel-cols,15) + .6px); height:calc(100%/var(--pixel-rows,12) + .6px); background:var(--accent); box-shadow:none; }
-.floating-pixel.is-near,.floating-pixel:focus-within { opacity:.32; }
-.floating-pixel.is-breaking { opacity:.28; }
+.floating-pixel.is-near,.floating-pixel:focus-within { opacity:.15; }
+.floating-pixel.is-breaking { opacity:.13; }
 .floating-pixel.is-breaking .floating-drift,.floating-pixels.is-suspended .floating-drift { animation-play-state:paused; }
-[data-theme=light] .floating-pixel { opacity:.16; }
-[data-theme=light] .floating-pixel.is-near,[data-theme=light] .floating-pixel:focus-within,[data-theme=light] .floating-pixel.is-breaking { opacity:.27; }
+[data-theme=light] .floating-pixel { opacity:.055; }
+[data-theme=light] .floating-pixel.is-near,[data-theme=light] .floating-pixel:focus-within,[data-theme=light] .floating-pixel.is-breaking { opacity:.12; }
 @keyframes pixel-zero-gravity {
   0% { transform:translate(0,0) rotate(var(--float-angle)); }
   25% { transform:translate(var(--drift-x1),var(--drift-y1)) rotate(calc(var(--float-angle) + var(--float-turn) * .25)); }
@@ -611,8 +611,8 @@ html:not([data-pages-ready])[data-start-page=hall-of-fame] #home-page { display:
   100% { transform:translate(0,0) rotate(calc(var(--float-angle) + var(--float-turn))); }
 }
 @media(max-width:640px) {
- .floating-pixel { left:var(--float-mobile-x); top:var(--float-mobile-y); width:88px; height:88px; margin:-44px; opacity:.14; }
- .floating-pixel[data-float-index="4"],.floating-pixel[data-float-index="5"] { display:none; }
+ .floating-pixel { left:var(--float-mobile-x); top:var(--float-mobile-y); width:70px; height:70px; margin:-35px; opacity:.055; }
+ .floating-pixel[data-float-index="2"],.floating-pixel[data-float-index="3"] { display:none; }
 }
 @media(prefers-reduced-motion:reduce) {
  .floating-drift { animation:none; transform:rotate(var(--float-angle)); }
@@ -702,6 +702,15 @@ body { overflow-x:clip; }
 .ongoing-details .game-metrics dt { font-size:11px; }
 .ongoing-details .game-metrics dd { font-size:20px; overflow-wrap:anywhere; }
 .ongoing-stats-note { font-size:11px; line-height:1.7; margin-top:14px; }
+.ongoing-unreleased-note { margin-top:auto; padding-top:14px; border-top:1px solid var(--line); color:var(--muted); font-size:14px; line-height:1.75; }
+.developer-roblox-card .developer-thanks { margin-top:20px; border-top:0; border-bottom:1px solid var(--line); }
+.developer-roblox-card .developer-thanks-name { color:var(--accent); font-size:21px; }
+.developer-roblox-card .developer-thanks>p:nth-child(2) { color:var(--text); font-size:16px; }
+.developer-profile-details { margin-block:18px; }
+.developer-profile-details summary { width:fit-content; cursor:pointer; font-size:14px; color:var(--muted); }
+.developer-profile-details summary:hover,.developer-profile-details[open] summary { color:var(--accent); }
+.developer-avatar-stage img { height:240px; min-height:0; max-height:100%; }
+.floating-pixels .floating-pixel.is-obscured { opacity:0; }
 .ongoing-thumbnails { margin:10px 12px 0; gap:8px; min-height:50px; }
 .ongoing-thumbnails>button { width:68px; height:44px; }
 .ongoing-thumbnails img { width:100%; height:100%; object-fit:cover; }

@@ -18,7 +18,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700&family=Manrope:wght@400;500;600;650;700;750;800&display=swap" rel="stylesheet">
-  <script>try { document.documentElement.dataset.theme = localStorage.getItem('bachtiar-theme') || 'dark'; } catch {} document.documentElement.dataset.startPage = location.hash === '#/projects' ? 'projects' : location.hash === '#/career' ? 'career' : location.hash === '#/hall-of-fame' ? 'hall-of-fame' : 'home';</script>
+  <script>try { document.documentElement.dataset.theme = localStorage.getItem('bachtiar-theme') || 'dark'; } catch {} document.documentElement.dataset.startPage = location.hash.startsWith('#/projects') ? 'projects' : location.hash === '#/career' ? 'career' : location.hash === '#/hall-of-fame' ? 'hall-of-fame' : 'home';</script>
   <script>try { if (!sessionStorage.getItem('bachtiar-welcome-seen') && !matchMedia('(prefers-reduced-motion: reduce)').matches) { document.documentElement.dataset.welcome='pending'; setTimeout(function(){delete document.documentElement.dataset.welcome;},3000); } } catch {}</script>
   <link rel="stylesheet" href="welcome-intro.css?v=20261102-shared-motion">
   <link rel="stylesheet" href="styles.css?v=20261102-heading-focus-v2">
@@ -26,18 +26,18 @@
   <script src="portfolio-data.js?v=gallery-d4d3b546fba33825" defer></script>
   <script src="ongoing-projects.js?v=20261102-compact-current" defer></script>
   <script src="profile-data.js?v=20261102-peak-skills-v2" defer></script>
-  <link rel="stylesheet" href="site-pages.css?v=20261102-tight-current-cards">
+  <link rel="stylesheet" href="site-pages.css?v=20261102-approved-polish">
   <script src="published-projects.js?v=20261102-project-roles" defer></script>
   <script src="studio-data.js?v=20261102-peak-skills-v2" defer></script>
   <script src="script.js?v=20261102-compact-current" defer></script>
   <script src="internship-data.js?v=20261102-internships" defer></script>
   <script src="hall-of-fame-data.js?v=20261102-supporter-names" defer></script>
-  <script src="site-pages.js?v=20261102-progress" defer></script>
+  <script src="site-pages.js?v=20261102-approved-polish" defer></script>
   <script src="developer-profiles.js?v=20261102-developer-cards" defer></script>
-  <script src="hall-of-fame.js?v=20261102-supporter-names" defer></script>
-  <script src="current-projects.js?v=20261102-compact-current" defer></script>
+  <script src="hall-of-fame.js?v=20261102-approved-polish" defer></script>
+  <script src="current-projects.js?v=20261102-approved-polish" defer></script>
   <script src="pixel-art.js?v=20261102-outward-burst" defer></script>
-  <script src="pixel-background.js?v=20261102-outward-burst" defer></script>
+  <script src="pixel-background.js?v=20261102-approved-polish" defer></script>
   <script src="baseplate.js?v=20261102-peak-skills-v2" defer></script>
   <script src="hero-preview.js?v=20261102-shared-motion" defer></script>
   <script src="welcome-intro.js?v=20261102-heart" defer></script>

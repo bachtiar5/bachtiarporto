@@ -4,10 +4,22 @@
   'use strict';
   const layer=document.createElement('div');layer.className='floating-pixels';layer.setAttribute('role','group');
   document.body.append(layer);
-  const positions=[[9,24,126],[90,49,116],[23,82,130],[77,84,122],[52,19,108],[43,54,112]];
-  const mobilePositions=[[13,23],[86,42],[16,76],[80,85]];
+  const positions=[[3,27,92],[97,70,88],[4,88,86],[96,18,90]];
+  const mobilePositions=[[3,28],[97,80]];
   const random=(min,max)=>min+Math.random()*(max-min);
-  let currentPage='',pointerFrame=0;
+  let currentPage='',pointerFrame=0,protectionFrame=0;
+  function protectContent() {
+    cancelAnimationFrame(protectionFrame);
+    protectionFrame=requestAnimationFrame(()=>{
+      protectionFrame=0;
+      const boxes=[...document.querySelectorAll('main h1,main h2,main h3,main h4,main p,main .section-description,main .ongoing-card,main .ongoing-home-card,main .thanks-card,main .developer-roblox-card,main .project-card,main .hero-world,main .mascot-float')]
+        .map(element=>element.getBoundingClientRect()).filter(rect=>rect.width&&rect.height&&rect.bottom>0&&rect.top<innerHeight);
+      layer.querySelectorAll('.floating-pixel').forEach(stage=>{
+        const rect=stage.querySelector('button').getBoundingClientRect();
+        stage.classList.toggle('is-obscured',boxes.some(box=>rect.right+16>box.left&&rect.left-16<box.right&&rect.bottom+16>box.top&&rect.top-16<box.bottom));
+      });
+    });
+  }
   function sync() {
     const page=document.body.dataset.page||'home',en=document.documentElement.lang==='en';
     layer.setAttribute('aria-label',en?'Playful background pixels':'Ikon piksel di latar belakang');
@@ -25,19 +37,20 @@
         const angle=orientation+slots[index]*60+random(-12,12)-direction*phase*360;
         const [mx,my]=mobilePositions[index]||[x,y];
         const vars={
-          '--float-x':`${x+random(-3,3)}%`,'--float-y':`${y+random(-3,3)}%`,
-          '--float-mobile-x':`${mx+random(-2,2)}%`,'--float-mobile-y':`${my+random(-2,2)}%`,
+          '--float-x':`${x}%`,'--float-y':`${y}%`,
+          '--float-mobile-x':`${mx}%`,'--float-mobile-y':`${my}%`,
           '--float-size':`${size+random(-7,7)}px`,'--float-angle':`${angle}deg`,
           '--float-duration':`${duration}s`,'--float-delay':`${-phase*duration}s`,'--float-turn':`${direction*360}deg`,
-          '--drift-x1':`${random(-40,40)}px`,'--drift-y1':`${random(12,34)}px`,
-          '--drift-x2':`${random(14,40)}px`,'--drift-y2':`${random(-34,-12)}px`,
-          '--drift-x3':`${random(-36,-12)}px`,'--drift-y3':`${random(-35,30)}px`
+          '--drift-x1':`${random(-10,10)}px`,'--drift-y1':`${random(4,12)}px`,
+          '--drift-x2':`${random(4,12)}px`,'--drift-y2':`${random(-12,-4)}px`,
+          '--drift-x3':`${random(-12,-4)}px`,'--drift-y3':`${random(-10,10)}px`
         };
         const style=Object.entries(vars).map(([key,value])=>`${key}:${value}`).join(';');
         return `<div class="floating-pixel" data-pixel-art="${shape}" data-pixel-background data-pixel-page="${page}" data-float-index="${index}" style="${style}"><div class="floating-drift"><button class="pixel-heart-play" type="button"><span class="pixel-heart-grid" aria-hidden="true"></span></button></div></div>`;
       }).join('');
     }
     window.portfolioPixelArt.refresh();
+    protectContent();
   }
   // Background art stays underneath the page. Only empty-space clicks reach it,
   // so it never captures a link, selection, or text that is in front of it.
@@ -46,7 +59,7 @@
   }
   function hit(x,y) {
     return [...layer.querySelectorAll('.floating-pixel')].find(stage=>{
-      if(innerWidth<=640&&Number(stage.dataset.floatIndex)>=4)return false;
+      if(stage.classList.contains('is-obscured')||(innerWidth<=640&&Number(stage.dataset.floatIndex)>=2))return false;
       const rect=stage.querySelector('button').getBoundingClientRect();
       return x>=rect.left&&x<=rect.right&&y>=rect.top&&y<=rect.bottom;
     });
@@ -76,5 +89,6 @@
     cancelAnimationFrame(pointerFrame);pointerFrame=0;sync();
   });
   addEventListener('resize',sync);
+  addEventListener('scroll',protectContent,{passive:true});
   sync();
 })();

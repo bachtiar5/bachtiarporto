@@ -222,7 +222,17 @@
     renderInternships();renderGames();renderJourney();
     if(page!=='home')document.title=`${texts()[page]} · Bachtiar Aditya`;
   }
-  const pageForHash=hash=>hash==='#/projects'?'projects':hash==='#/career'?'career':hash==='#/hall-of-fame'?'hall-of-fame':'home';
+  const projectIdForHash=hash=>hash.match(/^#\/projects\/(ongoing-[a-z0-9-]+)$/)?.[1];
+  let pendingCurrentProject=null;
+  document.addEventListener('portfolio:content',()=>{
+    if(!pendingCurrentProject||page!=='projects')return;
+    const card=$(`[data-current-project="${pendingCurrentProject}"]`);if(!card)return;
+    pendingCurrentProject=null;
+    const top=scrollY+card.getBoundingClientRect().top-$('.site-header').getBoundingClientRect().height-20;
+    scrollTo({top:Math.max(0,top),behavior:'instant'});
+    const heading=card.querySelector('h3');heading.setAttribute('tabindex','-1');heading.focus({preventScroll:true});
+  });
+  const pageForHash=hash=>hash==='#/projects'||projectIdForHash(hash)?'projects':hash==='#/career'?'career':hash==='#/hall-of-fame'?'hall-of-fame':'home';
   function paintPage(hash,focus=true) {
     $('dialog[open]')?.close();
     page=pageForHash(hash);document.body.dataset.page=page;
@@ -243,6 +253,7 @@
       const heading=page==='home'?target.querySelector('h1,h2'):target.querySelector('h1');
       if(heading){heading.setAttribute('tabindex','-1');heading.focus({preventScroll:true});}
     }
+    pendingCurrentProject=page==='projects'?projectIdForHash(hash):null;
     $('#page-announcer').textContent=texts()[page];emitContent();
   }
   async function navigate(hash,push=true) {
@@ -265,7 +276,7 @@
     const hash=anchor.getAttribute('href');if(hash.length<2)return;
     if(pageForHash(hash)!==page){event.preventDefault();navigate(hash);}
   });
-  addEventListener('hashchange',()=>{if(pageForHash(location.hash)!==page)navigate(location.hash,false);});
+  addEventListener('hashchange',()=>{if(pageForHash(location.hash)!==page)navigate(location.hash,false);else if(projectIdForHash(location.hash))paintPage(location.hash);});
   document.addEventListener('portfolio:languagechange',translate);
   translate();paintPage(location.hash||'#home',false);
 })();
