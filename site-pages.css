@@ -361,3 +361,10 @@ main,.site-footer { position:relative; z-index:1; }
  .skills-grid>article,.skills-grid>article::after,.skills-grid .skill-icon { transition:none; }
  .skills-grid>article:hover .skill-icon { transform:none; }
 }
+
+/* Project responsibilities. */
+.game-contribution { margin-top:16px; }
+.game-role { display:flex; flex-direction:column; gap:5px; }
+.game-role>span { color:var(--muted); font-size:13px; }
+.game-role strong { color:var(--text); font-size:16px; line-height:1.6; overflow-wrap:anywhere; }
+.game-contribution-description { margin-top:8px; color:var(--muted); font-size:14px; line-height:1.75; }

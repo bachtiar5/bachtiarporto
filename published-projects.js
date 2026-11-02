@@ -1,4 +1,4 @@
-// Public game data from Roblox APIs. Statuses and peak CCU supplied by Bachtiar.
+// Public game data from Roblox APIs. Statuses, roles, contributions, and peak CCU supplied by Bachtiar.
 window.publishedProjects = {
   "capturedAt": "2026-11-01T17:58:52.029Z",
   "source": "https://games.roblox.com/v1/games",
@@ -17,7 +17,15 @@ window.publishedProjects = {
       "thumbnail": "image/games/7775276399.png",
       "url": "https://www.roblox.com/games/134149093878551",
       "peakCcu": 1400,
-      "peakCcuLowerBound": false
+      "peakCcuLowerBound": false,
+      "role": {
+        "id": "Solo Developer",
+        "en": "Solo Developer"
+      },
+      "contribution": {
+        "id": "Mengerjakan seluruh pengembangan game secara mandiri, termasuk build dan environment, programming, game design, cerita, serta aspek pengembangan lainnya.",
+        "en": "Handled the entire game development independently, including building and environments, programming, game design, story, and all other development aspects."
+      }
     },
     {
       "placeId": "105524083023030",
@@ -33,7 +41,15 @@ window.publishedProjects = {
       "thumbnail": "image/games/7962753894.png",
       "url": "https://www.roblox.com/games/105524083023030",
       "peakCcu": 1000,
-      "peakCcuLowerBound": true
+      "peakCcuLowerBound": true,
+      "role": {
+        "id": "Solo Developer",
+        "en": "Solo Developer"
+      },
+      "contribution": {
+        "id": "Mengerjakan seluruh pengembangan game secara mandiri, termasuk build dan environment, programming, game design, cerita, serta aspek pengembangan lainnya.",
+        "en": "Handled the entire game development independently, including building and environments, programming, game design, story, and all other development aspects."
+      }
     },
     {
       "placeId": "116205005363789",
@@ -49,7 +65,15 @@ window.publishedProjects = {
       "thumbnail": "image/games/8628992411.png",
       "url": "https://www.roblox.com/games/116205005363789",
       "peakCcu": 600,
-      "peakCcuLowerBound": true
+      "peakCcuLowerBound": true,
+      "role": {
+        "id": "Solo Developer",
+        "en": "Solo Developer"
+      },
+      "contribution": {
+        "id": "Mengerjakan seluruh pengembangan game secara mandiri, termasuk build dan environment, programming, game design, cerita, serta aspek pengembangan lainnya.",
+        "en": "Handled the entire game development independently, including building and environments, programming, game design, story, and all other development aspects."
+      }
     },
     {
       "placeId": "110354587993091",
@@ -65,7 +89,15 @@ window.publishedProjects = {
       "thumbnail": "image/games/9414779573.png",
       "url": "https://www.roblox.com/games/110354587993091",
       "peakCcu": 5000,
-      "peakCcuLowerBound": true
+      "peakCcuLowerBound": true,
+      "role": {
+        "id": "Solo Developer",
+        "en": "Solo Developer"
+      },
+      "contribution": {
+        "id": "Mengerjakan seluruh pengembangan game secara mandiri, termasuk build dan environment, programming, game design, cerita, serta aspek pengembangan lainnya.",
+        "en": "Handled the entire game development independently, including building and environments, programming, game design, story, and all other development aspects."
+      }
     },
     {
       "placeId": "132258445180534",
@@ -81,7 +113,15 @@ window.publishedProjects = {
       "thumbnail": "image/games/10653366688.png",
       "url": "https://www.roblox.com/games/132258445180534",
       "peakCcu": 710,
-      "peakCcuLowerBound": false
+      "peakCcuLowerBound": false,
+      "role": {
+        "id": "Solo Developer",
+        "en": "Solo Developer"
+      },
+      "contribution": {
+        "id": "Mengerjakan seluruh pengembangan game secara mandiri, termasuk build dan environment, programming, game design, cerita, serta aspek pengembangan lainnya.",
+        "en": "Handled the entire game development independently, including building and environments, programming, game design, story, and all other development aspects."
+      }
     },
     {
       "placeId": "70575351571626",
@@ -97,7 +137,15 @@ window.publishedProjects = {
       "thumbnail": "image/games/10634841982.png",
       "url": "https://www.roblox.com/games/70575351571626",
       "peakCcu": 1300,
-      "peakCcuLowerBound": false
+      "peakCcuLowerBound": false,
+      "role": {
+        "id": "Programmer · Game Designer · PIC",
+        "en": "Programmer · Game Designer · PIC"
+      },
+      "contribution": {
+        "id": "Berperan sebagai programmer, game designer, dan penanggung jawab proyek (PIC).",
+        "en": "Worked as the programmer, game designer, and project lead (PIC)."
+      }
     }
   ]
 };
