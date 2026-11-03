@@ -16,7 +16,7 @@ html[data-welcome=pending] .welcome-intro { display:grid; }
 /* Match the accent curtain used by page navigation. */
 .welcome-intro { background:transparent; color:var(--on-accent); }
 .welcome-intro::before { display:none; }
-.welcome-curtain { position:absolute; inset:0; background:var(--accent); transform:translateY(100%); }
+.welcome-curtain { position:absolute; inset:0; background:var(--accent); transform:translateY(0); }
 .welcome-content { opacity:0; gap:22px; }
 .welcome-name { font-size:clamp(38px,6vw,70px); font-weight:650; line-height:1.15; }
 .welcome-name span { color:inherit; }

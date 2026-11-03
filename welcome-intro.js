@@ -4,6 +4,7 @@
   'use strict';
   const intro=document.querySelector('.welcome-intro');
   if(document.documentElement.dataset.welcome!=='pending'){intro.remove();return;}
+  clearTimeout(window.portfolioWelcomeTimeout);
   const reduced=matchMedia('(prefers-reduced-motion: reduce)');
   const en=document.documentElement.lang==='en';
   const skip=intro.querySelector('button');
@@ -44,7 +45,7 @@
   timer=setTimeout(finish,2600);
   (async()=>{
     try {
-      await window.portfolioTransition(parts,'cover');
+      await window.portfolioTransition(parts,'intro');
       if(finished)return;
       await new Promise(resolve=>setTimeout(resolve,450));
       if(finished)return;
