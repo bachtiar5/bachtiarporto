@@ -10,6 +10,11 @@
   const skip=intro.querySelector('button');
   intro.setAttribute('aria-label',en?'Welcome to Bachtiar’s portfolio':'Selamat datang di portofolio Bachtiar');
   skip.textContent=en?'Skip intro':'Lewati intro';
+  const name=intro.querySelector('.welcome-name');
+  name.setAttribute('aria-label','bachtiar.');
+  name.replaceChildren(...[...'bachtiar.'].map(letter=>{const span=document.createElement('span');span.className='welcome-glyph';span.textContent=letter;span.setAttribute('aria-hidden','true');return span;}));
+  const subtitle=document.createElement('p');subtitle.className='welcome-subtitle';subtitle.textContent='IMAGINE. BUILD. PLAY.';
+  intro.querySelector('.welcome-rule').before(subtitle);
   const previousFocus=document.activeElement;
   const background=[...document.body.children].filter(element=>element!==intro&&element.tagName!=='SCRIPT').map(element=>({element,inert:element.inert}));
   const previousOverflow=document.body.style.overflow;
@@ -45,9 +50,13 @@
   timer=setTimeout(finish,2600);
   (async()=>{
     try {
+      const mascot=intro.querySelector('.welcome-mascot');
+      mascot.animate([{opacity:0,transform:'translateY(22px) scale(.88) rotate(-7deg)'},{opacity:1,transform:'translateY(-4px) scale(1.02) rotate(1deg)',offset:.78},{opacity:1,transform:'translateY(0) scale(1) rotate(0)'}],{duration:620,delay:70,easing:'cubic-bezier(.16,1,.3,1)',fill:'both'});
+      name.querySelectorAll('.welcome-glyph').forEach((glyph,index)=>glyph.animate([{transform:'translateY(110%)',opacity:0},{transform:'translateY(0)',opacity:1}],{duration:470,delay:150+index*36,easing:'cubic-bezier(.16,1,.3,1)',fill:'both'}));
+      subtitle.animate([{opacity:0,transform:'translateY(8px)'},{opacity:.7,transform:'translateY(0)'}],{duration:360,delay:450,fill:'both'});
       await window.portfolioTransition(parts,'intro');
       if(finished)return;
-      await new Promise(resolve=>setTimeout(resolve,450));
+      await new Promise(resolve=>setTimeout(resolve,650));
       if(finished)return;
       await window.portfolioTransition(parts,'reveal');
     } finally {finish();}

@@ -1,0 +1,34 @@
+/* Original implementation for Bachtiar's portfolio.
+   Visual references: Pryzm's layered light, Jitter's staggered motion,
+   and OriginKit's magnetic-hover interaction. No exported vendor code/assets. */
+.hero { isolation:isolate; }
+.hero-atmosphere { position:absolute; inset:-95px -55px -5px; z-index:-1; overflow:hidden; pointer-events:none; contain:paint; mask-image:linear-gradient(transparent,#000 18%,#000 70%,transparent); }
+.hero-atmosphere::before { content:''; position:absolute; inset:-20%; background:radial-gradient(ellipse at 58% 47%,#b9ed7430,transparent 39%),radial-gradient(ellipse at 80% 22%,#4bc3a31c,transparent 34%),radial-gradient(ellipse at 27% 65%,#a2c65d0c,transparent 36%); animation:ambient-drift 18s ease-in-out infinite alternate; }
+.hero-atmosphere::after { content:''; position:absolute; inset:0; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Cpath fill='%23fff' filter='url(%23n)' opacity='.35' d='M0 0h160v160H0z'/%3E%3C/svg%3E"); opacity:.065; }
+[data-theme=light] .hero-atmosphere::before { background:radial-gradient(ellipse at 58% 47%,#9fc36e38,transparent 40%),radial-gradient(ellipse at 80% 22%,#4ba58e18,transparent 35%); }
+@keyframes ambient-drift { from { transform:translate(-2%,-1%) scale(1); } to { transform:translate(4%,3%) scale(1.09); } }
+.hero.is-atmosphere-paused .hero-atmosphere::before,.page-hidden .hero-atmosphere::before,html[data-welcome=pending] .hero-atmosphere::before { animation-play-state:paused; }
+/* The text remains real selectable text, with a clipped reveal per character. */
+.welcome-name { display:flex; justify-content:center; overflow:hidden; padding-bottom:.12em; }
+.welcome-name .welcome-glyph { display:inline-block; color:inherit; }
+.welcome-content .welcome-subtitle { font:500 12px var(--body,sans-serif); letter-spacing:1.5px; opacity:.7; }
+.welcome-mascot { transform-origin:50% 75%; }
+.welcome-rule { width:112px; }
+/* Use the existing pointer coordinates, so controls need no extra event loop. */
+.button-primary.interactive-control::before { inset:-1px; background:var(--on-accent); opacity:1; clip-path:circle(0% at var(--control-x,50%) var(--control-y,50%)); transition:clip-path .48s cubic-bezier(.16,1,.3,1); }
+.button-primary.interactive-control:focus-visible::before { clip-path:circle(150% at 50% 50%); }
+.button-primary.interactive-control:focus-visible { color:var(--accent); }
+@media(hover:hover) and (pointer:fine) {
+ .button-primary.interactive-control:hover::before { clip-path:circle(150% at var(--control-x,50%) var(--control-y,50%)); }
+ .button-primary.interactive-control:hover { color:var(--accent); }
+ .button-primary.interactive-control:hover::after { opacity:0; }
+ .released-card,.ongoing-card { transition:translate .35s cubic-bezier(.16,1,.3,1),border-color .35s,box-shadow .35s; }
+ .released-card:hover,.ongoing-card:hover { translate:0 -5px; border-color:color-mix(in srgb,var(--accent) 38%,var(--line)); box-shadow:0 14px 32px #0002; }
+ .released-image img,.ongoing-media img { transition:transform .65s cubic-bezier(.16,1,.3,1),filter .5s; }
+ .released-card:hover .released-image img,.ongoing-card:hover .ongoing-media img { transform:scale(1.035); filter:saturate(1.08); }
+ .project-open:hover .project-image-wrap { box-shadow:0 20px 36px #0004; }
+ .project-open:hover .card-open-icon { transform:translate(2px,-2px) rotate(-8deg); }
+}
+.released-card:focus-within,.ongoing-card:focus-within { border-color:var(--accent); }
+@media(max-width:640px) { .hero-atmosphere { inset:-45px -20px 0; } .hero-atmosphere::before { animation:none; background:radial-gradient(ellipse at 50% 48%,#b9ed7420,transparent 42%); } .hero-atmosphere::after { display:none; } }
+@media(prefers-reduced-motion:reduce) { .hero-atmosphere::before { animation:none; } .welcome-glyph,.welcome-mascot,.welcome-subtitle { animation:none!important; } .released-card,.ongoing-card,.button-primary.interactive-control::before { transition:none; } }

@@ -55,3 +55,7 @@ The owner also supplied an Indekos (BAND) folder on 2 November 2026. Its ten ima
 These open items are documentation gaps, not findings that a specific use is unauthorized. They should be completed from actual records rather than by assuming ownership or inventing permissions. Adding an attribution or this inventory does not itself grant a license.
 
 See [COPYRIGHT.md](COPYRIGHT.md) for the portfolio notice. Third-party license and attribution requirements take precedence over any general restriction in that notice for the material they cover.
+
+## Motion refresh, 7 November 2026
+
+`motion-polish.css`, `motion-polish.js` and the intro character animation are original code written for this portfolio. Visual references: [Pryzm](https://pryzm.design/) for layered ambient light/grain, [Jitter](https://jitter.video/) for staggered logo motion, and [OriginKit Magnetic Hover Button](https://www.originkit.dev/components/magnetic-hover-button) for pointer-origin color wipes. No vendor template, component source, exported asset, account integration, or paid export was used. The existing mascot remains the owner-supplied asset.
