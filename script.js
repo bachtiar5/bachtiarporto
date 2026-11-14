@@ -249,9 +249,10 @@
   }
   $('#gallery-close').addEventListener('click',closeGallery);
   dialog.addEventListener('cancel',event=>{event.preventDefault();closeGallery();});
-  dialog.addEventListener('click',event => {if(event.target !== dialog) return;const rect=dialog.getBoundingClientRect();if(event.clientX<rect.left||event.clientX>rect.right||event.clientY<rect.top||event.clientY>rect.bottom) closeGallery();});
   dialog.addEventListener('close',()=>{imageVersion++;document.body.classList.remove('modal-open');active=null;stage.classList.remove('is-loading');stage.setAttribute('aria-busy','false');returnFocus?.focus({preventScroll:true});});
-  dialog.addEventListener('keydown',event=>{if(event.key==='ArrowRight'){event.preventDefault();stepImage(1);}if(event.key==='ArrowLeft'){event.preventDefault();stepImage(-1);}});
+  dialog.addEventListener('keydown',event=>{
+    if(event.key==='Escape'){event.preventDefault();closeGallery();return;}
+    if(event.key==='ArrowRight'){event.preventDefault();stepImage(1);}if(event.key==='ArrowLeft'){event.preventDefault();stepImage(-1);}});
   let touchStart = null;
   $('.gallery-stage').addEventListener('touchstart',event=>{touchStart=event.touches.length===1?{x:event.touches[0].clientX,y:event.touches[0].clientY}:null;},{passive:true});
   $('.gallery-stage').addEventListener('touchend',event=>{if(!touchStart)return;const dx=event.changedTouches[0].clientX-touchStart.x,dy=event.changedTouches[0].clientY-touchStart.y;if(Math.abs(dx)>55&&Math.abs(dx)>Math.abs(dy)*1.5)stepImage(dx<0?1:-1);touchStart=null;},{passive:true});
