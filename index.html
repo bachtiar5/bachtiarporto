@@ -22,7 +22,7 @@
   <script>try { if (!sessionStorage.getItem('bachtiar-welcome-seen') && !matchMedia('(prefers-reduced-motion: reduce)').matches) { document.documentElement.dataset.welcome='pending'; window.portfolioWelcomeTimeout=setTimeout(function(){delete document.documentElement.dataset.welcome;document.dispatchEvent(new CustomEvent('portfolio:welcomecomplete'));},8000); } } catch {}</script>
   <style>html[data-welcome=pending]{overflow:hidden}html[data-welcome=pending] .welcome-intro{display:grid;position:fixed;inset:0;z-index:200;overflow:hidden}html[data-welcome=pending] .welcome-curtain{position:absolute;inset:0;background:var(--accent,#d4f78b);transform:translateY(0)}</style>
   <link rel="stylesheet" href="welcome-intro.css?v=20261103-no-flash">
-  <link rel="stylesheet" href="styles.css?v=clip-and-full">
+  <link rel="stylesheet" href="styles.css?v=work-video-cards">
   <script src="transitions.js?v=20261103-no-flash" defer></script>
   <script src="portfolio-data.js?v=gallery-327f3509e3578328" defer></script>
   <script src="ongoing-projects.js?v=20261102-compact-current" defer></script>
@@ -30,7 +30,7 @@
   <link rel="stylesheet" href="site-pages.css?v=20261102-progress-actions">
   <script src="published-projects.js?v=20261102-project-roles" defer></script>
   <script src="studio-data.js?v=20261102-peak-skills-v2" defer></script>
-  <script src="script.js?v=clip-and-full" defer></script>
+  <script src="script.js?v=work-video-cards" defer></script>
   <script src="internship-data.js?v=20261102-internships" defer></script>
   <script src="hall-of-fame-data.js?v=20261102-supporter-names" defer></script>
   <script src="site-pages.js?v=20261102-approved-polish" defer></script>
@@ -125,19 +125,28 @@
               <video data-video-src="image/videos/proses-hasil.mp4" poster="image/videos/proses-hasil.jpg" muted playsinline loop preload="none" controls></video>
               <p class="work-video-error" data-i18n="reelUnavailable" hidden>Cuplikan belum bisa diputar.</p>
             </div>
-            <h4 data-i18n="processVideo">Proses &amp; hasil</h4>
-            <p data-i18n="processVideoDesc">Timelapse pembuatan sampai hasil jadi.</p>
-            <a class="work-video-full" href="image/videos/proses-hasil-lengkap.mp4" data-i18n="fullVideo">Tonton versi lengkap</a>
-            <a href="https://www.instagram.com/reel/DftKFbORVpA/" target="_blank" rel="noopener noreferrer"><span data-i18n="viewReel">Tonton di Instagram</span> <span aria-hidden="true">&#8599;</span></a>
+            <div class="work-video-body">
+              <h4>Spider Arm System</h4>
+              <p data-i18n="spiderArmDesc">Sistem gerak yang pakai lengan tambahan buat berjalan seperti Spider-Man di film.</p>
+              <div class="work-video-actions">
+                <a class="work-video-full" href="image/videos/proses-hasil-lengkap.mp4"><span aria-hidden="true">&#9654;</span><span data-i18n="fullVideo">Tonton versi lengkap</span><span class="work-video-duration">2:28</span></a>
+                <a class="work-video-source" href="https://www.instagram.com/reel/DftKFbORVpA/" target="_blank" rel="noopener noreferrer"><span data-i18n="viewReel">Tonton di Instagram</span> <span aria-hidden="true">&#8599;</span></a>
+              </div>
+            </div>
           </article>
           <article class="work-video">
             <div class="work-video-media">
               <video data-video-src="image/videos/konten.mp4" poster="image/videos/konten.jpg" muted playsinline loop preload="none" controls></video>
               <p class="work-video-error" data-i18n="reelUnavailable" hidden>Cuplikan belum bisa diputar.</p>
             </div>
-            <h4 data-i18n="socialVideo">Konten</h4>
-            <a class="work-video-full" href="image/videos/konten-lengkap.mp4" data-i18n="fullVideo">Tonton versi lengkap</a>
-            <a href="https://www.instagram.com/reel/DbJVL45TlSb/" target="_blank" rel="noopener noreferrer"><span data-i18n="viewReel">Tonton di Instagram</span> <span aria-hidden="true">&#8599;</span></a>
+            <div class="work-video-body">
+              <h4 data-i18n="houseTimelapse">Timelapse Bikin Rumah dari Nol</h4>
+              <p data-i18n="houseTimelapseDesc">Proses bikin bangunan rumah dari nol di Roblox Studio.</p>
+              <div class="work-video-actions">
+                <a class="work-video-full" href="image/videos/konten-lengkap.mp4"><span aria-hidden="true">&#9654;</span><span data-i18n="fullVideo">Tonton versi lengkap</span><span class="work-video-duration">1:28</span></a>
+                <a class="work-video-source" href="https://www.instagram.com/reel/DbJVL45TlSb/" target="_blank" rel="noopener noreferrer"><span data-i18n="viewReel">Tonton di Instagram</span> <span aria-hidden="true">&#8599;</span></a>
+              </div>
+            </div>
           </article>
         </div>
       </section>
