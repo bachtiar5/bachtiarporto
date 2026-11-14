@@ -65,7 +65,7 @@
   let language = [urlLang, store.get('preferred-language')].find(value => ['id','en'].includes(value)) || 'en';
   let filter = 'all';
   const data = window.portfolioData;
-  const collections = [...data.projects, ...data.moments, ...(window.ongoingProjects||[]).filter(project=>project.images?.length&&project.title)];
+  const collections = [...data.projects, ...data.moments, ...(window.ongoingProjects||[]).filter(project=>project.images?.length&&project.title).map(project=>({...project,images:project.images.map(url=>data.progressImages?.[url]||url)}))];
   const escape = value => String(value).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
   const localText = values => values[language] || values.id;
   const photoLabel = count => `${count} ${language === 'id' ? 'FOTO' : 'PHOTOS'}`;
@@ -188,6 +188,23 @@
   let imageVersion = 0;
   let closingGallery = false;
   const stage = $('.gallery-stage');
+  const photoCache = new Map();
+  function loadGalleryPhoto(source, priority) {
+    let photo = photoCache.get(source);
+    if(photo) {
+      photo.image.fetchPriority = priority;
+      photoCache.delete(source);
+    } else {
+      const image = new Image();
+      image.fetchPriority = priority;
+      image.src = source;
+      photo = {image, ready:image.decode()};
+      photo.ready.catch(()=>{if(photoCache.get(source)===photo)photoCache.delete(source);});
+    }
+    photoCache.set(source, photo);
+    if(photoCache.size>7)photoCache.delete(photoCache.keys().next().value);
+    return photo.ready;
+  }
   function renderImage() {
     if(!active) return;
     const version=++imageVersion;
@@ -211,7 +228,6 @@
     $('#gallery-prev').disabled = active.images.length === 1;
     $('#gallery-next').disabled = active.images.length === 1;
     $('#gallery-kicker').textContent = active.id.startsWith('ongoing-') ? (language==='id'?'SEDANG DIGARAP':'WORK IN PROGRESS') : active.id.startsWith('moment') ? 'HALL OF FAME' : (language==='id'?'ARSIP KARYA':'PROJECT ARCHIVE');
-    if(active.images.length>1) {const nextImage = new Image();nextImage.src=active.images[(imageIndex+1)%active.images.length];}
   }
   document.addEventListener('click',event => {
     const button = event.target.closest('[data-gallery]');

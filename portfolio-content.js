@@ -2,26 +2,6 @@
 window.portfolioData = {
   "projects": [
     {
-      "id": "my-work",
-      "category": "environment",
-      "title": {
-        "id": "Proyek Roblox",
-        "en": "Roblox projects"
-      },
-      "description": {
-        "id": "Beberapa map dan game yang pernah kukerjakan di Roblox.",
-        "en": "A collection of maps and games I have worked on throughout my Roblox journey."
-      },
-      "images": [
-        "image/Archives/MyWork/Screenshot 2026-03-30 155149.png",
-        "image/Archives/MyWork/Screenshot 2026-03-30 155213.png",
-        "image/Archives/MyWork/Screenshot 2026-03-30 155229.png",
-        "image/Archives/MyWork/Screenshot 2026-03-30 155257.png",
-        "image/Archives/MyWork/Screenshot 2026-03-30 155356.png",
-        "image/Archives/MyWork/Screenshot 2026-06-13 000942.png"
-      ]
-    },
-    {
       "id": "first-collab",
       "category": "environment",
       "title": {
@@ -71,7 +51,18 @@ window.portfolioData = {
         "image/Archives/Build/Screenshot 2026-05-19 223439.png",
         "image/Archives/Build/Screenshot 2026-05-19 223450.png",
         "image/Archives/Build/Screenshot 2026-05-19 223550.png",
-        "image/Archives/Build/Screenshot 2026-05-19 231123.png"
+        "image/Archives/Build/Screenshot 2026-05-19 231123.png",
+        "image/Archives/Gallery/Cuplikan layar 2025-08-30 115417.png",
+        "image/Archives/Gallery/Cuplikan layar 2025-08-30 115529.png",
+        "image/Archives/Gallery/Cuplikan layar 2025-09-20 130632.png",
+        "image/Archives/Gallery/Cuplikan layar 2025-09-20 130650.png",
+        "image/Archives/Gallery/Cuplikan layar 2025-09-25 220621.png",
+        "image/Archives/Gallery/Cuplikan layar 2025-10-06 174451.png",
+        "image/Archives/Gallery/Cuplikan layar 2025-10-08 072736.png",
+        "image/Archives/Gallery/Screenshot 2025-11-18 191212.png",
+        "image/Archives/Gallery/Screenshot 2026-01-12 172237.png",
+        "image/Archives/Gallery/Screenshot 2026-01-30 175806.png",
+        "image/Archives/Gallery/Screenshot 2026-02-16 063438.png"
       ]
     },
     {
@@ -116,31 +107,6 @@ window.portfolioData = {
         "image/Archives/LuaUCode/Screenshot 2026-06-13 001700.png",
         "image/Archives/LuaUCode/Screenshot 2026-06-13 001711.png",
         "image/Archives/LuaUCode/Screenshot 2026-06-13 001747.png"
-      ]
-    },
-    {
-      "id": "gallery",
-      "category": "environment",
-      "title": {
-        "id": "Catatan visual",
-        "en": "Visual journal"
-      },
-      "description": {
-        "id": "Foto-foto waktu ngerjain proyek, nyobain ide, dan main bareng.",
-        "en": "Moments, experiments, and the process behind the work."
-      },
-      "images": [
-        "image/Archives/Gallery/Cuplikan layar 2025-08-30 115417.png",
-        "image/Archives/Gallery/Cuplikan layar 2025-08-30 115529.png",
-        "image/Archives/Gallery/Cuplikan layar 2025-09-20 130632.png",
-        "image/Archives/Gallery/Cuplikan layar 2025-09-20 130650.png",
-        "image/Archives/Gallery/Cuplikan layar 2025-09-25 220621.png",
-        "image/Archives/Gallery/Cuplikan layar 2025-10-06 174451.png",
-        "image/Archives/Gallery/Cuplikan layar 2025-10-08 072736.png",
-        "image/Archives/Gallery/Screenshot 2025-11-18 191212.png",
-        "image/Archives/Gallery/Screenshot 2026-01-12 172237.png",
-        "image/Archives/Gallery/Screenshot 2026-01-30 175806.png",
-        "image/Archives/Gallery/Screenshot 2026-02-16 063438.png"
       ]
     }
   ],

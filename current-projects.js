@@ -18,7 +18,7 @@
     page.hidden=projects.length===0;
     const badge=project=>`<span class="ongoing-badge${project.published?' ongoing-badge-live':''}"><i aria-hidden="true"></i>${project.published?t.live:t.status}</span>`;
     const image=project=>{
-      const photo=`<img src="${esc(project.images[0])}" width="768" height="480" loading="lazy" decoding="async" alt="${esc(local(project.title))}">`;
+      const photo=`<img src="${esc(window.portfolioData.progressImages?.[project.images[0]]||project.images[0])}" width="768" height="480" loading="lazy" decoding="async" alt="${esc(local(project.title))}">`;
       const overlay=`<span class="ongoing-photo-label">${project.published?t.open:project.images.length+' '+t.photoCount}<span aria-hidden="true">↗</span></span>`;
       const className='ongoing-cover';
       return project.published?`<a class="${className}" href="${esc(project.published.url)}" target="_blank" rel="noopener noreferrer">${photo}${overlay}</a>`:`<div class="${className} ongoing-cover-static">${photo}</div>`;

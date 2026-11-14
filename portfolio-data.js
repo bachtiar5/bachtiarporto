@@ -2,26 +2,6 @@
 window.portfolioData = {
   "projects": [
     {
-      "id": "my-work",
-      "category": "environment",
-      "title": {
-        "id": "Proyek Roblox",
-        "en": "Roblox projects"
-      },
-      "description": {
-        "id": "Beberapa map dan game yang pernah kukerjakan di Roblox.",
-        "en": "A collection of maps and games I have worked on throughout my Roblox journey."
-      },
-      "images": [
-        "image/Archives/MyWork/Screenshot%202026-03-30%20155149.png",
-        "image/Archives/MyWork/Screenshot%202026-03-30%20155213.png",
-        "image/Archives/MyWork/Screenshot%202026-03-30%20155229.png",
-        "image/Archives/MyWork/Screenshot%202026-03-30%20155257.png",
-        "image/Archives/MyWork/Screenshot%202026-03-30%20155356.png",
-        "image/Archives/MyWork/Screenshot%202026-06-13%20000942.png"
-      ]
-    },
-    {
       "id": "first-collab",
       "category": "environment",
       "title": {
@@ -72,6 +52,17 @@ window.portfolioData = {
         "image/Archives/Build/Screenshot%202026-05-19%20223450.png",
         "image/Archives/Build/Screenshot%202026-05-19%20223550.png",
         "image/Archives/Build/Screenshot%202026-05-19%20231123.png",
+        "image/Archives/Gallery/Cuplikan%20layar%202025-08-30%20115417.png",
+        "image/Archives/Gallery/Cuplikan%20layar%202025-08-30%20115529.png",
+        "image/Archives/Gallery/Cuplikan%20layar%202025-09-20%20130632.png",
+        "image/Archives/Gallery/Cuplikan%20layar%202025-09-20%20130650.png",
+        "image/Archives/Gallery/Cuplikan%20layar%202025-09-25%20220621.png",
+        "image/Archives/Gallery/Cuplikan%20layar%202025-10-06%20174451.png",
+        "image/Archives/Gallery/Cuplikan%20layar%202025-10-08%20072736.png",
+        "image/Archives/Gallery/Screenshot%202025-11-18%20191212.png",
+        "image/Archives/Gallery/Screenshot%202026-01-12%20172237.png",
+        "image/Archives/Gallery/Screenshot%202026-01-30%20175806.png",
+        "image/Archives/Gallery/Screenshot%202026-02-16%20063438.png",
         "image/Archives/Build/2052284827_85171355133787_1793333210491.png",
         "image/Archives/Build/2052284827_85171355133787_1793333223592.png",
         "image/Archives/Build/2052284827_85171355133787_1793333239464.png",
@@ -81,7 +72,9 @@ window.portfolioData = {
         "image/Archives/Build/2052284827_99690346982041_1789638243826.png",
         "image/Archives/Build/2052284827_99690346982041_1791185605734.png",
         "image/Archives/Build/Screenshot%202026-09-17%20125849.png",
-        "image/Archives/Build/Screenshot%202026-10-12%20143051.png"
+        "image/Archives/Build/Screenshot%202026-10-12%20143051.png",
+        "image/Archives/Gallery/2052284827_99690346982041_1789984679018.png",
+        "image/Archives/Gallery/2052284827_99690346982041_1791185593771.png"
       ]
     },
     {
@@ -132,33 +125,6 @@ window.portfolioData = {
         "image/Archives/LuaUCode/Screenshot%202026-06-13%20001700.png",
         "image/Archives/LuaUCode/Screenshot%202026-06-13%20001711.png",
         "image/Archives/LuaUCode/Screenshot%202026-06-13%20001747.png"
-      ]
-    },
-    {
-      "id": "gallery",
-      "category": "environment",
-      "title": {
-        "id": "Catatan visual",
-        "en": "Visual journal"
-      },
-      "description": {
-        "id": "Foto-foto waktu ngerjain proyek, nyobain ide, dan main bareng.",
-        "en": "Moments, experiments, and the process behind the work."
-      },
-      "images": [
-        "image/Archives/Gallery/Cuplikan%20layar%202025-08-30%20115417.png",
-        "image/Archives/Gallery/Cuplikan%20layar%202025-08-30%20115529.png",
-        "image/Archives/Gallery/Cuplikan%20layar%202025-09-20%20130632.png",
-        "image/Archives/Gallery/Cuplikan%20layar%202025-09-20%20130650.png",
-        "image/Archives/Gallery/Cuplikan%20layar%202025-09-25%20220621.png",
-        "image/Archives/Gallery/Cuplikan%20layar%202025-10-06%20174451.png",
-        "image/Archives/Gallery/Cuplikan%20layar%202025-10-08%20072736.png",
-        "image/Archives/Gallery/Screenshot%202025-11-18%20191212.png",
-        "image/Archives/Gallery/Screenshot%202026-01-12%20172237.png",
-        "image/Archives/Gallery/Screenshot%202026-01-30%20175806.png",
-        "image/Archives/Gallery/Screenshot%202026-02-16%20063438.png",
-        "image/Archives/Gallery/2052284827_99690346982041_1789984679018.png",
-        "image/Archives/Gallery/2052284827_99690346982041_1791185593771.png"
       ]
     }
   ],
@@ -264,5 +230,19 @@ window.portfolioData = {
     "image/Archives/Build/2052284827_99690346982041_1791185605734.png",
     "image/Archives/Build/Screenshot%202026-09-17%20125849.png",
     "image/Archives/Build/Screenshot%202026-10-12%20143051.png"
-  ]
+  ],
+  "progressImages": {
+    "image/ongoing/seporsi-mie-ayam/Screenshot%202026-11-02%20155221.png": "image/ongoing/seporsi-mie-ayam/Screenshot%202026-11-02%20155221.png",
+    "image/ongoing/seporsi-mie-ayam/Screenshot%202026-11-02%20160007.png": "image/ongoing/seporsi-mie-ayam/Screenshot%202026-11-02%20160007.png",
+    "image/Archives/Gallery/2052284827_99690346982041_1789984679018.png": "image/Archives/Gallery/2052284827_99690346982041_1789984679018.png",
+    "image/Archives/Build/2052284827_99690346982041_1789638213535.png": "image/Archives/Build/2052284827_99690346982041_1789638213535.png",
+    "image/Archives/Build/2052284827_99690346982041_1789638243826.png": "image/Archives/Build/2052284827_99690346982041_1789638243826.png",
+    "image/Archives/Build/2052284827_99690346982041_1791185605734.png": "image/Archives/Build/2052284827_99690346982041_1791185605734.png",
+    "image/Archives/UiUx/Screenshot%202026-09-01%20162419.png": "image/Archives/UiUx/Screenshot%202026-09-01%20162419.png",
+    "image/Archives/Build/Screenshot%202026-10-12%20143051.png": "image/Archives/Build/Screenshot%202026-10-12%20143051.png",
+    "image/Archives/UiUx/Screenshot%202026-10-26%20163033.png": "image/Archives/UiUx/Screenshot%202026-10-26%20163033.png",
+    "image/Archives/UiUx/Screenshot%202026-10-26%20163038.png": "image/Archives/UiUx/Screenshot%202026-10-26%20163038.png",
+    "image/Archives/UiUx/Screenshot%202026-10-26%20163058.png": "image/Archives/UiUx/Screenshot%202026-10-26%20163058.png",
+    "image/Archives/UiUx/Screenshot%202026-10-26%20163109.png": "image/Archives/UiUx/Screenshot%202026-10-26%20163109.png"
+  }
 };

@@ -42,7 +42,10 @@ jobs:
           node scripts/sync-roblox.mjs
           node scripts/sync-developers.mjs
       - name: Update galleries from image folders
-        run: node scripts/sync-gallery.mjs
+        run: |
+          npm ci
+          node scripts/sync-gallery.mjs
+          npm prune --omit=dev
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
