@@ -42,7 +42,7 @@
     workIndex:'01 / SELECTED WORK',workHeading:'Ideas you can<br>step into.',
     workDesc:'From environments to the systems behind them. Choose a collection to explore the process and the details.',all:'All',
     workVideos:'Work videos',processVideo:'Process & result',processVideoDesc:'A timelapse from the build to the finished work.',
-    socialVideo:'Instagram content',openReel:'Open player',viewReel:'Watch on Instagram',
+    socialVideo:'Content',fullVideo:'Watch full video',reelUnavailable:'This clip could not play.',viewReel:'Watch on Instagram',
     workNote:'Every project is part of the learning process. There is always room to grow.',
     aboutIndex:'02 / BEHIND THE WORLDS',aboutHeading:'From playing<br>to creating.',
     aboutTeaser:'Curiosity about how games are made led me to Roblox Studio. The rest is a process of trying, learning, and making again.',

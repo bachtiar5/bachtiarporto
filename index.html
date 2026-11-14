@@ -22,7 +22,7 @@
   <script>try { if (!sessionStorage.getItem('bachtiar-welcome-seen') && !matchMedia('(prefers-reduced-motion: reduce)').matches) { document.documentElement.dataset.welcome='pending'; window.portfolioWelcomeTimeout=setTimeout(function(){delete document.documentElement.dataset.welcome;document.dispatchEvent(new CustomEvent('portfolio:welcomecomplete'));},8000); } } catch {}</script>
   <style>html[data-welcome=pending]{overflow:hidden}html[data-welcome=pending] .welcome-intro{display:grid;position:fixed;inset:0;z-index:200;overflow:hidden}html[data-welcome=pending] .welcome-curtain{position:absolute;inset:0;background:var(--accent,#d4f78b);transform:translateY(0)}</style>
   <link rel="stylesheet" href="welcome-intro.css?v=20261103-no-flash">
-  <link rel="stylesheet" href="styles.css?v=work-videos">
+  <link rel="stylesheet" href="styles.css?v=clip-and-full">
   <script src="transitions.js?v=20261103-no-flash" defer></script>
   <script src="portfolio-data.js?v=gallery-327f3509e3578328" defer></script>
   <script src="ongoing-projects.js?v=20261102-compact-current" defer></script>
@@ -30,13 +30,13 @@
   <link rel="stylesheet" href="site-pages.css?v=20261102-progress-actions">
   <script src="published-projects.js?v=20261102-project-roles" defer></script>
   <script src="studio-data.js?v=20261102-peak-skills-v2" defer></script>
-  <script src="script.js?v=work-videos" defer></script>
+  <script src="script.js?v=clip-and-full" defer></script>
   <script src="internship-data.js?v=20261102-internships" defer></script>
   <script src="hall-of-fame-data.js?v=20261102-supporter-names" defer></script>
   <script src="site-pages.js?v=20261102-approved-polish" defer></script>
   <script src="developer-profiles.js?v=20261102-developer-cards" defer></script>
   <script src="hall-of-fame.js?v=20261102-approved-polish" defer></script>
-  <script src="work-videos.js?v=1" defer></script>
+  <script src="work-videos.js?v=3" defer></script>
   <script src="current-projects.js?v=20261114-fast-gallery" defer></script>
   <script src="pixel-art.js?v=20261102-outward-burst" defer></script>
   <script src="pixel-background.js?v=20261102-approved-polish" defer></script>
@@ -121,21 +121,22 @@
         <h3 id="work-videos-title" data-i18n="workVideos">Video karya</h3>
         <div class="work-video-grid">
           <article class="work-video">
+            <div class="work-video-media">
+              <video data-video-src="image/videos/proses-hasil.mp4" poster="image/videos/proses-hasil.jpg" muted playsinline loop preload="none" controls></video>
+              <p class="work-video-error" data-i18n="reelUnavailable" hidden>Cuplikan belum bisa diputar.</p>
+            </div>
             <h4 data-i18n="processVideo">Proses &amp; hasil</h4>
             <p data-i18n="processVideoDesc">Timelapse pembuatan sampai hasil jadi.</p>
-            <details name="work-video" data-reel="DftKFbORVpA">
-              <summary data-i18n="openReel">Buka pemutar</summary>
-              <div class="work-video-player"></div>
-            </details>
+            <a class="work-video-full" href="image/videos/proses-hasil-lengkap.mp4" data-i18n="fullVideo">Tonton versi lengkap</a>
             <a href="https://www.instagram.com/reel/DftKFbORVpA/" target="_blank" rel="noopener noreferrer"><span data-i18n="viewReel">Tonton di Instagram</span> <span aria-hidden="true">&#8599;</span></a>
           </article>
           <article class="work-video">
-            <h4 data-i18n="socialVideo">Konten Instagram</h4>
-            <p>@bachtiaraditya_</p>
-            <details name="work-video" data-reel="DbJVL45TlSb">
-              <summary data-i18n="openReel">Buka pemutar</summary>
-              <div class="work-video-player"></div>
-            </details>
+            <div class="work-video-media">
+              <video data-video-src="image/videos/konten.mp4" poster="image/videos/konten.jpg" muted playsinline loop preload="none" controls></video>
+              <p class="work-video-error" data-i18n="reelUnavailable" hidden>Cuplikan belum bisa diputar.</p>
+            </div>
+            <h4 data-i18n="socialVideo">Konten</h4>
+            <a class="work-video-full" href="image/videos/konten-lengkap.mp4" data-i18n="fullVideo">Tonton versi lengkap</a>
             <a href="https://www.instagram.com/reel/DbJVL45TlSb/" target="_blank" rel="noopener noreferrer"><span data-i18n="viewReel">Tonton di Instagram</span> <span aria-hidden="true">&#8599;</span></a>
           </article>
         </div>
@@ -179,6 +180,13 @@
   <div class="page-transition" id="page-transition" aria-hidden="true"><div class="transition-curtain"></div><div class="transition-content"><img src="image/brand-mark.svg?v=20261102-peak-skills-v2" width="44" height="44" alt=""><span id="transition-label"></span><span class="transition-rule"></span></div></div>
   <p class="sr-only" id="page-announcer" role="status" aria-live="polite"></p>
   <footer class="container site-footer"><a class="wordmark" href="#home">bachtiar<span class="brand-dot">.</span></a><div class="footer-credit"><p>© <span data-year>2026</span> Bachtiar Aditya. All rights reserved.</p><p data-i18n="designCredit">Desain oleh Bachtiar Aditya.</p><a href="https://github.com/bachtiar5/bachtiarporto/blob/main/COPYRIGHT.md" target="_blank" rel="noopener noreferrer" data-i18n="copyrightNotice">Ketentuan penggunaan</a></div><a href="#home" class="back-top"><span data-i18n="backTop">Balik ke atas</span> ↑</a></footer>
+  <dialog class="gallery-dialog work-video-dialog" aria-labelledby="full-video-title">
+    <div class="gallery-header">
+      <h2 id="full-video-title"></h2>
+      <button class="icon-button work-video-close" type="button" aria-label="Tutup video">&#215;</button>
+    </div>
+    <video controls playsinline preload="none" aria-labelledby="full-video-title"></video>
+  </dialog>
   <dialog class="gallery-dialog" id="gallery-dialog" aria-labelledby="gallery-title" aria-describedby="gallery-description"><div class="gallery-shell"><div class="gallery-header"><div><p class="small-label" id="gallery-kicker">PROJECT ARCHIVE</p><h2 id="gallery-title"></h2></div><button class="icon-button" id="gallery-close" type="button" aria-label="Tutup galeri">✕</button></div><div class="gallery-stage"><img id="gallery-image" alt=""><p id="image-error" hidden data-i18n="imageError">Gambarnya belum kebuka. Coba foto berikutnya, ya.</p></div><div class="gallery-footer"><p id="gallery-description"></p><div class="gallery-controls"><button class="icon-button" id="gallery-prev" type="button" aria-label="Gambar sebelumnya">←</button><span id="gallery-counter" aria-live="polite"></span><button class="icon-button" id="gallery-next" type="button" aria-label="Gambar berikutnya">→</button></div></div></div></dialog>
 </body>
 </html>
