@@ -19,8 +19,8 @@ Menghapus foto dari folder juga menghapusnya dari galeri setelah penerbitan beri
 
 Folder `image/games`, `image/studios`, dan `image/icons` tidak otomatis menjadi galeri. Foto proyek rilis tetap terhubung ke data game masing-masing, dan foto studio tetap ke profil studionya.
 
-Untuk pratinjau lokal, jalankan `npm ci` lalu `node scripts/sync-gallery.mjs` sebelum membuka web. Label dan deskripsi koleksi disimpan di `portfolio-content.js`; `portfolio-data.js` dibuat otomatis.
+Untuk pratinjau lokal, jalankan `npm ci` lalu `node scripts/sync-gallery.mjs` sebelum membuka web. Label dan deskripsi koleksi disimpan di `js/data/portfolio-content.js`; `js/data/portfolio-data.js` dibuat otomatis.
 
-Foto proyek yang sedang digarap disimpan di `image/ongoing/`. Judul, deskripsi, dan daftar fotonya diatur dalam `ongoing-projects.js`, terpisah dari galeri arsip dan statistik game rilis. Menambahkan foto ke folder ini saja belum mengubah daftar progres. Statistik proyek yang belum dipublikasikan ditampilkan sebagai `?` dan tidak ikut jumlah proyek rilis atau total kunjungan.
+Foto proyek yang sedang digarap disimpan di `image/ongoing/`. Judul, deskripsi, dan daftar fotonya diatur dalam `js/data/ongoing-projects.js`, terpisah dari galeri arsip dan statistik game rilis. Menambahkan foto ke folder ini saja belum mengubah daftar progres. Statistik proyek yang belum dipublikasikan ditampilkan sebagai `?` dan tidak ikut jumlah proyek rilis atau total kunjungan.
 
 Daftar pekerjaan aktif juga bisa merujuk foto yang sudah ada di arsip agar tidak dobel, seperti Indekos (BAND). Proyek yang sudah rilis tetapi masih dikembangkan, seperti Hotel Anomaly, memakai `publishedPlaceId` untuk mengambil statistik dan peran dari data game rilis yang sudah ada.

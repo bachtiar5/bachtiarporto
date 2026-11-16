@@ -2,10 +2,10 @@ import { readFile, writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import vm from 'node:vm';
 
-const root = new URL('../', import.meta.url);
+const dataDirectory = new URL('../js/data/', import.meta.url);
 async function readSnapshot(file, key) {
   const context = { window: {} };
-  vm.runInNewContext(await readFile(new URL(file, root), 'utf8'), context);
+  vm.runInNewContext(await readFile(new URL(file, dataDirectory), 'utf8'), context);
   return context.window[key];
 }
 async function get(url) {
@@ -75,7 +75,7 @@ export async function syncRoblox() {
     ['published-projects.js', 'publishedProjects', published],
     ['profile-data.js', 'robloxProfile', nextProfile],
     ['studio-data.js', 'studioProfile', nextStudio]
-  ]) await writeFile(new URL(file, root), `// Roblox API snapshot. Updated by scripts/sync-roblox.mjs.\nwindow.${key} = ${JSON.stringify(value, null, 2)};\n`);
+  ]) await writeFile(new URL(file, dataDirectory), `// Roblox API snapshot. Updated by scripts/sync-roblox.mjs.\nwindow.${key} = ${JSON.stringify(value, null, 2)};\n`);
   console.log(`Updated ${published.projects.length} games, Roblox profile, and studio at ${capturedAt}`);
 }
 if (process.argv[1] === fileURLToPath(import.meta.url)) await syncRoblox();

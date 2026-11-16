@@ -21,30 +21,30 @@
   <script>try { document.documentElement.dataset.theme = localStorage.getItem('bachtiar-theme') || 'dark'; } catch {} document.documentElement.dataset.startPage = location.hash.startsWith('#/projects') ? 'projects' : location.hash === '#/career' ? 'career' : location.hash === '#/hall-of-fame' ? 'hall-of-fame' : 'home';</script>
   <script>try { if (!sessionStorage.getItem('bachtiar-welcome-seen') && !matchMedia('(prefers-reduced-motion: reduce)').matches) { document.documentElement.dataset.welcome='pending'; window.portfolioWelcomeTimeout=setTimeout(function(){delete document.documentElement.dataset.welcome;document.dispatchEvent(new CustomEvent('portfolio:welcomecomplete'));},8000); } } catch {}</script>
   <style>html[data-welcome=pending]{overflow:hidden}html[data-welcome=pending] .welcome-intro{display:grid;position:fixed;inset:0;z-index:200;overflow:hidden}html[data-welcome=pending] .welcome-curtain{position:absolute;inset:0;background:var(--accent,#d4f78b);transform:translateY(0)}</style>
-  <link rel="stylesheet" href="welcome-intro.css?v=20261103-no-flash">
-  <link rel="stylesheet" href="styles.css?v=work-video-cards">
-  <script src="transitions.js?v=20261103-no-flash" defer></script>
-  <script src="portfolio-data.js?v=gallery-327f3509e3578328" defer></script>
-  <script src="ongoing-projects.js?v=20261102-compact-current" defer></script>
-  <script src="profile-data.js?v=20261102-peak-skills-v2" defer></script>
-  <link rel="stylesheet" href="site-pages.css?v=20261102-progress-actions">
-  <script src="published-projects.js?v=20261102-project-roles" defer></script>
-  <script src="studio-data.js?v=20261102-peak-skills-v2" defer></script>
-  <script src="script.js?v=work-video-cards" defer></script>
-  <script src="internship-data.js?v=20261102-internships" defer></script>
-  <script src="hall-of-fame-data.js?v=20261102-supporter-names" defer></script>
-  <script src="site-pages.js?v=brand-mascot" defer></script>
-  <script src="developer-profiles.js?v=20261102-developer-cards" defer></script>
-  <script src="hall-of-fame.js?v=20261102-approved-polish" defer></script>
-  <script src="work-videos.js?v=3" defer></script>
-  <script src="current-projects.js?v=20261114-fast-gallery" defer></script>
-  <script src="pixel-art.js?v=20261102-outward-burst" defer></script>
-  <script src="pixel-background.js?v=20261102-approved-polish" defer></script>
-  <script src="baseplate.js?v=20261102-peak-skills-v2" defer></script>
-  <script src="hero-preview.js?v=20261102-shared-motion" defer></script>
-  <link rel="stylesheet" href="motion-polish.css?v=20261107-no-card-outline">
-  <script src="motion-polish.js?v=20261107-motion" defer></script>
-  <script src="welcome-intro.js?v=20261107-motion" defer></script>
+  <link rel="stylesheet" href="css/welcome-intro.css?v=20261103-no-flash">
+  <link rel="stylesheet" href="css/styles.css?v=work-video-cards">
+  <script src="js/transitions.js?v=20261103-no-flash" defer></script>
+  <script src="js/data/portfolio-data.js?v=gallery-327f3509e3578328" defer></script>
+  <script src="js/data/ongoing-projects.js?v=20261102-compact-current" defer></script>
+  <script src="js/data/profile-data.js?v=20261102-peak-skills-v2" defer></script>
+  <link rel="stylesheet" href="css/site-pages.css?v=20261102-progress-actions">
+  <script src="js/data/published-projects.js?v=20261102-project-roles" defer></script>
+  <script src="js/data/studio-data.js?v=20261102-peak-skills-v2" defer></script>
+  <script src="js/script.js?v=work-video-cards" defer></script>
+  <script src="js/data/internship-data.js?v=20261102-internships" defer></script>
+  <script src="js/data/hall-of-fame-data.js?v=20261102-supporter-names" defer></script>
+  <script src="js/site-pages.js?v=brand-mascot" defer></script>
+  <script src="js/data/developer-profiles.js?v=20261102-developer-cards" defer></script>
+  <script src="js/hall-of-fame.js?v=20261102-approved-polish" defer></script>
+  <script src="js/work-videos.js?v=3" defer></script>
+  <script src="js/current-projects.js?v=20261114-fast-gallery" defer></script>
+  <script src="js/pixel-art.js?v=20261102-outward-burst" defer></script>
+  <script src="js/pixel-background.js?v=20261102-approved-polish" defer></script>
+  <script src="js/baseplate.js?v=20261102-peak-skills-v2" defer></script>
+  <script src="js/hero-preview.js?v=20261102-shared-motion" defer></script>
+  <link rel="stylesheet" href="css/motion-polish.css?v=20261107-no-card-outline">
+  <script src="js/motion-polish.js?v=20261107-motion" defer></script>
+  <script src="js/welcome-intro.js?v=20261107-motion" defer></script>
 </head>
 <body><div class="studio-baseplate" aria-hidden="true"><div class="baseplate-grid"></div><div class="baseplate-spot"></div></div>
   <section class="welcome-intro" role="dialog" aria-modal="true" aria-label="Selamat datang di portofolio Bachtiar"><div class="welcome-curtain"></div><div class="welcome-content"><img class="welcome-mascot" src="image/mascot.png" alt="" width="210" height="210" decoding="async"><p class="welcome-name">bachtiar<span>.</span></p><span class="welcome-rule" aria-hidden="true"></span></div><button class="welcome-skip" type="button">Lewati intro</button></section>

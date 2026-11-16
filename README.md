@@ -30,6 +30,12 @@ Selected source files and HTML metadata carry the design credit and this marker:
 
 It is a source identifier, not an unremovable watermark or copy-protection system. Keep the Git history and original design files as records of the design process.
 
+## Repository structure
+
+- `index.html` is the GitHub Pages entry point.
+- `js/` contains browser scripts, and `js/data/` contains portfolio content and generated snapshots.
+- `css/` contains stylesheets, `image/` contains media, and `scripts/` contains the synchronization jobs.
+
 ## Content and updates
 
 The website supports English and Indonesian. English is the default for new visitors, and saved language choices are remembered.
