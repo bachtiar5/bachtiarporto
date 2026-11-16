@@ -102,7 +102,7 @@
   },
   {
     "year": "2026",
-    "icon": "image/brand-mark.svg",
+    "icon": "image/brand-mascot.png",
     "projectIds": [
       "110354587993091",
       "70575351571626"

@@ -10,7 +10,7 @@ This inventory records what the repository and its owner identify about the webs
 | Website implementation | `index.html`, root CSS and JavaScript files, and `scripts/` | Developed and revised with AI coding assistance in response to Bachtiar Aditya's direction. These files are not represented as entirely human-written code. Rights in particular code portions depend on their provenance and applicable law; third-party terms remain applicable. |
 | Portfolio descriptions and acknowledgements | `portfolio-content.js`, `published-projects.js`, `hall-of-fame-data.js`, `site-pages.js`, `script.js`, and `hall-of-fame.js` | Portfolio facts and contributions were supplied by Bachtiar Aditya. Wording and translations include AI assistance. Factual information and third-party names are not claimed as exclusively owned. |
 | Pixel-art shapes and animation implementation | `pixel-art.js`, `pixel-background.js`, and related CSS | Implemented with AI assistance for this website under Bachtiar Aditya's creative direction. No exclusive ownership is claimed in the general concepts of pixel hearts, hammers, steps, floating icons, or particle animations. |
-| Site brand illustration | `image/brand-mark.svg` | Used as this website's brand illustration. A separate creation record or rights assignment is not documented in the repository; no independent rights verification is claimed. |
+| Site mascot icon | `image/brand-mascot.png` | Generated with OpenAI ImageGen from the mascot reference provided by Bachtiar Aditya and approved by him for use on this site. |
 
 ## Icons
 
